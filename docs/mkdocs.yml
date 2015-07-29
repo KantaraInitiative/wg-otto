@@ -1,0 +1,34 @@
+site_name: OTTO Docs 
+site_description: OTTO Documentation
+site_favicon: '/img/otto_favicon.ico'
+copyright: IPR Terms will be defined by Kantara Work Group charter
+docs_dir: sources
+repo_url: https://github.com/nynymike/otto/docs
+theme: spacelab
+
+theme_dir: ./theme/mkdocs/
+theme_center_lead: false
+include_search: true
+
+pages:
+
+# Home Page
+- ['index.md', 'Home']
+- ['schedule.md', 'Schedule']
+
+# Schema Sections
+- ['schema/openid.md', 'Schema', 'OpenID']
+- ['schema/uma.md', 'Schema', 'UMA']
+- ['schema/federation.md', 'Schema', 'Federation']
+
+# API section
+- ['api/discovery.md', 'API', 'Public Discovery']
+- ['api/register.md', 'API', 'Register']
+- ['api/metadata.md', 'API', 'Metadata']
+
+# Use Case section
+- ['use-cases/op-discovery.md', 'Use Cases', 'OP-Discovery']
+- ['use-cases/client-registration.md', 'Use Cases', 'Client Registration']
+- ['use-cases/private-discovery.md', 'Use Cases', 'Private Discovery']
+- ['use-cases/person-enrollment.md', 'Use Cases', 'Person Enrollment']
+- ['use-cases/restricted-client-access.md', 'Use Cases', 'Restricted Client Access']
