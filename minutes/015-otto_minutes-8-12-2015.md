@@ -49,6 +49,9 @@ Example of InCommon Federation Metadata aggregate:
 Example of CACert Root Cert Publication:
    http://www.cacert.org/index.php?id=3
 
+Here's some beginner's-guide-style info from one of them:
+  http://www.certificate-transparency.org/what-is-ct
+
 There was a discussion of trustmarks--a mechanism to enable the federation to issue a signed JSON token
 that would indicate membership in a federation. Mike was concerned that by addressing trust marks, it
 would just delay the delivery of the solution for entity metadata publication and discovery.
