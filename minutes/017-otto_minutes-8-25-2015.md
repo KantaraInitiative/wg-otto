@@ -1,5 +1,5 @@
-OTTO WG Minutes 8/25/15
-STATUS: Draft
+OTTO WG Minutes 8/26/15
+STATUS: Final
 
 ## Voting Members Attending:
 Judith Bush
