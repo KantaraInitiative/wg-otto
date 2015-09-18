@@ -13,12 +13,22 @@ Please vote. You should have received the email with the link.
  - Crypto Guru:
  - Project Manager:
 
-### Janusz's email
+## OAuth2 / OpenID Connect Client Registration Specs
 
-EntityDescriptor (attrs: entityID...):
+ - [Oauth2 Client Metadata](https://tools.ietf.org/html/rfc7591#section-2)
+ - [OpenID Connect Client Metadata](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata)
+ 
+
+### Work on new federation metadata atributes
+
+EntityDescriptor 
+  (attrs: entityID, validUntil):
  - Organization (optional)
- - Extensions (mostly mdrpi
- - most common Roles :
+ - Extensions 
+    - entity attributes (grouping of entities for policy decisions)
+    - registration (mdrpi) and publication info 
+    - supported algorithms (needed for cryptographic flexibility when using signatures, not for TLS)
+ - Most common Roles :
    - SPSSODescriptor:
       - Extensions:
         - MDUI Elelments
@@ -30,6 +40,7 @@ EntityDescriptor (attrs: entityID...):
       - Extensions:
         - mdui elements
         - scopes (different meaning than we have in oidc)
+        - discovery service
       - Certificates(sig/enc)
       - Endpoints
       - supported nameidentifiers
