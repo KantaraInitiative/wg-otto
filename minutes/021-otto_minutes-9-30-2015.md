@@ -14,9 +14,10 @@ STATUS: Draft
 
  https://vimeo.com/52882780
  
-Mike pointed out that one of the interesting thing Eran proposed was that the spec follows the code.
-He was annoyed the OAuth2 spec took three years, and perhaps coding earlier would have expedited the stnadard.
+Mike pointed out that one of the interesting thing Eran proposed was that the spec follows the code. Eran was 
+annoyed the OAuth2 spec took three years, and perhaps coding earlier would have expedited the standard.
 Keith pointed out that the implementations will highlight any defects.
+
 
 ## Voting results
 
@@ -26,10 +27,7 @@ Keith pointed out that the implementations will highlight any defects.
  - Crypto Guru:
  - Project Manager:
 
-## Discussion on Janusz's email
-
-
-Janusz sent this email on 9/17: 
+## Discussion on Janusz's 9/17 email
 
     I'd like to share  my thoughts with partially overlap others:
 
