@@ -1,7 +1,9 @@
 OTTO WG Minutes 9/23/15
-STATUS: Draft
+STATUS: No Quorum - Notes.
 
 ## Voting Members Attending:
+ Mike Schwartz
+ Judith Bush
  
 ## Non-voting members
 
@@ -19,7 +21,7 @@ Please vote. You should have received the email with the link.
  - [OpenID Connect Client Metadata](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata)
  
 
-### Work on new federation metadata atributes
+### Work on new federation metadata attributes
 
 EntityDescriptor 
   (attrs: entityID, validUntil):
@@ -43,7 +45,7 @@ EntityDescriptor
         - discovery service
       - Certificates(sig/enc)
       - Endpoints
-      - supported nameidentifiers
+      - supported name identifiers
    - AttributeAuthorityDescriptor
       (quite simillar to IDPSSODescriptor)
 

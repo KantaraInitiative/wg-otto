@@ -1,5 +1,5 @@
 OTTO WG Minutes 9/16/15
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Michael Schwartz
