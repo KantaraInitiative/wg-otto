@@ -46,6 +46,10 @@ Perhaps this model will accommodate non federation approved entities.
 Rainer suggests a two layer structure--for example the SP would obtain the public key and context 
 data. Layer two could be a service or library function that provides a single point of access to
 the metadata. The system should have two layers: (1) a fundamental layer for atomic assertions, such as "Name X is-bound-to Key Y". (2) a technology-specific layer that would create SAML-MD, X509 cert stores, XML trust lists etc. from the fundamental layer.
+Rainer took an AI to come up with a better description.
+[Added after the meeting]
+The diagram "Data Flows" shows how "atomic assertions" are published to the block chain (and external resources), and are aggregated in a layer on top of this for a technology-specific rendering. Of course this is a simplification, as for example SAML-specific endpoints wold have to go to the blockchain as well. But the fundamental assertions such as binding of keys to names should be in a technology-neutral format.
+https://github.com/KantaraInitiative/wg-otto/blob/master/files/DataFlows.png
 
 IPFS (IP File system) is also looking at using merkle trees to distribute files.
 
