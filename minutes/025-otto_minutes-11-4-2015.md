@@ -6,11 +6,11 @@ STATUS: Draft
  - Judith Bush
  - Janusz Ulanowski
  - Jim Willeke
- = Rainer Hoerber
+ - Rainer Hoerber
  
 ## Non-voting members
 
-Smit Joshi
+ - Smit Joshi
 
 ## Discussion of Blockchain
 
