@@ -6,35 +6,29 @@ STATUS: Draft
  - Judith Bush
  - Janusz Ulanowski
  - Jim Willeke
- - Rainer Hoerber
+
  
 ## Non-voting members
-
- - Smit Joshi
+  - Rainer Hoerbe
+  - Smit Joshi
 
 ## Discussion of Blockchain
 
-Replace blockchain with "public ledger", proof of transaction that is very fast. 
+Let us replace the term blockchain with "public ledger" when talking on the functionl level. The ledger provides a proof of transaction that is very fast and distributed. Whether the implementaiton layer uses a blockhain or a pure Merkle tree is a different question.
 
 Alan asked "is the problem that we don't trust the federation--worried about a malicious
 party changing the data."
 
-Rainer pointed out that trusting the federation operator is a problem, because hacking 
-is so prevalent.
+Rainer pointed out that trusting the federation operator or a trusted thrid party in general is a problem, because hacking is so prevalent.
 
-However, if the federation gets hacked, they can put invalid data on the blockchain. 
+However, if the federation gets hacked, they can append invalid data on the blockchain. (Any other change than adding at the end is infeasible.) As a counter measure each owner of an assertion in the ledger is obliged to monitor his own entries on an ongoing basis. To prevent detection the attacker would have to subvert the monitoring system (which might not be internet-facing) as well, which is much harder.
 
-However, with a signed ledger, the federation asserts an affiliation, but cannot change 
-the underlying data. The hacker would have to append a new record, and then link it.
-This would be easier to detect than in a conventional database. 
+Multiple authoritative parties alleviates some of the issues associated with SAML-MD or X.500-like trust models. Domain ownership is certified by a CA or a domain registry, name-key binding with some registrar, and the contact point by the entity operator. These are atomic assertions which are part of SAML metadata. Products consume aggregated metadata, such as an X509 cert and SAML entit descriptor. 
 
-Multiple authoritative parties alleviates some of the issues associated with X.500-like
-trust models. Domain ownership is certified by a CA or a domain registry--these are fundamental
-assertions which are part of SAML metadata. A distributed ledger offers a less hierachical 
-data model, which could alleviate interdomain trust.
+Data in the blockchain can be limited to a hash of a key and a URL pointing to the actual assertion. That assertion could be behind a paywall to support business models that charge for assertions (D&B-type business information).
 
 Is this trust community small enough to pre-share certificates to establish trust. 
-Perhaps the ledger could be created on the fly.
+Perhaps the list of certificate could be created on the fly.
 
 Alan pointed out that this project has a lot in common with LOCSS http://www.lockss.org
 based at Stanford University Libraries, provides libraries and publishers with award-winning, 
@@ -43,7 +37,7 @@ and authoritative digital content.
 
 Questions arose about whether OTTO would define one shared ledger, or whether federation operators
 would create their own ledger. It seems like it would be efficient if federations shared a 
-single ledger, which would facilitate sharing data. 
+single ledger, which would facilitate sharing data (assertions). 
 
 InCommon was recently discussing the challenges around IDP's who need to support SP's that
 are not part of the federation. This trust model needs to be handled in a one-off manner.
@@ -51,11 +45,19 @@ Perhaps this model will accommodate non federation approved entities.
 
 Rainer suggests a two layer structure--for example the SP would obtain the public key and context 
 data. Layer two could be a service or library function that provides a single point of access to
-the metadata. 
+the metadata. The system should have two layers: (1) a fundamental layer for atomic assertions, such as "Name X is-bound-to Key Y". (2) a technology-specific layer that would create SAML-MD, X509 cert stores, XML trust lists etc. from the fundamental layer.
 
 IPFS (IP File system) is also looking at using merkle trees to distribute files.
 
 ASCIdoctor might be a good tool to develop a strawman document.  
+See sample ASCIIdoc source files at
+https://github.com/KantaraInitiative/SAMLprofiles/tree/master/docs/A%20WebSSO%20Implementation
+Rendered output:
+https://rawgit.com/KantaraInitiative/SAMLprofiles/master/rendered/WebSSOScaleFedProfile.html
+Toolchain:
+http://asciidoc.org
+http://asciidoctor.org/ 
+http://asciidocfx.com/  (GUI)
 
 
 ## Still many questions remain:
