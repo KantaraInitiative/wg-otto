@@ -1,0 +1,212 @@
+/';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Sketches for the OTTO schema JEB
+;;
+;; Time-stamp: "2015-12-11 13:45:09 bushj"
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;'/
+
+
+@startuml
+' SAML, from Section 3 of
+' https://www.oasis-open.org/committees/download.php/51890/SAML%20MD%20simplified%20overview.pdf,
+' with additions from the OTTO discussion on Sept 30th
+
+!define PLANTUML_HOME /Users/bushj/Google Drive/SyncTools/PUML
+!include PLANTUML_HOME/OCLCskin.iuml
+
+Title SAML MD Simplified Overview 
+
+EntitiesDescriptor -- "*" EntitiesDescriptor
+EntitiesDescriptor -- "0..*" EntityDescriptor
+
+EntityDescriptor   -- RoleDescriptor
+class EntityDescriptor{
+      entityID()
+      validUntil()
+}     
+RoleDescriptor <|-- AttrAuthorityDescriptor
+RoleDescriptor <|-- SSODescriptorType
+RoleDescriptor -- "0..1" KeyDescriptor
+SSODescriptorType <|-- SPSSODescriptor
+SPSSODescriptor -- "0..*" SingleLogoutService
+SPSSODescriptor -- "0..*" AttributeConsumingService
+SPSSODescriptor -- "0..*" AssertionConsumerService
+SSODescriptorType <|-- IDPSSODescriptor
+IDPSSODescriptor -- "0..*" ArtifactResolutionService
+IDPSSODescriptor -- "0..*" SingleSignOnService
+EntityDescriptor -- "0..1" AffiliationDescriptor : has affiliation >
+AffiliationDescriptor -- "0..1" EntityDescriptor : contains entities >
+AffiliationDescriptor -- KeyDescriptor
+EntityDescriptor -- "0..1" Organization
+Organization -- "0..1" ContactType
+
+
+@enduml
+@startuml
+!define PLANTUML_HOME /Users/bushj/Google Drive/SyncTools/PUML
+!include PLANTUML_HOME/OCLCskin.iuml
+!define SO org.schema
+Title Schema.org Organization
+
+' https://schema.org/Organization
+
+class SO.Thing{
+name:Text
+URL:URL
+sameAs:URL
+additionalType:URL
+}
+
+Organization --|> Thing
+class Organization{
+name:Text
+address:PostalAddress 
+logo:URL
+contactPoint:ContactPoint [0..*]
+member:Organization [0..*]
+memberOf:Organization
+parentOrganization:Organization
+URL:URL
+sameAs:URL
+}
+note left
+Member: A member of an Organization or
+a ProgramMembership. Organizations can
+be members of organizations;
+ProgramMembership is typically for
+individuals.
+end note
+
+
+Federation --|> Organization
+Class Federation{
+name:Text
+federationMember:Service
+sameAs:URL
+}
+
+FederationMetadata --|> Thing
+Class Metadata{
+additionalType:URL
+}
+'http://www.dataversity.net/schema-org-adds-additional-type-property/
+'See typeof example: http://www.w3.org/TR/xhtml-rdfa-primer/
+'http://undead-seo.blogspot.ca/2014/09/itemid-vs-sameas-vs-additionaltype-how.html
+note left
+     The additionalType URL points to the OTTO
+     definition for the particular type,
+     and could be extended by a federation
+     to their own types.
+     These would be something like:
+     https://Otto-federation.org/OpenIDProviderMetadata
+     https://Otto-federation.org/SAMLMetadata
+     https://RunsWithScissors.com/NovelServiceMetadata
+     etc REQUIRED
+end note
+
+
+FederatedService --|> Organization
+Class Service{
+name:Text
+additionalType:URL
+parentOrganization:Organization
+memberOf:Federation [0..*]
+sameAs:URL
+metadata:Metadata
+}
+note left
+     The sameAs URL points to the metadata endpoint
+     at the Service. OPTIONAL
+
+     The additionalType URL points to the OTTO
+     definition for the particular type,
+     and could be extended by a federation
+     to their own types.
+     These would be something like:
+     https://Otto-federation.org/OpenIDProviders
+     https://Otto-federation.org/SAMLIDP
+     https://Otto-federation.org/SAMLRP
+     https://RunsWithScissors.com/NovelService
+     etc REQUIRED
+end note
+
+
+URI --|> Text
+Class Text
+'note as Text
+'Do we need to create this type?
+'end note
+
+ContactPoint --|> Thing
+class ContactPoint{
+contactType:Text
+email:Text
+faxNumber:Text
+hoursAvailable: OpeningHoursSpecification
+telephone: Text
+sameAs:URL
+}
+
+
+
+
+
+
+@enduml
+
+
+
+' 20151209 Recommendation from Manus to use Schema.org (I realize i
+' misunderstood the natrue of Schema.org. Knowing OCLC aligns to
+' schema.org i see no reason to avoid it.)
+
+'FOAF, from http://xmlns.com/foaf/spec/
+
+FOAF_Agent <|-- FOAF_Group
+' The Group class represents a collection of individual agents (and may
+' itself play the role of a Agent, ie. something that can perform
+' actions).
+
+FOAF_Agent <|-- FOAF_Person
+FOAF_Agent <|-- FOAF_Organization
+
+OTTO_Group --|> FOAF_Group
+' I'm leaving this Group because that way a federation can be a member of another group.
+
+class OTTO_Group{
+      FOAF_name()
+      'It really seems this should have been members. JEB
+      FOAF_member()	 
+      FOAF_membershipClass()
+      OTTO_entityID()
+}
+' Quoting from the FOAF specification on Group http://xmlns.com/foaf/spec/#term_Group :
+'   The current design names the relationship as pointing from the group,
+'   to the member. This is convenient when writing XML/RDF that encloses
+'   the members within markup that describes the group. Alternate representations
+'   of the same content are allowed in RDF, so you can write claims about
+'   the Person and the Group without having to nest either description inside the other.
+' FOAF talks about using OWL's ontology for details about groups: would NOT recommend we
+' go this route. Federations are specific enough a use case that we should use our own
+' terms
+
+OTTO_Entity --|> FOAF_Agent
+class OTTO_Entity{
+      FOAF_name()
+      OTTO_entityID()
+}
+OTTO_Organization --|> FOAF_Organization 
+class OTTO_Organization{
+      FOAF_name()
+      OTTO_contacts()
+}
+OTTO_Contact --|> FOAF_Person
+class OTTO_Contact{
+      OTTO_contacttype()
+      vCard_whatever()
+}
+OTTO_Group -- "0..*" OTTO_Entity
+OTTO_Entity -- "0..1" OTTO_Organization
+OTTO_Organization -- "1..*" OTTO_Contact
+
