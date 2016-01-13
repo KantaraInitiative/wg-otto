@@ -1,0 +1,62 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Sketches for the OTTO schema JEB
+;;
+;; Time-stamp: "2016-01-04 13:29:33 bushj"
+;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://otto-fed.org",
+    "@type": "Federation",
+    "name": "Demo Exhibiting Max or Min OTTO use Federation",
+||   We could consider various uses for the URL from schema.org's thing, defined as
+||   "URL of the item." I propose that we conventionally use URL to record the
+||   path (query) that produced the response. 
+    "URL": "https://DEMO-fed.org/SomePathThatProducedThisSpecificResponse", 
+    "sameAs": "https://DEMO-fed.org/RFC-5785-compliant-URL",  || Location of fed
+        || metadata as OTTO specifies, hosting the most complete file. "URL of 
+        || a reference Web page that unambiguously indicates the item's
+        || identity."
+    "additionalType":[
+	@type: "https://Example.org/TrustAccordingToSomeOtherStandard",
+	"proofing": "A",
+	"strength": "gold",
+	"privacy": "Better"
+    ],
+
+
+
+
+
+    
+    "memberOf": [
+	{
+	    "@type": "SportsOrganization",
+	    "name": "National Football League"
+	},{
+	    "@type": "SportsOrganization",
+	    "name": "National Football Conference"
+	},{
+	    "@type": "SportsOrganization",
+	    "name": "NFC West Division"
+	}
+    ],
+    "coach": {
+	"@type": "Person",
+	"name": "Pete Carroll"
+    },
+    "athlete": [
+	{
+	    "@type": "Person",
+	    "name": "Russell Wilson"
+	},{
+	    "@type": "Person",
+      "name": "Marshawn Lynch"
+    }
+  ]
+}
+</script>
