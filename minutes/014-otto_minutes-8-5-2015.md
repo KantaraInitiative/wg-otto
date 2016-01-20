@@ -6,7 +6,7 @@ STATUS: Draft
 - Judith Bush
 
 ## Non-voting members
-- Rainer Hoerbe
+- 
 - Keith Hazelton
 
 ## Special Guest
