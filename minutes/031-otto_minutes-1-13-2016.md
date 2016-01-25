@@ -5,7 +5,7 @@ STATUS: Draft
  - Mike Schwartz
  - Keith Hazelton
  - Judith Bush
- - Rainer Hoerbe
+ - Rainer Hörbe
 
 ## Non-voting members
  - Yuriy Zabrovarnyy
