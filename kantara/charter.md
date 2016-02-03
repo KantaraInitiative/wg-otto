@@ -10,7 +10,7 @@ The OTTO working group seeks to define an interoperable technical solution that 
 within a trusted ecosystem of autonomous entities, creating a foundation of trust, and lowering the cost of 
 collaboration. An underlying layer, independent from protocols, will enable the sharing of common data elements, and a 
 mechanism to define relationships. The goal is to allow an entity to be part of multiple federations, which are 
-supporting multiple technology stacks, 
+supporting multiple technology stacks. 
 
 In parallel, the working group will develop a JSON model for the creation of multi-party federations between OAuth2 
 entities. The group may also define a set of APIs and related data structures enabling an OAuth entity to manage 
@@ -46,7 +46,6 @@ specifications will then be submitted to appropriate standards bodies for furthe
  
 - Open Trust Taxonomy for OAuth2 Use Cases
 - Open Trust Taxonomy for OAuth2 Core Metadata and Protocol
-- Open Trust Taxonomy for OAuth2 Linked Data Model and Schema
 
 ## LEADERSHIP
 
