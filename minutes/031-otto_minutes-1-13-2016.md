@@ -1,11 +1,11 @@
 OTTO WG Minutes 1/13/16
-STATUS: Draft
+STATUS: Final
 
 ## Voting Members Attending:
  - Mike Schwartz
  - Keith Hazelton
  - Judith Bush
- - Rainer Hörbe
+ - Rainer Hï¿½rbe
 
 ## Non-voting members
  - Yuriy Zabrovarnyy
