@@ -21,6 +21,14 @@ questions about the issues that are raised by interfederation trust:
 
 For example, how could software figure out which entities to trust based on a complex federation mesh! 
 
+Rainer: calculating trust based on distance vectors is a very particular method that does not reflect risk factors
+in most federations. The long-running discussion around LoA and vectors of trust has show clearly that there are many
+factors on legal, organizational, techical levels that are hard to reduce properly onto a single scale. It can work
+reasonably well within a specific federation, but it does not scale to interfederation, cross-border etc. Therefore
+risk calculations (like an LoA) need to be deferred to the point in time when a federation generates its metadata from 
+the general layer (the shared ledger), using their local rule set. This allows federations to come to different conclusions whether to 
+include an entity, or rate its eligibility for attribute release, or assertion levels based on the same data.
+
 While this issue needs more discussion, our effort is to provide the tools for federation, not the rules.
 Each federation could have its own requirements for membership, and in many cases, where agreement exists
 about the level of assurance, protection or control of data, it would not be complete. Perhaps the OTTO WG
