@@ -6,6 +6,7 @@ STATUS: Draft
  - Judith Bush
  - Keith Hazelton
  - Yuriy Zabrovarnyy
+ - Janusz Ulanowski
 
 ## Non-Voting Members Attending:
  - Nick Roy
