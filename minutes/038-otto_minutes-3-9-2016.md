@@ -41,7 +41,7 @@ This is the JSON-LD that would be published by the federation:
 
     <script type="application/ld+json">
     {
-      "@context":  "http://schema.org/",
+      "@context":"http://schema.org/",
       "@id": "#federation-issued-openid-provider-identifier",
       "@type": "Thing",
       "additionalType": "http://kantarainitiative.org/otto/OpenID_Provider",
