@@ -65,7 +65,7 @@ Discussion of Judith's Previous [Diagram]
 Judith has reconsidered her original position that the federation service (or entity)
 should be linked from the organization. Instead, its enough that the entity links
 to the organization. Also, it makes sense that entities derive from a object that 
-contains the common denominator of attributs. For example, OpenID_Provider may
+contains the common denominator of attributes. For example, OpenID_Provider may
 and UMA_AS may dervice from a common Federation_Server schema.
 
 Reviewed Section 3 of the [SAML Metadata Guidance Document]
