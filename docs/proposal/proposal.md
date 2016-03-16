@@ -1,29 +1,29 @@
-===== Before reading proposal =====
-  * ID - just for convenience of this proposal we are using UUID however it can be any other identifier, e.g. URI, inum, long integer or whatever.
-  * Federation Server - for convenience this proposal refers to "http://fs.com", which stands for federation server and must be replaced with concrete server address.
+## Before reading proposal
+* ID - just for convenience of this proposal we are using UUID however it can be any other identifier, e.g. URI, inum, long integer or whatever.
+* Federation Server - for convenience this proposal refers to "http://fs.com", which stands for federation server and must be replaced with concrete server address.
 
-===== Discussion roadmap =====
+## Discussion roadmap
 
-  * FIXME
+* FIXME
 
-===== Big picture =====
+## Big picture
 
 ![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/0628d4a8400e2d98ea971a26f4c28075f63056d1/docs/proposal/img/ottobigpicture.png "Big picture")
 
-===== Concept =====
+## Concept
 
-  * Federation - group of entities.
-  * Member - reference to entity or another federation.
-  * Entity - concrete representation of entity. Entity may have many types at the same time. It means that given implementation may act as OpenID Connect OP and UMA AS at the same time.
-      * Entity type :
-          * OAuth2 RP - https://fs.com/schema/otto/entity/type/oauth2_rp
-          * OAuth2 OP - https://fs.com/schema/otto/entity/type/oauth2_op
-          * OpenID Connect RP - https://fs.com/schema/otto/entity/type/connect_rp
-          * OpenID Connect OP - https://fs.com/schema/otto/entity/type/connect_rp
-          * UMA AS - https://fs.com/schema/otto/entity/type/uma_as
-          * UMA RS - https://fs.com/schema/otto/entity/type/uma_rs
-          * UMA RP - https://fs.com/schema/otto/entity/type/uma_rp
-  * Organization - organization description. It may be present in any entry/object: Federation, Entity or any other organization related entry/object.
+* Federation - group of entities.
+* Member - reference to entity or another federation.
+* Entity - concrete representation of entity. Entity may have many types at the same time. It means that given implementation may act as OpenID Connect OP and UMA AS at the same time.
+    * Entity type :
+        * OAuth2 RP - https://fs.com/schema/otto/entity/type/oauth2_rp
+        * OAuth2 OP - https://fs.com/schema/otto/entity/type/oauth2_op
+        * OpenID Connect RP - https://fs.com/schema/otto/entity/type/connect_rp
+        * OpenID Connect OP - https://fs.com/schema/otto/entity/type/connect_rp
+        * UMA AS - https://fs.com/schema/otto/entity/type/uma_as
+        * UMA RS - https://fs.com/schema/otto/entity/type/uma_rs
+        * UMA RP - https://fs.com/schema/otto/entity/type/uma_rp
+* Organization - organization description. It may be present in any entry/object: Federation, Entity or any other organization related entry/object.
 
 
 =====  /federations =====
