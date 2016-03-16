@@ -8,7 +8,7 @@
 
 ===== Big picture =====
 
-{{:otto:ottobigpicture.png|}}
+![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/0628d4a8400e2d98ea971a26f4c28075f63056d1/docs/proposal/img/ottobigpicture.png "Big picture")
 
 ===== Concept =====
 
