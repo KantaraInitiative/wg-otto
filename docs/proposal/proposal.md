@@ -26,9 +26,9 @@
 * Organization - organization description. It may be present in any entry/object: Federation, Entity or any other organization related entry/object.
 
 
-=====  /federations =====
+##  /federations
 
-==== Fetching (GET) ====
+### Fetching (GET)
 
 Endpoint to return federation metadata or otherwise federation IDs that are hosted by given server.
 
@@ -51,13 +51,13 @@ Requests:
 
 **Federation list Request:**
 
-<code>
+```
 GET https://fs.com/federations HTTP/1.1
-</code>
+```
 
 
 **Federation list Response:**
-<code>
+```json
 {
   "@context": "https://fs.com/schema/otto/federation_list",
   "federations": [
@@ -66,7 +66,7 @@ GET https://fs.com/federations HTTP/1.1
     "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
   ]
 }
-</code>
+```
 
 
 **Federation Request:**
