@@ -28,20 +28,20 @@
 
 ##  /federations
 
-### Fetching (GET)
+#### Fetching (GET)
 
 Endpoint to return federation metadata or otherwise federation IDs that are hosted by given server.
 
 Request:
-  * federation_id - OPTIONAL - id of federation.
-  * entity_type - OPTIONAL - filter to return federation entities only of specific type. For example OpenID Connect OP implementation in general is interested only in OpenID Connect RP entity because it's going to server only Connect RP requests. Such implementation is not interested in any UMA or SAML or OAuth2 entities. For this we provide filtering functionality. Possible values:
-      * oauth2_rp
-      * oauth2_op
-      * connect_rp
-      * connect_op
-      * uma_rs
-      * uma_rp
-      * uma_as
+* federation_id - OPTIONAL - id of federation.
+* entity_type - OPTIONAL - filter to return federation entities only of specific type. For example OpenID Connect OP implementation in general is interested only in OpenID Connect RP entity because it's going to server only Connect RP requests. Such implementation is not interested in any UMA or SAML or OAuth2 entities. For this we provide filtering functionality. Possible values:
+    * oauth2_rp
+    * oauth2_op
+    * connect_rp
+    * connect_op
+    * uma_rs
+    * uma_rp
+    * uma_as
 
 Requests:
   - /federations - returns federation IDs registered by given server
@@ -71,13 +71,13 @@ GET https://fs.com/federations HTTP/1.1
 
 **Federation Request:**
 
-<code>
+```
 GET https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
-</code>
+```
 
 
 **Federation Response:**
-<code>
+```json
 {
   "@context": "https://fs.com/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
@@ -88,179 +88,179 @@ GET https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
   "entity":"https://fed2.com/federation_entity/594d8fbc-c5a7-11e5-9912-ba0be0483c18"
   "organization": "https://gluu.org/otto/organization"
 }
-</code>
+```
 
 
-==== Create (POST) ====
+#### Create (POST)
 
 **Request:**
-<code>
+```json
 POST /federations
 {
    "name":"MyFederation",
    <other properties here>
 }
-</code>
+```
 
 **Response:**
-<code>
+```json
 HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
    "id":"https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
-</code>
+```
 
-==== Update (PUT) ====
+#### Update (PUT)
 
 **Request:**
-<code>
+```json
 PUT /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 {
    "name":"MyFederation",
    <other properties here>
 }
-</code>
+```
 
 **Response:**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-==== Delete (DELETE) ====
+#### Delete (DELETE)
 
 **Request:**
-<code>
+```
 DELETE /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
-</code>
+```
 
 **Response:**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-==== Join federation (POST) ====
+#### Join federation (POST)
 
 It may create entity and join the federation or otherwise join already existed entity.
 
 **Request**
-<code>
+```json
 POST /federations/<federation_id> HTTP/1.1
 {
    "name":"MyEntity",
    <other properties here>
 }
-</code>
+```
 
 **Response**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-==== Leave federation (DELETE) ====
+#### Leave federation (DELETE)
 
 Leave federation.
 
 **Request**
-<code>
+```
 DELETE /federations/<federation_id>/<entity id> HTTP/1.1
-</code>
+```
 
 **Response**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-===== /federation_entity =====
+### /federation_entity
 
-==== Fetch (GET) ====
+#### Fetch (GET)
 
 **Entity Request:**
-<code>
+```
 GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1.1
-</code>
+```
 
 **OpenID Connect OP Entity Response:**
-<code>
+```json
 {
   "@context": "https://fs.com/schema/otto/entity/connect_op.jsonld",
   "name": "Gluu Server Ce-dev",
   "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
   "organization":"https://gluu.org/otto/organization"
 }
-</code>
+```
 
 **OpenID Connect RP Entity Response:**
-<code>
+```json
 {
   "@context": "https://fs.com/schema/otto/entity/connect_rp.jsonld",
   "name": "Gluu Server Ce-dev Client",
   "id":"https://ce-dev.gluu.org/rp"          <- in RP context it is redirect_uri
   "organization":"https://gluu.org/otto/organization"
 }
-</code>
+```
 
 **UMA Resource Server Entity Response:**
-<code>
+```json
 {
   "@context": "https://fs.com/schema/otto/entity/uma_rs.jsonld",
   "name": "Gluu Resource Server",
   "id":"https://ce-dev.gluu.org/rs"          <- in RS context it is URI
   "organization":"https://gluu.org/otto/organization"
 }
-</code>
+```
 
-==== Create (POST) ====
+#### Create (POST)
 
 **Request:**
-<code>
+```json
 POST /federation_entity
 {
    "name":"MyFederationEntity",
    <other properties here>
 }
-</code>
+```
 
 **Response:**
-<code>
+```json
 HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
    "id":"https://fs.com/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
 }
-</code>
+```
 
-==== Update (PUT) ====
+#### Update (PUT)
 
 **Request:**
-<code>
+```json
 PUT /federation_entity/<entity id> HTTP/1.1
 {
    "name":"MyEntity",
    <other properties here>
 }
-</code>
+```
 
 **Response:**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-==== Delete (DELETE) ====
+#### Delete (DELETE)
 
 **Request:**
-<code>
+```
 DELETE /federation_entity/<entity id> HTTP/1.1
-</code>
+```
 
 **Response:**
-<code>
+```
 HTTP/1.1 200 OK
-</code>
+```
 
-===== Organization information sharing =====
+### Organization information sharing
 
 Organization information can be provided by:
   * Organization public server (for example https://gluu.org/otto/organization)
@@ -268,13 +268,14 @@ Organization information can be provided by:
 
 Main point is that hosted server must follow otto organization schema context. So organization information is structured according to schema and is well known.
 
-===== Schema of metadata response =====
+## Schema of metadata response
 
-==== schema/otto/federation.jsonld ====
+### schema/otto/federation.jsonld
 
-[[http://schema.org/docs/extension.html|External extensions]]
+[External extensions](http://schema.org/docs/extension.html)
 
-<file json openid_provider_example_com.json>
+openid_provider_example_com.json
+```json
     {
       "@context": [ "http://schema.org/", {"otto":"http://kantarainitiative.org/otto/schema"}]
       "@id": "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
@@ -287,11 +288,12 @@ Main point is that hosted server must follow otto organization schema context. S
       }
     }
 
-</file>
+```
 
-[[https://www.w3.org/TR/json-ld/#basic-concepts|JSON-LD basic concept]]
+[JSON-LD basic concept](https://www.w3.org/TR/json-ld/#basic-concepts)
 
-<file json openid_provider.jsonld>
+openid_provider.jsonld
+```json
     {
       "@context": {
          "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -314,14 +316,14 @@ Main point is that hosted server must follow otto organization schema context. S
          }
       }
     }
+```
 
-</file>
+###  schema/otto/organization.jsonld
 
-====  schema/otto/organization.jsonld ====
-:!: TODO
+__TODO__
 
-====  Questions ====
+###  Questions
 
-  * How are we going to support versioning of federation metadata?
-  * How are we going to support versioning of entities ? E.g. UMA RP 1.0 vs UMA RP 1.0.1 implementation.
-  * Do we want to support custom members?
+* How are we going to support versioning of federation metadata?
+* How are we going to support versioning of entities ? E.g. UMA RP 1.0 vs UMA RP 1.0.1 implementation.
+* Do we want to support custom members?
