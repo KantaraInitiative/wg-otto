@@ -277,14 +277,13 @@ Main point is that hosted server must follow otto organization schema context. S
 openid_provider_example_com.json
 ```json
     {
-      "@context": [ "http://schema.org/", {"otto":"http://kantarainitiative.org/otto/schema"}]
+      "@context": [ "http://schema.org/", {"otto":"http://kantarainitiative.org/otto/schema"}],
       "@id": "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
       "@type": ["Thing", "otto:OpenID_Provider"],
-      "additionalType": "http://kantarainitiative.org/otto/OpenID_Provider",
-      "discoveryURL": "https://idp.example.com/.well-known/openid-configuration",
-      "discoveryJSONHash":  {"hash":"sdfsdfd", "hash-alg":"rsa"}
-      "jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3"
-      "providedBy": "https://fc.com/otto/organization/988cb077-c566-1115-9912-ba0be0483c18",
+      "otto:discoveryURL": "https://idp.example.com/.well-known/openid-configuration",
+      "otto:discoveryJSONHash":  {"hash":"sdfsdfd", "hash-alg":"rsa"}
+      "otto:jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3"
+      "otto:providedBy": "https://fc.com/otto/organization/988cb077-c566-1115-9912-ba0be0483c18",
       }
     }
 
