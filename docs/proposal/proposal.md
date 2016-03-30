@@ -281,8 +281,8 @@ openid_provider_example_com.json
       "@id": "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
       "@type": ["Thing", "otto:OpenID_Provider"],
       "otto:discoveryURL": "https://idp.example.com/.well-known/openid-configuration",
-      "otto:discoveryJSONHash":  {"hash":"sdfsdfd", "hash-alg":"rsa"}
-      "otto:jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3"
+      "otto:discoveryJSONHash":  {"hash":"sdfsdfd", "hash-alg":"rsa"},
+      "otto:jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3",
       "otto:providedBy": "https://fc.com/otto/organization/988cb077-c566-1115-9912-ba0be0483c18",
       }
     }
