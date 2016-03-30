@@ -268,9 +268,9 @@ Organization information can be provided by:
 
 Main point is that hosted server must follow otto organization schema context. So organization information is structured according to schema and is well known.
 
-## Schema of metadata response
+## Schema
 
-### schema/otto/federation.jsonld
+### schema/otto/openid_provider.jsonld
 
 [External extensions](http://schema.org/docs/extension.html)
 
@@ -320,7 +320,27 @@ openid_provider.jsonld
 
 ###  schema/otto/organization.jsonld
 
-__TODO__
+organization.json
+```json
+    {
+      "@context": [ "http://schema.org/", {"otto":"http://kantarainitiative.org/otto/schema"}]
+      "@id": "https://fs.com/organizations/904cb092-c5a6-11e5-9912-ba0be0483c18",
+      "@type": ["Thing", "otto:Organization"],
+      "additionalType": "http://kantarainitiative.org/otto/Organization"
+
+    }
+```
+
+organization.jsonld
+```json
+    {
+      "@context": {
+         "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+         // TODO
+      }
+    }
+```
 
 ###  Questions
 
