@@ -325,7 +325,7 @@ organization.json
     {
       "@context": [ "http://schema.org/", {"otto":"http://kantarainitiative.org/otto/schema"}]
       "@id": "https://fs.com/organizations/904cb092-c5a6-11e5-9912-ba0be0483c18",
-      "@type": ["Thing", "otto:Organization"],
+      "@type": ["Thing", "Organization", "otto:Organization"],
       "additionalType": "http://kantarainitiative.org/otto/Organization"
 
     }
