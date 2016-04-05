@@ -196,7 +196,7 @@ GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 {
   "@context": "https://fs.com/schema/otto/entity/connect_rp.jsonld",
   "name": "Gluu Server Ce-dev Client",
-  "id":"https://ce-dev.gluu.org/rp"          <- in RP context it is redirect_uri
+  "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
   "organization":"https://gluu.org/otto/organization"
 }
 ```
@@ -206,7 +206,7 @@ GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 {
   "@context": "https://fs.com/schema/otto/entity/uma_rs.jsonld",
   "name": "Gluu Resource Server",
-  "id":"https://ce-dev.gluu.org/rs"          <- in RS context it is URI
+  "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
   "organization":"https://gluu.org/otto/organization"
 }
 ```
