@@ -281,15 +281,15 @@ Properties :
 hash.jsonld
 ```json
     {
-      "@context": {
-         "xsd": "http://www.w3.org/2001/XMLSchema#",
-         "hash": {
+      "@context" : {
+         "xsd" : "http://www.w3.org/2001/XMLSchema#",
+         "hash" : {
            "@id": "http://kantarainitiative.org/otto/schema/property/hash",
            "@type": "xsd:string"
          },
-         "hashAlg" {
-           "@id": "http://kantarainitiative.org/otto/schema/property/hashAlg",
-           "@type": "xsd:string"
+         "hashAlg" : {
+           "@id" : "http://kantarainitiative.org/otto/schema/property/hashAlg",
+           "@type" : "xsd:string"
          }
       }
     }
