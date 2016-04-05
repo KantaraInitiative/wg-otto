@@ -270,6 +270,31 @@ Main point is that hosted server must follow otto organization schema context. S
 
 ## Schema
 
+### Properties
+
+Properties :
+  * hash - http://kantarainitiative.org/otto/schema/property/hash - hash of the object
+  * hashAlg - http://kantarainitiative.org/otto/schema/property/hashAlg - hash algorithm
+
+### schema/otto/hash.jsonld
+
+hash.jsonld
+```json
+    {
+      "@context": {
+         "xsd": "http://www.w3.org/2001/XMLSchema#",
+         "hash": {
+           "@id": "http://kantarainitiative.org/otto/schema/property/hash",
+           "@type": "xsd:string"
+         },
+         "hashAlg" {
+           "@id": "http://kantarainitiative.org/otto/schema/property/hashAlg",
+           "@type": "xsd:string"
+         }
+      }
+    }
+```
+
 ### schema/otto/openid_provider.jsonld
 
 [External extensions](http://schema.org/docs/extension.html)
@@ -281,8 +306,8 @@ openid_provider_example_com.json
       "@id": "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
       "@type": ["Thing", "otto:OpenID_Provider"],
       "otto:discoveryURL": "https://idp.example.com/.well-known/openid-configuration",
-      "otto:discoveryJSONHash":  {"hash":"sdfsdfd", "hash-alg":"rsa"},
-      "otto:jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3",
+      "otto:discoveryJSONHash":  {"hash":"de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3", "hashAlg":"sha256"},
+      "otto:jwksJSONHash": {"ffff2c7fd25e1b3afad3e85a0bd17d9b100db4b3", "hashAlg":"sha256"}
       "otto:providedBy": "https://fc.com/otto/organization/988cb077-c566-1115-9912-ba0be0483c18",
       }
     }
