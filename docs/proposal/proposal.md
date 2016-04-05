@@ -352,7 +352,7 @@ hash.jsonld
      .
 
     otto:discoveryJSONHash a rdf:Property ;
-     rdfs:range xsd:string;
+     rdfs:range otto:Hash;
      .
 
     otto:providedBy a rdf:Property ;
@@ -360,10 +360,10 @@ hash.jsonld
      .
 
     otto:jwksJSONHash a rdf:Property ;
-     rdfs:range xsd:string ;
+     rdfs:range otto:Hash ;
      .
 
-    # Instance data
+    # Instance data  TODO -> need to set instance data correctly
 
     <https://fs.com/federations/904cb092/c5a6-11e5-9912-ba0be0483c18>
      a schema:Thing, otto:OpenID_Provider;
