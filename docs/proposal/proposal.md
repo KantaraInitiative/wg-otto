@@ -290,7 +290,7 @@ Properties :
     otto:Hash a rdfs:Class .
 
     otto:hashValue a rdf:Property ;
-     rdfs:range xsd:anyURI;
+     rdfs:range xsd:string;
      .
 
     otto:hashAlgorithm a rdf:Property ;
@@ -313,7 +313,7 @@ hash.jsonld
          "@id": "otto:hashValue",
          "@type": "rdf:Property",
          "rdfs:range": {
-           "@id": "xsd:anyURI"
+           "@id": "xsd:string"
          }
        },
        {
