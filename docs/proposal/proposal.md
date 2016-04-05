@@ -85,7 +85,7 @@ GET https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
   "entity":"https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",      <- reference to federation
   "entity":"https://fs.com/federation_entity/394d8fbc-c5a7-11e5-9912-ba0be0483c18",
   "entity":"https://fed1.com/federation_entity/494d8fbc-c5a7-11e5-9912-ba0be0483c18",
-  "entity":"https://fed2.com/federation_entity/594d8fbc-c5a7-11e5-9912-ba0be0483c18"
+  "entity":"https://fed2.com/federation_entity/594d8fbc-c5a7-11e5-9912-ba0be0483c18",
   "organization": "https://gluu.org/otto/organization"
 }
 ```
