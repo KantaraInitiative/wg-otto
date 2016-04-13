@@ -43,6 +43,9 @@ part of client registration, and the OP could decrypt it with the public key of 
 How would the OP know which federation key is used to decrypt the software statement: that
 seems to be out of scope of the document.
 
+Keith mentioned that this idea of a primary key used to issue shorter lived keys
+is used by [NCSA](http://grid.ncsa.illinois.edu/myproxy/ncsa.html) for server login.
+
 One question raised by Mike was whether this solution created the problem key rotation 
 solved in the first place: that it was important to know quickly that each party could 
 handle key rotation.
