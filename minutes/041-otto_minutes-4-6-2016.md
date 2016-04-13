@@ -26,7 +26,7 @@ Janusz suggested we should define and formalize OTTO ontology using owl/rdfs. "U
 able to create very strict schema (classes, properties, etc) which it will be very good for validators."
 
 I think we agree, but what about Turtle N3 format? Last week, Jeff was using Turtle.
-Yuriy switched to it this week because its more consise than the JSON-LD format:
+Yuriy switched to it this week because its more concise than the JSON-LD format:
     Turtle (Terse RDF Triple Language) is a syntax and grammar for RDF serialization written 
     by David Beckett and Tim Berners-Lee in 2008, created as an alternative syntax to RDF/XML. 
     It allows RDF graphs to be written out (‘serialized’) in a compact and natural text form 
@@ -77,7 +77,7 @@ We started to discuss schema for OpenID Connect Relying Parties:
 
 The question is what would the federation operator publish about OpenID Connect relying parties. 
 Mike proposed that the URI's are interesting, because even though an RP can register these with
-the OP, trust can be enhanced by the federation publishing (and signign) this information. 
+the OP, trust can be enhanced by the federation publishing (and sign) this information. 
 
 There is also precedent in SAML federations for asserting a category for the relying party,
 such as "Research and Scholarship" in the higher education federations.
