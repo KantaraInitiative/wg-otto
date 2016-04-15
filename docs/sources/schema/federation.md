@@ -1,2 +1,0 @@
-# Federation Schema
-

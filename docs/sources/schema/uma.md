@@ -1,2 +1,0 @@
-# UMA Schema 
-
