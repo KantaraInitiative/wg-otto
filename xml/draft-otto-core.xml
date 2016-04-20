@@ -44,10 +44,10 @@
           </address>
         </author>
 
-        <author fullname="Rainer H?rbe"
+        <author fullname="Rainer Horbe"
                 initials="RH"
                 role="contributor"
-                surname="H?rbe">
+                surname="Horbe">
           <address>
             <email>rainer@hoerbe.at</email>
           </address>
@@ -82,7 +82,6 @@
             <email>yuiry@gluu.org</email>
           </address>
         </author>
-
 
         <date day="15" month="April" year="2016" />
 
