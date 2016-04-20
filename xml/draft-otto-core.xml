@@ -24,6 +24,16 @@
     <front>
         <title abbrev="OTTO Core">Open Trust Taxonomy for Organizations (OTTO) 1.0</title>
 
+        <author fullname="Judith Bush"
+                initials="JB"
+                role="editor"
+                surname="Bush">
+          <organization>OCLC</organization>
+          <address>
+            <email>bushj@oclc.org</email>
+          </address>
+        </author>
+
         <author fullname="Keith Hazelton"
                 initials="KH"
                 role="editor"
@@ -145,7 +155,7 @@
             <section anchor="endpoint-federation"
                      title="federation endpoint">
                 <t>
-                    Endpoint to manage a Federation, inlcuding creation, update, removal,
+                    Endpoint to manage a Federation, including creation, update, removal,
                     and membership.
                 </t>
             </section>
@@ -156,7 +166,6 @@
                     Endpoint to register, manage, and view an entity associated with a federation.
                 </t>
             </section>
-
         </section>
 
     </middle>
