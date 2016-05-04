@@ -506,6 +506,9 @@ openid_provider.jsonld
      rdfs:range xsd:anyURI;
      .
 
+    otto:discoveryJSONHash a rdf:Property ;
+     rdfs:range otto:Hash;
+     .
 ```
 
 ### schema/otto/uma_relying_party.jsonld
