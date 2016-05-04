@@ -468,6 +468,7 @@ openid_provider.jsonld
 ### schema/otto/uma_rs.jsonld
 
 ```N3
+
     @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
     @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
     @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -478,13 +479,33 @@ openid_provider.jsonld
 
     otto:UMA_Resource_Server a rdfs:Class .
 
-    otto:redirect_uris a rdf:Property ;
+    otto:resource_server_uri a rdf:Property ;
      rdfs:range xsd:anyURI;
      .
 
-    otto:resource_set_uri a rdf:Property ;
+    otto:resource_set_uris a rdf:Property ;
      rdfs:range xsd:anyURI;
      .
+```
+
+### schema/otto/uma_as.jsonld
+
+```N3
+
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix schema: <http://schema.org/> .
+    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
+
+    # Ontology
+
+    otto:UMA_Authorization_Server a rdfs:Class .
+
+    otto:discoveryURL a rdf:Property ;
+     rdfs:range xsd:anyURI;
+     .
+   
 ```
      
 ###  Questions
