@@ -1,36 +1,54 @@
-## Before reading proposal
-* ID - just for convenience of this proposal we are using UUID however it can be any other identifier, e.g. URI, inum, long integer or whatever.
-* Federation Server - for convenience this proposal refers to "http://fs.com", which stands for federation server and must be replaced with concrete server address.
+# Open Trust Taxonomy for Federation Operators
 
-## Discussion roadmap
+## Abstract
 
-* FIXME
+The Open Trust Taxonomy for Federation Operators (OTTO) is a set of API's and a linked data
+schema to enable the formation of multi-party federations--where a central authority
+creates the rules for membership, enabling the participants to more efficiently
+collaborate. The goal of OTTO is to support a range of trust models from very low to
+very high. By providing a framework for extension, in addition to a core set of
+functionality and schema, the OTTO standard provides a scalable technical
+infrastructure to solve organizational challenges in a number of different
+ecosystems.
 
-## Big picture
+![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/docs/proposal/otto_overview.png "Big picture")
 
-![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/0628d4a8400e2d98ea971a26f4c28075f63056d1/docs/proposal/img/ottobigpicture.png "Big picture")
+## Definitions
 
-## Concept
-
+* Registration Authority - Service responsible for hosting federations.
+* Organization - organization description. It may be referenced in any object: Federation, Entity or any 
+other organization related object.
 * Federation - group of entities.
 * Member - reference to entity or another federation.
-* Entity - concrete representation of entity. Entity may have many types at the same time. It means that given implementation may act as OpenID Connect OP and UMA AS at the same time.
+* Entity - concrete representation of entity. Entity may have many types at the same time. For example, an
+entity may act as OpenID Connect OP and UMA AS at the same time.
     * Entity type :
-        * OAuth2 RP - https://fs.com/schema/otto/entity/type/oauth2_rp
-        * OAuth2 OP - https://fs.com/schema/otto/entity/type/oauth2_op
-        * OpenID Connect RP - https://fs.com/schema/otto/entity/type/connect_rp
-        * OpenID Connect OP - https://fs.com/schema/otto/entity/type/connect_rp
-        * UMA AS - https://fs.com/schema/otto/entity/type/uma_as
-        * UMA RS - https://fs.com/schema/otto/entity/type/uma_rs
-        * UMA RP - https://fs.com/schema/otto/entity/type/uma_rp
-* Organization - organization description. It may be present in any entry/object: Federation, Entity or any other organization related entry/object.
+        * OAuth2 RP - https://ra.org/schema/otto/entity/type/oauth2_rp
+        * OAuth2 OP - https://ra.org/schema/otto/entity/type/oauth2_op
+        * OpenID Connect RP - https://ra.org/schema/otto/entity/type/connect_rp
+        * OpenID Connect OP - https://ra.org/schema/otto/entity/type/connect_rp
+        * UMA AS - https://ra.org/schema/otto/entity/type/uma_as
+        * UMA RS - https://ra.org/schema/otto/entity/type/uma_rs
+        * UMA RP - https://ra.org/schema/otto/entity/type/uma_rp
+* Schema - 
+    * Schema type :
+        * User claim schema
+        * Authentication context reference schema
+        * Authentication method reference schema
+        * UMA Scope schema
+        * OpenID Connect Scope schema
+        * Software statement schema
+        * Trust mark schema
 
+## Discovery Endpoint
 
-##  /federations
+`.well-known/otto-configuration` returns endpoints and configuration of registration authority
 
-#### Fetching (GET)
+##  federations endpoint
 
-Endpoint to return federation metadata or otherwise federation IDs that are hosted by given server.
+### Search Federations (GET)
+
+Endpoint to return federation metadata or federation IDs that are hosted by given server.
 
 Request:
 * federation_id - OPTIONAL - id of federation.
@@ -42,28 +60,29 @@ Request:
     * uma_rs
     * uma_rp
     * uma_as
+* filter - OPTIONAL - expression to narrow the result set based on specific criteria
 
 Requests:
-  - /federations - returns federation IDs registered by given server
+  - /federations - returns federation IDs available from this Registration Authority
   - /federations/<federation id> - returns metadata of federation
   - /federations/<federation id>&entity_type=<type> - returns metadata of federation filtered by type.
-
+  - /federations/<federation id>&filter=<filter> - returns filtered metadata
 
 **Federation list Request:**
 
 ```
-GET https://fs.com/federations HTTP/1.1
+GET https://ra.org/federations HTTP/1.1
 ```
 
 
 **Federation list Response:**
 ```json
 {
-  "@context": "https://fs.com/schema/otto/federation_list",
+  "@context": "https://ra.org/schema/otto/federation_list",
   "federations": [
-    "https://fs.com/federations/904ca9da-c5a6-11e5-9912-ba0be0483c18",
-    "https://fs.com/federations/904cae1c-c5a6-11e5-9912-ba0be0483c18",
-    "https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
+    "https://ra.org/federations/904ca9da-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/federations/904cae1c-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
   ]
 }
 ```
@@ -72,26 +91,26 @@ GET https://fs.com/federations HTTP/1.1
 **Federation Request:**
 
 ```
-GET https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
 
 **Federation Response:**
 ```json
 {
-  "@context": "https://fs.com/schema/otto/federation.jsonld",                      <- context of federation
+  "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
-  "entity":"https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",<- reference to entity
-  "entity":"https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",      <- reference to federation
-  "entity":"https://fs.com/federation_entity/394d8fbc-c5a7-11e5-9912-ba0be0483c18",
-  "entity":"https://fed1.com/federation_entity/494d8fbc-c5a7-11e5-9912-ba0be0483c18",
-  "entity":"https://fed2.com/federation_entity/594d8fbc-c5a7-11e5-9912-ba0be0483c18",
+  "entity":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",<- reference to entity
+  "entity":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",      <- reference to federation
+  "entity":"https://ra.org/federation_entity/394d8fbc-c5a7-11e5-9912-ba0be0483c18",
+  "entity":"https://ra-uk.com/federation_entity/494d8fbc-c5a7-11e5-9912-ba0be0483c18",
+  "entity":"https://ra-fr.com/federation_entity/594d8fbc-c5a7-11e5-9912-ba0be0483c18",
   "organization": "https://gluu.org/otto/organization"
 }
 ```
 
 
-#### Create (POST)
+### Create (POST)
 
 **Request:**
 ```json
@@ -108,11 +127,11 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "id":"https://fs.com/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
+   "id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
 ```
 
-#### Update (PUT)
+### Update (PUT)
 
 **Request:**
 ```json
@@ -128,7 +147,7 @@ PUT /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-#### Delete (DELETE)
+### Delete (DELETE)
 
 **Request:**
 ```
@@ -140,7 +159,7 @@ DELETE /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-#### Join federation (POST)
+### Join federation (POST)
 
 It may create entity and join the federation or otherwise join already existed entity.
 
@@ -158,7 +177,7 @@ POST /federations/<federation_id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-#### Leave federation (DELETE)
+### Leave federation (DELETE)
 
 Leave federation.
 
@@ -172,19 +191,19 @@ DELETE /federations/<federation_id>/<entity id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-### /federation_entity
+## federation_entity endpoint
 
-#### Fetch (GET)
+### Fetch (GET)
 
 **Entity Request:**
 ```
-GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1.1
+GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
 **OpenID Connect OP Entity Response:**
 ```json
 {
-  "@context": "https://fs.com/schema/otto/entity/connect_op.jsonld",
+  "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
   "name": "Gluu Server Ce-dev",
   "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
   "organization":"https://gluu.org/otto/organization"
@@ -194,7 +213,7 @@ GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **OpenID Connect RP Entity Response:**
 ```json
 {
-  "@context": "https://fs.com/schema/otto/entity/connect_rp.jsonld",
+  "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
   "name": "Gluu Server Ce-dev Client",
   "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
   "organization":"https://gluu.org/otto/organization"
@@ -204,14 +223,14 @@ GET https://fs.com/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **UMA Resource Server Entity Response:**
 ```json
 {
-  "@context": "https://fs.com/schema/otto/entity/uma_rs.jsonld",
+  "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
   "name": "Gluu Resource Server",
   "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
   "organization":"https://gluu.org/otto/organization"
 }
 ```
 
-#### Create (POST)
+### Create (POST)
 
 **Request:**
 ```json
@@ -228,11 +247,11 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "id":"https://fs.com/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
+   "id":"https://ra.org/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
 }
 ```
 
-#### Update (PUT)
+### Update (PUT)
 
 **Request:**
 ```json
@@ -248,7 +267,7 @@ PUT /federation_entity/<entity id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-#### Delete (DELETE)
+### Delete (DELETE)
 
 **Request:**
 ```
@@ -260,15 +279,12 @@ DELETE /federation_entity/<entity id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-### Organization information sharing
+## schema endpoint
 
-Organization information can be provided by:
-  * Organization public server (for example https://gluu.org/otto/organization)
-  * Or otherwise it can be managed/hosted by Federation server (e.g. https://fc.com/otto/organization)
 
-Main point is that hosted server must follow otto organization schema context. So organization information is structured according to schema and is well known.
+## organization endpoint
 
-## Schema
+## Linked Data Schema
 
 ### Properties
 
@@ -365,7 +381,7 @@ hash.jsonld
 
     # Instance data  TODO -> need to set instance data correctly
 
-    <https://fs.com/federations/904cb092/c5a6-11e5-9912-ba0be0483c18>
+    <https://ra.org/federations/904cb092/c5a6-11e5-9912-ba0be0483c18>
      a schema:Thing, otto:OpenID_Provider;
      otto:discoveryURL "https://idp.example.com/.well-known/openid-configuration" ;
      otto:discoveryJSONHash "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12";
@@ -411,7 +427,7 @@ openid_provider.jsonld
              "@type": "otto:Hash"
           },
           {
-            "@id": "https://fs.com/federations/904cb092/c5a6-11e5-9912-ba0be0483c18",
+            "@id": "https://ra.org/federations/904cb092/c5a6-11e5-9912-ba0be0483c18",
             "@type": [
               "otto:OpenID_Provider",
               "schema:Thing"
@@ -551,6 +567,6 @@ openid_provider.jsonld
      
 ###  Questions
 
-* How are we going to support versioning of federation metadata?
-* How are we going to support versioning of entities ? E.g. UMA RP 1.0 vs UMA RP 1.0.1 implementation.
-* Do we want to support custom members?
+* How are we going version federation metadata?
+* How are we going version entities ? E.g. UMA RP 1.0 vs UMA RP 1.0.1 implementation.
+* Do we want to support custom entities?
