@@ -64,9 +64,9 @@ Request:
 
 Requests:
   - /federations - returns federation IDs available from this Registration Authority
-  - /federations/<federation id> - returns metadata of federation
-  - /federations/<federation id>&entity_type=<type> - returns metadata of federation filtered by type.
-  - /federations/<federation id>&filter=<filter> - returns filtered metadata
+  - /federations/_federation id_ - returns metadata of federation
+  - /federations/_federation id_&entity_type=_type_ - returns metadata of federation filtered by type.
+  - /federations/_federation id_&filter=_filter_ - returns filtered metadata
 
 **Federation list Request:**
 
