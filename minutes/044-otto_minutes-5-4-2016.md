@@ -1,5 +1,5 @@
 OTTO WG Minutes 5/4/16
-STATUS: Draft
+STATUS: Final
 
 ## Voting Members Attending:
  - Mike Schwartz
