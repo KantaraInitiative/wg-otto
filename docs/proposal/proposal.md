@@ -313,7 +313,7 @@ GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 **Organization Response:**
 ```json
 {
-  "@context": "https://ra.org/schema/otto/organization.jsonld",                      <- context of federation
+  "@context": "https://ra.org/schema/otto/organization.jsonld",                      <- context of organization
    "name":"MyOrganization",
    <other properties here>
 }
