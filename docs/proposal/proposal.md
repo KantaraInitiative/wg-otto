@@ -16,7 +16,7 @@ ecosystems.
 ## Definitions
 
 * Registration Authority - Service responsible for hosting federations.
-* Organization - organization description. It may be referenced in any object: Federation, Entity or any 
+* Organization - organization description. It may be referenced in any object: Federation, Entity or any
 other organization related object.
 * Federation - group of entities.
 * Member - reference to entity or another federation.
@@ -30,7 +30,7 @@ entity may act as OpenID Connect OP and UMA AS at the same time.
         * UMA AS - https://ra.org/schema/otto/entity/type/uma_as
         * UMA RS - https://ra.org/schema/otto/entity/type/uma_rs
         * UMA RP - https://ra.org/schema/otto/entity/type/uma_rp
-* Schema - 
+* Schema -
     * Schema type :
         * User claim schema
         * Authentication context reference schema
@@ -283,6 +283,90 @@ HTTP/1.1 200 OK
 
 
 ## organization endpoint
+
+**Organizations list Request:**
+
+```
+GET https://ra.org/organization HTTP/1.1
+```
+
+
+**Organizations list Response:**
+```json
+{
+  "@context": "https://ra.org/schema/otto/organization",
+  "organizations": [
+    "https://ra.org/organization/904ca9da-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/organization/904cae1c-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
+  ]
+}
+```
+
+
+**Organization Request:**
+
+```
+GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+```
+
+**Organization Response:**
+```json
+{
+  "@context": "https://ra.org/schema/otto/organization.jsonld",                      <- context of federation
+   "name":"MyOrganization",
+   <other properties here>
+}
+```
+
+### Create (POST)
+
+**Request:**
+```json
+POST /organization
+{
+   "name":"MyOrganization",
+   <other properties here>
+}
+```
+
+**Response:**
+```json
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+   "id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
+}
+```
+
+### Update (PUT)
+
+**Request:**
+```json
+PUT /organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+{
+   "name":"MyOrganization",
+   <other properties here>
+}
+```
+
+**Response:**
+```
+HTTP/1.1 200 OK
+```
+
+### Delete (DELETE)
+
+**Request:**
+```
+DELETE /organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+```
+
+**Response:**
+```
+HTTP/1.1 200 OK
+```
 
 ## Linked Data Schema
 
@@ -564,7 +648,7 @@ openid_provider.jsonld
      rdfs:range xsd:anyURI;
      .
 ```
-     
+
 ###  Questions
 
 * How are we going version federation metadata?
