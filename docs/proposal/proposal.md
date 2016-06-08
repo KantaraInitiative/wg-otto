@@ -281,6 +281,122 @@ HTTP/1.1 200 OK
 
 ## schema endpoint
 
+**Schema list Request:**
+
+```
+GET https://ra.org/schema/v1.1 HTTP/1.1
+```
+
+(Schema sticks to particular version which is shown directly in URL. E.g. GET https://ra.org/schema/v2.1)
+
+**Schema list Response:**
+```json
+{
+  "schemas": [
+    "https://ra.org/schema/v1.1/hash",
+    "https://ra.org/schema/v1.1/organization",
+    "https://ra.org/schema/v1.1/federations",
+    "https://ra.org/schema/v1.1/openid_provider",
+    "https://ra.org/schema/v1.1/openid_relying_party",
+    "https://ra.org/schema/v1.1/uma_rs",
+    "https://ra.org/schema/v1.1/uma_as",
+    "https://ra.org/schema/v1.1/uma_ro"
+  ]
+}
+```
+
+
+**Schema Request:**
+
+```
+GET https://ra.org/schema/v1.1/hash HTTP/1.1
+```
+
+**Schema hash v1.1 Response:**
+```json
+    {
+       "@context": {
+         "otto": "http://kantarainitiative.org/otto/schema/",
+         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+         "schema": "http://schema.org/",
+         "xsd": "http://www.w3.org/2001/XMLSchema#"
+       },
+       "@graph": [
+         {
+           "@id": "otto:hashValue",
+           "@type": "rdf:Property",
+           "rdfs:range": {
+             "@id": "xsd:string"
+           }
+         },
+         {
+           "@id": "otto:Hash",
+           "@type": "rdfs:Class"
+         },
+         {
+           "@id": "otto:hashAlgorithm",
+           "@type": "rdf:Property",
+           "rdfs:range": {
+             "@id": "xsd:string"
+           }
+         }
+       ]
+    }
+```
+
+### Create (POST)
+
+**Request:**
+```json
+POST /schema
+{
+   "name":"myentity",
+   "major_version":"1",
+   "minor_version":"2"
+   <other properties here>
+}
+```
+
+**Response:**
+```json
+HTTP/1.1 201 Created
+Content-Type: application/json
+
+{
+   "id":"https://ra.org/schema/1.2/myentity"
+}
+```
+
+### Update (PUT)
+
+**Request:**
+```json
+PUT /schema HTTP/1.1
+{
+   "name":"myentity",
+   "major_version":"1",
+   "minor_version":"2"
+   <other properties here>
+}
+```
+
+**Response:**
+```
+HTTP/1.1 200 OK
+```
+
+### Delete (DELETE)
+
+**Request:**
+```
+DELETE /schema/v1.2/myentity HTTP/1.1
+```
+
+**Response:**
+```
+HTTP/1.1 200 OK
+```
 
 ## organization endpoint
 
