@@ -68,7 +68,7 @@ none
 
 ## PROPOSERS
 
-- Michael Schwartz
+- Michael Schwartz, Gluu
 - Keith Hazelton, Internet2
 - Janusz Ulanowski, HEAnet
-- Rainer H�rbe
+- Judith Bush, OCLC
