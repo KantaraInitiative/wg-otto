@@ -4,31 +4,25 @@
 
 Open Trust Taxonomy for Federation Operators (OTTO)
 
-## PURPOSE
+## PURPOSE and SCOPE
 
-The OTTO working group seeks to define an interoperable technical solution that will enable the operation of federations 
-within a trusted ecosystem of autonomous entities, creating a foundation of trust, and lowering the cost of 
-collaboration. 
+The OTTO working group seeks to define an interoperable technical solution that will enable the 
+operation of federations within a trusted ecosystem of autonomous organizations. The goal is to 
+centralize trust management, to lower the business, legal and technical costs of collaboration. 
 
 The effort will concentrate on three areas: (1) definition of endpoints to enable the creation and update
-of federations. (2) A extensible JSON-LD data design to enable the definition of federation entities, 
-schema, and trust relationships. (3) Mechanisms to cryptographically verify the integrity of the federation 
-data.
+of federations. (2) A extensible JSON-LD linked data representation to enable the definition of federation 
+entities, schema, and trust relationships. (3) Mechanisms to cryptographically verify the integrity of the 
+federation data, both of entities and of the federation itself.
 
 The Work Group seeks to design a solution usable by existing SAML federations, PKI federations and 
 the OAuth ecosystem.
 
 Specifically, this Work Group is responsible for:
 * Developing a set of core use cases 
-* Developing of the OTTO Core specification defining the endpoints, data model, and digital signing requirements.
+* Developing the OTTO Core specification defining the endpoints, data model, and digital signing conventions.
 
 The group will target completion of the draft specification by 12/31/16, and final specification by 12/31/17. 
-
-## SCOPE
-
-The APIs and data structures will enable discovery of the members of the federation and details 
-about their services, key material and technical capabilities. The final scope will be refined 
-after delivery of the final confirmed use cases
 
 ## DRAFT TECHNICAL SPECIFICATIONS
 
@@ -45,8 +39,8 @@ specifications will then be submitted to appropriate standards bodies for furthe
 
 ## AUDIENCE
 
-Existing federation operators and any group of autonomous organizations that need to establish common policies and 
-procedures to establish a basis for trust and faciliate electronic collaboration.
+Existing federation operators and any group of autonomous organizations that need to establish common policies 
+and procedures to establish a basis for trust and faciliate electronic collaboration.
 
 ## DURATION 
 
