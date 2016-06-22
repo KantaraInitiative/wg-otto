@@ -11,7 +11,7 @@ functionality and schema, the OTTO standard provides a scalable technical
 infrastructure to solve organizational challenges in a number of different
 ecosystems.
 
-![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/docs/proposal/otto_overview.png "Big picture")
+![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/daf940b6d44c990a0b580dcc59d9698a1a66ccd0/docs/proposal/otto_overview.png "Big picture")
 
 ## Definitions
 
