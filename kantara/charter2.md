@@ -16,10 +16,10 @@ entities, schema, and trust relationships. (3) Mechanisms to cryptographically v
 federation data, both of entities and of the federation itself.
 
 The Work Group seeks to design a solution usable by existing SAML federations, PKI federations and 
-the OAuth ecosystem.
+the OAuth ecosystems.
 
 Specifically, this Work Group is responsible for:
-* Developing a set of core use cases 
+* Developing a set of use cases 
 * Developing the OTTO Core specification defining the endpoints, data model, and digital signing conventions.
 
 The group will target completion of the draft specification by 12/31/16, and final specification by 12/31/17. 
@@ -40,7 +40,7 @@ specifications will then be submitted to appropriate standards bodies for furthe
 ## AUDIENCE
 
 Existing federation operators and any group of autonomous organizations that need to establish common policies 
-and procedures to establish a basis for trust and faciliate electronic collaboration.
+and procedures to establish a basis for trust and facilitate electronic collaboration.
 
 ## DURATION 
 
