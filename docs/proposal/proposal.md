@@ -44,7 +44,7 @@ entity may act as OpenID Connect OP and UMA AS at the same time.
 
 Registration Authority have metadata describing their configuration. These Registration Authority Metadata values are used by OTTO:
 
-   * issuer - REQUIRED. URL using the https scheme with no query or fragment component that the OP asserts as its Issuer Identifier. If Issuer discovery is supported (see Section 2), this value MUST be identical to the issuer value returned by WebFinger. This also MUST be identical to the iss Claim value in ID Tokens issued from this Issuer. 
+   * issuer - REQUIRED. URL using the https scheme with no query or fragment component that the RA asserts as its Issuer Identifier. If Issuer discovery is supported, this value MUST be identical to the issuer value returned by WebFinger. 
    * federations_endpoint - REQUIRED. federations endpoint
    * federation_entity_endpoint - REQUIRED. federation entity endpoint
    * organizations_endpoint - REQUIRED. organization endpoint
@@ -52,13 +52,15 @@ Registration Authority have metadata describing their configuration. These Regis
 
 Registration Authority supporting Discovery MUST make a JSON document available at the path formed by concatenating the string `/.well-known/otto-configuration` to the Issuer. The syntax and semantics of .well-known are defined in RFC 5785 [RFC5785] and apply to the Issuer value when it contains no path component. otto-configuration MUST point to a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
 
-*Request*
+*Non-normative example request*
 ```
 GET /.well-known/otto-configuration HTTP/1.1
 Host: ra.com
 ```
 
-*Response*
+The response is a set of Claims about the RA's configuration, including all necessary endpoints and public key location information. A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type that contains a set of Claims as its members that are a subset of the RA's Metadata values. Other Claims MAY also be returned. Claims that return multiple values are represented as JSON arrays. Claims with zero elements MUST be omitted from the response. An error response uses the applicable HTTP status code value.
+
+*Non-normative example response*
 ```
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -71,7 +73,6 @@ Content-Type: application/json
    "schema_endpoint":"https://ra.com/otto/schema"
 }
 ```
-
 
 
 ##  federations endpoint
