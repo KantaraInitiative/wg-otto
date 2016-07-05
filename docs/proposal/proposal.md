@@ -42,7 +42,37 @@ entity may act as OpenID Connect OP and UMA AS at the same time.
 
 ## Discovery Endpoint
 
-`.well-known/otto-configuration` returns endpoints and configuration of registration authority
+Registration Authority have metadata describing their configuration. These Registration Authority Metadata values are used by OTTO:
+
+   * issuer - REQUIRED. URL using the https scheme with no query or fragment component that the OP asserts as its Issuer Identifier. If Issuer discovery is supported (see Section 2), this value MUST be identical to the issuer value returned by WebFinger. This also MUST be identical to the iss Claim value in ID Tokens issued from this Issuer. 
+   * federations_endpoint - REQUIRED. federations endpoint
+   * federation_entity_endpoint - REQUIRED. federation entity endpoint
+   * organizations_endpoint - REQUIRED. organization endpoint
+   * schema_endpoint - REQUIRED. schema endpoint
+
+Registration Authority supporting Discovery MUST make a JSON document available at the path formed by concatenating the string `/.well-known/otto-configuration` to the Issuer. The syntax and semantics of .well-known are defined in RFC 5785 [RFC5785] and apply to the Issuer value when it contains no path component. otto-configuration MUST point to a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
+
+*Request*
+```
+GET /.well-known/otto-configuration HTTP/1.1
+Host: ra.com
+```
+
+*Response*
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "issuer":"https://ra.com",
+   "federations_endpoint":"https://ra.com/otto/federations",
+   "federation_entity_endpoint":"https://ra.com/otto/entity",
+   "organizations_endpoint":"https://ra.com/otto/organizations",
+   "schema_endpoint":"https://ra.com/otto/schema"
+}
+```
+
+
 
 ##  federations endpoint
 
