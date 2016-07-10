@@ -39,7 +39,7 @@ mechanisms supported.
 
 ## Next Meeting - Weds 7/6/2016 9am PT / 5pm GMT
 
-  ** NO MEETING 7/29 DUE TO VACATIONS **
+  ** NO MEETING /29 DUE TO VACATIONS **
   
   ** Note New Audio Details ! ! ! ** 
 
