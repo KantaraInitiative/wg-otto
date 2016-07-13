@@ -40,7 +40,7 @@ Just for an example, we're going to look at how we would use our schema approach
 `eduPerson` a nice summary of which can be found [here]
 (https://www.incommon.org/federation/attributesummary.html)
 
-Just as an example, let's take `givenName` and `sn`, which has the following metadata:
+Just as an example, `sn`, which has the following metadata:
 
  - Friendly Name: sn
  - SAML1 URI: urn:mace:dir:attribute-def:sn 
@@ -50,6 +50,8 @@ Just as an example, let's take `givenName` and `sn`, which has the following met
  - Description: "Multiple string values containing components of the users's "family" name or surname."
  - SCIM attribute: Yes
  - Nice Name: Family Name
+
+And `givenName` has the following metadata:
 
  - Friendly Name: givenName
  - SAML1 URI: urn:mace:dir:attribute-def:givenName
