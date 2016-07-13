@@ -4,7 +4,6 @@ STATUS: Draft
 ## Voting Members Attending:
  - Mike Schwartz
  - Yuriy Zabrovarnyy
- - Judith Bush
  - Meghna Joshi
 
 ## Discussion of Search Syntax
