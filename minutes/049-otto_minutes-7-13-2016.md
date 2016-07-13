@@ -82,8 +82,8 @@ POST /schema
 {
    "name":"eduPerson",
    "major_version":"1",
-   "minor_version":"0"
-   "type": "user claims"
+   "minor_version":"0",
+   "type": "user claims",
    <other properties here>
 }
 ```
@@ -100,6 +100,22 @@ For example, type could be:
 The above are collections of distinct schema objects, each of whic have their own metadata
 (for example, like metadata about `sn` or `givenName` above.)
 
+Another example to consider, are software statements. Consider this sample from Roland's 
+OpenID federation draft:
+
+```
+{"contacts": ["dev_admin@example.com"],
+ "policy_uri": "https://example.com/policy.html",
+ "tos_uri": "https://example.com/tos.html",
+ "logo_uri": "https://example.com/logo.jpg",
+ "signing_key": "dsflkjhalkfhdkads"
+}
+```
+
+In this case, the software statement might have some standard keys, and some optional
+keys that are specific to a federation.
+
+Should OTTO reserve certain keys, for example if they are profiled in a specific protocol... ? 
 
 ## Next Meeting - Weds 7/20/2016 9am PT / 5pm GMT
 
