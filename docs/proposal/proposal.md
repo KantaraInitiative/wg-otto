@@ -91,7 +91,8 @@ Request:
     * uma_rs
     * uma_rp
     * uma_as
-* filter - OPTIONAL - expression to narrow the result set based on specific criteria
+* filter - OPTIONAL - expression to narrow the result set based on specific criteria. Expression is represented in jspath format (https://github.com/dfilatov/jspath).
+* depth - OPTIONAL - represents depth of graph resolving. By default depth is set to 0 (not following federation links).
 
 Requests:
   - /federations - returns federation IDs available from this Registration Authority
