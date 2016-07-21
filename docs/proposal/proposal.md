@@ -99,6 +99,7 @@ Requests:
   - /federations/_federation id_ - returns metadata of federation
   - /federations/_federation id_&entity_type=_type_ - returns metadata of federation filtered by type.
   - /federations/_federation id_&filter=_filter_ - returns filtered metadata
+  - /federations/_federation id_&depth=_1_ - how many interfederations deep to search
 
 **Federation list Request:**
 
