@@ -40,7 +40,7 @@ entity may act as OpenID Connect OP and UMA AS at the same time.
         * Software statement schema
         * Trust mark schema
 
-## Discovery Endpoint
+## [Discovery Endpoint](#endpoint-discovery)
 
 Registration Authority have metadata describing their configuration. These Registration Authority Metadata values are used by OTTO:
 
