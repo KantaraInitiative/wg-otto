@@ -99,12 +99,13 @@ that these be added to the documentation. Yuriy provided this example:
 
 ```
 .entity{name='Gluu'}.name
-``
+```
 
 Keith also provided example from http://goessner.net/articles/JsonPath
 Is this the same as JSPath? 
 
 ```
+s
 XPath JSONPath Result
 /store/book/author $.store.book[*].author the authors of all books in the store
 //author $..author all authors
