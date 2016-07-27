@@ -35,9 +35,9 @@ Table of Contents
    * [schema/otto/uma_as.jsonld](#schemaottouma_asjsonld)
    * [schema/otto/uma_relying_party.jsonld](#schemaottouma_relying_partyjsonld)
  * [Appendix A](#Appendix A)
-   * [Search federations endpoint : /federations/<federation id>](#Search federations endpoint : /federations/<federation id>)
-   * [Search federations endpoint : /federations/<federation id>?depth=1](#Search federations endpoint : /federations/<federation id>?depth=1)
-   * [Search federations endpoint : /federations/<federation id>?depth=1&filter=<filter>](#Search federations endpoint : /federations/<federation id>?depth=1&filter=<filter>)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;](#Search federations endpoint : /federations/&lt;federation id&gt;)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#Search federations endpoint : /federations/&lt;federation id&gt;?depth=1)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;)
  * [Questions](#questions)
 
 ## Abstract
@@ -857,7 +857,7 @@ openid_provider.jsonld
 
 # Appendix A
 
-## Search federations endpoint : /federations/<federation id>
+## Search federations endpoint : /federations/&lt;federation id&gt;
 
 All entities are resolved except federations link (depth=0 by default)
 
@@ -900,7 +900,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 }
 ```
 
-## Search federations endpoint : /federations/<federation id>?depth=1
+## Search federations endpoint : /federations/&lt;federation id&gt;?depth=1
 
 All entities are resolved and federations link too with depth 1
 
@@ -967,7 +967,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP
 }
 ```
 
-## Search federations endpoint : /federations/<federation id>?depth=1&filter=<filter>
+## Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;
 
 Returns only .entity.name attributes.
 
