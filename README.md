@@ -34,10 +34,10 @@ Table of Contents
    * [schema/otto/uma_rs.jsonld](#schemaottouma_rsjsonld)
    * [schema/otto/uma_as.jsonld](#schemaottouma_asjsonld)
    * [schema/otto/uma_relying_party.jsonld](#schemaottouma_relying_partyjsonld)
- * [Appendix A](#Appendix A)
-   * [Search federations endpoint : /federations/&lt;federation id&gt;](#Search federations endpoint : /federations/&lt;federation id&gt;)
-   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#Search federations endpoint : /federations/&lt;federation id&gt;?depth=1)
-   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;)
+ * [Appendix A](#appendix-a)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;](#search-federations-endpoint--federationsfederation-id)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#search-federations-endpoint--federationsfederation-iddepth1)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#search-federations-endpoint--federationsfederation-iddepth1filterfilter)
  * [Questions](#questions)
 
 ## Abstract
