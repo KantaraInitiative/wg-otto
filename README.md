@@ -175,21 +175,21 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
   "entities":[
             {                                                                      <- reference to entity
                         "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
-                        "uri": "https://ra.org/federations/664cb092-c5a6-11e5-9912-ba0be0483c18",
+                        "uri": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
                         "name": "Gluu Server Ce-dev Client",
                         "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
                         "organization":"https://gluu.org/otto/organization"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-                         "uri": "https://ra.org/federations/554cb092-c5a6-11e5-9912-ba0be0483c18",
+                         "uri": "https://ra.org/entity/554cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Server Ce-dev",
                          "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
                          "organization":"https://gluu.org/otto/organization"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-                         "uri": "https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
+                         "uri": "https://ra.org/entity/904cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Resource Server",
                          "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
                          "organization":"https://gluu.org/otto/organization"
@@ -865,12 +865,12 @@ openid_provider.jsonld
 
 ## Search federations endpoint : /federations/&lt;federation id&gt;?depth=federations
 
-All entities are resolved and federations link too with depth 1
+All entities are resolved and federations link too with depth=federations
 
 **Federation Request:**
 
 ```
-GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP/1.1
+GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federations HTTP/1.1
 ```
 
 **Federation Response:**
@@ -881,12 +881,14 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP
   "entities": [                                                                    <- reference to entity
            {
              "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
+             "uri": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
              "name": "Gluu Server Ce-dev Client",
              "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
              "organization":"https://gluu.org/otto/organization"
            },
            {
              "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
+             "uri": "https://ra.org/entity/114cb092-c5a6-11e5-9912-ba0be0483c18",
              "name": "Gluu Resource Server",
              "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
              "organization":"https://gluu.org/otto/organization"
@@ -899,12 +901,14 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP
                  "entities":[
                           {                                                                    <- reference to entity
                             "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
+                            "uri": "https://ra.org/entity/134cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Server Ce-dev2 Client",
                             "id":"https://ce-dev2.gluu.org/rp",          <- in RP context it is redirect_uri
                             "organization":"https://gluu.org/otto/organization"
                           },
                           {
                             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
+                            "uri": "https://ra.org/entity/344cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Resource Server 2",
                             "id":"https://ce-dev2.gluu.org/rs",          <- in RS context it is URI
                             "organization":"https://gluu.org/otto/organization"
