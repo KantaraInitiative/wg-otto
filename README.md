@@ -35,8 +35,7 @@ Table of Contents
    * [schema/otto/uma_as.jsonld](#schemaottouma_asjsonld)
    * [schema/otto/uma_relying_party.jsonld](#schemaottouma_relying_partyjsonld)
  * [Appendix A](#appendix-a)
-   * [Search federations endpoint : /federations/&lt;federation id&gt;](#search-federations-endpoint--federationsfederation-id)
-   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#search-federations-endpoint--federationsfederation-iddepth1)
+   * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#search-federations-endpoint--federationsfederation-iddepthfederations)
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#search-federations-endpoint--federationsfederation-iddepth1filterfilter)
  * [Questions](#questions)
 
@@ -132,7 +131,7 @@ Request:
     * uma_rp
     * uma_as
 * filter - OPTIONAL - expression to narrow the result set based on specific criteria. Expression is represented in jspath format (https://github.com/dfilatov/jspath).
-* depth - OPTIONAL - represents depth of graph resolving. By default depth is set to 0 (not following federation links).
+* depth - OPTIONAL - represents depth of graph resolving. &depth=federations&depth=federations.entitites.organization.
 
 Requests:
   - /federations - returns federation IDs available from this Registration Authority
@@ -864,50 +863,7 @@ openid_provider.jsonld
 
 # Appendix A
 
-## Search federations endpoint : /federations/&lt;federation id&gt;
-
-All entities are resolved except federations link (depth=0 by default)
-
-**Federation Request:**
-
-```
-GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
-```
-
-
-**Federation Response:**
-```json
-{
-  "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
-  "name": "OAuth 2 Federation",                                                    <- name of federation
-  "entity": {                                                                      <- reference to entity
-             "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
-             "name": "Gluu Server Ce-dev Client",
-             "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
-             "organization":"https://gluu.org/otto/organization"
-           },
-  "federation":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",   <- reference to federation
-  "entity":{
-             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-             "name": "Gluu Resource Server",
-             "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
-             "organization":"https://gluu.org/otto/organization"
-           },
-  "entity":{
-             "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-             "name": "Gluu Server Ce-dev",
-             "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
-             "organization":"https://gluu.org/otto/organization"
-           },
-  "organization": {
-                    "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
-                     "name":"MyOrganization",
-                     <other properties here>
-                  }
-}
-```
-
-## Search federations endpoint : /federations/&lt;federation id&gt;?depth=1
+## Search federations endpoint : /federations/&lt;federation id&gt;?depth=federations
 
 All entities are resolved and federations link too with depth 1
 
@@ -922,50 +878,44 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP
 {
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
-  "entity": {                                                                      <- reference to entity
+  "entities": [                                                                    <- reference to entity
+           {
              "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
              "name": "Gluu Server Ce-dev Client",
              "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
              "organization":"https://gluu.org/otto/organization"
            },
-  "federation":"@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of sub federation
+           {
+             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
+             "name": "Gluu Resource Server",
+             "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
+             "organization":"https://gluu.org/otto/organization"
+           }
+  ],
+  "federations":[
+         {
+                 "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of sub federation
                  "name": "OAuth 2 Federation of Gluu",                                          <- name of sub federation
-                 "entity": {                                                                    <- reference to entity
+                 "entities":[
+                          {                                                                    <- reference to entity
                             "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
                             "name": "Gluu Server Ce-dev2 Client",
                             "id":"https://ce-dev2.gluu.org/rp",          <- in RP context it is redirect_uri
                             "organization":"https://gluu.org/otto/organization"
                           },
-                 "federation":"https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18",   <- reference to federation
-                 "entity":{
+                          {
                             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
                             "name": "Gluu Resource Server 2",
                             "id":"https://ce-dev2.gluu.org/rs",          <- in RS context it is URI
                             "organization":"https://gluu.org/otto/organization"
-                          },
-                 "entity":{
-                            "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-                            "name": "Gluu Server Ce-dev2",
-                            "id":"https://ce-dev2.gluu.org"           <- in OP context it is URI
-                            "organization":"https://gluu.org/otto/organization"
-                          },
-                 "organization": {
-                                   "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
-                                    "name":"MyOrganization",
-                                    <other properties here>
-                                 },   <- reference to federation
-  "entity":{
-             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-             "name": "Gluu Resource Server",
-             "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
-             "organization":"https://gluu.org/otto/organization"
-           },
-  "entity":{
-             "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-             "name": "Gluu Server Ce-dev",
-             "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
-             "organization":"https://gluu.org/otto/organization"
-           },
+                          }
+                 ]
+                 "federation": [                                                                 <- reference to federation
+                          "https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18"
+                 ]
+                 "organization": "https://gluu.org/otto/organization"
+        }
+  ],
   "organization": {
                     "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
                      "name":"MyOrganization",
@@ -974,7 +924,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=1 HTTP
 }
 ```
 
-## Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;
+## Search federations endpoint : /federations/&lt;federation id&gt;?depth=federations&filter=&lt;filter&gt;
 
 Returns only .entity.name attributes.
 
@@ -984,24 +934,25 @@ Returns only .entity.name attributes.
 GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.entity.name HTTP/1.1
 ```
 
-(in case of multiple attributes specify multiple filter parameters as mentioned on wiki https://en.wikipedia.org/wiki/Query_string)
-`&filter=.entity.name&filter=.entity.id`
-
 **Federation Response:**
 ```json
 {
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
-  "entity": {                                                                      <- reference to entity
-             "name": "Gluu Server Ce-dev Client",
+  "entities": [
+           {                                                                       <- reference to entity
+             "name": "Gluu Server Ce-dev Client"
            },
-  "federation":"https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18",   <- reference to federation
-  "entity":{
-             "name": "Gluu Resource Server",
+           {
+             "name": "Gluu Resource Server"
            },
-  "entity":{
-             "name": "Gluu Server Ce-dev",
-           },
+           {
+             "name": "Gluu Resource Server 2",
+           }
+   ],
+  "federations":[                                                                  <- reference to federation
+           "https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18"
+  ],
   "organization": {
                     "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
                      "name":"MyOrganization",
@@ -1009,6 +960,10 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.enti
                   }
 }
 ```
+
+
+(in case of multiple attributes specify multiple filter parameters as mentioned on wiki https://en.wikipedia.org/wiki/Query_string)
+`&filter=.entity.name&filter=.entity.id`
 
 
 ###  Questions
