@@ -163,33 +163,34 @@ GET https://ra.org/federations HTTP/1.1
 **Federation Request:**
 
 ```
-GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entities HTTP/1.1
 ```
 
 
 **Federation Response:**
 ```json
 {
+  "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
   "entities":[
             {                                                                      <- reference to entity
                         "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
-                        "uri": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
+                        "@id": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
                         "name": "Gluu Server Ce-dev Client",
                         "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
                         "organization":"https://gluu.org/otto/organization"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-                         "uri": "https://ra.org/entity/554cb092-c5a6-11e5-9912-ba0be0483c18",
+                         "@id": "https://ra.org/entity/554cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Server Ce-dev",
                          "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
                          "organization":"https://gluu.org/otto/organization"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-                         "uri": "https://ra.org/entity/904cb092-c5a6-11e5-9912-ba0be0483c18",
+                         "@id": "https://ra.org/entity/904cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Resource Server",
                          "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
                          "organization":"https://gluu.org/otto/organization"
@@ -198,7 +199,8 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
   "federations":[                                                                  <- reference to federation
                          "https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
            ],
-  "organization": {
+  "organization": { 
+                    "@id":"https://ra.org/organization/554cb092-c5a6-11e5-9912-ba0be0483c18"
                     "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
                      "name":"MyOrganization",
                      <other properties here>
@@ -223,7 +225,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
+   "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
 ```
 
@@ -299,6 +301,7 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **OpenID Connect OP Entity Response:**
 ```json
 {
+  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
   "name": "Gluu Server Ce-dev",
   "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
@@ -309,6 +312,7 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **OpenID Connect RP Entity Response:**
 ```json
 {
+  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
   "name": "Gluu Server Ce-dev Client",
   "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
@@ -319,6 +323,7 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **UMA Resource Server Entity Response:**
 ```json
 {
+  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
   "name": "Gluu Resource Server",
   "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
@@ -343,7 +348,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "id":"https://ra.org/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
+   "@id":"https://ra.org/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
 }
 ```
 
@@ -525,6 +530,7 @@ GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 **Organization Response:**
 ```json
 {
+  "@id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/organization.jsonld",                      <- context of organization
    "name":"MyOrganization",
    <other properties here>
@@ -876,6 +882,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
 **Federation Response:**
 ```json
 {
+  "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
   "entities": [                                                                    <- reference to entity
@@ -901,14 +908,14 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
                  "entities":[
                           {                                                                    <- reference to entity
                             "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
-                            "uri": "https://ra.org/entity/134cb092-c5a6-11e5-9912-ba0be0483c18",
+                            "@id": "https://ra.org/entity/134cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Server Ce-dev2 Client",
                             "id":"https://ce-dev2.gluu.org/rp",          <- in RP context it is redirect_uri
                             "organization":"https://gluu.org/otto/organization"
                           },
                           {
                             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-                            "uri": "https://ra.org/entity/344cb092-c5a6-11e5-9912-ba0be0483c18",
+                            "@id": "https://ra.org/entity/344cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Resource Server 2",
                             "id":"https://ce-dev2.gluu.org/rs",          <- in RS context it is URI
                             "organization":"https://gluu.org/otto/organization"
@@ -921,6 +928,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
         }
   ],
   "organization": {
+                    "@id":"https://ra.org/organization/222cb092-c5a6-11e5-9912-ba0be0483c18".
                     "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
                      "name":"MyOrganization",
                      <other properties here>
@@ -941,6 +949,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.enti
 **Federation Response:**
 ```json
 {
+  "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "OAuth 2 Federation",                                                    <- name of federation
   "entities": [
