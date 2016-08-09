@@ -511,7 +511,6 @@ GET https://ra.org/organization HTTP/1.1
 **Organizations list Response:**
 ```json
 {
-  "@context": "https://ra.org/schema/otto/organization",
   "organizations": [
     "https://ra.org/organization/904ca9da-c5a6-11e5-9912-ba0be0483c18",
     "https://ra.org/organization/904cae1c-c5a6-11e5-9912-ba0be0483c18",
@@ -531,7 +530,8 @@ GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 ```json
 {
   "@id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18",
-  "@context": "https://ra.org/schema/otto/organization.jsonld",                      <- context of organization
+  "@context": "https://schema.org",                      <- context of organization
+  "@type":"Organization",
    "name":"MyOrganization",
    <other properties here>
 }
@@ -554,7 +554,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
+   "@id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
 ```
 
