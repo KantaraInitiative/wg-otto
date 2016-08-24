@@ -1,5 +1,5 @@
 OTTO WG Minutes 7/27/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
