@@ -1,4 +1,4 @@
-OTTO WG Minutes Combined: 9/7/2016
+OTTO WG Minutes: 9/7/2016
 STATUS: Draft
 
 ## Voting Members Attending:
