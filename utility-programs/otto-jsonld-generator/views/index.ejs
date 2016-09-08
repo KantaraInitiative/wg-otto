@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Script Generator</title>
+    <style type="text/css">
+    .textwidth{
+      width: 150px;
+      display: inline-block; vertical-align: top;
+    }
+    </style>
+    <script
+			  src="https://code.jquery.com/jquery-3.1.0.min.js"
+			  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+			  crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+    function validateForm() {
+
+          var data =  $('#template').val();
+          try{
+            JSON.parse(data)
+          }
+          catch(e) {
+              alert("Enter Valid JSON Template");
+              return false;
+          }
+          return true;
+
+
+        }
+
+    </script>
+</head>
+<body class="container">
+    <main>
+        <div class="jumbotron">
+            <h1>Data Generator</h1>
+        </div>
+        <form action="/process_post" onsubmit="return validateForm()" method="POST">
+            <div>
+              <span class="textwidth">Template :</span> <textarea rows="20" cols="100" name="template" id="template" required="required"></textarea>
+            </div>
+            <br/>
+            <div>
+            <span class="textwidth">  Counter :</span> <input type="number" name="counter" required="required" >
+          </div>
+            <br/>
+            <div>
+            <span class="textwidth">Guid Ids to replace (comma seperated) :</span> <input type="text" name="guidIdsrep">
+          </div>
+            <br/>
+
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+
+</body>
+</html>
