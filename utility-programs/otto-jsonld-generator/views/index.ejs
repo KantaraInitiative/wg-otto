@@ -7,11 +7,20 @@
       width: 150px;
       display: inline-block; vertical-align: top;
     }
+
+    .added >img{
+      vertical-align: middle;
+      cursor:pointer;
+    }
     </style>
     <script
 			  src="https://code.jquery.com/jquery-3.1.0.min.js"
 			  integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
 			  crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts/template.js"></script>
+
+    <script src="scripts/scriptindex.js"></script>
+
 
     <script type="text/javascript">
     function validateForm() {
@@ -26,8 +35,216 @@
           }
           return true;
 
+        }
+        $(document).ready(function(){
+        //  alert('fsdfs');
+
+          $( "#templatetype" ).change(function() {
+
+              var divClone = $(".addedClone").clone();
+              divClone.removeClass("addedClone");
+              divClone.addClass("added");
+              var spanvalue ="";
+              var templatetype ="";
+              switch ($("#templatetype").val()) {
+
+                case "0":
+                    spanvalue = "Federation";
+                    templatetype="0";
+                break;
+                case "1":
+                  spanvalue = "Organization";
+                  templatetype="1";
+                break;
+                case "2":
+                  spanvalue = "openID Connect OP";
+                  templatetype="2";
+                break;
+                case "3":
+                  spanvalue = "open IDConnect RP";
+                  templatetype="3";
+
+                break;
+                case "4":
+                  spanvalue = "UMA RS";
+                  templatetype="4";
+                break;
+                case "5":
+                  spanvalue = "UMA AS";
+                  templatetype="5";
+                break;
+                case "6":
+                  spanvalue = "UMA RO";
+                  templatetype="6";
+                break;
+                case "7":
+                  spanvalue = "OAuth OP";
+                  templatetype="7";
+                break;
+                case "8":
+                  spanvalue = "OAuth RP";
+                  templatetype="8";
+                break;
+
+                default:
+
+              }
+              divClone.find("span").text(spanvalue);
+              divClone.find("span").attr("templatetype",templatetype);
+
+              $(".filter").append(divClone);
+              setTemplate();
+
+          });
+      });
+
+      function setTemplate(){
+
+        $(".added").click(function(){
+          //alert('hii');
+          $(this).remove();
+          setTemplate();
+        });
+
+        $('#template').text("");
+        var guidToreplace = Array();
+        if($(".filter").children().length>1)
+        {
+          var obj = new Object();
+          $( ".added" ).each(function( index ) {
+              var templatetype = $(this).find("span").attr("templatetype");
+              console.log(templatetype );
+              var data = getTemplateJSON(templatetype);
+              switch (templatetype) {
+                case "0":
+                  obj.federation = data;
+                  guidToreplace.push("{fid}");
+                  guidToreplace.push("{eid1}");
+                  guidToreplace.push("{eid2}");
+                  guidToreplace.push("{eid3}");
+                  guidToreplace.push("{oid}");
+                break;
+                case "1":
+                  obj.organization = data;
+                  guidToreplace.push("{oid}");
+                break;
+                case "2":
+                  obj.connect_op = data;
+                  guidToreplace.push("{eid}");
+                break;
+                case "3":
+                  obj.connect_rp =data;
+                  guidToreplace.push("{eid}");
+                break;
+                case "4":
+                  obj.uma_rs = data;
+                  guidToreplace.push("{eid}");
+                break;
+                case "5":
+                  obj.uma_as = data;
+                  guidToreplace.push("{eid}");
+                  break;
+                case "6":
+                  obj.uma_ro =data;
+                  guidToreplace.push("{eid}");
+                break;
+                case "7":
+                obj.oauth_op =data;
+                guidToreplace.push("{eid}");
+                break;
+                case "8":
+                  obj.oauth_rp =data
+                  guidToreplace.push("{eid}");
+                break;
+
+                default:
+
+              }
+
+
+          });
+            //$('#template').text(JSON.stringify(obj), null, '\t');
+            var objJSON = JSON.parse(JSON.stringify(obj));
+            var pretty = JSON.stringify(objJSON, undefined, 4);
+            $("#template").text(pretty);
 
         }
+        else {
+          $( ".added" ).each(function( index ) {
+              var templatetype = $(this).find("span").attr("templatetype");
+              var jsonTemplate = getTemplateJSON(templatetype);
+
+              //$('#template').text(JSON.stringify(jsonTemplate), null, '\t');
+              //var ugly = $('#template').text();
+              var obj = JSON.parse(JSON.stringify(jsonTemplate));
+              var pretty = JSON.stringify(obj, undefined, 4);
+              $("#template").text(pretty);
+          });
+        }
+        debugger;
+        var regex = RegExp("{[a-z0-9]{3,}}","g");
+        var guidReplaceArr = $("#template").text().match(regex);
+      //  var unique = a.filter( onlyUnique );
+        if(guidReplaceArr !=null)
+          $("#guidIdsrep1").text(guidReplaceArr.toString());
+          else {
+            $("#guidIdsrep1").text("");
+          }
+        //console.log(guidReplaceArr);
+      }
+
+
+        function getTemplateJSON(templatetype)
+        {
+          switch (templatetype) {
+            case "0":
+              return federationTemplate;
+            break;
+            case "1":
+              return organizationTemplate
+            break;
+            case "2":
+                return openIDConnectOPTemplate
+            break;
+            case "3":
+              return openIDConnectRPTemplate
+
+            break;
+            case "4":
+                return umaRSTemplate;
+            break;
+            case "5":
+                return umaASTemplate;
+            break;
+            case "6":
+              return umaROTemplate;
+            break;
+            case "7":
+              return oauth2OPTemplate;
+            break;
+            case "8":
+              return oauth2RPTemplate;
+            break;
+
+            default:
+
+          }
+        }
+
+          //
+          // var templatesAdding = $(".filter").children();
+          // for(var i=0;i<templatesAdding.length;i++)
+          // {
+          //
+          //       console.log(templatetype);
+          // }
+          // alert(templatesAdding.length);
+
+          function onlyUnique(value, index, self) {
+              return self.indexOf(value) === index;
+          }
+
+
 
     </script>
 </head>
@@ -38,19 +255,53 @@
         </div>
         <form action="/process_post" onsubmit="return validateForm()" method="POST">
             <div>
+              <span class="textwidth">Add Template : </span>
+              <select name="templatetype" id="templatetype">
+                <option value="-1">Select</option>
+                <option value="0">federationTemplate</option>
+                <option value="1">organizationTemplate</option>
+                <option value="2">openIDConnectOPTemplate</option>
+                <option value="3">openIDConnectRPTemplate</option>
+                <option value="4">umaRSTemplate</option>
+                <option value="5">umaASTemplate</option>
+                <option value="6">umaROTemplate</option>
+                <option value="7">oauth2OPTemplate</option>
+                <option value="8">oauth2RPTemplate</option>
+            </select>
+            </div>
+            <br/>
+            <div class="filter">
+
+            </div>
+
+            <br/>
+            <div>
               <span class="textwidth">Template :</span> <textarea rows="20" cols="100" name="template" id="template" required="required"></textarea>
             </div>
             <br/>
             <div>
             <span class="textwidth">  Counter :</span> <input type="number" name="counter" required="required" >
           </div>
-            <br/>
-            <div>
-            <span class="textwidth">Guid Ids to replace (comma seperated) :</span> <input type="text" name="guidIdsrep">
+          <br/>
+          <div>
+            <span class="textwidth">Variables to replace with GUIDs (comma seperated) :</span> <textarea type="text" name="guidIdsrep" id="guidIdsrep1" cols="50" rows="5"></textarea>
           </div>
+
+          <div>
+            <span class="textwidth">Variable to replace with Strings (comma seperated) :</span> <input type="text" name="stringIdsrep">
+          </div>
+
             <br/>
 
             <input type="submit" value="Submit">
+
+            <div style="display:none">
+              <div class="addedClone"> <img src="img/close.png" ></img>
+                  <span>federation<span>
+
+               </div>
+
+            <div>
         </form>
     </main>
 

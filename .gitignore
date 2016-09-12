@@ -1,2 +1,5 @@
 .idea/
 utility-programs/otto-jsonld-generator/node_modules/
+utility-programs/database_data_generator/node_modules/
+
+utility-programs/database_data_generator/
