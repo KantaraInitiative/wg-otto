@@ -7,7 +7,7 @@ var bodyParser = require('body-parser')
 var jsonSignature = path.join(__dirname, './jsonSignature.js');
 var dataset = path.join(__dirname, './dataset.json');
 var settings = require('./config/settings');
-
+var Moniker = require('moniker');
 /****************Setting Middle ware to fetch the data ********************/
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -36,7 +36,9 @@ app.post('/process_post', function(req, res) {
     var template = req.body.template;
     var counter = req.body.counter;
     var guidIdsrep = req.body.guidIdsrep;
+    var stringIdsrep = req.body.stringIdsrep;
     var guidIdsrepArr = guidIdsrep.split(",");
+    var stringIdsrepArr = stringIdsrep.split(",")
     var datasetArray = [];
 
     for (var i = 0; i < counter; i++) {
@@ -46,10 +48,25 @@ app.post('/process_post', function(req, res) {
       {
           if(guidIdsrepArr[j] != null  && guidIdsrepArr[j].trim() != "" )
           {
-            var regex = new RegExp(guidIdsrepArr[j], 'g');
-            dataTemplate= dataTemplate.replace(regex,generateUUID);
+            var regex = new RegExp(guidIdsrepArr[j].trim(), 'g');
+            dataTemplate= dataTemplate.replace(regex,generateUUID());
           }
       }
+
+      for(var j=0;j<stringIdsrepArr.length;j++)
+      {
+          if(stringIdsrepArr[j] != null  && stringIdsrepArr[j].trim() != "" )
+          {
+            var regex = new RegExp(stringIdsrepArr[j].trim(), 'g');
+
+            var names = Moniker.generator([Moniker.adjective, Moniker.noun]);
+          //  console.log(names.choose());
+            console.log(regex);
+            dataTemplate= dataTemplate.replace(regex,names.choose());
+          }
+      }
+
+
       datasetArray.push(JSON.parse(dataTemplate));
     }
     res.json(datasetArray);
