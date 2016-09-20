@@ -257,9 +257,9 @@ DELETE /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-### Join federation (POST)
+### Create and Join federation (POST)
 
-It may create entity and join the federation or otherwise join already existed entity.
+Create entity and join to the federation.
 
 **Request**
 ```json
@@ -268,6 +268,20 @@ POST /federations/<federation_id> HTTP/1.1
    "name":"MyEntity",
    <other properties here>
 }
+```
+
+**Response**
+```
+HTTP/1.1 200 OK
+```
+
+### Join federation (POST)
+
+Join the federation.
+
+**Request**
+```json
+POST /federations/<federation_id>/<entity_id> HTTP/1.1
 ```
 
 **Response**
