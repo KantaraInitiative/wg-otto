@@ -66,7 +66,10 @@ also called a "Member"
 * Entities - A generic term for a service in the federation
 
 
-## Schema - JSON-LD definitions to model the ecosystem components
+## Schema
+
+JSON-LD definitions to model the ecosystem components.
+
 * OTTO
     * Registration Authority - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/ra.md
     * Federation - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/federation.md        
