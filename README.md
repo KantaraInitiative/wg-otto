@@ -6,7 +6,7 @@ Table of Contents
  * [Abstract](#abstract)
  * [Definitions](#definitions)
  * [Schema](#schema)
- * [<a href="#endpoint-discovery">Discovery Endpoint</a>](#discovery-endpoint)
+ * [Discovery Endpoint](#discovery-endpoint)
  * [federations endpoint](#federations-endpoint)
    * [Search Federations (GET)](#search-federations-get)
    * [Create (POST)](#create-post)
@@ -19,22 +19,10 @@ Table of Contents
    * [Create (POST)](#create-post-1)
    * [Update (PUT)](#update-put-1)
    * [Delete (DELETE)](#delete-delete-1)
- * [schema endpoint](#schema-endpoint)
-   * [Create (POST)](#create-post-2)
-   * [Update (PUT)](#update-put-2)
-   * [Delete (DELETE)](#delete-delete-2)
  * [organization endpoint](#organization-endpoint)
    * [Create (POST)](#create-post-3)
    * [Update (PUT)](#update-put-3)
    * [Delete (DELETE)](#delete-delete-3)
- * [Linked Data Schema](#linked-data-schema)
-   * [Properties](#properties)
-   * [schema/otto/hash.jsonld](#schemaottohashjsonld)
-   * [schema/otto/openid_provider.jsonld](#schemaottoopenid_providerjsonld)
-   * [schema/otto/openid_relying_party.jsonld](#schemaottoopenid_relying_partyjsonld)
-   * [schema/otto/uma_rs.jsonld](#schemaottouma_rsjsonld)
-   * [schema/otto/uma_as.jsonld](#schemaottouma_asjsonld)
-   * [schema/otto/uma_relying_party.jsonld](#schemaottouma_relying_partyjsonld)
  * [Appendix A](#appendix-a)
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#search-federations-endpoint--federationsfederation-iddepthfederations)
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#search-federations-endpoint--federationsfederation-iddepth1filterfilter)
@@ -59,12 +47,12 @@ ecosystems.
 * Organization - Legal entity that can sign agreements and control services.
 * Federation - A group of organizations that cede some decision making rights
 to a central authority to lower the legal and technical costs of collaboration.
-* Federation Operator - A person or group of persons with responsibilities for
-setting the operating policies and procedures for an individual federation.
+* Federation Operator - An organization responsibile for setting the 
+operating policies and procedures for an individual federation.
 * Participant - An organization that has joined a federation, sometimes 
 also called a "Member"
-* Entities - A generic term for a service in the federation
-
+* Entity - A high level term for a service or group of services which 
+partipate in the federation
 
 ## Schema
 
@@ -89,13 +77,13 @@ JSON-LD definitions to model the ecosystem components.
 
 ## [Discovery Endpoint](#endpoint-discovery)
 
-Registration Authority have metadata describing their configuration. These Registration Authority Metadata values are used by OTTO:
+Registration Authority have metadata describing their configuration. 
+These Registration Authority Metadata values are used by OTTO:
 
    * issuer - REQUIRED. URL using the https scheme with no query or fragment component that the RA asserts as its Issuer Identifier. If Issuer discovery is supported, this value MUST be identical to the issuer value returned by WebFinger. 
    * federations_endpoint - REQUIRED. federations endpoint
    * federation_entity_endpoint - REQUIRED. federation entity endpoint
    * organizations_endpoint - REQUIRED. organization endpoint
-   * schema_endpoint - REQUIRED. schema endpoint
 
 Registration Authority supporting Discovery MUST make a JSON document available at the path formed by concatenating the string `/.well-known/otto-configuration` to the Issuer. The syntax and semantics of .well-known are defined in RFC 5785 [RFC5785] and apply to the Issuer value when it contains no path component. otto-configuration MUST point to a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
 
@@ -608,286 +596,6 @@ DELETE /organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-## Linked Data Schema
-
-### Properties
-
-Properties :
-  * hash - http://kantarainitiative.org/otto/schema/property/hash - hash of the object
-  * hashAlg - http://kantarainitiative.org/otto/schema/property/hashAlg - hash algorithm
-
-### schema/otto/hash.jsonld
-
-```n3
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:Hash a rdfs:Class .
-
-    otto:hashValue a rdf:Property ;
-     rdfs:range xsd:string;
-     .
-
-    otto:hashAlgorithm a rdf:Property ;
-     rdfs:range xsd:string;
-     .
-```
-
-hash.jsonld
-```json
-   {
-     "@context": {
-       "otto": "http://kantarainitiative.org/otto/schema/",
-       "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-       "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-       "schema": "http://schema.org/",
-       "xsd": "http://www.w3.org/2001/XMLSchema#"
-     },
-     "@graph": [
-       {
-         "@id": "otto:hashValue",
-         "@type": "rdf:Property",
-         "rdfs:range": {
-           "@id": "xsd:string"
-         }
-       },
-       {
-         "@id": "otto:Hash",
-         "@type": "rdfs:Class"
-       },
-       {
-         "@id": "otto:hashAlgorithm",
-         "@type": "rdf:Property",
-         "rdfs:range": {
-           "@id": "xsd:string"
-         }
-       }
-     ]
-   }
-```
-
-### schema/otto/openid_provider.jsonld
-
-[External extensions](http://schema.org/docs/extension.html)
-[JSON-LD basic concept](https://www.w3.org/TR/json-ld/#basic-concepts)
-
-```N3
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:OpenID_Provider a rdfs:Class .
-
-    otto:discoveryURL a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:discoveryJSONHash a rdf:Property ;
-     rdfs:range otto:Hash;
-     .
-
-    otto:providedBy a rdf:Property ;
-     rdfs:range schema:Organization;
-     .
-
-    otto:jwksJSONHash a rdf:Property ;
-     rdfs:range otto:Hash ;
-     .
-
-    # Instance data  TODO -> need to set instance data correctly
-
-    <https://ra.org/federations/904cb092/c5a6-11e5-9912-ba0be0483c18>
-     a schema:Thing, otto:OpenID_Provider;
-     otto:discoveryURL "https://idp.example.com/.well-known/openid-configuration" ;
-     otto:discoveryJSONHash "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12";
-     otto:jwksJSONHash "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3";
-     otto:providedBy <https://fc.com/otto/organization/904cb092/230948-DFJLK>;
-```
-
-openid_provider.jsonld
-```json
-   {
-        "@context": {
-          "otto": "http://kantarainitiative.org/otto/schema/",
-          "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-          "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-          "schema": "http://schema.org/",
-          "xsd": "http://www.w3.org/2001/XMLSchema#"
-        },
-        "@graph": [
-          {
-            "@id": "otto:jwksJSONHash",
-            "@type": "ott:Hash"
-          },
-          {
-            "@id": "otto:OpenID_Provider",
-            "@type": "rdfs:Class"
-          },
-          {
-            "@id": "otto:discoveryURL",
-            "@type": "rdf:Property",
-            "rdfs:range": {
-              "@id": "xsd:anyURI"
-            }
-          },
-          {
-            "@id": "otto:providedBy",
-            "@type": "rdf:Property",
-            "rdfs:range": {
-              "@id": "schema:Organization"
-            }
-          },
-          {
-             "@id": "otto:discoveryJSONHash",
-             "@type": "otto:Hash"
-          },
-          {
-            "@id": "https://ra.org/federations/904cb092/c5a6-11e5-9912-ba0be0483c18",
-            "@type": [
-              "otto:OpenID_Provider",
-              "schema:Thing"
-            ],
-            "otto:discoveryJSONHash": "2fd4e1c67a2d28fced849ee1bb76e7391b93eb12",
-            "otto:discoveryURL": "https://idp.example.com/.well-known/openid-configuration",
-            "otto:jwksJSONHash": "de9f2c7fd25e1b3afad3e85a0bd17d9b100db4b3",
-            "otto:providedBy": {
-              "@id": "https://fc.com/otto/organization/904cb092/230948-DFJLK"
-            }
-          },
-        ]
-      }
-```
-
-### schema/otto/openid_relying_party.jsonld
-
-```N3
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:OpenID_Relying_Party a rdfs:Class .
-
-    otto:redirect_uris a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:jwks_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:sector_identifier_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:initiate_login_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:logout_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:entity_category a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-```
-
-### schema/otto/uma_rs.jsonld
-
-```N3
-
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:UMA_Resource_Server a rdfs:Class .
-
-    otto:resource_server_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:resource_set_uris a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-```
-
-### schema/otto/uma_as.jsonld
-
-```N3
-
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:UMA_Authorization_Server a rdfs:Class .
-
-    otto:discoveryURL a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:discoveryJSONHash a rdf:Property ;
-     rdfs:range otto:Hash;
-     .
-```
-
-### schema/otto/uma_relying_party.jsonld
-
-```N3
-    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-    @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-    @prefix schema: <http://schema.org/> .
-    @prefix otto: <http://kantarainitiative.org/otto/schema/> .
-
-    # Ontology
-
-    otto:UMA_Relying_Party a rdfs:Class .
-
-    otto:redirect_uris a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:jwks_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:sector_identifier_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:initiate_login_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:logout_uri a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-
-    otto:entity_category a rdf:Property ;
-     rdfs:range xsd:anyURI;
-     .
-```
 
 # Appendix A
 
@@ -1001,8 +709,13 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.enti
 `&filter=.entity.name&filter=.entity.id`
 
 
-###  Questions
+### Open Questions
 
 * How are we going version federation metadata?
-* How are we going version entities ? E.g. UMA RP 1.0 vs UMA RP 1.0.1 implementation.
+* How are we going version entities?  
 * Do we want to support custom entities?
+
+### More info
+
+[External extensions](http://schema.org/docs/extension.html)
+[JSON-LD basic concept](https://www.w3.org/TR/json-ld/#basic-concepts)
