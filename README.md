@@ -55,29 +55,31 @@ ecosystems.
 ## Definitions
 
 * Registration Authority - Service responsible for hosting federations.
-* Organization - organization description. It may be referenced in any object: Federation, Entity or any
-other organization related object.
-* Federation - group of entities.
-* Member - reference to entity or another federation.
-* Entity - concrete representation of entity. Entity may have many types at the same time. For example, an
-entity may act as OpenID Connect OP and UMA AS at the same time.
-    * Entity type :
-        * OAuth2 RP - https://ra.org/schema/otto/entity/type/oauth2_rp
-        * OAuth2 OP - https://ra.org/schema/otto/entity/type/oauth2_op
-        * OpenID Connect RP - https://ra.org/schema/otto/entity/type/connect_rp
-        * OpenID Connect OP - https://ra.org/schema/otto/entity/type/connect_rp
-        * UMA AS - https://ra.org/schema/otto/entity/type/uma_as
-        * UMA RS - https://ra.org/schema/otto/entity/type/uma_rs
-        * UMA RP - https://ra.org/schema/otto/entity/type/uma_rp
-* Schema -
-    * Schema type :
-        * User claim schema
-        * Authentication context reference schema
-        * Authentication method reference schema
-        * UMA Scope schema
-        * OpenID Connect Scope schema
-        * Software statement schema
-        * Trust mark schema
+* Organization - Legal entity that can sign agreements and control services.
+* Federation - A group of organizations that cede some decision making rights
+to a central authority to lower the legal and technical costs of collaboration.
+* Federation Operator - A person or group of persons with responsibilities for
+setting the operating policies and procedures for an individual federation.
+* Participant - An organization that has joined a federation, sometimes 
+also called a "Member"
+* Entities - A generic term for a service in the federation
+* Schema - JSON-LD definitions to model the ecosystem components
+    * OTTO
+        * Registration Authority - https://github.com/KantaraInitiative/wg-otto/schema/otto/ra
+        * Federation - https://github.com/KantaraInitiative/wg-otto/schema/otto/federation        
+        * Entity - https://github.com/KantaraInitiative/wg-otto/schema/otto/entity        
+        * Organization - https://github.com/KantaraInitiative/wg-otto/schema/otto/organization
+        * User Claim - https://github.com/KantaraInitiative/wg-otto/schema/otto/user_claim
+        * Authentication Context Class Reference - https://github.com/KantaraInitiative/wg-otto/schema/otto/acr
+        * Authentication Method Reference - https://github.com/KantaraInitiative/wg-otto/schema/otto/amr
+    * SAML
+        * SAML IDP - https://github.com/KantaraInitiative/wg-otto/schema/saml/idp
+        * SAML SP - https://github.com/KantaraInitiative/wg-otto/schema/saml/sp
+    * OpenID
+        * Relying Party - https://github.com/KantaraInitiative/wg-otto/schema/openid/rp
+        * OpenID Provider - https://github.com/KantaraInitiative/wg-otto/schema/openid/op
+        * Scope - https://github.com/KantaraInitiative/wg-otto/schema/openid/scope
+        * Software statement - https://github.com/KantaraInitiative/wg-otto/schema/openid/SoftwareStatement
 
 ## [Discovery Endpoint](#endpoint-discovery)
 
