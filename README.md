@@ -5,6 +5,7 @@ Table of Contents
 
  * [Abstract](#abstract)
  * [Definitions](#definitions)
+ * [Schema](#schema)
  * [<a href="#endpoint-discovery">Discovery Endpoint</a>](#discovery-endpoint)
  * [federations endpoint](#federations-endpoint)
    * [Search Federations (GET)](#search-federations-get)
