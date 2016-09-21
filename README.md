@@ -63,23 +63,25 @@ setting the operating policies and procedures for an individual federation.
 * Participant - An organization that has joined a federation, sometimes 
 also called a "Member"
 * Entities - A generic term for a service in the federation
-* Schema - JSON-LD definitions to model the ecosystem components
-    * OTTO
-        * Registration Authority - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/ra.md
-        * Federation - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/federation.md        
-        * Entity - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/entity.md        
-        * Organization - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/organization.md
-        * User Claim - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/user_claim.md
-        * Authentication Context Class Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/acr.md
-        * Authentication Method Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/amr.md
-    * SAML
-        * SAML IDP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/idp.md
-        * SAML SP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/sp.md
-    * OpenID
-        * Relying Party - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/rp.md
-        * OpenID Provider - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/op.md
-        * Scope - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/scope.md
-        * Software statement - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/SoftwareStatement.md
+
+
+## Schema - JSON-LD definitions to model the ecosystem components
+* OTTO
+    * Registration Authority - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/ra.md
+    * Federation - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/federation.md        
+    * Entity - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/entity.md        
+    * Organization - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/organization.md
+    * User Claim - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/user_claim.md
+    * Authentication Context Class Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/acr.md
+    * Authentication Method Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/amr.md
+* SAML
+    * SAML IDP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/idp.md
+    * SAML SP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/sp.md
+* OpenID
+    * Relying Party - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/rp.md
+    * OpenID Provider - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/op.md
+    * Scope - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/scope.md
+    * Software statement - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/SoftwareStatement.md
 
 ## [Discovery Endpoint](#endpoint-discovery)
 
