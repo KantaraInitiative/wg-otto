@@ -27,7 +27,7 @@ Table of Contents
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1](#search-federations-endpoint--federationsfederation-iddepthfederations)
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#search-federations-endpoint--federationsfederation-iddepth1filterfilter)
  * [Questions](#questions)
-
+ * [More Info](#more-info)
 ## Abstract
 
 The Open Trust Taxonomy for Federation Operators (OTTO) is a set of API's and a linked data
@@ -39,7 +39,7 @@ functionality and schema, the OTTO standard provides a scalable technical
 infrastructure to solve organizational challenges in a number of different
 ecosystems.
 
-![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/daf940b6d44c990a0b580dcc59d9698a1a66ccd0/docs/proposal/otto_overview.png "Big picture")
+![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/docs/proposal/otto_overview.png "Big picture")
 
 ## Definitions
 
@@ -80,20 +80,36 @@ JSON-LD definitions to model the ecosystem components.
 Registration Authority have metadata describing their configuration. 
 These Registration Authority Metadata values are used by OTTO:
 
-   * issuer - REQUIRED. URL using the https scheme with no query or fragment component that the RA asserts as its Issuer Identifier. If Issuer discovery is supported, this value MUST be identical to the issuer value returned by WebFinger. 
+   * issuer - REQUIRED. URL using the https scheme with no query or 
+   fragment component that the RA asserts as its Issuer Identifier.
    * federations_endpoint - REQUIRED. federations endpoint
    * federation_entity_endpoint - REQUIRED. federation entity endpoint
    * organizations_endpoint - REQUIRED. organization endpoint
 
-Registration Authority supporting Discovery MUST make a JSON document available at the path formed by concatenating the string `/.well-known/otto-configuration` to the Issuer. The syntax and semantics of .well-known are defined in RFC 5785 [RFC5785] and apply to the Issuer value when it contains no path component. otto-configuration MUST point to a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
+Registration Authority supporting Discovery MUST make a JSON document 
+available at the path formed by concatenating the string 
+`/.well-known/otto-configuration` to the Issuer. The syntax and semantics 
+of .well-known are defined in [RFC 5785](https://tools.ietf.org/html/rfc5785)
+and apply to the Issuer value when it contains no path component. 
+otto-configuration MUST point to a JSON document compliant with this 
+specification and MUST be returned using the `application/json` content 
+type.
 
 *Non-normative example request*
 ```
 GET /.well-known/otto-configuration HTTP/1.1
-Host: ra.com
+Host: ra.org
 ```
 
-The response is a set of Claims about the RA's configuration, including all necessary endpoints and public key location information. A successful response MUST use the 200 OK HTTP status code and return a JSON object using the `application/json` content type that contains a set of Claims as its members that are a subset of the RA's Metadata values. Other Claims MAY also be returned. Claims that return multiple values are represented as JSON arrays. Claims with zero elements MUST be omitted from the response. An error response uses the applicable HTTP status code value.
+The response is a set of Claims about the RA's configuration, including 
+all necessary endpoints and public key location information. A successful 
+response MUST use the 200 OK HTTP status code and return a JSON object 
+using the `application/json` content type that contains a set of Claims 
+as its members that are a subset of the RA's Metadata values. Other 
+Claims MAY also be returned. Claims that return multiple values are 
+represented as JSON arrays. Claims with zero elements MUST be omitted 
+from the response. An error response uses the applicable HTTP status 
+code value.
 
 *Non-normative example response*
 ```
@@ -104,8 +120,7 @@ Content-Type: application/json
    "issuer":"https://ra.com",
    "federations_endpoint":"https://ra.com/otto/federations",
    "federation_entity_endpoint":"https://ra.com/otto/entity",
-   "organizations_endpoint":"https://ra.com/otto/organizations",
-   "schema_endpoint":"https://ra.com/otto/schema"
+   "organizations_endpoint":"https://ra.com/otto/organizations"
 }
 ```
 
@@ -114,27 +129,30 @@ Content-Type: application/json
 
 ### Search Federations (GET)
 
-Endpoint to return federation metadata or federation IDs that are hosted by given server.
+Endpoint to return federation metadata or federation IDs that are hosted 
+by given server.
 
 Request:
 * federation_id - OPTIONAL - id of federation.
-* entity_type - OPTIONAL - filter to return federation entities only of specific type. For example OpenID Connect OP implementation in general is interested only in OpenID Connect RP entity because it's going to server only Connect RP requests. Such implementation is not interested in any UMA or SAML or OAuth2 entities. For this we provide filtering functionality. Possible values:
-    * oauth2_rp
-    * oauth2_op
+* entity_type - OPTIONAL - filter to return federation entities only of 
+specific type. For example, an OpenID Connect OP implementation 
+may only need to know about RP entities. Such an implementation is not 
+interested in other OP's or SAML entities. Possible values:
     * connect_rp
     * connect_op
-    * uma_rs
-    * uma_rp
-    * uma_as
-* filter - OPTIONAL - expression to narrow the result set based on specific criteria. Expression is represented in jspath format (https://github.com/dfilatov/jspath).
-* depth - OPTIONAL - represents depth of graph resolving. &depth=federations&depth=federations.entitites.organization.
+    * saml_idp
+    * saml_rp
+* filter - OPTIONAL - expression to narrow the result set based on 
+specific criteria. Expression is represented in 
+[jspath format](https://github.com/dfilatov/jspath).
+* depth - OPTIONAL - represents depth of graph resolving.
 
 Requests:
   - /federations - returns federation IDs available from this Registration Authority
   - /federations/_federation id_ - returns metadata of federation
   - /federations/_federation id_&entity_type=_type_ - returns metadata of federation filtered by type.
   - /federations/_federation id_&filter=_filter_ - returns filtered metadata
-  - /federations/_federation id_&depth=_1_ - how many interfederations deep to search
+  - /federations/_federation id_&depth=_1_ - how many inter-federations deep to search
 
 **Federation list Request:**
 
@@ -168,7 +186,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entiti
 {
   "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
-  "name": "OAuth 2 Federation",                                                    <- name of federation
+  "name": "Our Federation",                                                        <- name of federation
   "entities":[
             {                                                                      <- reference to entity
                         "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
@@ -330,17 +348,6 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 }
 ```
 
-**UMA Resource Server Entity Response:**
-```json
-{
-  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
-  "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
-  "name": "Gluu Resource Server",
-  "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
-  "organization":"https://gluu.org/otto/organization"
-}
-```
-
 ### Create (POST)
 
 **Request:**
@@ -383,125 +390,6 @@ HTTP/1.1 200 OK
 **Request:**
 ```
 DELETE /federation_entity/<entity id> HTTP/1.1
-```
-
-**Response:**
-```
-HTTP/1.1 200 OK
-```
-
-## schema endpoint
-
-**Schema list Request:**
-
-```
-GET https://ra.org/schema/v1.1 HTTP/1.1
-```
-
-(Schema sticks to particular version which is shown directly in URL. E.g. GET https://ra.org/schema/v2.1)
-
-**Schema list Response:**
-```json
-{
-  "schemas": [
-    "https://ra.org/schema/v1.1/hash",
-    "https://ra.org/schema/v1.1/organization",
-    "https://ra.org/schema/v1.1/federations",
-    "https://ra.org/schema/v1.1/openid_provider",
-    "https://ra.org/schema/v1.1/openid_relying_party",
-    "https://ra.org/schema/v1.1/uma_rs",
-    "https://ra.org/schema/v1.1/uma_as",
-    "https://ra.org/schema/v1.1/uma_ro"
-  ]
-}
-```
-
-
-**Schema Request:**
-
-```
-GET https://ra.org/schema/v1.1/hash HTTP/1.1
-```
-
-**Schema hash v1.1 Response:**
-```json
-    {
-       "@context": {
-         "otto": "http://kantarainitiative.org/otto/schema/",
-         "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-         "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-         "schema": "http://schema.org/",
-         "xsd": "http://www.w3.org/2001/XMLSchema#"
-       },
-       "@graph": [
-         {
-           "@id": "otto:hashValue",
-           "@type": "rdf:Property",
-           "rdfs:range": {
-             "@id": "xsd:string"
-           }
-         },
-         {
-           "@id": "otto:Hash",
-           "@type": "rdfs:Class"
-         },
-         {
-           "@id": "otto:hashAlgorithm",
-           "@type": "rdf:Property",
-           "rdfs:range": {
-             "@id": "xsd:string"
-           }
-         }
-       ]
-    }
-```
-
-### Create (POST)
-
-**Request:**
-```json
-POST /schema
-{
-   "name":"myentity",
-   "major_version":"1",
-   "minor_version":"2"
-   <other properties here>
-}
-```
-
-**Response:**
-```json
-HTTP/1.1 201 Created
-Content-Type: application/json
-
-{
-   "id":"https://ra.org/schema/1.2/myentity"
-}
-```
-
-### Update (PUT)
-
-**Request:**
-```json
-PUT /schema HTTP/1.1
-{
-   "name":"myentity",
-   "major_version":"1",
-   "minor_version":"2"
-   <other properties here>
-}
-```
-
-**Response:**
-```
-HTTP/1.1 200 OK
-```
-
-### Delete (DELETE)
-
-**Request:**
-```
-DELETE /schema/v1.2/myentity HTTP/1.1
 ```
 
 **Response:**
