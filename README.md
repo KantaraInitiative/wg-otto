@@ -28,6 +28,7 @@ Table of Contents
    * [Search federations endpoint : /federations/&lt;federation id&gt;?depth=1&filter=&lt;filter&gt;](#search-federations-endpoint--federationsfederation-iddepth1filterfilter)
  * [Questions](#questions)
  * [More Info](#more-info)
+ 
 ## Abstract
 
 The Open Trust Taxonomy for Federation Operators (OTTO) is a set of API's and a linked data
@@ -70,8 +71,8 @@ JSON-LD definitions to model the ecosystem components.
     * SAML IDP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/idp.md
     * SAML SP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/sp.md
 * OpenID
-    * Relying Party - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/rp.md
     * OpenID Provider - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/op.md
+    * Relying Party - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/rp.md
     * Scope - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/scope.md
     * Software statement - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/SoftwareStatement.md
 
@@ -599,11 +600,11 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.enti
 
 ### Open Questions
 
-* How are we going version federation metadata?
-* How are we going version entities?  
-* Do we want to support custom entities?
+ * How are we going version federation metadata?
+ * How are we going version entities?  
+ * Do we want to support custom entities?
 
 ### More info
 
-[External extensions](http://schema.org/docs/extension.html)
-[JSON-LD basic concept](https://www.w3.org/TR/json-ld/#basic-concepts)
+ * [External extensions](http://schema.org/docs/extension.html)
+ * [JSON-LD basic concept](https://www.w3.org/TR/json-ld/#basic-concepts)
