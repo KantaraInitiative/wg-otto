@@ -22,7 +22,7 @@ Option 1: Include links to services
     "role": "Identity Provider"
     "id": "https://ce-dev.gluu.org/oauth_op",
     "organization": "https://ra.org/organization/4753a206-b52c-4aca-b3b4-09c8a9de8830",
-    "services": [http://ra.org/entity/90e4fb41-8916-4fa6-a306-30e1b904d582",
+    "services": ["http://ra.org/entity/90e4fb41-8916-4fa6-a306-30e1b904d582",
                  "http://ra.org/entity/9c2bbdaf-00ec-42f0-adf0-4d6bb785f356"
                  ]
 }
