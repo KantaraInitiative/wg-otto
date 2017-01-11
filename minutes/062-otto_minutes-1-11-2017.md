@@ -21,6 +21,11 @@ For those who missed it, I recorded this meeting:
 Curent draft 01 of OpenID Connect Federation 1.0:
 http://openid.net/specs/openid-connect-federation-1_0.html
 
+For those who don't know, Roland is a federation guru who has an active community
+member, programmer for many years in multiple federation technologies. In addition
+to the above federation spec, he's the author of the OpenID Connect conformance tests, 
+and quite a bit of SAML, OpenID Connect and UMA software.
+
 One of the goals of this federation standard was to leverage the dynamic
 registration and discovery capabilities of OpenID Connect, but to make 
 it possible to increase the trust level. For example, it would be nice
