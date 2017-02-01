@@ -1,4 +1,4 @@
-OTTO WG Minutes: 1/18/2017
+OTTO WG Minutes: 2/1/2017
 STATUS: Draft
 
 ## Voting Members Attending:
