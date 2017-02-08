@@ -1,0 +1,19 @@
+{  
+   "@context": {  
+      "name":"Local org",
+      "entities":[  
+         {  
+            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
+            "type":"openid_provider"
+         },
+         {  
+            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
+            "type":"RP"
+         }
+      ],
+      "federations":[  
+         "http://otto-test.gluu.org/otto/federations/{id}"
+      ],
+      "@id":"http://otto-test.gluu.org/otto/organization/{id}"
+   }
+}

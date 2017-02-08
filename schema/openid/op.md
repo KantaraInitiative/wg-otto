@@ -1,26 +1,16 @@
-# OpenID Provider
+# Openid Provider
 
-## Non-normative JSON
+## name: String
+It is the name of the federation.
 
-{
-    "@id": "https://ra.org/federation_entity/d8e89c32-325f-40c5-ab79-eabd6b27b4ae",
-    "@context": "https://kantarainitiative.org/otto/schema/saml_idp.json",
-}
+## metadata_statements: list
+It containing a list of metadata statements..
 
-{
-     "redirect_uris": ["https://example.com/rp1"],
-     "metadata_statements": 
-     [
-       {"scope": "openid eduperson",
-         "response_types": ["code"],
-         "metadata_statements" : 
-         [
-           { "contacts": ["dev_admin@example.com"],
-             "logo_uri": "https://example.com/logo.jpg",
-             "policy_uri": "https://example.com/policy.html",
-             "tos_uri": "https://example.com/tos.html"
-           }
-         ]
-       }
-     ]
-   }
+## entities: list
+It represents the list of open id providers, RPs, etc that are added under the federations.
+
+## metadata_statement_uris: Object
+It represent the names are the federation identifiers and the values are URLs pointing to metadata statements connected to each federation.
+
+## @id: URL
+It is unique id of the organization with full url path.

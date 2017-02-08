@@ -1,0 +1,32 @@
+{  
+   "@context":{  
+      "name":"temp org",
+      "metadata_statements":[  
+         {  
+            "scope":"openid eduperson",
+            "response_types":[  
+               "code"
+            ],
+            "metadata_statements":[  
+               {  
+                  "contacts":[  
+                     "devadmin@example.com"
+                  ],
+                  "logo_uri":"https://example.com/logo.jpg",
+                  "policy_uri":"https://example.com/policy.html",
+                  "tos_uri":"https://example.com/tos.html"
+               }
+            ]
+         }
+      ],
+      "metadata_statement_uris":{  
+         "https://swamid.sunet.se/":"https://dev.example.com/rp1/idfed/swamid.jws",
+         "https://www.incommon.org":"https://dev.example.com/rp1/idfed/incommon.jws"
+      },
+      "signed_jwks_uri":"{signed_jwks_uri}",
+      "signing_keys":"-----BEGIN RSA PUBLIC KEY-----\n{signing_keys}\n-----END RSA PUBLIC KEY-----\n",
+      "organization":"http://otto-test.gluu.org/otto/organization/{id}",
+      "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}"
+   }
+}
+

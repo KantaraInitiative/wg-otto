@@ -1,0 +1,24 @@
+{  
+   "@context":{  
+      "name":"fed1",
+      "participants":[  
+         "http://otto-test.gluu.org/otto/organization/{id}"
+      ],
+      "entities":[  
+         {  
+            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
+            "type":"openid_provider"
+         },
+         {  
+            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
+            "type":"RP"
+         }
+      ],
+      "organization":{  
+         "@context":"http://otto-test.gluu.org/otto/organization/organization.jsonld",
+         "@id":"http://otto-test.gluu.org/otto/organization/{id}",
+         "name":"org1"
+      },
+      "@id":"http://otto-test.gluu.org/otto/federations/{id}"
+   }
+}
