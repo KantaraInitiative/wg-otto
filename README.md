@@ -318,6 +318,20 @@ DELETE /federations/<federation_id>/<entity id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
+### Add Participant
+
+Join organization as participant in federation
+
+**Request**
+```
+POST /federations/<federation_id>/organization/<organization_id> HTTP/1.1
+```
+
+**Response**
+```
+HTTP/1.1 200 OK
+```
+
 ## federation_entity endpoint
 
 ### Fetch (GET)
@@ -330,22 +344,15 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 **OpenID Connect OP Entity Response:**
 ```json
 {
-  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
-  "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
-  "name": "Gluu Server Ce-dev",
-  "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
-  "organization":"https://gluu.org/otto/organization"
-}
-```
-
-**OpenID Connect RP Entity Response:**
-```json
-{
-  "@id":"https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18",
-  "@context": "https://ra.org/schema/otto/entity/connect_rp.jsonld",
-  "name": "Gluu Server Ce-dev Client",
-  "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
-  "organization":"https://gluu.org/otto/organization"
+  "@context": "https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/schema/openid/op.jsonld",
+  "@id": "http://otto-test.gluu.org/otto/federation_entity/589b11017d85a90393b189c8",
+  "name": "Local org",
+  "metadata_statements": null,
+  "metadata_statement_uris": null,
+  "signed_jwks_uri": "eyJhbGciOiJSUzI1NiJ9.aHR0cHM6Ly9jZS1kZXYyLmdsdXUub3JnL294YXV0aC9zZWFtL3Jlc291cmNlL3Jlc3R2MS9veGF1dGgvandrcw.WUk3hUD2_rl-ivnawikRdiMZ47SVWWgqq9OzuDeBtWt1rkzLDr4aJ1845Y5J_NRCf70GAE36qO5h5JUiOc6oT2ZlTymn1LdYC0Iiwb9GgIVk6fE6gpUv3KXa2V2nwAqcSPsx5y-9f2-in02Qo7Q7Chyi7Z3jGl7-Cjjk-7nqlyoZfM89LF9Xrt2u-gcZKzWS_XJN3HZaWgGi_R0DJdEUA_uQVCyYPl32uz4mP4lwQU5uVpBuIWB3MEjrgeEIvuT4ZQDYmLkaMG-xOGP7F097A28Ws67L1pOxmaDdJwNmiFKIr4XXJUPqkWlEMUMpqQsF3Gx2coDj2vQXiLQ73ccOxQ",
+  "signing_keys": "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAgqWRHafvK4aEHm5I3yS2ie8s7NPtbt2m+q4h8J4uPdoINu0uzT6aYwjTNuL6\nL2TSzdJA1CIgo5Vc7IOSdMkoci1bVFa06sDisdoNbT7OgnkOq9oRZ7QrILJjsJNwVjkonXbF\ngQtEKvcuFBATTPBCSDjYawAovCC7CYUXqd0DTZZkgjh7Ps50oVMTbWcUxo8McoYeLTh2TRy3\n9+v32tnzgoHCdAnvadQ6EYAYqRj3UP0J74u0wJKO6DjvsDg3i1zMEx4zFqRODoa+G9qCX4D8\nYlyaM0jq9hzgGPVu75m5LLGEXgU4Xtsc3h4JBHhrFAALT2eqAFnRzuON7H7XH/XVaQIDAQAB\n-----END RSA PUBLIC KEY-----\n",
+  "type": "openid_provider",
+  "organization": "http://otto-test.gluu.org/otto/organization/589b0ff37d85a90393b189c7"
 }
 ```
 
@@ -551,7 +558,10 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
                     "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
                      "name":"MyOrganization",
                      <other properties here>
-                  }
+                  },
+  "participants": [
+    "https://ra.org/organization/589b0ff37d85a90393b189c7"
+  ]
 }
 ```
 
