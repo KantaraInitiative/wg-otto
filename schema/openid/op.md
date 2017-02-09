@@ -11,6 +11,3 @@ It represents the list of open id providers, RPs, etc that are added under the f
 
 ## metadata_statement_uris: Object
 It represent the names are the federation identifiers and the values are URLs pointing to metadata statements connected to each federation.
-
-## @id: URL
-It is unique id of the organization with full url path.

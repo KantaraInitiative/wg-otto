@@ -1,19 +1,13 @@
-{  
-   "@context": {  
-      "name":"Local org",
-      "entities":[  
-         {  
-            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
-            "type":"openid_provider"
-         },
-         {  
-            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
-            "type":"RP"
-         }
-      ],
-      "federations":[  
-         "http://otto-test.gluu.org/otto/federations/{id}"
-      ],
-      "@id":"http://otto-test.gluu.org/otto/organization/{id}"
+{
+   "@context": {
+      "name": "https://schema.org/name",
+      "entities": {
+         "@id": "https://schema.org/provider",
+         "@type": "@id"
+      },
+      "federations": {
+         "@id": "https://schema.org/Corporation",
+         "@type": "@id"
+      }
    }
 }

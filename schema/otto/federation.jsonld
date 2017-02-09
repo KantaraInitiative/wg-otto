@@ -1,24 +1,17 @@
-{  
-   "@context":{  
-      "name":"fed1",
-      "participants":[  
-         "http://otto-test.gluu.org/otto/organization/{id}"
-      ],
-      "entities":[  
-         {  
-            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
-            "type":"openid_provider"
-         },
-         {  
-            "@id":"http://otto-test.gluu.org/otto/federation_entity/{id}",
-            "type":"RP"
-         }
-      ],
-      "organization":{  
-         "@context":"http://otto-test.gluu.org/otto/organization/organization.jsonld",
-         "@id":"http://otto-test.gluu.org/otto/organization/{id}",
-         "name":"org1"
+{
+   "@context":{
+      "name": "https://schema.org/name",
+      "participants": {
+         "@id": "https://schema.org/Organization",
+         "@type": "@id"
       },
-      "@id":"http://otto-test.gluu.org/otto/federations/{id}"
+      "entities":  {
+         "@id": "https://schema.org/provider",
+         "@type": "@id"
+      },
+      "organization": {
+         "@id": "https://schema.org/Organization",
+         "@type": "@id"
+      }
    }
 }

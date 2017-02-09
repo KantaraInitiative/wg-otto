@@ -11,6 +11,3 @@ It represents the list of open id providers, RPs, etc that are added under the f
 
 ## organization: Object
 It represent the owner organization for the federation.
-
-## @id: URL
-It is unique id of the organization with full url path.
