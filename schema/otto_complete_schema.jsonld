@@ -1,0 +1,23 @@
+{
+  "@context":
+  {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph":
+  [
+    {
+      "@id": "http://[OTTO]/Participant",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A legal entity that can assent to federation policies.",
+      "rdfs:label": "FedParticipant",
+      "rdfs:subClassOf":
+      {
+        "@id": "http://schema.org/Organization"
+      }
+    },
+  ],
+  "@id": "http://[OTTO]/#X.X"
+}
+
