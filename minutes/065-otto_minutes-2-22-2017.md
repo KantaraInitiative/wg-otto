@@ -11,6 +11,10 @@ STATUS: Draft
 
 See diagrams in Github from Judith:
 
+ - https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagrama_2_1_17.png?raw=true
+ - https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagramb_2_1_17.png?raw=true
+
+
 JSON-LD Object we need to define:
 
 1.  Registration Authority extends Organization. Properties:
