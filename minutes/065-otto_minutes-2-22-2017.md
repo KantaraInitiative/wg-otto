@@ -1,4 +1,4 @@
- OTTO WG Minutes: 2/22/2017
+OTTO WG Minutes: 2/22/2017
 STATUS: Draft
 
 ## Voting Members Attending:
@@ -7,14 +7,12 @@ STATUS: Draft
  - Judith Bush
  - Janusz Ulanowski
  
-## Discussion schema 
+## Discussion of JSON-LD schema
 
-See diagrams in Github from Judith:
-
- - https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagrama_2_1_17.png?raw=true
- - https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagramb_2_1_17.png?raw=true
-
-
+Judith made some useful "class diagrams":
+  1. https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagrama_2_1_17.png?raw=true
+  2. https://github.com/KantaraInitiative/wg-otto/blob/master/files/judith_class_diagramb_2_1_17.png?raw=true
+  
 JSON-LD Object we need to define:
 
 1.  Registration Authority extends Organization. Properties:
@@ -53,5 +51,3 @@ OTTO WG could define additional types (extend Metadata).
 
 Work is to consider each each object, which attributes it uses from
 its super-class, and which new attributes are needed to describe it.
-
-See Judith's diagram.
