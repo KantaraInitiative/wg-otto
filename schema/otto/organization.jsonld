@@ -1,13 +1,25 @@
 {
-   "@context": {
+  "@context": {
       "name": "https://schema.org/name",
-      "entities": {
-         "@id": "https://schema.org/provider",
-         "@type": "@id"
-      },
-      "federations": {
-         "@id": "https://schema.org/Corporation",
-         "@type": "@id"
-      }
+      "entities": [{
+      		"@id": "https://schema.org/provider",
+        	"@type": "@id"
+        }],
+      "federations": [{
+        	"@id": "https://schema.org/Corporation",
+        	"@type": "@id"
+        }],
+      "registeredBy": {
+		"@id": "https://schema.org/Organization",
+        	"@type": "@id"
+	},
+      "registration_authority_identifier": {
+		"@id": "https://schema.org/Organization",
+        	"@type": "@id"
+	},
+      "memberOf": {
+		"@id": "https://schema.org/Corporation",
+        	"@type": "@id"
+	},
    }
 }

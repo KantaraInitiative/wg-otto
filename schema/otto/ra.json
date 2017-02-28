@@ -1,0 +1,8 @@
+{  
+   "@context": { 
+      "registers" : [{
+        	"@id": "http://schema.org/Thing",
+        	"@type": "@id"
+       }]
+   }
+}

@@ -14,6 +14,15 @@
     {
       "@id": "https://schema.org/Organization",
       "@type": "rdfs:Class",
+      "rdfs:comment": "A Registration Authority which manage organization, federation and entity.",
+      "rdfs:label": "RA",
+      "rdfs:subClassOf": {
+        "@id": "https://schema.org/Organization"
+      }
+    },
+    {
+      "@id": "https://schema.org/Organization",
+      "@type": "rdfs:Class",
       "rdfs:comment": "An organization such as a NGO, corporation, club, etc.",
       "rdfs:label": "Organization",
       "rdfs:subClassOf": {
@@ -42,13 +51,13 @@
       "@id": "https://schema.org/provider",
       "@type": "rdfs:Class",
       "rdfs:comment": "The service provider, service operator, or service performer.",
-      "rdfs:label": "Provider",
+      "rdfs:label": "Entity",
       "rdfs:subClassOf": {
         "@id":"https://schema.org/Corporation"
       }
     },
     {
-      "@id": "https://schema.org/provider",
+      "@id": "https://schema.org/additionalType",
       "@type": "rdfs:Class",
       "rdfs:comment": "SAMLSP service",
       "rdfs:label": "SAMLSP",
@@ -57,7 +66,7 @@
       }
     },
     {
-      "@id": "https://schema.org/provider",
+      "@id": "https://schema.org/additionalType",
       "@type": "rdfs:Class",
       "rdfs:comment": "SAMLSP service",
       "rdfs:label": "SAMLIDP",
@@ -66,7 +75,7 @@
       }
     },
     {
-      "@id": "https://schema.org/provider",
+      "@id": "https://schema.org/additionalType",
       "@type": "rdfs:Class",
       "rdfs:comment": "UMA service",
       "rdfs:label": "UMA",
@@ -75,7 +84,7 @@
       }
     },
     {
-      "@id": "https://schema.org/provider",
+      "@id": "https://schema.org/additionalType",
       "@type": "rdfs:Class",
       "rdfs:comment": "Relying Party",
       "rdfs:label": "RP",
@@ -84,12 +93,66 @@
       }
     },
     {
-      "@id": "https://schema.org/provider",
+      "@id": "https://schema.org/additionalType",
       "@type": "rdfs:Class",
       "rdfs:comment": "Openid provider",
       "rdfs:label": "OP",
       "rdfs:subClassOf": {
         "@id":"https://schema.org/provider"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Openid provider",
+      "rdfs:label": "OP",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/provider"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "User information",
+      "rdfs:label": "UserClaim",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/Thing"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Scope to describe the user information sharing scope",
+      "rdfs:label": "Scope",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/Thing"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Authentication Context Class Reference",
+      "rdfs:label": "ACR",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/Thing"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Authentication method Reference",
+      "rdfs:label": "AMR",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/Thing"
+      }
+    },
+    {
+      "@id": "https://schema.org/additionalType",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "Trustmark",
+      "rdfs:label": "Trustmark",
+      "rdfs:subClassOf": {
+        "@id":"https://schema.org/Thing"
       }
     }
   ]

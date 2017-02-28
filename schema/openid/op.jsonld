@@ -2,15 +2,19 @@
    "@context":{
       "name": "https://schema.org/name",
       "metadata_statements": {
-         "@id": "https://schema.org/object"
-         "type": "@id"
-      },
+		"@id": "https://schema.org/object"
+		"type": "@id"
+	},
       "metadata_statement_uris": "https://schema.org/url",
       "signed_jwks_uri": "https://schema.org/url",
       "signing_keys": "https://schema.org/Text",
       "organization": {
-         "@id": "https://schema.org/Organization",
-         "@type": "@id"
-      }
+        	"@id": "https://schema.org/Organization",
+        	"@type": "@id"
+       },
+      "operatedBy": {
+		"@id": "https://schema.org/Organization",
+        	"@type": "@id"
+	}
    }
 }
