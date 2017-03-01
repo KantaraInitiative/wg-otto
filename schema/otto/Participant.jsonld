@@ -1,0 +1,23 @@
+{
+    "@id": "https://[OTTO]/Participant",
+    "@type": "rdfs:Class",
+    "rdfs:comment": "A legal entity that can assent to federation policies.",
+    "rdfs:label": "Participant",
+    "rdfs:subClassOf":
+        {
+            "@id": "http://schema.org/Organization"
+        }
+},
+
+{
+  "@id": "http://schema.org/operates",
+  "@type": "rdf:Property",
+  "http://schema.org/domainIncludes": [
+    {
+      "@id": "https://[OTTO]/Participant"
+    }
+  ],
+  "http://schema.org/rangeIncludes": {"@id": "http://[OTTO]/Entity"},
+  "rdfs:comment": "Service provided by the Participant",
+  "rdfs:label": "operates"
+},

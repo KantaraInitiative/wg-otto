@@ -20,13 +20,13 @@ JSON-LD Object we need to define:
 
 
 2.  Participant extends Organization. Properties:
+- operates - link to Entities
 - registeredBy - A link to an RegistrationAuthority or
 a Registration Authority object (maybe more efficient to send all the 
 data).
-- registration_authority_identifier - The id issued by the federation
-to this Participant.
-- operates - link to Entities
-- memberOf - Link to Federation or Federation ID? 
+- participant_identifier - The id issued by the registration 
+authority to this Participant.
+- memberOf - Link to Federation or Federation ID?
 
 3.  Federation extends Organization
 
