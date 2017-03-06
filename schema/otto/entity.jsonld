@@ -1,0 +1,87 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://[OTTO]/entity",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A legal entity that can provides the services",
+      "rdfs:label": "entity",
+      "rdfs:subClassOf": {
+        "@id": "http://schema.org/Thing"
+      }
+    },
+    {
+      "@id": "https://schema.org/name",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/entity"
+        }
+      ],
+      "rdfs:comment": "Name of the entity",
+      "rdfs:label": "name"
+    },
+    {
+      "@id": "https://schema.org/object",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/federation"
+        }
+      ],
+      "rdfs:comment": "It represents the metadata statements of service provider",
+      "rdfs:label": "metadata_statements"
+    },
+    {
+      "@id": "https://schema.org/url",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/federation"
+        }
+      ],
+      "rdfs:comment": "It represents the metadata statement uris of service provider",
+      "rdfs:label": "metadata_statement_uris"
+    },
+    {
+      "@id": "https://schema.org/url",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/federation"
+        }
+      ],
+      "rdfs:comment": "It represents the signed jwks uri of service provider",
+      "rdfs:label": "signed_jwks_uri"
+    },
+    {
+      "@id": "https://schema.org/url",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/federation"
+        }
+      ],
+      "rdfs:comment": "It represents the signing keys of service provider",
+      "rdfs:label": "signing_keys"
+    },
+    {
+      "@id": "http://schema.org/organization",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/federation"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        "@id": "http://[OTTO]/participant"
+      },
+      "rdfs:comment": "It represent the owner organization for the entity.",
+      "rdfs:label": "operatedBy"
+    }
+  ]
+}

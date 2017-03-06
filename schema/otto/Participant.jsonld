@@ -1,23 +1,96 @@
 {
-    "@id": "https://[OTTO]/Participant",
-    "@type": "rdfs:Class",
-    "rdfs:comment": "A legal entity that can assent to federation policies.",
-    "rdfs:label": "Participant",
-    "rdfs:subClassOf":
-        {
-            "@id": "http://schema.org/Organization"
-        }
-},
-
-{
-  "@id": "http://schema.org/operates",
-  "@type": "rdf:Property",
-  "http://schema.org/domainIncludes": [
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
     {
-      "@id": "https://[OTTO]/Participant"
+      "@id": "https://[OTTO]/Participant",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "A legal entity that can assent to federation policies.",
+      "rdfs:label": "Participant",
+      "rdfs:subClassOf": {
+        "@id": "http://schema.org/Organization"
+      }
+    },
+    {
+      "@id": "http://schema.org/operates",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        "@id": "http://[OTTO]/Entity"
+      },
+      "rdfs:comment": "Service provided by the Participant",
+      "rdfs:label": "operates"
+    },
+    {
+      "@id": "http://schema.org/registeredBy",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        "@id": "http://[OTTO]/ra"
+      },
+      "rdfs:comment": "The Registration Authority which issued the Participant identifier",
+      "rdfs:label": "registeredBy"
+    },
+    {
+      "@id": "http://schema.org/participantIdentifier",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "rdfs:comment": "The id issued by the registration authority to this Participant",
+      "rdfs:label": "participantIdentifier"
+    },
+    {
+      "@id": "http://schema.org/memberOf",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        "@id": "http://[OTTO]/federation"
+      },
+      "rdfs:comment": "Link to Federation",
+      "rdfs:label": "memberOf"
+    },
+    {
+      "@id": "https://[OTTO]/federations",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        "@id": "http://[OTTO]/federation"
+      },
+      "rdfs:comment": "It represents list of the federations who's owner is the organization.",
+      "rdfs:label": "federations"
+    },
+    {
+      "@id": "https://schema.org/name",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "rdfs:comment": "Name of the participant",
+      "rdfs:label": "name"
     }
-  ],
-  "http://schema.org/rangeIncludes": {"@id": "http://[OTTO]/Entity"},
-  "rdfs:comment": "Service provided by the Participant",
-  "rdfs:label": "operates"
-},
+  ]
+}

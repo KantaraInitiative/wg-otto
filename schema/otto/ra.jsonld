@@ -1,0 +1,29 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://[OTTO]/ra",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "It is registration Authority.",
+      "rdfs:label": "Registration Authority",
+      "rdfs:subClassOf": {
+        "@id": "http://schema.org/Organization"
+      }
+    },
+    {
+      "@id": "http://schema.org/Thing",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/ra"
+        }
+      ],
+      "rdfs:comment": "link to participant, federation or entity.",
+      "rdfs:label": "registers"
+    }
+  ]
+}
