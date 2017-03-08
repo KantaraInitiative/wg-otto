@@ -1,4 +1,4 @@
-# Participant
+# Federation
 
 ## Properties
 |Property | Expected Type | Description|
