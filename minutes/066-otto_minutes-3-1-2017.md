@@ -21,7 +21,7 @@ And then in the property you specify which object uses it.
 
 For example:
 
-```
+
 {
     "@id": "https://[OTTO]/Participant",
     "@type": "rdfs:Class",
@@ -45,7 +45,7 @@ For example:
   "rdfs:comment": "Service provided by the Participant",
   "rdfs:label": "operates"
 },
-```
+
 
 Some questions are raised:
 

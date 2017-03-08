@@ -22,11 +22,32 @@
           "@id": "https://[OTTO]/Participant"
         }
       ],
+      "http://schema.org/inverseOf": {
+        "@id": "http://[OTTO]/operatedBy"
+      },
       "http://schema.org/rangeIncludes": {
+        [
         "@id": "http://[OTTO]/Entity"
+        ]
       },
       "rdfs:comment": "Service provided by the Participant",
       "rdfs:label": "operates"
+    },
+    {
+      "@id": "http://schema.org/organization",
+      "@type": "rdf:Property",
+      "http://schema.org/domainIncludes": [
+        {
+          "@id": "https://[OTTO]/Participant"
+        }
+      ],
+      "http://schema.org/rangeIncludes": {
+        [
+        "@id": "https://schema.org/Organization"
+        ]
+      },
+      "rdfs:comment": "The organization that signed the Participant Agreement with the federation.",
+      "rdfs:label": "organization"
     },
     {
       "@id": "http://schema.org/registeredBy",
@@ -36,8 +57,11 @@
           "@id": "https://[OTTO]/Participant"
         }
       ],
+      "http://schema.org/inverseOf": {
+        "@id": "http://[OTTO]/registers"
+      },
       "http://schema.org/rangeIncludes": {
-        "@id": "http://[OTTO]/ra"
+        "@id": "http://[OTTO]/RegistrationAuthority"
       },
       "rdfs:comment": "The Registration Authority which issued the Participant identifier",
       "rdfs:label": "registeredBy"
