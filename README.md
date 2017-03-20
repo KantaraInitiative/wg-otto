@@ -59,22 +59,25 @@ partipate in the federation
 
 JSON-LD definitions to model the ecosystem components.
 
-* OTTO
-    * Registration Authority - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/ra.md
-    * Federation - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/federation.md        
-    * Entity - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/entity.md        
-    * Organization - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/organization.md
-    * User Claim - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/user_claim.md
-    * Authentication Context Class Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/acr.md
-    * Authentication Method Reference - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto/amr.md
-* SAML
-    * SAML IDP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/idp.md
-    * SAML SP - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/sp.md
-* OpenID
-    * OpenID Provider - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/op.md
-    * Relying Party - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/rp.md
-    * Scope - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/scope.md
-    * Software statement - https://github.com/KantaraInitiative/wg-otto/blob/master/schema/openid/SoftwareStatement.md
+The schema file is located at 
+The classes defined by OTTO:https://github.com/KantaraInitiative/wg-otto/blob/master/schema/otto-schema.jsonld
+
+  - Federation
+  - Participant
+  - RegistrationAuthority
+  - Entity
+  - OpenIDProvider
+  - OpenIDRelyingParty
+  - TrustMark
+  - TrustMarkProvider
+  - TrustMarkPolicy
+  - TrustMarkDefinition
+  - TrustMarkAgreement
+  - TrustMarkProfile
+  
+Properties Defined by OTTO:
+  - operates
+  
 
 ## [Discovery Endpoint](#endpoint-discovery)
 
