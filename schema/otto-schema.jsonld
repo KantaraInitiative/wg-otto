@@ -66,66 +66,6 @@
                         }
                 },
                 {
-                    "@id": "https://[OTTO]/TrustMark",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "A statement of conformance to a well-scoped set of identity trust and/or interoperability requirements.",
-                    "rdfs:label": "TrustMark",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/Thing"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/TrustMarkProvider",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "An organization that issues trustmarks based on a formal assessment process.",
-                    "rdfs:label": "TrustMarkProvider",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/Organization"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/TrustMarkPolicy",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "Set of rules under which the Trustmark was issued.",
-                    "rdfs:label": "TrustMarkPolicy",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/DigitalDocument"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/TrustMarkDefinition",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "The formal assessment process for a trustmark.",
-                    "rdfs:label": "TrustMarkDefinition",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/DigitalDocument"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/TrustMarkAgreement",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "The agreement signed the organization to which the trustmark was issued.",
-                    "rdfs:label": "TrustMarkAgreement",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/DigitalDocument"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/TrustMarkProfile",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "a set of trustmarks that a Trustmark Recipient must possess, in order to meet the trust and interoperability requirements of Trustmark Relying Parties in that community.",
-                    "rdfs:label": "TrustMarkProfile",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "http://schema.org/Thing"
-                        }
-                },
-                {
                   "@id": "http://schema.org/operates",
                   "@type": "rdf:Property",
                   "http://schema.org/domainIncludes": [
