@@ -68,12 +68,6 @@ The classes defined by OTTO:https://github.com/KantaraInitiative/wg-otto/blob/ma
   - Entity
   - OpenIDProvider
   - OpenIDRelyingParty
-  - TrustMark
-  - TrustMarkProvider
-  - TrustMarkPolicy
-  - TrustMarkDefinition
-  - TrustMarkAgreement
-  - TrustMarkProfile
   
 Properties Defined by OTTO:
   - operates
