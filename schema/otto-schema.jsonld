@@ -6,10 +6,10 @@
   },
   "@graph": [
                 {
-                    "@id": "https://[OTTO]/Participant",
+                    "@id": "https://[OTTO]/RegistrationAuthority",
                     "@type": "rdfs:Class",
-                    "rdfs:comment": "A legal entity that can agree to federation policies.",
-                    "rdfs:label": "Participant",
+                    "rdfs:comment": "An organization that operates the technical infrastructure for federations.",
+                    "rdfs:label": "RegistrationAuthority",
                     "rdfs:subClassOf":
                         {
                             "@id": "http://schema.org/Organization"
@@ -26,10 +26,10 @@
                         }
                 },
                 {
-                    "@id": "https://[OTTO]/RegistrationAuthority",
+                    "@id": "https://[OTTO]/Participant",
                     "@type": "rdfs:Class",
-                    "rdfs:comment": "An organization that operates the technical infrastructure for federations.",
-                    "rdfs:label": "RegistrationAuthority",
+                    "rdfs:comment": "A legal entity that can agree to federation policies.",
+                    "rdfs:label": "Participant",
                     "rdfs:subClassOf":
                         {
                             "@id": "http://schema.org/Organization"

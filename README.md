@@ -14,12 +14,12 @@ Table of Contents
    * [Delete (DELETE)](#delete-delete)
    * [Join federation (POST)](#join-federation-post)
    * [Leave federation (DELETE)](#leave-federation-delete)
- * [federation_entity endpoint](#federation_entity-endpoint)
+ * [entity endpoint](#entity-endpoint)
    * [Fetch (GET)](#fetch-get)
    * [Create (POST)](#create-post-1)
    * [Update (PUT)](#update-put-1)
    * [Delete (DELETE)](#delete-delete-1)
- * [organization endpoint](#organization-endpoint)
+ * [partcipant endpoint](#participant-endpoint)
    * [Create (POST)](#create-post-3)
    * [Update (PUT)](#update-put-3)
    * [Delete (DELETE)](#delete-delete-3)
@@ -42,20 +42,7 @@ ecosystems.
 
 ![Big picture](https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/docs/proposal/otto_overview.png "Big picture")
 
-## Definitions
-
-* Registration Authority - Service responsible for hosting federations.
-* Organization - Legal entity that can sign agreements and control services.
-* Federation - A group of organizations that cede some decision making rights
-to a central authority to lower the legal and technical costs of collaboration.
-* Federation Operator - An organization responsibile for setting the 
-operating policies and procedures for an individual federation.
-* Participant - An organization that has joined a federation, sometimes 
-also called a "Member"
-* Entity - A high level term for a service or group of services which 
-partipate in the federation
-
-## Schema
+# OTTO Vocabulary
 
 JSON-LD definitions to model the ecosystem components.
 
@@ -73,21 +60,25 @@ Properties Defined by OTTO:
   - operates
   
 
-## [Discovery Endpoint](#endpoint-discovery)
+# Endpoints
+
+OTTO defines certain standard API's. These are described below.
+
+## [Configuration Endpoint](#endpoint-discovery)
 
 Registration Authority have metadata describing their configuration. 
 These Registration Authority Metadata values are used by OTTO:
 
    * issuer - REQUIRED. URL using the https scheme with no query or 
    fragment component that the RA asserts as its Issuer Identifier.
-   * federations_endpoint - REQUIRED. federations endpoint
-   * federation_entity_endpoint - REQUIRED. federation entity endpoint
-   * organizations_endpoint - REQUIRED. organization endpoint
+   * federations_endpoint - REQUIRED. 
+   * entity_endpoint - REQUIRED. 
+   * participant_endpoint - REQUIRED. 
 
-Registration Authority supporting Discovery MUST make a JSON document 
-available at the path formed by concatenating the string 
-`/.well-known/otto-configuration` to the Issuer. The syntax and semantics 
-of .well-known are defined in [RFC 5785](https://tools.ietf.org/html/rfc5785)
+Registration Authority MUST make a JSON document available at the path 
+formed by concatenating the string `/.well-known/otto-configuration` to 
+the Issuer. The syntax and semantics of .well-known are defined in 
+[RFC 5785](https://tools.ietf.org/html/rfc5785)
 and apply to the Issuer value when it contains no path component. 
 otto-configuration MUST point to a JSON document compliant with this 
 specification and MUST be returned using the `application/json` content 
@@ -117,13 +108,13 @@ Content-Type: application/json
 {
    "issuer":"https://ra.com",
    "federations_endpoint":"https://ra.com/otto/federations",
-   "federation_entity_endpoint":"https://ra.com/otto/entity",
-   "organizations_endpoint":"https://ra.com/otto/organizations"
+   "entity_endpoint":"https://ra.com/otto/entity",
+   "participant_endpoint":"https://ra.com/otto/participant"
 }
 ```
 
 
-##  federations endpoint
+##  federation endpoint
 
 ### Search Federations (GET)
 
@@ -146,11 +137,11 @@ specific criteria. Expression is represented in
 * depth - OPTIONAL - represents depth of graph resolving.
 
 Requests:
-  - /federations - returns federation IDs available from this Registration Authority
-  - /federations/_federation id_ - returns metadata of federation
-  - /federations/_federation id_&entity_type=_type_ - returns metadata of federation filtered by type.
-  - /federations/_federation id_&filter=_filter_ - returns filtered metadata
-  - /federations/_federation id_&depth=_1_ - how many inter-federations deep to search
+  - /federation - returns federation IDs available from this Registration Authority
+  - /federation/_federation id_ - returns metadata of federation
+  - /federation/_federation id_&entity_type=_type_ - returns metadata of federation filtered by type.
+  - /federation/_federation id_&filter=_filter_ - returns filtered metadata
+  - /federation/_federation id_&depth=_1_ - how many inter-federations deep to search
 
 **Federation list Request:**
 
@@ -164,9 +155,9 @@ GET https://ra.org/federations HTTP/1.1
 {
   "@context": "https://ra.org/schema/otto/federation_list",
   "federations": [
-    "https://ra.org/federations/904ca9da-c5a6-11e5-9912-ba0be0483c18",
-    "https://ra.org/federations/904cae1c-c5a6-11e5-9912-ba0be0483c18",
-    "https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
+    "https://ra.org/federation/904ca9da-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/federation/904cae1c-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/federation/904cb092-c5a6-11e5-9912-ba0be0483c18"
   ]
 }
 ```
@@ -175,14 +166,14 @@ GET https://ra.org/federations HTTP/1.1
 **Federation Request:**
 
 ```
-GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entities HTTP/1.1
+GET https://ra.org/federation/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entities HTTP/1.1
 ```
 
 
 **Federation Response:**
 ```json
 {
-  "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18",
+  "@id":"https://ra.org/federation/904cb092-c5a6-11e5-9912-ba0be0483c18",
   "@context": "https://ra.org/schema/otto/federation.jsonld",                      <- context of federation
   "name": "Our Federation",                                                        <- name of federation
   "entities":[
@@ -191,30 +182,30 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entiti
                         "@id": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
                         "name": "Gluu Server Ce-dev Client",
                         "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
-                        "organization":"https://gluu.org/otto/organization"
+                        "participant":"https://gluu.org/otto/participant"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/connect_op.jsonld",
                          "@id": "https://ra.org/entity/554cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Server Ce-dev",
                          "id":"https://ce-dev.gluu.org"           <- in OP context it is URI
-                         "organization":"https://gluu.org/otto/organization"
+                         "participant":"https://gluu.org/otto/participant"
             },
             {
                          "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
                          "@id": "https://ra.org/entity/904cb092-c5a6-11e5-9912-ba0be0483c18",
                          "name": "Gluu Resource Server",
                          "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
-                         "organization":"https://gluu.org/otto/organization"
+                         "participant":"https://gluu.org/otto/participant"
             }
   ]
   "federations":[                                                                  <- reference to federation
                          "https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
            ],
-  "organization": { 
-                    "@id":"https://ra.org/organization/554cb092-c5a6-11e5-9912-ba0be0483c18"
-                    "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
-                     "name":"MyOrganization",
+  "participant": { 
+                    "@id":"https://ra.org/participant/554cb092-c5a6-11e5-9912-ba0be0483c18"
+                    "@context": "https://ra.org/schema/otto/participant.jsonld",   <- participant
+                     "name":"MyParticipant",
                      <other properties here>
                   }
 }
@@ -224,7 +215,7 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=entiti
 
 **Request:**
 ```json
-POST /federations
+POST /federation
 {
    "name":"MyFederation",
    <other properties here>
@@ -237,7 +228,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "@id":"https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18"
+   "@id":"https://ra.org/federation/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
 ```
 
@@ -261,7 +252,7 @@ HTTP/1.1 200 OK
 
 **Request:**
 ```
-DELETE /federations/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+DELETE /federation/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
 **Response:**
@@ -275,7 +266,7 @@ Create entity and join to the federation.
 
 **Request**
 ```json
-POST /federations/<federation_id> HTTP/1.1
+POST /federation/<federation_id> HTTP/1.1
 {
    "name":"MyEntity",
    <other properties here>
@@ -293,7 +284,7 @@ Join the federation.
 
 **Request**
 ```json
-POST /federations/<federation_id>/<entity_id> HTTP/1.1
+POST /federation/<federation_id>/<entity_id> HTTP/1.1
 ```
 
 **Response**
@@ -307,7 +298,7 @@ Leave federation.
 
 **Request**
 ```
-DELETE /federations/<federation_id>/<entity id> HTTP/1.1
+DELETE /federation/<federation_id>/<entity id> HTTP/1.1
 ```
 
 **Response**
@@ -317,11 +308,11 @@ HTTP/1.1 200 OK
 
 ### Add Participant
 
-Join organization as participant in federation
+Join participant to a federation
 
 **Request**
 ```
-POST /federations/<federation_id>/organization/<organization_id> HTTP/1.1
+POST /federation/<federation_id>/participant/<participant_id> HTTP/1.1
 ```
 
 **Response**
@@ -329,27 +320,27 @@ POST /federations/<federation_id>/organization/<organization_id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-## federation_entity endpoint
+## entity endpoint
 
 ### Fetch (GET)
 
 **Entity Request:**
 ```
-GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1.1
+GET https://ra.org/entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
 **OpenID Connect OP Entity Response:**
 ```json
 {
   "@context": "https://raw.githubusercontent.com/KantaraInitiative/wg-otto/master/schema/openid/op.jsonld",
-  "@id": "http://otto-test.gluu.org/otto/federation_entity/589b11017d85a90393b189c8",
+  "@id": "http://otto-test.gluu.org/otto/entity/589b11017d85a90393b189c8",
   "name": "Local org",
   "metadata_statements": null,
   "metadata_statement_uris": null,
   "signed_jwks_uri": "eyJhbGciOiJSUzI1NiJ9.aHR0cHM6Ly9jZS1kZXYyLmdsdXUub3JnL294YXV0aC9zZWFtL3Jlc291cmNlL3Jlc3R2MS9veGF1dGgvandrcw.WUk3hUD2_rl-ivnawikRdiMZ47SVWWgqq9OzuDeBtWt1rkzLDr4aJ1845Y5J_NRCf70GAE36qO5h5JUiOc6oT2ZlTymn1LdYC0Iiwb9GgIVk6fE6gpUv3KXa2V2nwAqcSPsx5y-9f2-in02Qo7Q7Chyi7Z3jGl7-Cjjk-7nqlyoZfM89LF9Xrt2u-gcZKzWS_XJN3HZaWgGi_R0DJdEUA_uQVCyYPl32uz4mP4lwQU5uVpBuIWB3MEjrgeEIvuT4ZQDYmLkaMG-xOGP7F097A28Ws67L1pOxmaDdJwNmiFKIr4XXJUPqkWlEMUMpqQsF3Gx2coDj2vQXiLQ73ccOxQ",
   "signing_keys": "-----BEGIN RSA PUBLIC KEY-----\nMIIBCgKCAQEAgqWRHafvK4aEHm5I3yS2ie8s7NPtbt2m+q4h8J4uPdoINu0uzT6aYwjTNuL6\nL2TSzdJA1CIgo5Vc7IOSdMkoci1bVFa06sDisdoNbT7OgnkOq9oRZ7QrILJjsJNwVjkonXbF\ngQtEKvcuFBATTPBCSDjYawAovCC7CYUXqd0DTZZkgjh7Ps50oVMTbWcUxo8McoYeLTh2TRy3\n9+v32tnzgoHCdAnvadQ6EYAYqRj3UP0J74u0wJKO6DjvsDg3i1zMEx4zFqRODoa+G9qCX4D8\nYlyaM0jq9hzgGPVu75m5LLGEXgU4Xtsc3h4JBHhrFAALT2eqAFnRzuON7H7XH/XVaQIDAQAB\n-----END RSA PUBLIC KEY-----\n",
   "type": "openid_provider",
-  "organization": "http://otto-test.gluu.org/otto/organization/589b0ff37d85a90393b189c7"
+  "participant": "http://otto-test.gluu.org/otto/participant/589b0ff37d85a90393b189c7"
 }
 ```
 
@@ -357,7 +348,7 @@ GET https://ra.org/federation_entity/194d8ab2-c5a7-11e5-9912-ba0be0483c18 HTTP/1
 
 **Request:**
 ```json
-POST /federation_entity
+POST /entity
 {
    "name":"MyFederationEntity",
    <other properties here>
@@ -370,7 +361,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "@id":"https://ra.org/federation_entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
+   "@id":"https://ra.org/entity/904cb092-c5a6-11e5-9912-ba0be0483c19"
 }
 ```
 
@@ -378,7 +369,7 @@ Content-Type: application/json
 
 **Request:**
 ```json
-PUT /federation_entity/<entity id> HTTP/1.1
+PUT /entity/<entity id> HTTP/1.1
 {
    "name":"MyEntity",
    <other properties here>
@@ -394,7 +385,7 @@ HTTP/1.1 200 OK
 
 **Request:**
 ```
-DELETE /federation_entity/<entity id> HTTP/1.1
+DELETE /entity/<entity id> HTTP/1.1
 ```
 
 **Response:**
@@ -402,40 +393,40 @@ DELETE /federation_entity/<entity id> HTTP/1.1
 HTTP/1.1 200 OK
 ```
 
-## organization endpoint
+## participant endpoint
 
-**Organizations list Request:**
+**Participants list Request:**
 
 ```
-GET https://ra.org/organization HTTP/1.1
+GET https://ra.org/participant HTTP/1.1
 ```
 
 
-**Organizations list Response:**
+**Participants list Response:**
 ```json
 {
-  "organizations": [
-    "https://ra.org/organization/904ca9da-c5a6-11e5-9912-ba0be0483c18",
-    "https://ra.org/organization/904cae1c-c5a6-11e5-9912-ba0be0483c18",
-    "https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
+  "participants": [
+    "https://ra.org/participant/904ca9da-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/participant/904cae1c-c5a6-11e5-9912-ba0be0483c18",
+    "https://ra.org/participant/904cb092-c5a6-11e5-9912-ba0be0483c18"
   ]
 }
 ```
 
 
-**Organization Request:**
+**Participant Request:**
 
 ```
-GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+GET https://ra.org/participant/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
-**Organization Response:**
+**Participant Response:**
 ```json
 {
-  "@id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18",
-  "@context": "https://schema.org",                      <- context of organization
-  "@type":"Organization",
-   "name":"MyOrganization",
+  "@id":"https://ra.org/participant/904cb092-c5a6-11e5-9912-ba0be0483c18",
+  "@context": "https://schema.org",                      <- context of participant
+  "@type":"Participant",
+   "name":"MyParticipant",
    <other properties here>
 }
 ```
@@ -444,9 +435,9 @@ GET https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 
 **Request:**
 ```json
-POST /organization
+POST /participant
 {
-   "name":"MyOrganization",
+   "name":"MyParticipant",
    <other properties here>
 }
 ```
@@ -457,7 +448,7 @@ HTTP/1.1 201 Created
 Content-Type: application/json
 
 {
-   "@id":"https://ra.org/organization/904cb092-c5a6-11e5-9912-ba0be0483c18"
+   "@id":"https://ra.org/participant/904cb092-c5a6-11e5-9912-ba0be0483c18"
 }
 ```
 
@@ -465,9 +456,9 @@ Content-Type: application/json
 
 **Request:**
 ```json
-PUT /organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+PUT /participant/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 {
-   "name":"MyOrganization",
+   "name":"MyParticipant",
    <other properties here>
 }
 ```
@@ -481,7 +472,7 @@ HTTP/1.1 200 OK
 
 **Request:**
 ```
-DELETE /organization/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
+DELETE /participant/904cb092-c5a6-11e5-9912-ba0be0483c18 HTTP/1.1
 ```
 
 **Response:**
@@ -514,14 +505,14 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
              "uri": "https://ra.org/entity/664cb092-c5a6-11e5-9912-ba0be0483c18",
              "name": "Gluu Server Ce-dev Client",
              "id":"https://ce-dev.gluu.org/rp",          <- in RP context it is redirect_uri
-             "organization":"https://gluu.org/otto/organization"
+             "participant":"https://gluu.org/otto/participant"
            },
            {
              "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
              "uri": "https://ra.org/entity/114cb092-c5a6-11e5-9912-ba0be0483c18",
              "name": "Gluu Resource Server",
              "id":"https://ce-dev.gluu.org/rs",          <- in RS context it is URI
-             "organization":"https://gluu.org/otto/organization"
+             "participant":"https://gluu.org/otto/participant"
            }
   ],
   "federations":[
@@ -534,30 +525,30 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&depth=federa
                             "@id": "https://ra.org/entity/134cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Server Ce-dev2 Client",
                             "id":"https://ce-dev2.gluu.org/rp",          <- in RP context it is redirect_uri
-                            "organization":"https://gluu.org/otto/organization"
+                            "participant":"https://gluu.org/otto/participant"
                           },
                           {
                             "@context": "https://ra.org/schema/otto/entity/uma_rs.jsonld",
                             "@id": "https://ra.org/entity/344cb092-c5a6-11e5-9912-ba0be0483c18",
                             "name": "Gluu Resource Server 2",
                             "id":"https://ce-dev2.gluu.org/rs",          <- in RS context it is URI
-                            "organization":"https://gluu.org/otto/organization"
+                            "participant":"https://gluu.org/otto/participant"
                           }
                  ]
                  "federation": [                                                                 <- reference to federation
                           "https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18"
                  ]
-                 "organization": "https://gluu.org/otto/organization"
+                 "participant": "https://gluu.org/otto/participant"
         }
   ],
-  "organization": {
-                    "@id":"https://ra.org/organization/222cb092-c5a6-11e5-9912-ba0be0483c18".
-                    "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
-                     "name":"MyOrganization",
+  "participant": {
+                    "@id":"https://ra.org/participant/222cb092-c5a6-11e5-9912-ba0be0483c18".
+                    "@context": "https://ra.org/schema/otto/participant.jsonld",   <- participant
+                     "name":"MyParticipant",
                      <other properties here>
                   },
   "participants": [
-    "https://ra.org/organization/589b0ff37d85a90393b189c7"
+    "https://ra.org/participant/589b0ff37d85a90393b189c7"
   ]
 }
 ```
@@ -592,9 +583,9 @@ GET https://ra.org/federations/904cb092-c5a6-11e5-9912-ba0be0483c18&filter=.enti
   "federations":[                                                                  <- reference to federation
            "https://ra.org/federations/222cb092-c5a6-11e5-9912-ba0be0483c18"
   ],
-  "organization": {
-                    "@context": "https://ra.org/schema/otto/organization.jsonld",   <- organization
-                     "name":"MyOrganization",
+  "participant": {
+                    "@context": "https://ra.org/schema/otto/participant.jsonld",   <- participant
+                     "name":"MyParticipant",
                      <other properties here>
                   }
 }
