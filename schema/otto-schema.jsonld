@@ -1,12 +1,9 @@
 {
-  "@context": {
-    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-    "xsd": "http://www.w3.org/2001/XMLSchema#"
-  },
+  "@id": "@id",
+  "type": "@type",
   "@graph": [
                 {
-                    "@id": "https://[OTTO]/RegistrationAuthority",
+                    "@id": "otto:RegistrationAuthority",
                     "@type": "rdfs:Class",
                     "rdfs:comment": "An organization that operates the technical infrastructure for federations.",
                     "rdfs:label": "RegistrationAuthority",
@@ -16,7 +13,7 @@
                         }
                 },
                 {
-                    "@id": "https://[OTTO]/Federation",
+                    "@id": "otto:Federation",
                     "@type": "rdfs:Class",
                     "rdfs:comment": "An organization that defines common policies and operating procedures.",
                     "rdfs:label": "Federation",
@@ -26,7 +23,7 @@
                         }
                 },
                 {
-                    "@id": "https://[OTTO]/Participant",
+                    "@id": "otto:Participant",
                     "@type": "rdfs:Class",
                     "rdfs:comment": "A legal entity that can agree to federation policies.",
                     "rdfs:label": "Participant",
@@ -46,38 +43,17 @@
                         }
                 },
                 {
-                    "@id": "https://[OTTO]/OpenIDProvider",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "An implementation of the OpenID Connect Provider interfaces.",
-                    "rdfs:label": "OpenIDProvider",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "https://[OTTO]/Entity"
-                        }
-                },
-                {
-                    "@id": "https://[OTTO]/OpenIDRelyingParty",
-                    "@type": "rdfs:Class",
-                    "rdfs:comment": "An implementation of the OpenID Connect Relying Party interfaces.",
-                    "rdfs:label": "OpenIDRelyingParty",
-                    "rdfs:subClassOf":
-                        {
-                            "@id": "https://[OTTO]/Entity"
-                        }
-                },
-                {
                   "@id": "http://schema.org/operates",
                   "@type": "rdf:Property",
-                  "http://schema.org/domainIncludes": [
-                    {
+                  "http://schema.org/domainIncludes": {
                       "@id": "https://[OTTO]/Participant"
-                    }
-                  ],
-                  "http://schema.org/rangeIncludes": {"@id": "http://[OTTO]/Entity"},
+                    },
+                  "http://schema.org/rangeIncludes": {
+                    "@id": "http://[OTTO]/Entity"
+                  },
                   "rdfs:comment": "Service provided by the Participant",
                   "rdfs:label": "operates"
                 },
 
   ]
-  "@id": "http://kantarainitive.com/otto/1.0"
 }
