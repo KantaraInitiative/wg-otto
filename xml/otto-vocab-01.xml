@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<?xml-styleshet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
+<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
+"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
+<!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC7159 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml">
+<!ENTITY RFC6749 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
+<!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
+]>
+<rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
+     target="draft" version="2.0">
+  <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+
+  <?rfc toc='yes' ?>
+
+  <?rfc tocdepth='4' ?>
+
+  <?rfc symrefs='yes' ?>
+
+  <?rfc sortrefs='yes' ?>
+
+  <?rfc compact='yes' ?>
+
+  <?rfc subcompact='no' ?>
+
+  <front>
+    <title abbrev="OTTO Core">Open Trust Taxonomy for Federation Operators
+      Vocabulary</title>
+
+    <author fullname="Michael Schwartz" initials="M." role="editor" surname="Schwartz">
+      <organization>Gluu</organization>
+
+      <address>
+        <email>mike@gluu.org</email>
+      </address>
+    </author>
+
+    <author fullname="Janusz Ulanwski," initials="J." role="editor"
+      surname="Ulanwski">
+      <organization>HEAnet</organization>
+
+      <address>
+        <email>janusz.ulanowski@heanet.ie</email>
+      </address>
+    </author>
+
+    <author fullname="Judith Bush" initials="J." surname="Bush">
+      <organization>OCLC</organization>
+
+      <address>
+        <email>bushj@oclc.org</email>
+      </address>
+    </author>
+
+    <date day="2" month="4" year="2017" />
+
+    <abstract>
+      <t>This specification describes a method for packaging information
+        about multi-party federations, and establishing mechanisms for
+        its validation. It includes term definitions which appear in the
+        current JSON-LD context for the OTTO 1.0 specification.
+      </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="introduction" title="Introduction">
+      <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
+        standards to enable the interoperable management of multi-party
+        federations--where a central authority creates the rules for membership,
+        enabling the participants to more efficiently collaborate. The goal of
+        OTTO is to support a range of trust models from very low to very high. By
+        providing a common set of API's and a data model, the OTTO standard
+        provides a scalable technical infrastructure to solve organizational
+        challenges in a number of different ecosystems.
+      </t>
+
+      <t>
+        OTTO federation metadata is expressed in JSON-LD to take advantage of
+        its features for extensibility, interconnection, and
+        internationalization.  This specification defines the terms which appear
+        in the OTTO JSON-LD context.
+      </t>
+
+      <t>
+        The OTTO vocabulary defines several data classes used to express
+        the organizations, services and technical components of a multi-party
+        federation. There are three core classes: Federation, Participant,
+        and Entity.  Each class is a collection of properties and values, and
+        each defines which are mandatory and optional, as well as the
+        restrictions for the values of properties. If properties are included
+        in OTTO federation JSON that cannot be mapped to the JSON-LD terms
+        defined in the object's <spanx style="verb">@context</spanx>, they
+        are not considered part of the OTTO metadata's meaning.
+      </t>
+
+      <section anchor="extentions" title="Extensions">
+        <t>
+          Each Registration Authority may publish additional properties beyond
+          those defined here. Extensions allow issuers to declare how they
+          are adding information so that it can be understood by others
+          and other issuers can add the same sore of information in a compatible
+          way.
+        </t>
+        <t>
+          Extension authors define and host a new JSON-LD context file
+          describing all the terms the extension covers. These context files may
+          further define any JSON-schema that implementations of the extension
+          should pass. If used, each scheam is linked from the context and
+          hosted as a seperate JSON-schema files.
+        </t>
+      </section>
+
+      <section title="Notational Conventions">
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document are to be interpreted as described in
+        <xref target="RFC2119" />.</t>
+
+        <t>Unless otherwise noted, all protocol properties and values are case
+        sensitive.</t>
+      </section>
+    </section>
+
+
+
+
+    <section anchor="Acknowledgments" title="Acknowledgments">
+      <t>The following people made significant text contributions to the
+      specification:<list style="symbols">
+          <t>Manu Sporny, Digital Bazaar</t>
+        </list></t>
+
+      <t>Additional contributors to this specification include the Kantara OTTO
+      Work Group participants, a list of whom can be found at <xref
+      target="OttoWgParticipants" />.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+    </references>
+
+    <references title="Informative References">
+      <reference anchor="OttoWgParticipants"
+                 target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
+        <front>
+          <title>OTTO Participant Roster</title>
+
+          <author initials="M." surname="Schwartz">
+            <organization>Schwartz</organization>
+          </author>
+          <date day="" month="" year="2016" />
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>

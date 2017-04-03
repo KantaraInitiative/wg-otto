@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<?xml-styleshet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
+<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
+"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
+<!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC7159 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml">
+<!ENTITY RFC6749 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
+<!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
+]>
+<rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
+     target="draft" version="2.0">
+  <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+
+  <?rfc toc='yes' ?>
+
+  <?rfc tocdepth='4' ?>
+
+  <?rfc symrefs='yes' ?>
+
+  <?rfc sortrefs='yes' ?>
+
+  <?rfc compact='yes' ?>
+
+  <?rfc subcompact='no' ?>
+
+  <front>
+    <title abbrev="OTTO Core">Open Trust Taxonomy for Federation Operators
+      Application Interfaces</title>
+
+    <author fullname="Michael Schwartz" initials="M." role="editor"
+      surname="Schwartz">
+      <organization>Gluu</organization>
+
+      <address>
+        <email>mike@gluu.org</email>
+      </address>
+    </author>
+
+    <author fullname="Janusz Ulanwski," initials="J." role="editor"
+      surname="Ulanwski">
+      <organization>HEAnet</organization>
+
+      <address>
+        <email>janusz.ulanowski@heanet.ie</email>
+      </address>
+    </author>
+
+    <author fullname="Yuriy Zabrovarnyy" initials="Y." surname="Zabrovarnyy">
+      <organization>Gluu</organization>
+
+      <address>
+        <email>yuriy@gluu.org</email>
+      </address>
+    </author>
+
+    <author fullname="Meghna Joshi" initials="M." surname="Joshi">
+      <organization>Gluu</organization>
+
+      <address>
+        <email>meg@gluu.org</email>
+      </address>
+    </author>
+
+    <date day="2" month="4" year="2017" />
+
+    <abstract>
+    <t>This specification defines standard application interfaces that enable
+      the creation and management of multi-party federations.
+    </t>
+    </abstract>
+  </front>
+
+  <middle>
+    <section anchor="introduction" title="Introduction">
+      <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
+        standards to enable the interoperable management of multi-party
+        federations--where a central authority creates the rules for membership,
+        enabling the participants to more efficiently collaborate. The goal of
+        OTTO is to support a range of trust models from very low to very high.
+        By providing a common set of API's and a data model, the OTTO standard
+        provides a scalable technical infrastructure to solve organizational
+        challenges in a number of different ecosystems.
+      </t>
+
+      <section title="Notational Conventions">
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document are to be interpreted as described in
+        <xref target="RFC2119" />.</t>
+
+        <t>Unless otherwise noted, all protocol properties and values are case
+        sensitive.</t>
+      </section>
+
+      <section anchor="terminology" title="Terminology">
+        <t>This specification introduces the following terms
+          <list hangIndent="6" style="hanging">
+            <t hangText="Federation">
+              A group of autonomous organizations that agree to abide the
+              authority of a central organization to reduce the cost
+              of collaboration.
+           </t>
+
+            <t hangText="Registration Authority">
+              An organization that hosts the hardware and software used
+              by Federation operators.
+            </t>
+
+            <t hangText="Participant">
+              An organization that registers with a Registration Authority
+              for the purpose of joining a Federation.
+            </t>
+
+            <t hangText="Entity">
+              A techincal service operated by a Particpant, such as
+              an identity provider, website or mobile application.
+            </t>
+
+            <t hangText="Issuer">
+              Location of the Registration Authority, which MUST be a URI
+              <xref target="RFC3986" /> with a scheme component that MUST be
+              https, a host component, and optionally, port and path components
+              and no query or fragment components.
+            </t>
+
+          </list></t>
+      </section>
+
+      <section anchor="security" title="Security Considerations">
+        This specification defines several APIs. The Registration Authority
+        MUST use TLS protection over these endpoints, governed by
+        <xref target="BCP195" />, which discusses deployment and
+        adoption characteristics of different TLS versions. All endpoints
+        other then the .well-known configuration endpoint SHOULD require some
+        form of authentication and access control, such as Client Authentication
+        as described in <xref target="RFC6749" /> or a separate OAuth access
+        token. The methods of managing and validating these authentication
+        credentials are out of scope of this specification.
+      <section>
+
+        <spanx style="verb">
+
+    </section>
+
+    <section anchor="configuration-endpoint"
+               title="Congiguration Endpoint">
+       <t>
+         This endpoint returns policy and other information useful to clients
+         prior to making requests. Registration Authority MUST make a JSON
+         document available at the path formed by concatenating the string
+         <spanx style="verb">/.well-known/otto-configuration</spanx> to the
+         Issuer. The syntax and semantics of <spanx style="verb">.well-known</spanx>
+         are defined in <xref target="RFC5785" />, and MUST point to a JSON
+         document compliant with this specification and MUST be returned using
+         the <spanx style="verb">application/json</spanx> content type.
+       </t>
+
+       <section anchor="ra-metadata"
+                title="Registration Authority Metadata">
+            <t>
+              Registration Authorities have metadata describing their
+              configuration as follows:
+            </t>
+
+            <list hangIndent="6" style="hanging">
+              <t hangText="Issuer">
+                REQUIRED. URL using the https scheme with no query or fragment
+                component that the OP asserts as its Issuer Identifier.
+             </t>
+             <t hangText="federation_endpoint">
+               REQUIRED. URL for federation managememnt.
+             </t>
+             <t hangText="entity_endpoint">
+               REQUIRED. URL for entity management.
+             </t>
+             <t hangText="participant_endpoint">
+               REQUIRED. URL for participant management.
+             </t>
+           </list>
+       </section>
+
+     <section anchor="configuration-example"
+                title="Congiguration example">
+           <figure>
+               <preamble>Non-normative example of a configuration request:</preamble>
+               <artwork><![CDATA[GET /otto/.well-known/otto-configuration HTTP/1.1
+Host: ra.org]]>
+              </artwork>
+           </figure>
+
+           <figure>
+               <preamble>Non-normative example of a configuration response:</preamble>
+               <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "issuer":"https://ra.com",
+   "federation_endpoint":"https://ra.com/otto/federation",
+   "entity_endpoint":"https://ra.com/otto/entity",
+   "participant_endpoint":"https://ra.com/otto/participant"
+}
+]]>
+              </artwork>
+           </figure>
+
+      </section>
+
+    </section>
+
+    <section anchor="federation-endpoint"
+               title="Federation Endpoint">
+        <t>
+          This endpoint, hosted by the Registration Authority, enables the
+          creation and managment of Federations.
+        </t>
+
+        <section anchor="search-federation"
+                   title="Search Federation">
+        </section>
+
+        <section anchor="create-federation"
+                   title="Create Federation">
+        </section>
+
+        <section anchor="update-federation"
+                   title="Update Federation">
+        </section>
+
+        <section anchor="join-federation"
+                   title="Join Federation">
+        </section>
+
+        <section anchor="leave-federation"
+                   title="Leave Federation">
+        </section>
+
+        <section anchor="delete-federation"
+                   title="Delete Federation">
+        </section>
+
+    </section>
+
+    <section anchor="participant-endpoint"
+               title="Participant Endpoint">
+        <t>
+          This endpoint, hosted by the Registration Authority, enables
+          the registration and management of information about an organization
+          so it can be associated with a Federation.
+        </t>
+
+        <section anchor="fetch-participant"
+                   title="Fetch Participant">
+        </section>
+
+        <section anchor="create-participant"
+                   title="Create Participant">
+        </section>
+
+        <section anchor="update-participant"
+                   title="Update Participant">
+        </section>
+
+        <section anchor="delete-participant"
+                   title="Delete Participant">
+        </section>
+
+    </section>
+
+    <section anchor="entity-endpoint"
+               title="Entity Endpoint">
+        <t>
+          This endpoint, hosted by the Registration Authority, enables
+          the registration and management of digital services at the federation.
+        </t>
+
+        <section anchor="fetch-entity"
+                   title="Fetch entity">
+        </section>
+
+        <section anchor="create-entity"
+                   title="Create entity">
+        </section>
+
+        <section anchor="update-entity"
+                   title="Update entity">
+        </section>
+
+        <section anchor="delete-entity"
+                   title="Delete entity">
+        </section>
+
+    </section>
+
+    <section anchor="Acknowledgments" title="Acknowledgments">
+      <t>The following people made contributions to the development of this
+        specification:<list style="symbols">
+
+          <t>Judith Bush</t>
+
+          <t>Steve Carmody<t>
+
+          <t>Peter Davis<t>
+
+          <t>Keith Hazelton</t>
+
+          <t>Roland Hedberg<t>
+
+          <t>Rainer Hörbe</t>
+
+          <t>Leif Johansson<t>
+
+          <t>Alan Karp</t>
+
+          <t>Nate Klingenstein<t>
+
+          <t>Ken Klingenstein<t>
+
+          <t>Eve Maler<t>
+
+          <t>Nicholas Roy<t>
+
+          <t>Rhys Smith<t>
+
+          <t>David Walker<t>
+
+          <t>Colin Wallis<t>
+
+          <t>Jim Willeke<t>
+
+          <t>Ian Young<t>
+
+        </list></t>
+
+      <t>Additional contributors to this specification include the Kantara OTTO
+      Work Group participants, a list of whom can be found at <xref
+      target="OttoWgParticipants" />.</t>
+    </section>
+  </middle>
+
+  <back>
+    <references title="Normative References">
+        <reference anchor="BCP195" target="https://tools.ietf.org/html/bcp195">
+          <front>
+            <title>Recommendations for Secure Use of Transport Layer Security
+            (TLS) and Datagram Transport Layer Security (DTLS)</title>
+
+            <author initials="Y." surname="Sheffer">
+              <organization />
+            </author>
+
+            <date day="" month="May" year="2015" />
+          </front>
+        </reference>
+
+        <!-- Uniform Resource Identifier (URI): Generic Syntax -->
+        &RFC3986;
+
+        <!-- Defining Well-Known Uniform Resource Identifiers (URIs) -->
+        &RFC5785;
+
+        <!-- The OAuth 2.0 Authorization Framework -->
+        &RFC6749;
+
+        <!--  The JavaScript Object Notation (JSON) Data Interchange Format -->
+        &RFC7159;
+
+    </references>
+
+    <references title="Informative References">
+
+      <reference anchor="OttoWgParticipants"
+                 target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
+        <front>
+          <title>OTTO Participant Roster</title>
+
+          <author initials="M." surname="Schwartz">
+            <organization>Schwartz</organization>
+          </author>
+          <date day="" month="" year="2016" />
+        </front>
+      </reference>
+    </references>
+  </back>
+</rfc>
