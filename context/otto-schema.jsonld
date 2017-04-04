@@ -106,7 +106,7 @@
                 },
                 {
                     "@id": "trustmark:Trustmark",
-                    "@type": "rdfs:Class",
+                    "@type": "rdfs:Class"
                 },
                 {
                   "@id": "otto:operates",
