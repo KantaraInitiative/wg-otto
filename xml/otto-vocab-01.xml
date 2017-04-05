@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <?xml-styleshet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
-"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
-<!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY RFC7159 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml">
-<!ENTITY RFC6749 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
-<!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
-]>
+"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
      target="draft" version="2.0">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -127,9 +122,22 @@
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
-          <c></c>
-          <c></c>
-          <c></c>
+          <!-- -->
+          <c>name</c>
+          <c>Text</c>
+          <c>A human friendly name for the RA</c>
+          <!-- -->
+          <c>operates</c>
+          <c>Entity or Federation</c>
+          <c>A service or federation hosted by the RA</c>
+          <!-- -->
+          <c>url</c>
+          <c>URL</c>
+          <c>The base URL for the RA</c>
+          <!-- -->
+          <c>description</c>
+          <c>Text</c>
+          <c>Additional information about the RA</c>
       </texttable>
 
       </t>

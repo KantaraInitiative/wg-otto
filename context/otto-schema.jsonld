@@ -49,6 +49,11 @@
                         }
                 },
                 {
+                    "@id": "otto:Metadata",
+                    "@type": "rdfs:Class",
+                    "rdfs:comment": "A structured document describing the service"
+                },
+                {
                     "@id": "otto:OpenIDProvider",
                     "@type": "rdfs:Class",
                     "rdfs:subClassOf":
@@ -109,12 +114,25 @@
                     "@type": "rdfs:Class"
                 },
                 {
-                  "@id": "otto:operates",
+                  "@id": "otto:registers",
                   "@type": "rdf:Property",
                   "schema:domainIncludes": [
                     {
                       "@id": "otto:RegistrationAuthority"
                     },
+                  ],
+                  "schema:rangeIncludes":[
+                    {
+                      "@id": "otto:Entity"
+                    },
+                    {
+                      "@id": "otto:Federation"
+                    }
+                ],
+                {
+                  "@id": "otto:operates",
+                  "@type": "rdf:Property",
+                  "schema:domainIncludes": [
                     {
                       "@id": "otto:Federation"
                     },
@@ -123,9 +141,6 @@
                     }
                   ],
                   "schema:rangeIncludes":[
-                    {
-                      "@id": "otto:Federation"
-                    },
                     {
                       "@id": "otto:Entity"
                     },
