@@ -1,5 +1,5 @@
 OTTO WG Minutes Combined: 8/3/2016 - 8/10/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz 8/3,8/11
@@ -68,7 +68,7 @@ Returns:
  "@id":"http://otto-test.gluu.org/otto/organization/a582ea06-5b03-11e6-87a8-bc764e100e0a",
  "name":"org1"
 }
- 
+
 ```
 
 
@@ -79,8 +79,8 @@ If we want to link back to the federation, we can use memberOf
 For memberOf, values expected to be one of these types:
  Organization
  ProgramMembership
- 
-Does it have to be one of these, or can it be something else? 
+
+Does it have to be one of these, or can it be something else?
 
 Should there be data that helps define what services are available from
 this organization, that could point to the entities like OP's, IDPs, RP's
@@ -88,9 +88,9 @@ etc.
 
 We considered "offeredBy" http://schema.org/offeredBy but Judith pointed
 out that we probably shouldn't shoe-horn into something that doesn't fit.
-So perhaps we should extend Organization. 
+So perhaps we should extend Organization.
 
-We could add an attribute to Organization from our own namespace. 
+We could add an attribute to Organization from our own namespace.
 Using additionalType attribute, we can reference "FederationParticipant"
 which could have our "federatedEntities" attribute.
 Is this worth doing because the information can be queried from the federation
@@ -98,7 +98,7 @@ itself...
 
 ## Discussion / Work on Schema
 
-Schema is static information. 
+Schema is static information.
 
 {"@id": "2a9f2057-d4fc-48b8-bba2-48af07e0717b",
  "@context": "otto-federation-schema",
@@ -141,4 +141,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

@@ -1,5 +1,5 @@
 OTTO WG Minutes Combined: 8/24/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
@@ -24,8 +24,8 @@ used by its (or external) federation?
 Starting from #1, Schema.Org defines two objects that could be useful:
 1. http://schema.org/Thing
 
-|name | put friendly name here | 
-|description | OID description | 
+|name | put friendly name here |
+|description | OID description |
 |sameAs | OID URL |
 |additionalType | otto.claim |
 
@@ -68,4 +68,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

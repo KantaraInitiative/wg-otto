@@ -21,10 +21,10 @@ array to support OpenID Connect metadata, so there's that. '/
 
 Discussion: Re Localization: SAML specifies "md:localizedNameType". See discussion
 at [Sasaki] On the other hand, the OpenID spec gives the follwoing as
-an example: 
+an example:
 
-   "client_name": "My Example", 
-   "client_name#ja-Jpan-JP": "ク ライアント名", 
+   "client_name": "My Example",
+   "client_name#ja-Jpan-JP": "ク ライアント名",
 
 It seems we could just have "name" and community
 practice could establish the localization?
@@ -38,10 +38,10 @@ Registration Authority
 | Property | Expected Type | Description | Questions/Issues        |
 |----------|---------------|-------------|-------------------------|
 |<td colspan="3"> Properties from [Thing](https://schema.org/Thing)</td>
-|name      |text           |1:*; 
-|url       |URL            |1:*; 
+|name      |text           |1:*;
+|url       |URL            |1:*;
 |<td colspan="3"> Properties from [Organization](https://schema.org/Organization) </td>
-|contactPoint|[ContactPoint](https://schema.org/ContactPoint) |1:*; 
+|contactPoint|[ContactPoint](https://schema.org/ContactPoint) |1:*;
 |<td colspan="3">Properties from Registration Authority</td>
 |contactType? |?           |0:?; (TBD single repeated, JSON array, object w/all) federation's terms for contact point types.
 |registers | Federation, Participant, or Entity |0:*
@@ -98,7 +98,7 @@ Metadata requirements for Participant may be compared to 2.3.2.1 Element <Organi
 |<td colspan="3">Properties from Participant</td>
 |operates  | Entity        | 0:*; Services the Organization operates
 |registrationAuthorityIdentifier |TBD | 0:1; identifier from registration authority
-|registeredBy |RegistrationAuthority|0:1; the registrar that has registered the participant organization. 
+|registeredBy |RegistrationAuthority|0:1; the registrar that has registered the participant organization.
 
 Discussion: should url be required or left to the Federation?
 
@@ -133,7 +133,7 @@ O.Federation <-->  O.Entity : federates/federatedBy
 
 O.Entity --> "1" O.Metadata : additionalType
 
-Other Otto Classes 
+Other Otto Classes
 ------------------
 * abstract class O.Metadata
 * Class O.AuthContextClass

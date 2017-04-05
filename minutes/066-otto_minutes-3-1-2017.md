@@ -1,17 +1,17 @@
 OTTO WG Minutes: 3/1/2017
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
  - Yuriy Zabrovarnyy
  - Judith Bush
  - Meg Joshi
- 
+
 ## Working on schema for participant
 
 * [Best practices for JSON-LD](http://json-ld.org/spec/latest/json-ld-api-best-practices/)
 * [Google JSON-LD Schema Validator](https://developers.google.com/schemas/testing#schema_validator)
-  
+
 We spent the hour staring at the json-ld schema file for schema.org
 
 We changed the name of "Organization" to "Participant"
@@ -49,9 +49,7 @@ For example:
 
 Some questions are raised:
 
-Should be perhaps just move to one big schema file for OTTO? 
+Should be perhaps just move to one big schema file for OTTO?
 
-At what URL should we publish the OTTO schema? Should we ask for a nice 
+At what URL should we publish the OTTO schema? Should we ask for a nice
 Kantara URL?
-
-

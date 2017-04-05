@@ -1,5 +1,5 @@
 OTTO WG Minutes: 9/7/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
@@ -18,24 +18,24 @@ organizations, federations, and two entity_types, OpenID Provider
 and OpenID Relying Party.
 
 Once this is up, it will be a good opportunity for us to provide more
-detail to the OP and RP entities. 
+detail to the OP and RP entities.
 
-Meg has also been researching persistence strategies for OTTO 
+Meg has also been researching persistence strategies for OTTO
 data. One requirement is loose schema checking. Janusz pointed out
 that keeping the RDBMS schema in sync has been a challenge for Jagger
 software. Mike had been pushing for the same. Three options
-were considered: MySQL, LDAP, and MongoDB. The leading contender 
-right now is MySQL. 
+were considered: MySQL, LDAP, and MongoDB. The leading contender
+right now is MySQL.
 
 MySQL 5.7 has new native data type for JSON. See:
 
 https://dev.mysql.com/doc/refman/5.7/en/json.html#json-paths
 
-Yuriy is concerned if the MySQL supports comparison and ordering, for a 
+Yuriy is concerned if the MySQL supports comparison and ordering, for a
  query such as `$.**.b = 10`
 
-Although not technically a consideration for the spec, an implementation 
-would provide evidence that our idea to use JSPath as the query syntax 
+Although not technically a consideration for the spec, an implementation
+would provide evidence that our idea to use JSPath as the query syntax
 is sound.
 
 ## Discussion / Work on Schema
@@ -43,16 +43,16 @@ is sound.
 We had an abbreviated discussion on schema. This needs more time and
 examples.
 
-Peter mentioned that in addition to schema, it would be helpful if 
+Peter mentioned that in addition to schema, it would be helpful if
 the federation published the conformance profiles supported / preferred.
 
 Judith provided a concise problem statement for "schemas". We should
-work on expanding this. Something like: 
+work on expanding this. Something like:
 
 ```
-Given an RP or IDM implementation, a machine readable source that 
-describes the user, client, authentication and other claims (and 
-constants) available in  the federation to bootstrap joining the 
+Given an RP or IDM implementation, a machine readable source that
+describes the user, client, authentication and other claims (and
+constants) available in  the federation to bootstrap joining the
 federation.
 
 ```
@@ -60,7 +60,7 @@ federation.
 
 ## Next Meeting - Weds 9/14/2016 9am PT / 5pm GMT
 
-Mike is arriving back in Austin 90 minutes prior, so it may 
+Mike is arriving back in Austin 90 minutes prior, so it may
 be tight.
 
 1.  Please join my meeting.
@@ -92,4 +92,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

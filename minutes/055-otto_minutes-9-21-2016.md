@@ -1,5 +1,5 @@
 OTTO WG Minutes: 9/21/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
@@ -40,7 +40,7 @@ Option 2: Include whole entries in services, keys are ids
     "services": {"http://ra.org/entity/90e4fb41-8916-4fa6-a306-30e1b904d582" : {object},
                  "http://ra.org/entity/9c2bbdaf-00ec-42f0-adf0-4d6bb785f356" : {object}
                  }
-    
+
 }
 ```
 
@@ -141,4 +141,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

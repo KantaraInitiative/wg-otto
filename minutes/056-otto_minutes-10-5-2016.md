@@ -1,5 +1,5 @@
 OTTO WG Minutes: 10/5/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
@@ -9,17 +9,17 @@ STATUS: Draft
  - Janusz Ulanowski
  - Judith Bush
 
-## Discussion of SAML 
+## Discussion of SAML
 
 Keith is interested to start testing if OTTO could be applied to
-SAML federations. 
+SAML federations.
 
 Mike has some concerns about this solution:
 https://github.com/KantaraInitiative/wg-otto/blob/master/schema/saml/idp.md
 
- 1. The base64 encoded metadata would not be searchable. 
+ 1. The base64 encoded metadata would not be searchable.
  2. Priority: would it be better to focus on OpenID Connect and revisit
- SAML when we had a better model? 
+ SAML when we had a better model?
 
 ## Discussion of Test Server
 
@@ -28,14 +28,14 @@ Meg did a long demo showing all the endpoints using the Swagger UI:
 Swagger UI: http://otto-test.gluu.org/swagger
 Code: https://github.com/GluuFederation/otto-node
 
-Some points: 
+Some points:
 
 1. Tight schema enforcement
 2. Depth enables links to be expanded
 3. Filtering working quite well
 4. Need to consider how to handle external links--copy / auto-refresh?
 5. Need to consider how to secure API's? Should we define standard OAuth2
-scopes that are required to access each API? This enable more 
+scopes that are required to access each API? This enable more
 interoperability then just saying "use OAuth."
 
 ## Notes on OIDC federation spec
@@ -43,14 +43,14 @@ interoperability then just saying "use OAuth."
 OIDC federation:
   http://openid.net/specs/openid-connect-federation-1_0.html
 
-One major change with this OpenID Connect federation model is that the 
-federation operator does not publish metadata--just signs "metadata 
-statements" which are published by the OP, or used by the RP to register 
+One major change with this OpenID Connect federation model is that the
+federation operator does not publish metadata--just signs "metadata
+statements" which are published by the OP, or used by the RP to register
 at an OP.
 
-This raises a fundamental question: should the federation publish 
-metadata at all? If not--this takes a big task off our plate. We no 
-longer need to "sign the graph." However, this would not solve 
+This raises a fundamental question: should the federation publish
+metadata at all? If not--this takes a big task off our plate. We no
+longer need to "sign the graph." However, this would not solve
 signing for SAML metadata.
 
 ## Kantara Blog
@@ -60,12 +60,12 @@ https://www.gluu.org/blog/pivoting-otto-to-meet-the-requirements-of-federation-2
 
 ## Next Meeting - Weds 10/12/2016 9am PT / 5pm GMT
 
-Please attend as we only have two more meetings before IIW! 
+Please attend as we only have two more meetings before IIW!
 
-We need to make progress on the schema for : federation, 
+We need to make progress on the schema for : federation,
 federation_entity, and organization.
 
-Meeting details are the same: 
+Meeting details are the same:
 
 1.  Please join my meeting.
 https://global.gotomeeting.com/join/162399285
@@ -96,4 +96,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

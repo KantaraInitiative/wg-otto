@@ -1,5 +1,5 @@
 OTTO WG Minutes: 11/9/2016
-STATUS: Draft
+STATUS: Approved
 
 ## Voting Members Attending:
  - Mike Schwartz
@@ -19,8 +19,8 @@ refeds list, which summarizes the purpose:
 -------- Original Message --------
 Subject: Reminder: Meeting tomorrow re: OTTO / federation trust mgt
 Date: 2016-11-09 14:56
-From: Mike Schwartz 
-To: Leif Johansson 
+From: Mike Schwartz
+To: Leif Johansson
 Cc: refeds List
 
 Leif and refeds community,
@@ -81,21 +81,21 @@ Meeting ID: 120-101-757
 
 Current OTTO API docs are here:
  https://github.com/GluuFederation/otto-node/blob/master/README.md
- 
+
 But the README (the unoffical spec document) is out of data:
  https://github.com/KantaraInitiative/wg-otto
 
-In particular, better defintions are more examples are needed for 
+In particular, better defintions are more examples are needed for
 "depth" and "fitler"--examples that will be meaningful to federation
 people, like how to identify the R&S websites.
 
-Yuriy reminded us that we had dicussed changing the name of the depth 
-parameter.  Depth is used to specify which entities should be returned 
-in a search. The term "depth" may give the impress that it means how 
-many inter-federations deep the server should chase. Some other ideas to 
+Yuriy reminded us that we had dicussed changing the name of the depth
+parameter.  Depth is used to specify which entities should be returned
+in a search. The term "depth" may give the impress that it means how
+many inter-federations deep the server should chase. Some other ideas to
 rename this term:
- 
-* Expand - Yuriy's favorite term. 
+
+* Expand - Yuriy's favorite term.
 * Select (which node we select)
 * Match
 * Browse
@@ -136,4 +136,3 @@ Access Code: 162-399-285
 Audio PIN: Shown after joining the meeting
 
 Meeting ID: 162-399-285
-

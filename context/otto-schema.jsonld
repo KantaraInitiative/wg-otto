@@ -1,6 +1,7 @@
-{
+{"@context":{
   "@id": "@id",
   "type": "@type",
+  "@vocab": "http://schema.org/",
   "otto": "https://kantara.org/otto/v1/",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
   "schema": "http://schema.org/",
@@ -10,7 +11,9 @@
   "openid-provider-metadata": "http://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata",
   "openid-federation": "http://openid.net/specs/openid-connect-federation-1_0.html",
   "obi": "https://w3id.org/openbadges#",
-  "trustmark": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
+  "trustmark": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf"
+}
+    
   "@graph": [
                 {
                     "@id": "otto:RegistrationAuthority",
