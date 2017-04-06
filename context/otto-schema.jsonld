@@ -53,7 +53,7 @@
                   "domainIncludes": [
                     {
                       "@id": "otto:RegistrationAuthority"
-                    },
+                    }
                   ],
                   "rangeIncludes":[
                     {
@@ -65,8 +65,8 @@
                     {
                       "@id": "otto:Participant"
                     }
-                   ],
-                }
+                   ]
+                },
                 {"@id": "otto:operates",
                   "@type": "rdf:Property",
                   "domainIncludes": [
@@ -79,7 +79,7 @@
                   ],
                   "rangeIncludes":{
                       "@id": "otto:Entity"
-                  },
+                  }
                 },
                 {"@id": "otto:operatedBy",
                   "@type": "rdf:Property",
@@ -103,7 +103,33 @@
                   "rangeIncludes":{
                       "@id": "otto:RegistrationAuthority"
                     }
+                },
+                {"@id": "otto:federation_endpoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:RegistrationAuthority"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
+                },
+                {"@id": "otto:entity_endpoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:RegistrationAuthority"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
+                },
+                {"@id": "otto:participant_endpoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:RegistrationAuthority"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
                 }
-
   ]
 }
