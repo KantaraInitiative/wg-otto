@@ -1,5 +1,4 @@
 {"@context":{
-  "@id": "@id",
   "type": "@type",
   "@vocab": "http://schema.org/",
   "otto": "https://kantara.org/otto/v1/vocabulary",
