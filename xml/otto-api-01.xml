@@ -145,11 +145,11 @@
     <section anchor="configuration-endpoint"
                title="Congiguration Endpoint">
        <t>
-         This endpoint returns policy and other information useful to clients
-         prior to making requests. Registration Authority MUST make a JSON
-         document available at the path formed by concatenating the string
-         <spanx style="verb">/.well-known/otto-configuration</spanx> to the
-         Issuer. The syntax and semantics of <spanx style="verb">.well-known</spanx>
+         This endpoint returns the JSON-LD for the RegistrationAuthority class,
+         which includes information useful to clients prior to making requests.
+         Registration Authority MUST make this JSON-LD class available at the
+         path formed by concatenating the string <spanx style="verb">/.well-known/otto-configuration</spanx>
+         to the Issuer. The syntax and semantics of <spanx style="verb">.well-known</spanx>
          are defined in <xref target="RFC5785" />, and MUST point to a JSON
          document compliant with this specification and MUST be returned using
          the <spanx style="verb">application/json</spanx> content type.
@@ -158,8 +158,9 @@
        <section anchor="ra-metadata"
                 title="Registration Authority Metadata">
             <t>
-              Registration Authorities have metadata describing their
-              configuration as follows:
+              The vocabulary for the RegistrationAuthority class is defined
+              in the OTTO vocabulary specification. The following values
+              are required for interoperability.
             </t>
 
             <list hangIndent="6" style="hanging">
@@ -194,10 +195,14 @@ Host: ra.org]]>
 Content-Type: application/json
 
 {
-   "issuer":"https://ra.com",
-   "federation_endpoint":"https://ra.com/otto/federation",
-   "entity_endpoint":"https://ra.com/otto/entity",
-   "participant_endpoint":"https://ra.com/otto/participant"
+   "@context": "https://kantara.org/otto/v1/vocabulary",
+   "name": "Acme Registration Authority",
+   "issuer":"https://acme-ra.org/otto",
+   "url": "https://acme-ra.org",
+   "Description": "Registration Authority for the ACME federations.",
+   "federation_endpoint":"https://acme-ra.org/otto/federation",
+   "entity_endpoint":"https://acme-ra.org/otto/entity",
+   "participant_endpoint":"https://acme-ra.org/otto/participant"
 }
 ]]>
               </artwork>

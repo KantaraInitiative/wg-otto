@@ -133,11 +133,23 @@
           <!-- -->
           <c>url</c>
           <c>URL</c>
+          <c>The public website for the RA</c>
+          <!-- -->
+          <c>federation_endpoint</c>
+          <c>URL</c>
+          <c>The base URL for the RA</c>
+          <!-- -->
+          <c>entity_endpoint</c>
+          <c>URL</c>
+          <c>The base URL for the RA</c>
+          <!-- -->
+          <c>participant_endpoint</c>
+          <c>URL</c>
           <c>The base URL for the RA</c>
           <!-- -->
           <c>description</c>
           <c>Text</c>
-          <c>Additional information about the RA</c>
+          <c>Optional information about the RA</c>
       </texttable>
 
       </t>

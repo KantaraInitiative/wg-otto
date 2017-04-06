@@ -1,0 +1,168 @@
+[
+{
+    "@id": "otto:OpenIDRelyingParty",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "otto:Entity"
+        }
+},
+{
+    "@id": "otto:SAMLEntity",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "otto:Entity"
+        }
+},
+{
+    "@id": "otto:BadgeIssuer",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "obi:Issuer"
+        }
+},
+{
+    "@id": "otto:UserClaim",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "Thing"
+        }
+},
+{
+    "@id": "otto:OAuthScope",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "Thing"
+        }
+},
+{
+    "@id": "otto:Acr",
+    "@type": "rdfs:Class",
+    "rdfs:subClassOf":
+        {
+            "@id": "Thing"
+        }
+},
+{
+    "@id": "trustmark:Trustmark",
+    "@type": "rdfs:Class"
+},
+"rdfs:comment": "Service(s) provided by an Organization"
+},
+{
+"@id": "otto:signingKey",
+"@type": "rdf:Property",
+"domainIncludes": {
+    "@id": "otto:OpenIDProvider"
+},
+"rdfs:comment": "Service(s) provided by the Participant"
+},
+{
+"@id": "otto:configurationDocument",
+"@type": "rdf:Property",
+"domainIncludes": {
+    "@id": "otto:OpenIDProvider"
+},
+"rdfs:comment": "Service(s) provided by the Participant"
+},
+{
+"@id": "otto:signingKeys",
+"@type": "rdf:Property",
+"domainIncludes": [
+  {
+    "@id": "otto:Entity"
+  },
+  {
+    "@id": "otto:Federation"
+  }
+],
+"rdfs:comment": "A JSON Web Key Set representing the public part of the entity's signing keys."
+},
+{
+"@id": "otto:samlMetadataDocument",
+"@type": "rdf:Property",
+"domainIncludes": {
+    "@id": "otto:SAMLEntity"
+},
+"rdfs:comment": "Service(s) provided by the Participant"
+},
+{
+"@id": "otto:entityCategory",
+"@type": "rdf:Property",
+"domainIncludes": [
+  {
+    "@id": "otto:SAMLEntity"
+  },
+  {
+    "@id": "otto:OpenIDProvider"
+  },
+  {
+    "@id": "otto:OpenIDRelyingParty"
+  }
+],
+"rdfs:comment": "A group of federation entities that share common criteria."
+},
+{
+"@id": "otto:source",
+"@type": "rdf:Property",
+"domainIncludes": [
+  {
+    "@id": "otto:UserClaim"
+  },
+  {
+    "@id": "otto:OAuthScope"
+  },
+  {
+    "@id": "otto:Acr"
+  },
+  {
+    "@id": "otto:TrustMark"
+  }
+],
+"rdfs:comment": "Link to the definition of this term."
+},
+{
+"@id": "otto:extentOfAccess",
+"@type": "rdf:Property",
+"domainIncludes":{
+    "@id": "otto:OAuthScope"
+  },
+  "rangeIncludes":{
+    "@id": "otto:UserClaim"
+  },
+"rdfs:comment": "The right to access something"
+},
+{
+"@id": "otto:supports",
+"@type": "rdf:Property",
+"domainIncludes": [
+  {
+    "@id": "otto:Federation"
+  },
+  {
+    "@id": "otto:Entity"
+  }
+],
+  "rangeIncludes":[
+  {
+    "@id": "otto:UserClaim"
+  },
+  {
+    "@id": "otto:OAuthScope"
+  },
+  {
+    "@id": "otto:Acr"
+  },
+  {
+    "@id": "trustmark:Trustmark"
+  },
+  {
+    "@id": "obi:BadgeClass"
+  }
+],
+"rdfs:comment": ""
+}
