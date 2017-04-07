@@ -91,8 +91,8 @@
 
       <section anchor="extentions" title="Extensions">
         <t>
-          Each Registration Authority may publish additional properties beyond
-          those defined here. Extensions allow issuers to declare how they
+          Other organizations may publish additional properties beyond
+          those defined here. Extensions allow the community to declare how they
           are adding information so that it can be understood and other issuers
           can add the same sore of information in a compatible way.
         </t>
@@ -100,7 +100,7 @@
           Extension authors define and host a new JSON-LD context file
           describing all the terms the extension covers. These context files may
           further define any JSON-schema that implementations of the extension
-          should pass. If used, each scheam is linked from the context and
+          should pass. If used, each schema is linked from the context and
           hosted as a seperate JSON-schema files.
         </t>
       </section>
@@ -127,13 +127,13 @@
           <c>Text</c>
           <c>A human friendly name for the RA</c>
           <!-- -->
-          <c>operates</c>
-          <c>Entity or Federation</c>
-          <c>A service or federation hosted by the RA</c>
+          <c>registers</c>
+          <c>Federation</c>
+          <c>A Federation or an array of Federations hosted by the RA</c>
           <!-- -->
           <c>url</c>
           <c>URL</c>
-          <c>The public website for the RA</c>
+          <c>The public, human readible website for the RA</c>
           <!-- -->
           <c>federation_endpoint</c>
           <c>URL</c>
@@ -157,8 +157,59 @@
 
     <section anchor="federation" title="Federation">
       <t>
+        <texttable anchor="table_ex" title="Federation">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>name</c>
+          <c>Text</c>
+          <c>A human friendly name for the Federation</c>
+          <!-- -->
+          <c>description</c>
+          <c>Text</c>
+          <c>Optional information about the RA</c>          <!-- -->
+          <!-- -->
+          <c>url</c>
+          <c>URL</c>
+          <c>The public, human readible website for the Federation</c>
+          <!-- -->
+          <c>operates</c>
+          <c>Entity</c>
+          <c>A service operated by the Federation</c>
+          <!-- -->
+          <c>registeredBy</c>
+          <c>RegistrationAuthority</c>
+          <c>The RA where the federation is hosted</c>
+          <!-- -->
+          <c>member</c>
+          <c>array of Participants</c>
+          <c>List of organizational members of the Federation</c>
+          <!-- -->
+          <c>federates</c>
+          <c>array of Entity</c>
+          <c>List of services registered to the federation by Participants</c>
+          <!-- -->
+          <c>sponsor</c>
+          <c>A Participant or array of Participants</c>
+          <c>The organization legally responsible for management of the Federation</c>
+          <!-- -->
+          <c>technicalContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</c>responsibilities of
+          <!-- -->
+          <c>executiveContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person responsible for all decisions and delegations of authority for the Participant</c>
+          <!-- -->
+          <c>securityContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person(s) to contact in the event of an urgent security issue</c>
+
+      </texttable>
 
       </t>
+
     </section>
 
     <section anchor="participant" title="Participant">
