@@ -95,9 +95,17 @@
                 },
                 {"@id": "otto:registeredBy",
                   "@type": "rdf:Property",
-                  "domainIncludes": {
+                  "domainIncludes": [
+                    {
                       "@id": "otto:Federation"
                     },
+                    {
+                      "@id": "otto:Participant"
+                    },
+                    {
+                      "@id": "otto:Entity"
+                    }
+                  ],
                   "rangeIncludes":{
                       "@id": "otto:RegistrationAuthority"
                     }
@@ -127,6 +135,78 @@
                     },
                   "rangeIncludes":{
                       "@id": "URL"
+                    }
+                },
+                {"@id": "otto:federationAgreement",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
+                },
+                {"@id": "otto:federationPolicy",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
+                },
+                {"@id": "otto:dataProtectionCodeOfConduct",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "URL"
+                    }
+                },
+                {"@id": "otto:technicalContactPoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "Person"
+                    }
+                },
+                {"@id": "otto:executiveContactPoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "Person"
+                    }
+                },
+                {"@id": "otto:securityContactPoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "Person"
+                    }
+                },
+                {"@id": "otto:federates",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "Entity"
+                    }
+                },
+                {"@id": "otto:federatedBy",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "Entity"
+                    },
+                  "rangeIncludes":{
+                      "@id": "Federation"
                     }
                 }
   ]
