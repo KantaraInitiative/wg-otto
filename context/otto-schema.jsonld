@@ -1,7 +1,7 @@
 {"@context":{
-  "@vocab": "http://schema.org/",
   "otto": "https://kantara.org/otto/v1/vocabulary#",
-  "rdfs": "http://www.w3.org/2000/01/rdf-schema#"
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "schema": "http://schema.org"
 },
   "@graph": [
                 {
@@ -10,7 +10,7 @@
                     "rdfs:comment": "An organization that operates the technical infrastructure for federations.",
                     "rdfs:subClassOf":
                         {
-                            "@id": "Organization"
+                            "@id": "schema:Organization"
                         }
                 },
                 {
@@ -19,7 +19,7 @@
                     "rdfs:comment": "An organization that defines common policies and operating procedures.",
                     "rdfs:subClassOf":
                         {
-                            "@id": "Organization"
+                            "@id": "schema:Organization"
                         }
                 },
                 {
@@ -28,7 +28,7 @@
                     "rdfs:comment": "A legal entity that can agree to federation policies.",
                     "rdfs:subClassOf":
                         {
-                            "@id": "Organization"
+                            "@id": "schema:Organization"
                         }
                 },
                 {
@@ -37,7 +37,7 @@
                     "rdfs:comment": "A digital service operated by a Participant",
                     "rdfs:subClassOf":
                         {
-                            "@id": "Thing"
+                            "@id": "schema:Thing"
                         }
                 },
                 {
@@ -116,7 +116,7 @@
                       "@id": "otto:RegistrationAuthority"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:entity_endpoint",
@@ -125,7 +125,7 @@
                       "@id": "otto:RegistrationAuthority"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:participant_endpoint",
@@ -134,7 +134,7 @@
                       "@id": "otto:RegistrationAuthority"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:federationAgreement",
@@ -143,7 +143,7 @@
                       "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:federationPolicy",
@@ -152,7 +152,7 @@
                       "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:dataProtectionCodeOfConduct",
@@ -161,52 +161,61 @@
                       "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "URL"
+                      "@id": "schema:URL"
                     }
                 },
                 {"@id": "otto:technicalContactPoint",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "Federation"
+                      "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "Person"
+                      "@id": "schema:Person"
                     }
                 },
                 {"@id": "otto:executiveContactPoint",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "Federation"
+                      "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "Person"
+                      "@id": "schema:Person"
                     }
                 },
                 {"@id": "otto:securityContactPoint",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "Federation"
+                      "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "Person"
+                      "@id": "schema:Person"
                     }
                 },
                 {"@id": "otto:federates",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "Federation"
+                      "@id": "otto:Federation"
                     },
                   "rangeIncludes":{
-                      "@id": "Entity"
+                      "@id": "otto:Entity"
                     }
                 },
                 {"@id": "otto:federatedBy",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "Entity"
+                      "@id": "otto:Entity"
                     },
                   "rangeIncludes":{
-                      "@id": "Federation"
+                      "@id": "otto:Federation"
+                    }
+                },
+                {"@id": "otto:metadata",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Entity"
+                    },
+                  "rangeIncludes":{
+                      "@id": "otto:Metadata"
                     }
                 }
   ]

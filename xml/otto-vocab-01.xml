@@ -151,13 +151,12 @@
           <c>Text</c>
           <c>Optional information about the RA</c>
       </texttable>
-
       </t>
     </section>
 
     <section anchor="federation" title="Federation">
-      <t>
-        <texttable anchor="table_ex" title="Federation">
+      <t>/;
+        <!-- <texttable anchor="table_ex" title="Federation"> -->
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -190,13 +189,59 @@
           <c>array of Entity</c>
           <c>List of services registered to the federation by Participants</c>
           <!-- -->
-          <c>sponsor</c>
           <c>A Participant or array of Participants</c>
+          <c>sponsor</c>
           <c>The organization legally responsible for management of the Federation</c>
+          <!-- //-->
+          <c>technicalContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</c>
+          <!-- -->
+          <c>executiveContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person responsible for all decisions and delegations of authority for the Federation</c>
+          <!-- -->
+          <c>securityContactPoint</c>
+          <c>Person or array of Person</c>
+          <c>Person(s) to contact in the event of an urgent security issue</c>
+      </texttable>
+      </t>
+    </section>
+
+    <section anchor="participant" title="Participant">
+      <t>
+        <texttable anchor="table_ex" title="Participant">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>name</c>
+          <c>Text</c>
+          <c>A human friendly name for the Participant</c>
+          <!-- -->
+          <c>url</c>
+          <c>URL</c>
+          <c>The public website for the Participant</c>
+          <!-- -->
+          <c>description</c>
+          <c>Text</c>
+          <c>Optional information about the Participant</c>
+          <!-- -->
+          <c>memberOf</c>
+          <c>Federation or array of Federation</c>
+          <c>A federation to which this Participant is a member</c>
+          <!-- -->
+          <c>operates</c>
+          <c>Entity</c>
+          <c>A service operated by the Participant</c>
+          <!-- -->
+          <c>registeredBy</c>`
+          <c>RegistrationAuthority</c>`
+          <c>The RA where the Participant is registered</c>
           <!-- -->
           <c>technicalContactPoint</c>
           <c>Person or array of Person</c>
-          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</c>responsibilities of
+          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the Federation</c>
           <!-- -->
           <c>executiveContactPoint</c>
           <c>Person or array of Person</c>
@@ -205,73 +250,52 @@
           <c>securityContactPoint</c>
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
-
       </texttable>
-
-      </t>
-
-    </section>
-
-    <section anchor="participant" title="Participant">
-      <t>
-
       </t>
     </section>
 
     <section anchor="entity" title="Entity">
       <t>
+        <texttable anchor="table_ex" title="Entity">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>name</c>
+          <c>Text</c>
+          <c>A human friendly name for the Entity</c>
+          <!-- -->
+          <c>url</c>
+          <c>URL</c>
+          <c>The public, human readible website for the Entity</c>
+          <!-- -->
+          <c>description</c>
+          <c>Text</c>
+          <c>Optional information about the Entity</c>
+          <!-- -->
+          <c>registeredBy</c>
+          <c>RegistrationAuthority</c>
+          <c>The RA which registered this entity</c>
+          <!-- -->
+          <c>federatedBy</c>
+          <c>Federation or array of Federation</c>
+          <c>The federation to which this entity is affiliated</c>
+          <!-- -->
+          <c>entityId</c>
+          <c>Text</c>
+          <c>Identifier issued by the RA</c>
+          <!-- -->
+          <c>entityIdUrl</c>
+          <c>URL</c>
+          <c>Full URL identifier for the entity</c>
+          <!-- -->
+          <c>metadata</c>
+          <c>Metadata</c>
+          <c>The metadata for this Entity</c>
+      </texttable>
 
       </t>
     </section>
-
-    <section anchor="openid-provider" title="OpenID Provider">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="openid-relying-party" title="OpenID Relying Party">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="saml-entity" title="SAML Entity">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="badge-issuer" title="Badge Issuer">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="user-claim" title="User Claim">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="oauth-scope" title="OAuth Scope">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="acr" title="ACR">
-      <t>
-
-      </t>
-    </section>
-
-    <section anchor="trustmark" title="Trustmark">
-      <t>
-
-      </t>
-    </section>
-
 
     <section anchor="Acknowledgments" title="Acknowledgments">
       <t>The following people made significant text contributions to the
