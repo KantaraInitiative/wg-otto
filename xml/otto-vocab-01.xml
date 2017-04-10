@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="US-ASCII"?>
-<?xml-styleshet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
+<?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
 "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
+<?xml-stylesheet type="text/xsl" href="..\..\..\..\..\..\..\Desktop\::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\Users\mike\Documents\GitHub\wg-otto\xml\rfc2629.xslt"?>
+<?xml-stylesheet type="text/xsl" href="..\..\..\..\..\..\..\Desktop\::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\Users\mike\Documents\GitHub\wg-otto\xml\rfc2629.xslt"?>
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
      target="draft" version="2.0">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -116,9 +118,10 @@
       </section>
     </section>
 
+  <section anchor="vocabulary" title="Vocabulary">
     <section anchor="registration-authority" title="Registration Authority">
       <t>
-        <texttable anchor="table_ex" title="Registration Authority">
+        <texttable anchor="table_ra" title="Registration Authority">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -155,8 +158,8 @@
     </section>
 
     <section anchor="federation" title="Federation">
-      <t>/;
-        <!-- <texttable anchor="table_ex" title="Federation"> -->
+      <t>
+        <texttable anchor="table_federation" title="Federation">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -210,7 +213,7 @@
 
     <section anchor="participant" title="Participant">
       <t>
-        <texttable anchor="table_ex" title="Participant">
+        <texttable anchor="table_participant" title="Participant">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -256,7 +259,7 @@
 
     <section anchor="entity" title="Entity">
       <t>
-        <texttable anchor="table_ex" title="Entity">
+        <texttable anchor="table_entity" title="Entity">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -296,6 +299,7 @@
 
       </t>
     </section>
+  </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
       <t>The following people made significant text contributions to the
@@ -310,8 +314,6 @@
   </middle>
 
   <back>
-    <references title="Normative References">
-    </references>
 
     <references title="Informative References">
       <reference anchor="OttoWgParticipants"
