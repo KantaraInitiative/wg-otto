@@ -1,0 +1,351 @@
+<!DOCTYPE html><html lang="en"><head profile="http://dublincore.org/documents/2008/08/04/dc-html/"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Open Trust Taxonomy for Federation Operators
+      Application Interfaces</title><style type="text/css" title="Xml2Rfc (sans serif)">
+a {
+  text-decoration: none;
+}
+a.smpl {
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: underline;
+}
+address {
+  margin-top: 1em;
+  margin-left: 2em;
+  font-style: normal;
+}
+body {
+  color: black;
+  font-family: cambria, georgia, serif;
+  font-size: 12pt;
+  margin: 2em auto;
+  max-width: 1000px;
+}
+samp, tt, code, pre {
+  font-family: consolas, monaco, monospace;
+}
+cite {
+  font-style: normal;
+}
+dl {
+  margin-left: 2em;
+}
+dl > dt {
+  float: left;
+  margin-right: 1em;
+}
+dl.nohang > dt {
+  float: none;
+}
+dl > dd {
+  margin-bottom: .5em;
+}
+dl.compact > dd {
+  margin-bottom: .0em;
+}
+dl > dd > dl {
+  margin-top: 0.5em;
+}
+ul.empty {
+  list-style-type: none;
+}
+ul.empty li {
+  margin-top: .5em;
+}
+dl p {
+  margin-left: 0em;
+}
+h1 {
+  color: green;
+  font-size: 150%;
+  line-height: 18pt;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 36pt;
+  margin-bottom: 0pt;
+}
+h1.kantara {
+  margin-top: 12pt;
+  margin-bottom: 12pt;
+}
+h2 {
+  font-size: 130%;
+  line-height: 21pt;
+  page-break-after: avoid;
+}
+h2.np {
+  page-break-before: always;
+}
+h3 {
+  font-size: 120%;
+  line-height: 15pt;
+  page-break-after: avoid;
+}
+h4 {
+  font-size: 110%;
+  page-break-after: avoid;
+}
+h5, h6 {
+  page-break-after: avoid;
+}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+  color: black;
+}
+img {
+  margin-left: 3em;
+}
+img.kantara {
+  margin-left: 0;
+  max-width:250px;
+  max-height:100px;
+}
+li {
+  margin-left: 2em;
+}
+ol {
+  margin-left: 2em;
+}
+ol.la {
+  list-style-type: lower-alpha;
+}
+ol.ua {
+  list-style-type: upper-alpha;
+}
+ol p {
+  margin-left: 0em;
+}
+p {
+  margin-left: 2em;
+}
+pre {
+  font-size: 11pt;
+  margin-left: 3em;
+  background-color: lightyellow;
+  padding: .25em;
+  page-break-inside: avoid;
+}
+pre.text2 {
+  border-style: dotted;
+  border-width: 1px;
+  background-color: #f0f0f0;
+}
+pre.inline {
+  background-color: white;
+  padding: 0em;
+  page-break-inside: auto;
+}
+pre.text {
+  border-style: dotted;
+  border-width: 1px;
+  background-color: #f8f8f8;
+}
+pre.drawing {
+  border-style: solid;
+  border-width: 1px;
+  background-color: #f8f8f8;
+  padding: 2em;
+}
+table {
+  margin-left: 2em;
+}
+table.header {
+  border-spacing: 1px;
+  width: 95%;
+  font-size: 11pt;
+  color: white;
+}
+td.top {
+  vertical-align: top;
+}
+td.topnowrap {
+  vertical-align: top;
+  white-space: nowrap;
+}
+table.header td {
+  background-color: gray;
+  width: 50%;
+}
+table.header a {
+  color: white;
+}
+table.kantara {
+  color: black;
+}
+table.header td.kantara {
+  background-color:white;
+}
+td.reference {
+  vertical-align: top;
+  white-space: nowrap;
+  padding-right: 1em;
+}
+thead {
+  display:table-header-group;
+}
+ul.toc, ul.toc ul {
+  list-style: none;
+  margin-left: 1.5em;
+  padding-left: 0em;
+}
+ul.toc li {
+  line-height: 150%;
+  font-weight: bold;
+  margin-left: 0em;
+}
+ul.toc li li {
+  line-height: normal;
+  font-weight: normal;
+  font-size: 11pt;
+  margin-left: 0em;
+}
+li.excluded {
+  font-size: 0pt;
+}
+ul p {
+  margin-left: 0em;
+}
+.filename, h1, h2, h3, h4 {
+  font-family: candara, calibri, segoe, optima, arial, sans-serif;
+}
+
+.comment {
+  background-color: yellow;
+}
+.center {
+  text-align: center;
+}
+.error {
+  color: red;
+  font-style: italic;
+  font-weight: bold;
+}
+.figure {
+  font-weight: bold;
+  text-align: center;
+  font-size: 10pt;
+}
+.filename {
+  color: #333333;
+  font-size: 112%;
+  font-weight: bold;
+  line-height: 21pt;
+  text-align: center;
+  margin-top: 0pt;
+}
+.fn {
+  font-weight: bold;
+}
+.left {
+  text-align: left;
+}
+.right {
+  text-align: right;
+}
+.warning {
+  font-size: 130%;
+  background-color: yellow;
+}
+
+@media screen {
+  pre.text, pre.text2 {
+    width: 69em;
+  }
+}
+
+@media print {
+  .noprint {
+    display: none;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+  table.header {
+    width: 90%;
+  }
+
+  td.header {
+    width: 50%;
+    color: black;
+    background-color: white;
+    vertical-align: top;
+    font-size: 110%;
+  }
+
+  ul.toc a:last-child::after {
+    content: leader('.') target-counter(attr(href), page);
+  }
+
+  ul.ind li li a {
+    content: target-counter(attr(href), page);
+  }
+
+  pre {
+    font-size: 10pt;
+  }
+
+  .print2col {
+    column-count: 2;
+    -moz-column-count: 2;
+    column-fill: auto;
+  }
+}
+
+@page {
+  @top-left {
+       content: "Internet-Draft";
+  }
+  @top-right {
+       content: "4 2017";
+  }
+  @top-center {
+       content: "OTTO Core";
+  }
+  @bottom-left {
+       content: "Schwartz, et al.";
+  }
+  @bottom-center {
+       content: "Expires WRONG SYNTAX FOR MONTH 7, 2017";
+  }
+  @bottom-right {
+       content: "[Page " counter(page) "]";
+  }
+}
+
+@page:first {
+    @top-left {
+      content: normal;
+    }
+    @top-right {
+      content: normal;
+    }
+    @top-center {
+      content: normal;
+    }
+}
+</style><link rel="Author" href="#rfc.authors"><link rel="Copyright" href="#rfc.copyright"><link rel="Chapter" title="1 Introduction" href="#rfc.section.1"><link rel="Chapter" title="2 Congiguration Endpoint" href="#rfc.section.2"><link rel="Chapter" title="3 Federation Endpoint" href="#rfc.section.3"><link rel="Chapter" title="4 Participant Endpoint" href="#rfc.section.4"><link rel="Chapter" title="5 Entity Endpoint" href="#rfc.section.5"><link rel="Chapter" title="6 Acknowledgments" href="#rfc.section.6"><link rel="Chapter" href="#rfc.section.7" title="7 References"><meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.736, 2015/06/05 18:58:55, XSLT vendor: libxslt http://xmlsoft.org/XSLT/"><link rel="schema.dct" href="http://purl.org/dc/terms/"><meta name="dct.creator" content="Schwartz, M."><meta name="dct.creator" content="Ulanwski, J."><meta name="dct.creator" content="Zabrovarnyy, Y."><meta name="dct.creator" content="Joshi, M."><meta name="dct.identifier" content="urn:ietf:id:otto-core"><meta name="dct.issued" scheme="ISO8601" content="2017-WRONG SYNTAX FOR MONTH-02"><meta name="dct.abstract" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."><meta name="description" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."></head><body><img class="kantara" src="https://kantarainitiative.org/wp-content/uploads/2014/07/img1.png" alt="Kantara Initiative"><div id="rfc.title"><h1 class="kantara">Open Trust Taxonomy for Federation Operators Application Interfaces</h1></div><p><table class="header kantara"><tbody><tr><td class="left kantara">Version:</td><td class="left kantara">2.0</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Date:</td><td class="left kantara">2017-NaN-2</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Editor:</td><td class="left kantara">Michael Schwartz, Gluu</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Editor:</td><td class="left kantara">Janusz Ulanwski,, HEAnet</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara"></td><td class="left kantara"></td></tr><tr><td class="left kantara"></td><td class="left kantara">Meghna Joshi, Gluu</td></tr></tbody></table></p><h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2><p>This specification defines standard application interfaces that enable the creation and management of multi-party federations.</p><div id="rfc.status"><h2><a href="#rfc.status">Status of This Document</a></h2><p>This document is a draft technical specification produced by the <a href="https://kantarainitiative.org/confluence/display/uma/Home">User-Managed Access Work Group</a>. See the Kantara Initiative <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/KI+Operating+Procedures+_V1.1_+2009-10-10.pdf">Operating Procedures</a> for more information.</p></div><div id="rfc.copyrightnotice"><h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2><p>Copyright © 2017 Kantara Initiative and the persons identified as the document authors. All rights reserved.</p><p>This document is subject to the <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/Kantara%20Initiative%20IPR%20Policies%20_V1.1_.pdf?version=1&amp;modificationDate=1244488630000&amp;api=v2">Kantara IPR Policy - Option Patent &amp; Copyright: Reciprocal Royalty Free with Opt-Out to Reasonable And Non discriminatory (RAND)</a> (<a href="https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=41025689">HTML version</a>).</p></div><hr class="noprint"><div id="rfc.toc"><h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2><ul class="toc"><li><a href="#rfc.section.1">1.</a>   <a href="#introduction">Introduction</a><ul><li><a href="#rfc.section.1.1">1.1</a>   <a href="#rfc.section.1.1">Notational Conventions</a></li><li><a href="#rfc.section.1.2">1.2</a>   <a href="#terminology">Terminology</a></li><li><a href="#rfc.section.1.3">1.3</a>   <a href="#security">Security Considerations</a></li></ul></li><li><a href="#rfc.section.2">2.</a>   <a href="#configuration-endpoint">Congiguration Endpoint</a><ul><li><a href="#rfc.section.2.1">2.1</a>   <a href="#ra-metadata">Registration Authority Metadata</a></li><li><a href="#rfc.section.2.2">2.2</a>   <a href="#configuration-example">Congiguration example</a></li></ul></li><li><a href="#rfc.section.3">3.</a>   <a href="#federation-endpoint">Federation Endpoint</a><ul><li><a href="#rfc.section.3.1">3.1</a>   <a href="#search-federation">Search Federation</a></li><li><a href="#rfc.section.3.2">3.2</a>   <a href="#create-federation">Create Federation</a></li><li><a href="#rfc.section.3.3">3.3</a>   <a href="#update-federation">Update Federation</a></li><li><a href="#rfc.section.3.4">3.4</a>   <a href="#join-federation">Join Federation</a></li><li><a href="#rfc.section.3.5">3.5</a>   <a href="#leave-federation">Leave Federation</a></li><li><a href="#rfc.section.3.6">3.6</a>   <a href="#delete-federation">Delete Federation</a></li></ul></li><li><a href="#rfc.section.4">4.</a>   <a href="#participant-endpoint">Participant Endpoint</a><ul><li><a href="#rfc.section.4.1">4.1</a>   <a href="#fetch-participant">Fetch Participant</a></li><li><a href="#rfc.section.4.2">4.2</a>   <a href="#create-participant">Create Participant</a></li><li><a href="#rfc.section.4.3">4.3</a>   <a href="#update-participant">Update Participant</a></li><li><a href="#rfc.section.4.4">4.4</a>   <a href="#delete-participant">Delete Participant</a></li></ul></li><li><a href="#rfc.section.5">5.</a>   <a href="#entity-endpoint">Entity Endpoint</a><ul><li><a href="#rfc.section.5.1">5.1</a>   <a href="#fetch-entity">Fetch entity</a></li><li><a href="#rfc.section.5.2">5.2</a>   <a href="#create-entity">Create entity</a></li><li><a href="#rfc.section.5.3">5.3</a>   <a href="#update-entity">Update entity</a></li><li><a href="#rfc.section.5.4">5.4</a>   <a href="#delete-entity">Delete entity</a></li></ul></li><li><a href="#rfc.section.6">6.</a>   <a href="#Acknowledgments">Acknowledgments</a></li><li><a href="#rfc.section.7">7.</a>   <a href="#rfc.references">References</a><ul><li><a href="#rfc.section.7.1">7.1</a>   <a href="#rfc.references.1">Normative References</a></li><li><a href="#rfc.section.7.2">7.2</a>   <a href="#rfc.references.2">Informative References</a></li></ul></li><li><a href="#rfc.authors">Authors' Addresses</a></li></ul></div><hr class="noprint"><div id="introduction"><h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a> <a href="#introduction">Introduction</a></h2><div id="rfc.section.1.p.1"><p>The Open Trust Taxonomy for Federation Operators (OTTO) defines standards to enable the interoperable management of multi-party federations--where a central authority creates the rules for membership, enabling the participants to more efficiently collaborate. The goal of OTTO is to support a range of trust models from very low to very high. By providing a common set of API's and a data model, the OTTO standard provides a scalable technical infrastructure to solve organizational challenges in a number of different ecosystems.</p></div><div><h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a> Notational Conventions</h3><div id="rfc.section.1.1.p.1"><p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.</p></div><div id="rfc.section.1.1.p.2"><p>Unless otherwise noted, all protocol properties and values are case sensitive.</p></div></div><div id="terminology"><h3 id="rfc.section.1.2"><a href="#rfc.section.1.2">1.2</a> <a href="#terminology">Terminology</a></h3><div id="rfc.section.1.2.p.1"><p>This specification introduces the following terms </p><dl><dt>Federation</dt><dd style="margin-left: 4.2em">A group of autonomous organizations that agree to abide the authority of a central organization to reduce the cost of collaboration.</dd><dt>Registration Authority</dt><dd style="margin-left: 4.2em">An organization that hosts the hardware and software used by Federation operators.</dd><dt>Participant</dt><dd style="margin-left: 4.2em">An organization that registers with a Registration Authority for the purpose of joining a Federation.</dd><dt>Entity</dt><dd style="margin-left: 4.2em">A techincal service operated by a Particpant, such as an identity provider, website or mobile application.</dd><dt>Issuer</dt><dd style="margin-left: 4.2em">Location of the Registration Authority, which MUST be a URI <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a> with a scheme component that MUST be https, a host component, and optionally, port and path components and no query or fragment components.</dd></dl></div></div><div id="security"><h3 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3</a> <a href="#security">Security Considerations</a></h3><div id="rfc.section.1.3.p.1"><p>This specification defines several APIs. The Registration Authority MUST use TLS protection over these endpoints, governed by <a href="#BCP195"><cite title="Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)">[BCP195]</cite></a>, which discusses deployment and adoption characteristics of different TLS versions. All endpoints other then the .well-known configuration endpoint SHOULD require some form of authentication and access control, such as Client Authentication as described in <a href="#RFC6749"><cite title="The OAuth 2.0 Authorization Framework">[RFC6749]</cite></a> or a separate OAuth access token. The methods of managing and validating these authentication credentials are out of scope of this specification.</p></div></div></div><hr class="noprint"><div id="configuration-endpoint"><h2 id="rfc.section.2" class="np"><a href="#rfc.section.2">2.</a> <a href="#configuration-endpoint">Congiguration Endpoint</a></h2><div id="rfc.section.2.p.1"><p>This endpoint returns the JSON-LD for the RegistrationAuthority class, which includes information useful to clients prior to making requests. Registration Authority MUST make this JSON-LD class available at the path formed by concatenating the string <tt>/.well-known/otto-configuration</tt> to the Issuer. The syntax and semantics of <tt>.well-known</tt> are defined in <a href="#RFC5785"><cite title="Defining Well-Known Uniform Resource Identifiers (URIs)">[RFC5785]</cite></a>, and MUST point to a JSON document compliant with this specification and MUST be returned using the <tt>application/json</tt> content type.</p></div><div id="ra-metadata"><h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a> <a href="#ra-metadata">Registration Authority Metadata</a></h3><div id="rfc.section.2.1.p.1"><p>The vocabulary for the RegistrationAuthority class is defined in the OTTO vocabulary specification. The following values are required for interoperability. </p><dl><dt>Issuer</dt><dd style="margin-left: 4.2em">REQUIRED. URL using the https scheme with no query or fragment component that the OP asserts as its Issuer Identifier.</dd><dt>federation_endpoint</dt><dd style="margin-left: 4.2em">REQUIRED. URL for federation managememnt.</dd><dt>entity_endpoint</dt><dd style="margin-left: 4.2em">REQUIRED. URL for entity management.</dd><dt>participant_endpoint</dt><dd style="margin-left: 4.2em">REQUIRED. URL for participant management.</dd></dl></div></div><div id="configuration-example"><h3 id="rfc.section.2.2"><a href="#rfc.section.2.2">2.2</a> <a href="#configuration-example">Congiguration example</a></h3><div id="rfc.figure.u.1"><p>Non-normative example of a configuration request:</p><pre>GET /otto/.well-known/otto-configuration HTTP/1.1
+Host: ra.org
+              </pre></div><div id="rfc.figure.u.2"><p>Non-normative example of a configuration response:</p><pre>HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+   "@context": "https://kantara.org/otto/v1/vocabulary",
+   "name": "Acme Registration Authority",
+   "issuer":"https://acme-ra.org/otto",
+   "url": "https://acme-ra.org",
+   "Description": "Registration Authority for the ACME federations.",
+   "federation_endpoint":"https://acme-ra.org/otto/federation",
+   "entity_endpoint":"https://acme-ra.org/otto/entity",
+   "participant_endpoint":"https://acme-ra.org/otto/participant"
+}
+
+              </pre></div></div></div><hr class="noprint"><div id="federation-endpoint"><h2 id="rfc.section.3" class="np"><a href="#rfc.section.3">3.</a> <a href="#federation-endpoint">Federation Endpoint</a></h2><div id="rfc.section.3.p.1"><p>This endpoint, hosted by the Registration Authority, enables the creation and managment of Federations.</p></div><div id="search-federation"><h3 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a> <a href="#search-federation">Search Federation</a></h3></div><div id="create-federation"><h3 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2</a> <a href="#create-federation">Create Federation</a></h3></div><div id="update-federation"><h3 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3</a> <a href="#update-federation">Update Federation</a></h3></div><div id="join-federation"><h3 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4</a> <a href="#join-federation">Join Federation</a></h3></div><div id="leave-federation"><h3 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a> <a href="#leave-federation">Leave Federation</a></h3></div><div id="delete-federation"><h3 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6</a> <a href="#delete-federation">Delete Federation</a></h3></div></div><hr class="noprint"><div id="participant-endpoint"><h2 id="rfc.section.4" class="np"><a href="#rfc.section.4">4.</a> <a href="#participant-endpoint">Participant Endpoint</a></h2><div id="rfc.section.4.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of information about an organization so it can be associated with a Federation.</p></div><div id="fetch-participant"><h3 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1</a> <a href="#fetch-participant">Fetch Participant</a></h3></div><div id="create-participant"><h3 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2</a> <a href="#create-participant">Create Participant</a></h3></div><div id="update-participant"><h3 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3</a> <a href="#update-participant">Update Participant</a></h3></div><div id="delete-participant"><h3 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4</a> <a href="#delete-participant">Delete Participant</a></h3></div></div><hr class="noprint"><div id="entity-endpoint"><h2 id="rfc.section.5" class="np"><a href="#rfc.section.5">5.</a> <a href="#entity-endpoint">Entity Endpoint</a></h2><div id="rfc.section.5.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-entity"><h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a> <a href="#fetch-entity">Fetch entity</a></h3></div><div id="create-entity"><h3 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a> <a href="#create-entity">Create entity</a></h3></div><div id="update-entity"><h3 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3</a> <a href="#update-entity">Update entity</a></h3></div><div id="delete-entity"><h3 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4</a> <a href="#delete-entity">Delete entity</a></h3></div></div><hr class="noprint"><div id="Acknowledgments"><h2 id="rfc.section.6" class="np"><a href="#rfc.section.6">6.</a> <a href="#Acknowledgments">Acknowledgments</a></h2><div id="rfc.section.6.p.1"><p>The following people made contributions to the development of this specification:</p><ul><li>Judith Bush</li><li>Steve Carmody</li><li>Peter Davis</li><li>Keith Hazelton</li><li>Roland Hedberg</li><li>Rainer H??rbe</li><li>Leif Johansson</li><li>Alan Karp</li><li>Nate Klingenstein</li><li>Ken Klingenstein</li><li>Eve Maler</li><li>Nicholas Roy</li><li>Rhys Smith</li><li>David Walker</li><li>Colin Wallis</li><li>Jim Willeke</li><li>Ian Young</li></ul></div><div id="rfc.section.6.p.2"><p>Additional contributors to this specification include the Kantara OTTO Work Group participants, a list of whom can be found at <a href="#OttoWgParticipants"><cite title="OTTO Participant Roster">[OttoWgParticipants]</cite></a>.</p></div></div><hr class="noprint"><h2 id="rfc.references" class="np"><a id="rfc.section.7" href="#rfc.section.7">7.</a> References</h2><h3 class="np" id="rfc.references.1"><a href="#rfc.section.7.1" id="rfc.section.7.1">7.1</a> Normative References</h3><table><tr><td class="reference"><b id="BCP195">[BCP195]</b></td><td class="top">Sheffer, Y., “<a href="https://tools.ietf.org/html/bcp195">Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)</a>”, May 2015, &lt;<a href="https://tools.ietf.org/html/bcp195">https://tools.ietf.org/html/bcp195</a>&gt;.</td></tr><tr><td class="reference"><b id="RFC2119">[RFC2119]</b></td><td class="top">Bradner, S., “<a href="http://www.rfc-editor.org/info/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>”, BCP 14, RFC 2119, <a href="http://dx.doi.org/10.17487/RFC2119">DOI 10.17487/RFC2119</a>, March 1997, &lt;<a href="http://www.rfc-editor.org/info/rfc2119">http://www.rfc-editor.org/info/rfc2119</a>&gt;.</td></tr><tr><td class="reference"><b id="RFC3986">[RFC3986]</b></td><td class="top">Berners-Lee, T., Fielding, R., and L. Masinter, “<a href="http://www.rfc-editor.org/info/rfc3986">Uniform Resource Identifier (URI): Generic Syntax</a>”, STD 66, RFC 3986, <a href="http://dx.doi.org/10.17487/RFC3986">DOI 10.17487/RFC3986</a>, January 2005, &lt;<a href="http://www.rfc-editor.org/info/rfc3986">http://www.rfc-editor.org/info/rfc3986</a>&gt;.</td></tr><tr><td class="reference"><b id="RFC5785">[RFC5785]</b></td><td class="top">Nottingham, M. and E. Hammer-Lahav, “<a href="http://www.rfc-editor.org/info/rfc5785">Defining Well-Known Uniform Resource Identifiers (URIs)</a>”, RFC 5785, <a href="http://dx.doi.org/10.17487/RFC5785">DOI 10.17487/RFC5785</a>, April 2010, &lt;<a href="http://www.rfc-editor.org/info/rfc5785">http://www.rfc-editor.org/info/rfc5785</a>&gt;.</td></tr><tr><td class="reference"><b id="RFC6749">[RFC6749]</b></td><td class="top">Hardt, D., Ed., “<a href="http://www.rfc-editor.org/info/rfc6749">The OAuth 2.0 Authorization Framework</a>”, RFC 6749, <a href="http://dx.doi.org/10.17487/RFC6749">DOI 10.17487/RFC6749</a>, October 2012, &lt;<a href="http://www.rfc-editor.org/info/rfc6749">http://www.rfc-editor.org/info/rfc6749</a>&gt;.</td></tr><tr><td class="reference"><b id="RFC7159">[RFC7159]</b></td><td class="top">Bray, T., Ed., “<a href="http://www.rfc-editor.org/info/rfc7159">The JavaScript Object Notation (JSON) Data Interchange Format</a>”, RFC 7159, <a href="http://dx.doi.org/10.17487/RFC7159">DOI 10.17487/RFC7159</a>, March 2014, &lt;<a href="http://www.rfc-editor.org/info/rfc7159">http://www.rfc-editor.org/info/rfc7159</a>&gt;.</td></tr></table><h3 id="rfc.references.2"><a href="#rfc.section.7.2" id="rfc.section.7.2">7.2</a> Informative References</h3><table><tr><td class="reference"><b id="OttoWgParticipants">[OttoWgParticipants]</b></td><td class="top">Schwartz, M., “<a href="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">OTTO Participant Roster</a>”, 2016, &lt;<a href="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">http://kantarainitiative.org/confluence/display/OTTO/Participant+roster</a>&gt;.</td></tr></table><hr class="noprint"><div class="avoidbreakinside"><h2 id="rfc.authors" class="np"><a href="#rfc.authors">Authors' Addresses</a></h2><p><b>Michael Schwartz</b>
+      (editor)
+    <br>Gluu<br>EMail: <a href="mailto:mike@gluu.org">mike@gluu.org</a></p><p><b>Janusz Ulanwski,</b>
+      (editor)
+    <br>HEAnet<br>EMail: <a href="mailto:janusz.ulanowski@heanet.ie">janusz.ulanowski@heanet.ie</a></p><p><b>Yuriy Zabrovarnyy</b><br>Gluu<br>EMail: <a href="mailto:yuriy@gluu.org">yuriy@gluu.org</a></p><p><b>Meghna Joshi</b><br>Gluu<br>EMail: <a href="mailto:meg@gluu.org">meg@gluu.org</a></p></div></body></html>
