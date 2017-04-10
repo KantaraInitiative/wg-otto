@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
-"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd">
-<?xml-stylesheet type="text/xsl" href="..\..\..\..\..\..\..\Desktop\::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\Users\mike\Documents\GitHub\wg-otto\xml\rfc2629.xslt"?>
-<?xml-stylesheet type="text/xsl" href="..\..\..\..\..\..\..\Desktop\::{20D04FE0-3AEA-1069-A2D8-08002B30309D}\\Users\mike\Documents\GitHub\wg-otto\xml\rfc2629.xslt"?>
+"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd"> [
+   <!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+]>
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
      target="draft" version="2.0">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -238,8 +238,8 @@
           <c>Entity</c>
           <c>A service operated by the Participant</c>
           <!-- -->
-          <c>registeredBy</c>`
-          <c>RegistrationAuthority</c>`
+          <c>registeredBy</c>
+          <c>RegistrationAuthority</c>
           <c>The RA where the Participant is registered</c>
           <!-- -->
           <c>technicalContactPoint</c>
