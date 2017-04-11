@@ -145,7 +145,7 @@
     </section>
 
     <section anchor="configuration-endpoint"
-               title="Congiguration Endpoint">
+               title="Configuration Endpoint">
        <t>
          This endpoint returns the JSON-LD for the RegistrationAuthority class,
          which includes information useful to clients prior to making requests.
@@ -160,7 +160,7 @@
        </t>
 
      <section anchor="configuration-example"
-                title="Congiguration example">
+                title="Configuration example">
            <figure>
                <preamble>Non-normative example of a configuration request:</preamble>
                <artwork><![CDATA[GET /otto/.well-known/otto-configuration HTTP/1.1
