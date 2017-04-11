@@ -38,7 +38,7 @@
       </address>
     </author>
 
-    <author fullname="Janusz Ulanwski," initials="J." role="editor"
+    <author fullname="Janusz Ulanwski," initials="J."
       surname="Ulanwski">
       <organization>HEAnet</organization>
 
@@ -150,37 +150,14 @@
          This endpoint returns the JSON-LD for the RegistrationAuthority class,
          which includes information useful to clients prior to making requests.
          Registration Authority MUST make this JSON-LD class available at the
-         path formed by concatenating the string <spanx style="verb">/.well-known/otto-configuration</spanx>
-         to the Issuer. The syntax and semantics of <spanx style="verb">.well-known</spanx>
+         path formed by concatenating the string
+         <spanx style="verb">/.well-known/otto-configuration</spanx>
+         to the Issuer. The syntax and semantics of
+         <spanx style="verb">.well-known</spanx>
          are defined in <xref target="RFC5785" />, and MUST point to a JSON
          document compliant with this specification and MUST be returned using
          the <spanx style="verb">application/json</spanx> content type.
        </t>
-
-       <section anchor="ra-metadata"
-                title="Registration Authority Metadata">
-            <t>
-              The vocabulary for the RegistrationAuthority class is defined
-              in the OTTO vocabulary specification. The following values
-              are required for interoperability.
-
-            <list hangIndent="6" style="hanging">
-              <t hangText="Issuer">
-                REQUIRED. URL using the https scheme with no query or fragment
-                component that the OP asserts as its Issuer Identifier.
-             </t>
-             <t hangText="federation_endpoint">
-               REQUIRED. URL for federation managememnt.
-             </t>
-             <t hangText="entity_endpoint">
-               REQUIRED. URL for entity management.
-             </t>
-             <t hangText="participant_endpoint">
-               REQUIRED. URL for participant management.
-             </t>
-           </list>
-            </t>
-       </section>
 
      <section anchor="configuration-example"
                 title="Congiguration example">
@@ -197,14 +174,16 @@ Host: ra.org]]>
 Content-Type: application/json
 
 {
-   "@context": "https://kantara.org/otto/v1/vocabulary",
+   "@context": "https://docs.kantarainitiative.org/otto/vocabulary-1.0",
+   "@id": "https://ra.acme.ex/otto/.well-known/otto-configuration",
    "name": "Acme Registration Authority",
-   "issuer":"https://acme-ra.org/otto",
-   "url": "https://acme-ra.org",
-   "Description": "Registration Authority for the ACME federations.",
-   "federation_endpoint":"https://acme-ra.org/otto/federation",
-   "entity_endpoint":"https://acme-ra.org/otto/entity",
-   "participant_endpoint":"https://acme-ra.org/otto/participant"
+   "url": "https://www.acme.ex",
+   "description": "Registration Authority for the ACME federations.",
+   "federation_endpoint":"https://rsa.acme.ex/otto/federation",
+   "participant_endpoint":"https://ra.acme.ex/otto/participant",
+   "entity_endpoint":"https://ra.acme.ex/otto/entity",
+   "registers": ["https://rsa.acme.ex/otto/federation/28e780f4-eedf-4fee-8e80-99dae5a92558",
+                 "https://rsa.acme.ex/otto/federation/348159fd-8441-4ebd-9f9c-9480b486e27f"]
 }
 ]]>
               </artwork>

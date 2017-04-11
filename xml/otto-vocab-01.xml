@@ -3,6 +3,7 @@
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
 "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd"> [
    <!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+   <!ENTITY RFC3987 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3987.xml">
 ]>
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
      target="draft" version="2.0">
@@ -24,7 +25,8 @@
     <title abbrev="OTTO Core">Open Trust Taxonomy for Federation Operators
       Vocabulary</title>
 
-    <author fullname="Michael Schwartz" initials="M." role="editor" surname="Schwartz">
+    <author fullname="Michael Schwartz" initials="M." role="editor"
+      surname="Schwartz">
       <organization>Gluu</organization>
 
       <address>
@@ -32,7 +34,7 @@
       </address>
     </author>
 
-    <author fullname="Janusz Ulanwski," initials="J." role="editor"
+    <author fullname="Janusz Ulanwski," initials="J."
       surname="Ulanwski">
       <organization>HEAnet</organization>
 
@@ -66,8 +68,8 @@
         standards to enable the interoperable management of multi-party
         federations--where a central authority creates the rules for membership,
         enabling the participants to more efficiently collaborate. The goal of
-        OTTO is to support a range of trust models from very low to very high. By
-        providing a common set of API's and a data model, the OTTO standard
+        OTTO is to support a range of trust models from very low to very high.
+        By providing a common set of API's and a data model, the OTTO standard
         provides a scalable technical infrastructure to solve organizational
         challenges in a number of different ecosystems.
       </t>
@@ -126,23 +128,23 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
+          <c>id</c>
+          <c>IRI</c>
+          <c>Unique IRI for the RA</c>
+          <!-- -->
           <c>name</c>
           <c>Text</c>
           <c>A human friendly name for the RA</c>
-          <!-- -->
-          <c>registers</c>
-          <c>Federation</c>
-          <c>A Federation or an array of Federations hosted by the RA</c>
           <!-- -->
           <c>url</c>
           <c>URL</c>
           <c>The public, human readible website for the RA</c>
           <!-- -->
-          <c>federation_endpoint</c>
-          <c>URL</c>
-          <c>The base URL for the RA</c>
+          <c>description</c>
+          <c>Text</c>
+          <c>Optional information about the RA</c>
           <!-- -->
-          <c>entity_endpoint</c>
+          <c>federation_endpoint</c>
           <c>URL</c>
           <c>The base URL for the RA</c>
           <!-- -->
@@ -150,9 +152,13 @@
           <c>URL</c>
           <c>The base URL for the RA</c>
           <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Optional information about the RA</c>
+          <c>entity_endpoint</c>
+          <c>URL</c>
+          <c>The base URL for the RA</c>
+          <!-- -->
+          <c>registers</c>
+          <c>Federation</c>
+          <c>A Federation or an array of Federations hosted by the RA</c>
       </texttable>
       </t>
     </section>
@@ -163,6 +169,10 @@
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>id</c>
+          <c>IRI</c>
+          <c>Unique IRI for the Federation</c>
           <!-- -->
           <c>name</c>
           <c>Text</c>
@@ -194,15 +204,19 @@
           <!-- -->
           <c>A Participant or array of Participants</c>
           <c>sponsor</c>
-          <c>The organization legally responsible for management of the Federation</c>
-          <!-- //-->
+          <c>The organization legally responsible for management of the
+            Federation</c>
+          <!-- -->
           <c>technicalContactPoint</c>
           <c>Person or array of Person</c>
-          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</c>
+          <c>Person(s) responsible for registering and maintaining the policies
+            and technical data related to the organization's participation in
+            the Federation</c>
           <!-- -->
           <c>executiveContactPoint</c>
           <c>Person or array of Person</c>
-          <c>Person responsible for all decisions and delegations of authority for the Federation</c>
+          <c>Person responsible for all decisions and delegations of authority
+            for the Federation</c>
           <!-- -->
           <c>securityContactPoint</c>
           <c>Person or array of Person</c>
@@ -217,6 +231,10 @@
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>id</c>
+          <c>IRI</c>
+          <c>Unique IRI for the Participant</c>
           <!-- -->
           <c>name</c>
           <c>Text</c>
@@ -244,11 +262,13 @@
           <!-- -->
           <c>technicalContactPoint</c>
           <c>Person or array of Person</c>
-          <c>Person(s) responsible for registering and maintaining the policies and technical data related to the Federation</c>
+          <c>Person(s) responsible for registering and maintaining the policies
+            and technical data related to the Federation</c>
           <!-- -->
           <c>executiveContactPoint</c>
           <c>Person or array of Person</c>
-          <c>Person responsible for all decisions and delegations of authority for the Participant</c>
+          <c>Person responsible for all decisions and delegations of authority
+            for the Participant</c>
           <!-- -->
           <c>securityContactPoint</c>
           <c>Person or array of Person</c>
@@ -263,6 +283,10 @@
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>id</c>
+          <c>IRI</c>
+          <c>Unique IRI for the Entity</c>
           <!-- -->
           <c>name</c>
           <c>Text</c>
@@ -299,6 +323,26 @@
 
       </t>
     </section>
+    <section anchor="metadata" title="Metadata">
+      <t>
+        <texttable anchor="table_metadata" title="Metadata">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>id</c>
+          <c>IRI</c>
+          <c>Unique IRI for the Entity</c>
+          <!-- -->
+          <c>metadataFormat</c>
+          <c>Text</c>
+          <c>The serialization type of the metadata</c>
+          <!-- -->
+          <c>expiration</c>
+          <c>dateTime"</c>
+          <c>The date at which this metadata is no longer valid</c>
+        </texttable>
+    </section>
   </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
@@ -317,7 +361,7 @@
 
     <references title="Informative References">
       <reference anchor="OttoWgParticipants"
-                 target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
+target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
         <front>
           <title>OTTO Participant Roster</title>
 
