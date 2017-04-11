@@ -174,16 +174,16 @@ Host: ra.org]]>
 Content-Type: application/json
 
 {
-   "@context": "https://docs.kantarainitiative.org/otto/vocabulary-1.0",
+   "@context": "https://docs.kantarainitiative.org/otto/vocab-1.0",
    "@id": "https://ra.acme.ex/otto/.well-known/otto-configuration",
    "name": "Acme Registration Authority",
    "url": "https://www.acme.ex",
-   "description": "Registration Authority for the ACME federations.",
+   "description": "Registration Authority for the ACME federations",
    "federation_endpoint":"https://rsa.acme.ex/otto/federation",
    "participant_endpoint":"https://ra.acme.ex/otto/participant",
    "entity_endpoint":"https://ra.acme.ex/otto/entity",
-   "registers": ["https://rsa.acme.ex/otto/federation/28e780f4-eedf-4fee-8e80-99dae5a92558",
-                 "https://rsa.acme.ex/otto/federation/348159fd-8441-4ebd-9f9c-9480b486e27f"]
+   "registers": ["https://rsa.acme.ex/otto/federation/28e780f4-eedf",
+                 "https://rsa.acme.ex/otto/federation/348159fd-8441"]
 }
 ]]>
               </artwork>
@@ -337,6 +337,9 @@ Content-Type: application/json
             <date day="" month="May" year="2015" />
           </front>
         </reference>
+
+        <!-- -->
+        &RFC2119;
 
         <!-- Uniform Resource Identifier (URI): Generic Syntax -->
         &RFC3986;

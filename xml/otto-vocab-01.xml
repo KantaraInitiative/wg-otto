@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
-"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd"> [
+"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
    <!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
    <!ENTITY RFC3987 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3987.xml">
 ]>
@@ -342,6 +342,7 @@
           <c>dateTime"</c>
           <c>The date at which this metadata is no longer valid</c>
         </texttable>
+     </t>
     </section>
   </section>
 
@@ -358,6 +359,10 @@
   </middle>
 
   <back>
+    <references title="Normative References">
+        <!--  -->
+        &RFC2119;
+    </references>
 
     <references title="Informative References">
       <reference anchor="OttoWgParticipants"
