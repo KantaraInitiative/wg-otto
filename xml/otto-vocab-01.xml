@@ -207,18 +207,18 @@
           <c>The organization legally responsible for management of the
             Federation</c>
           <!-- -->
-          <c>technicalContactPoint</c>
+          <c>technicalContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) responsible for registering and maintaining the policies
             and technical data related to the organization's participation in
             the Federation</c>
           <!-- -->
-          <c>executiveContactPoint</c>
+          <c>executiveContact</c>
           <c>Person or array of Person</c>
           <c>Person responsible for all decisions and delegations of authority
             for the Federation</c>
           <!-- -->
-          <c>securityContactPoint</c>
+          <c>securityContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
       </texttable>
@@ -260,17 +260,17 @@
           <c>RegistrationAuthority</c>
           <c>The RA where the Participant is registered</c>
           <!-- -->
-          <c>technicalContactPoint</c>
+          <c>technicalContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) responsible for registering and maintaining the policies
             and technical data related to the Federation</c>
           <!-- -->
-          <c>executiveContactPoint</c>
+          <c>executiveContact</c>
           <c>Person or array of Person</c>
           <c>Person responsible for all decisions and delegations of authority
             for the Participant</c>
           <!-- -->
-          <c>securityContactPoint</c>
+          <c>securityContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
       </texttable>

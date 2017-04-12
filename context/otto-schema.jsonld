@@ -92,7 +92,7 @@
                       "@id": "schema:URL"
                     }
                 },
-                {"@id": "otto:executiveContactPoint",
+                {"@id": "otto:executiveContact",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Federation"
@@ -265,7 +265,7 @@
                       "@id": "otto:RegistrationAuthority"
                     }
                 },
-                {"@id": "otto:securityContactPoint",
+                {"@id": "otto:securityContact",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Federation"
@@ -283,7 +283,7 @@
                       "@id": "otto:Participant"
                     }
                 },
-                {"@id": "otto:technicalContactPoint",
+                {"@id": "otto:technicalContact",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Federation"

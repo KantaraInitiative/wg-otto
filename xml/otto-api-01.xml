@@ -179,11 +179,11 @@ Content-Type: application/json
    "name": "Acme Registration Authority",
    "url": "https://www.acme.ex",
    "description": "Registration Authority for the ACME federations",
-   "federation_endpoint":"https://rsa.acme.ex/otto/federation",
+   "federation_endpoint":"https://ra.acme.ex/otto/federation",
    "participant_endpoint":"https://ra.acme.ex/otto/participant",
    "entity_endpoint":"https://ra.acme.ex/otto/entity",
-   "registers": ["https://rsa.acme.ex/otto/federation/28e780f4-eedf",
-                 "https://rsa.acme.ex/otto/federation/348159fd-8441"]
+   "registers": ["https://rs.acme.ex/otto/federation/28e780f4-eedf",
+                 "https://ra.acme.ex/otto/federation/348159fd-8441"]
 }
 ]]>
               </artwork>
