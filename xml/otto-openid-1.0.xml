@@ -50,7 +50,7 @@
       </address>
     </author>
 
-    <date day="2" month="4" year="2017" />
+    <date day="12" month="4" year="2017" />
 
     <abstract>
       <t>This specification defines terms to enable OTTO federations to
@@ -70,7 +70,6 @@
           This document defines all the terms defined in the JSON-LD context
           file which the extension covers.
         </t>
-      </section>
 
       <section title="Notational Conventions">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
@@ -81,6 +80,7 @@
         <t>Unless otherwise noted, all protocol properties and values are case
         sensitive.</t>
       </section>
+  </section>
 
   <section anchor="vocabulary" title="Vocabulary">
     <section anchor="openid-provider" title="OpenID Provider">
@@ -267,6 +267,7 @@
         </texttable>
       </t>
     </section>
+  </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
       <t>The following people made significant text contributions to the
@@ -278,8 +279,6 @@
       Work Group participants, a list of whom can be found at <xref
       target="OttoWgParticipants" />.</t>
       </section>
-
-    </section>
   </middle>
 
   <back>
