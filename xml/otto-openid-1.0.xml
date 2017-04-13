@@ -81,7 +81,6 @@
         <t>Unless otherwise noted, all protocol properties and values are case
         sensitive.</t>
       </section>
-    </section>
 
   <section anchor="vocabulary" title="Vocabulary">
     <section anchor="openid-provider" title="OpenID Provider">
@@ -278,6 +277,8 @@
       <t>Additional contributors to this specification include the Kantara OTTO
       Work Group participants, a list of whom can be found at <xref
       target="OttoWgParticipants" />.</t>
+      </section>
+
     </section>
   </middle>
 
