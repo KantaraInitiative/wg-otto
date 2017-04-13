@@ -1,5 +1,5 @@
 {"@context":{
-  "otto": "https://kantara.org/otto/v1/vocabulary#",
+  "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
   "schema": "http://schema.org",
   "xsd": "http://www.w3.org/2001/XMLSchema#"
@@ -69,24 +69,6 @@
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:RegistrationAuthority"
-                    },
-                  "rangeIncludes":{
-                      "@id": "schema:URL"
-                    }
-                },
-                {"@id": "otto:entityId",
-                  "@type": "rdf:Property",
-                  "domainIncludes": {
-                      "@id": "otto:Entity"
-                    },
-                  "rangeIncludes":{
-                      "@id": "schema:Text"
-                    }
-                },
-                {"@id": "otto:entityIdUrl",
-                  "@type": "rdf:Property",
-                  "domainIncludes": {
-                      "@id": "otto:Entity"
                     },
                   "rangeIncludes":{
                       "@id": "schema:URL"
@@ -231,6 +213,7 @@
                 {
                   "@id": "otto:registers",
                   "@type": "rdf:Property",
+                  "rdfs:comment": "The OTTO vocabulary for Federation is more restrictive then this definition",
                   "domainIncludes": [
                     {
                       "@id": "otto:RegistrationAuthority"
@@ -292,10 +275,10 @@
                       "@id": "schema:Person"
                     }
                 },
-                {"@id": "otto:url",
+                {"@id": "otto:oid",
                   "@type": "rdf:Property",
                   "rangeIncludes":{
-                      "@id": "schema:url"
+                      "@id": "schema:Text"
                     }
                 }
   ]

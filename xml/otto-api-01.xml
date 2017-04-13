@@ -10,7 +10,7 @@
 <!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
 ]>
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
-     target="draft" version="2.0">
+     target="draft" version="1.0">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
   <?rfc toc='yes' ?>
@@ -26,8 +26,7 @@
   <?rfc subcompact='no' ?>
 
   <front>
-    <title abbrev="OTTO Core">Open Trust Taxonomy for Federation Operators
-      Application Interfaces</title>
+    <title abbrev="OTTO Core">OTTO API's 1.0</title>
 
     <author fullname="Michael Schwartz" initials="M." role="editor"
       surname="Schwartz">

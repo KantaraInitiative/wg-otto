@@ -1,0 +1,228 @@
+{"@context":{
+  "otto": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0",
+  "openid": "https://docs.kantarainitiative.org/otto/openid-1.0",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "schema": "http://schema.org",
+  "xsd": "http://www.w3.org/2001/XMLSchema#"
+},
+"@graph": [
+  {
+      "@id": "openid:OpenIDProvider",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "otto:Entity"
+          }
+  },
+  {
+      "@id": "openid:OpenIDRelyingParty",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "otto:Entity"
+          }
+  },
+  {
+      "@id": "openid:UserClaim",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+  },
+  {
+      "@id": "openid:Scope",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+  },
+  {
+      "@id": "openid:Acr",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+  },
+  {
+      "@id": "openid:MetadataStatement",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "otto:Metadata"
+          }
+  },
+  {
+    "@id": "openid:scope",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+      {
+        "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "otto:Federation"
+      }
+    ],
+      "rangeIncludes":{
+        "@id": "openid:Scope"
+      }
+  },
+  {
+    "@id": "openid:userClaim",
+    "@type": "rdf:Property",
+    "domainIncludes":[
+      {
+        "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "otto:Federation"
+      },
+      {
+        "@id": "openid:Scope"
+      },
+      {
+        "@id": "openid:OpenIDRelyingParty"
+      }
+    ],
+    "rangeIncludes":{
+        "@id": "openid:UserClaim"
+      }
+  },
+  {
+    "@id": "openid:acr",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+      {
+        "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "openid:OpenIDRelyingParty"
+      },
+      {
+        "@id": "otto:Federation"
+      }
+    ],
+      "rangeIncludes":{
+        "@id": "openid:Acr"
+      }
+  },
+  {
+    "@id": "openid:signingKey",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+        {
+          "@id": "openid:OpenIDProvider"
+        },
+        {
+          "@id": "openid:OpenIDRelyingParty"
+        }
+      ],
+      "rangeIncludes":{
+        "@id": "schema:Text"
+      }
+  },
+  {
+    "@id": "openid:metadataStatement",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+        {
+          "@id": "openid:OpenIDProvider"
+        },
+        {
+          "@id": "openid:OpenIDRelyingParty"
+        }
+      ],
+      "rangeIncludes":{
+        "@id": "schema:Text"
+      }
+  },
+  {
+    "@id": "schema:memberOf",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+      {
+        "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "otto:OpenIDRelyingParty"
+      }
+    ],
+      "rangeIncludes":{
+        "@id": "otto:Federation"
+      }
+  },
+  {
+    "@id": "openid:signed_jwks_uri",
+    "@type": "rdf:Property",
+    "domainIncludes": {
+        "@id": "openid:OpenIDProvider"
+      },
+      "rangeIncludes":{
+        "@id": "schema:URI"
+      }
+  },
+  {
+    "@id": "schema:category",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+      {
+        "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "openid:OpenIDRelyingParty"
+      }
+    ],
+      "rangeIncludes":{
+        "@id": "schema:Text"
+      }
+  },
+  {
+    "@id": "schema:associatedScope",
+    "@type": "rdf:Property",
+    "domainIncludes": {
+        "@id": "openid:Scope"
+      },
+      "rangeIncludes":{
+        "@id": "openid:UserClaim"
+      }
+  },
+  {
+    "@id": "schema:support",
+    "@type": "rdf:Property",
+    "domainIncludes": {
+        "@id": "otto:Federation"
+      },
+    "rangeIncludes":[
+        {
+          "@id": "openid:UserClaim"
+        },
+        {
+          "@id": "openid:Scope"
+        },
+        {
+          "@id": "openid:Acr"
+        }
+      ]
+  },
+  {
+    "@id": "schema:supportedBy",
+    "@type": "rdf:Property",
+    "domainIncludes": [
+        {
+          "@id": "openid:UserClaim"
+        },
+        {
+          "@id": "openid:Scope"
+        },
+        {
+          "@id": "openid:Acr"
+        }
+      ],
+    "rangeIncludes":{
+      "@id": "openid:Federation"
+    }
+  }
+ ]
+}
