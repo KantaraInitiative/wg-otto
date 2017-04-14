@@ -115,8 +115,10 @@
         <xref target="RFC2119" />.</t>
 
         <t>Unless otherwise noted, all protocol properties and values are case
-        sensitive.</t>
+        sensitive. Fields marked in <spanx style="bold">bold</spanx> letters are
+        mandatory.</t>
       </section>
+
     </section>
 
   <section anchor="vocabulary" title="Vocabulary">
@@ -127,7 +129,7 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>id</c>
+          <c><spanx style="bold">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the RA</c>
           <!-- -->
@@ -169,11 +171,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>id</c>
+          <c><spanx style="bold">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Federation</c>
           <!-- -->
-          <c>name</c>
+          <c><spanx style="bold">name</spanx></c>
           <c>Text</c>
           <c>A human friendly name for the Federation</c>
           <!-- -->
@@ -189,7 +191,7 @@
           <c>Entity</c>
           <c>A service operated by the Federation</c>
           <!-- -->
-          <c>registeredBy</c>
+          <c><spanx style="bold">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
           <c>The RA where the federation is hosted</c>
           <!-- -->
@@ -201,8 +203,8 @@
           <c>array of Entity</c>
           <c>List of services registered to the federation by Participants</c>
           <!-- -->
-          <c>A Participant or array of Participants</c>
           <c>sponsor</c>
+          <c>A Participant or array of Participants</c>
           <c>The organization legally responsible for management of the
             Federation</c>
           <!-- -->
@@ -220,6 +222,20 @@
           <c>securityContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
+          <!-- -->
+          <c>dataProtectionCodeOfConduct</c>
+          <c>URL</c>
+          <c>The provisions regarding handling of personal information by the
+            Federation Participants</c>
+          <!-- -->
+          <c>federationAgreement</c>
+          <c>URL</c>
+          <c>The rights and responsibilities of the Participant</c>
+          <!-- -->
+          <c>federationPolicy</c>
+          <c>URL</c>
+          <c>Operational practices and technical details for participation
+            in the Federation.</c>
       </texttable>
       </t>
     </section>
@@ -231,11 +247,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>id</c>
+          <c><spanx style="bold">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Participant</c>
           <!-- -->
-          <c>name</c>
+          <c><spanx style="bold">name</spanx></c>
           <c>Text</c>
           <c>A human friendly name for the Participant</c>
           <!-- -->
@@ -255,7 +271,7 @@
           <c>Entity</c>
           <c>A service operated by the Participant</c>
           <!-- -->
-          <c>registeredBy</c>
+          <c><spanx style="bold">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
           <c>The RA where the Participant is registered</c>
           <!-- -->
@@ -283,11 +299,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>id</c>
+          <c><spanx style="bold">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Entity issued by the RA</c>
           <!-- -->
-          <c>name</c>
+          <c><spanx style="bold">name</spanx></c>
           <c>Text</c>
           <c>A human friendly name for the Entity</c>
           <!-- -->
@@ -299,7 +315,7 @@
           <c>Text</c>
           <c>Optional information about the Entity</c>
           <!-- -->
-          <c>registeredBy</c>
+          <c><spanx style="bold">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
           <c>The RA which registered this entity</c>
           <!-- -->
@@ -321,7 +337,7 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>id</c>
+          <c><spanx style="bold">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Entity</c>
           <!-- -->

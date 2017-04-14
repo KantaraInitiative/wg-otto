@@ -71,46 +71,7 @@
       </section>
   </section>
 
-  <section anchor="vocabulary" title="Vocabulary">
-    <section anchor="badge-template" title="Badge Template">
-      <t>
-
-      </t>
-      <t>
-        <texttable anchor="table_bt" title="Badge Template">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
-          <!-- -->
-          <c>id</c>
-          <c>IRI</c>
-          <c>Unique identifier</c>
-          <!-- -->
-          <c>name</c>
-          <c>Text</c>
-          <c>Short human understandable badge identifier</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Information about badge</c>
-          <!-- -->
-          <c>image</c>
-          <c>Image</c>
-          <c>Base image used in the Badge.</c>
-          <!-- -->
-          <c>narrative</c>
-          <c>narrative</c>
-          <c>Overall description of the achievement related to the badge in
-            rich text</c>
-          <!-- -->
-          <c>badgeOffered</c>
-          <c>Federation or Participant</c>
-          <c>Organization where this badge can be obtained</c>
-      </texttable>
-      </t>
-    </section>
-
-    <section anchor="badge-properties" title="Badge Properties">
+    <section anchor="badge-properties" title="Additional Badge Properties">
       <t>
         <texttable anchor="table_bp" title="Badge Properties">
           <ttcol align='left'>Property</ttcol>
@@ -118,8 +79,8 @@
           <ttcol align='left'>Containing Class</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>badgeOffered</c>
-          <c>BadgeTemplate or array of BadgeTemplate</c>
+          <c>badgesIssued</c>
+          <c>BadgeClass</c>
           <c>Federation or Participant</c>
           <c>A supported kind of badge</c>
         </texttable>

@@ -57,14 +57,10 @@
   {
     "@id": "openid:scope",
     "@type": "rdf:Property",
-    "domainIncludes": [
-      {
+    "domainIncludes": {
         "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "otto:Federation"
       }
-    ],
+    ,
       "rangeIncludes":{
         "@id": "openid:Scope"
       }
@@ -78,9 +74,6 @@
       },
       {
         "@id": "otto:Federation"
-      },
-      {
-        "@id": "openid:Scope"
       },
       {
         "@id": "openid:OpenIDRelyingParty"
@@ -101,7 +94,7 @@
         "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "otto:Federation"
+        "@id": "openid:OpenIDRelyingParty"
       }
     ],
       "rangeIncludes":{
@@ -189,25 +182,7 @@
       }
   },
   {
-    "@id": "schema:support",
-    "@type": "rdf:Property",
-    "domainIncludes": {
-        "@id": "otto:Federation"
-      },
-    "rangeIncludes":[
-        {
-          "@id": "openid:UserClaim"
-        },
-        {
-          "@id": "openid:Scope"
-        },
-        {
-          "@id": "openid:Acr"
-        }
-      ]
-  },
-  {
-    "@id": "schema:supportedBy",
+    "@id": "openid:supportedBy",
     "@type": "rdf:Property",
     "domainIncludes": [
         {
@@ -223,6 +198,16 @@
     "rangeIncludes":{
       "@id": "openid:Federation"
     }
+  },
+  {
+    "@id": "schema:configuration_endpoint",
+    "@type": "rdf:Property",
+    "domainIncludes": {
+        "@id": "openid:OpenIDProvider"
+      },
+      "rangeIncludes":{
+        "@id": "schema:URI"
+      }
   }
  ]
 }

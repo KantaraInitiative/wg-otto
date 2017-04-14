@@ -8,78 +8,19 @@
 },
 "@graph": [
   {
-      "@id": "ottobadge:BadgeTemplate",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "schema:Thing"
-          }
-  },
-  {
-    "@id": "schema:description",
+    "@id": "ottobadge:badgesIssued",
     "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottobadge:BadgeTemplate"
-        },
-    "rangeIncludes":{
-      "@id": "schema:Text"
-    }
-  },
-  {
-    "@id": "schema:name",
-    "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottobadge:BadgeTemplate"
-        },
-    "rangeIncludes":{
-      "@id": "schema:Text"
-    }
-  },
-  {
-    "@id": "schema:image",
-    "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottobadge:BadgeTemplate"
-        },
-    "rangeIncludes":{
-      "@id": "obi:Image"
-    }
-  },
-  {
-    "@id": "obi:narrative",
-    "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottobadge:BadgeTemplate"
-        },
-    "rangeIncludes":{
-         "@id": "obi:narrative"
-      }
-  },
-  {
-    "@id": "obi:badgeSupported",
-    "@type": "rdf:Property",
-    "domainIncludes":{
+    "domainIncludes":[
+        {
           "@id": "otto:Federation"
         },
+        {
+          "@id": "otto:Participant"
+        }
+      ],
     "rangeIncludes":{
-         "@id": "ottobadge:BadgeTemplate"
+         "@id": "obi:BadgeClass"
       }
-  },
-  {
-    "@id": "obi:badgeOffered",
-    "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottobadge:BadgeTemplate"
-        },
-    "rangeIncludes":[
-        {
-           "@id": "otto:Federation"
-        },
-        {
-           "@id": "otto:Participant"
-        },
-    ]
   }
-
  ]
 }
