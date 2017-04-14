@@ -8,23 +8,7 @@
 },
 "@graph": [
   {
-      "@id": "openid:OpenIDProvider",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "otto:Entity"
-          }
-  },
-  {
-      "@id": "openid:OpenIDRelyingParty",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "otto:Entity"
-          }
-  },
-  {
-      "@id": "openid:UserClaim",
+      "@id": "ottobadge:BadgeTemplate",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -32,198 +16,70 @@
           }
   },
   {
-      "@id": "openid:Scope",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "schema:Thing"
-          }
-  },
-  {
-      "@id": "openid:Acr",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "schema:Thing"
-          }
-  },
-  {
-      "@id": "openid:MetadataStatement",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "otto:Metadata"
-          }
-  },
-  {
-    "@id": "openid:scope",
+    "@id": "schema:description",
     "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "otto:Federation"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "openid:Scope"
-      }
-  },
-  {
-    "@id": "openid:userClaim",
-    "@type": "rdf:Property",
-    "domainIncludes":[
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "otto:Federation"
-      },
-      {
-        "@id": "openid:Scope"
-      },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      }
-    ],
+    "domainIncludes":{
+          "@id": "ottobadge:BadgeTemplate"
+        },
     "rangeIncludes":{
-        "@id": "openid:UserClaim"
-      }
+      "@id": "schema:Text"
+    }
   },
   {
-    "@id": "openid:acr",
+    "@id": "schema:name",
     "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      },
-      {
-        "@id": "otto:Federation"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "openid:Acr"
-      }
-  },
-  {
-    "@id": "openid:signingKey",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-        {
-          "@id": "openid:OpenIDProvider"
+    "domainIncludes":{
+          "@id": "ottobadge:BadgeTemplate"
         },
-        {
-          "@id": "openid:OpenIDRelyingParty"
-        }
-      ],
-      "rangeIncludes":{
-        "@id": "schema:Text"
-      }
+    "rangeIncludes":{
+      "@id": "schema:Text"
+    }
   },
   {
-    "@id": "openid:metadataStatement",
+    "@id": "schema:image",
     "@type": "rdf:Property",
-    "domainIncludes": [
-        {
-          "@id": "openid:OpenIDProvider"
+    "domainIncludes":{
+          "@id": "ottobadge:BadgeTemplate"
         },
-        {
-          "@id": "openid:OpenIDRelyingParty"
-        }
-      ],
-      "rangeIncludes":{
-        "@id": "schema:Text"
+    "rangeIncludes":{
+      "@id": "obi:Image"
+    }
+  },
+  {
+    "@id": "obi:narrative",
+    "@type": "rdf:Property",
+    "domainIncludes":{
+          "@id": "ottobadge:BadgeTemplate"
+        },
+    "rangeIncludes":{
+         "@id": "obi:narrative"
       }
   },
   {
-    "@id": "schema:memberOf",
+    "@id": "obi:badgeSupported",
     "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "otto:OpenIDRelyingParty"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "otto:Federation"
+    "domainIncludes":{
+          "@id": "otto:Federation"
+        },
+    "rangeIncludes":{
+         "@id": "ottobadge:BadgeTemplate"
       }
   },
   {
-    "@id": "openid:signed_jwks_uri",
+    "@id": "obi:badgeOffered",
     "@type": "rdf:Property",
-    "domainIncludes": {
-        "@id": "openid:OpenIDProvider"
-      },
-      "rangeIncludes":{
-        "@id": "schema:URI"
-      }
-  },
-  {
-    "@id": "schema:category",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "schema:Text"
-      }
-  },
-  {
-    "@id": "schema:associatedScope",
-    "@type": "rdf:Property",
-    "domainIncludes": {
-        "@id": "openid:Scope"
-      },
-      "rangeIncludes":{
-        "@id": "openid:UserClaim"
-      }
-  },
-  {
-    "@id": "schema:support",
-    "@type": "rdf:Property",
-    "domainIncludes": {
-        "@id": "otto:Federation"
-      },
+    "domainIncludes":{
+          "@id": "ottobadge:BadgeTemplate"
+        },
     "rangeIncludes":[
         {
-          "@id": "openid:UserClaim"
+           "@id": "otto:Federation"
         },
         {
-          "@id": "openid:Scope"
+           "@id": "otto:Participant"
         },
-        {
-          "@id": "openid:Acr"
-        }
-      ]
-  },
-  {
-    "@id": "schema:supportedBy",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-        {
-          "@id": "openid:UserClaim"
-        },
-        {
-          "@id": "openid:Scope"
-        },
-        {
-          "@id": "openid:Acr"
-        }
-      ],
-    "rangeIncludes":{
-      "@id": "openid:Federation"
-    }
+    ]
   }
+
  ]
 }

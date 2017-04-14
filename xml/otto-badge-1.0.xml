@@ -72,199 +72,60 @@
   </section>
 
   <section anchor="vocabulary" title="Vocabulary">
-    <section anchor="openid-provider" title="OpenID Provider">
+    <section anchor="badge-template" title="Badge Template">
       <t>
-        Logo
-        Badge Name
-        Description
-        Issuer Email
-        Owner
-        Owner Email
-        Status
+
       </t>
       <t>
-        <texttable anchor="table_op" title="OpenID Provider">
+        <texttable anchor="table_bt" title="Badge Template">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
           <c>id</c>
           <c>IRI</c>
-          <c>The unique identifier issued by the RA</c>
+          <c>Unique identifier</c>
+          <!-- -->
+          <c>name</c>
+          <c>Text</c>
+          <c>Short human understandable badge identifier</c>
           <!-- -->
           <c>description</c>
           <c>Text</c>
-          <c>Description of the OP</c>
+          <c>Information about badge</c>
           <!-- -->
-          <c>category</c>
-          <c>Text</c>
-          <c>Category assigned by the Federation</c>
+          <c>image</c>
+          <c>Image</c>
+          <c>Base image used in the Badge.</c>
           <!-- -->
-          <c>signingKey</c>
-          <c>Text</c>
-          <c>Public part of the OP's signing key</c>
+          <c>narrative</c>
+          <c>narrative</c>
+          <c>Overall description of the achievement related to the badge in
+            rich text</c>
           <!-- -->
-          <c>signed_jwks_uri</c>
-          <c>URL</c>
-          <c>URL for the OP configuration data</c>
-          <!-- -->
-          <c>memberOf</c>
-          <c>Federation or array of Federation</c>
-          <c>Federation(s) to which the OP belongs</c>
+          <c>badgeOffered</c>
+          <c>Federation or Participant</c>
+          <c>Organization where this badge can be obtained</c>
       </texttable>
       </t>
     </section>
 
-    <section anchor="openid-relying-party" title="OpenID Relying Party">
+    <section anchor="badge-properties" title="Badge Properties">
       <t>
-        <texttable anchor="table_rp" title="OpenID Relying Party">
+        <texttable anchor="table_bp" title="Badge Properties">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Containing Class</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c>@id</c>
-          <c>IRI</c>
-          <c>The unique identifier issued by the RA</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Description of the application</c>
-          <!-- -->
-          <c>category</c>
-          <c>Text</c>
-          <c>Category assigned by the Federation</c>
-          <!-- -->
-          <c>metadataStatement</c>
-          <c>MetadataStatement</c>
-          <c>Signed JWT issued by Federation</c>
-          <!-- -->
-          <c>memberOf</c>
-          <c>Federation</c>
-          <c>Federation which issued the Metadata Statement</c>
+          <c>badgeOffered</c>
+          <c>BadgeTemplate or array of BadgeTemplate</c>
+          <c>Federation or Participant</c>
+          <c>A supported kind of badge</c>
         </texttable>
       </t>
     </section>
 
-    <section anchor="user-claim" title="User Claim">
-      <t>
-        <texttable anchor="table_userclaim" title="User Claim">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
-          <!-- -->
-          <c>@id</c>
-          <c>IRI</c>
-          <c>unique identifier for the claim</c>
-          <!-- -->
-          <c>name</c>
-          <c>Text</c>
-          <c>Name to display to humans</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Human language description of the claim</c>
-          <!-- -->
-          <c>additionalType</c>
-          <c>URL</c>
-          <c>More specific type for the claim</c>
-          <!-- -->
-          <c>url</c>
-          <c>URL</c>
-          <c>URL with more information about the claim</c>
-          <!-- -->
-          <c>oid</c>
-          <c>Text</c>
-          <c>IANA object identifier for the attribute</c>
-          <!-- -->
-          <c>associatedScope</c>
-          <c>Scope or array of Scope</c>
-          <c>This release of this claim is authorized by allowing the respective
-            scope(s)</c>
-          <!-- -->
-          <c>supportedBy</c>
-          <c>Federation or array of Federation</c>
-          <c>Which federations support this claim</c>
-        </texttable>
-      </t>
-    </section>
-
-    <section anchor="scope" title="Scope">
-      <t>
-        <texttable anchor="table_scope" title="Scope">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
-          <!-- -->
-          <c>@id</c>
-          <c>IRI</c>
-          <c>unique identifier for the scope</c>
-          <!-- -->
-          <c>name</c>
-          <c>Name to display to humans</c>
-          <c>Text</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Human language description of the scope</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Human language description of the scope</c>
-          <!-- -->
-          <c>userClaim</c>
-          <c>UserClaim or array of UserClaim</c>
-          <c>Claims released by authorizing this scope</c>
-          <!-- -->
-          <c>supportedBy</c>
-          <c>Federation or array of Federation</c>
-          <c>Which federations support this scope</c>
-        </texttable>
-      </t>
-    </section>
-
-    <section anchor="acr" title="ACR">
-      <t>
-        <texttable anchor="table_acr" title="ACR">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
-          <!-- -->
-          <c>@id</c>
-          <c>IRI</c>
-          <c></c>
-          <!-- -->
-          <c>name</c>
-          <c>Name to display to humans</c>
-          <c>Text</c>
-          <!-- -->
-          <c>description</c>
-          <c>Text</c>
-          <c>Human language description of the ACR</c>
-          <!-- -->
-          <c>supportedBy</c>
-          <c>Federation or array of Federation</c>
-          <c>Which federations support this ACR</c>
-        </texttable>
-      </t>
-    </section>
-
-    <section anchor="metadata-statement" title="Metadata Statement">
-      <t>
-        <texttable anchor="table_ms" title="Metadata Statement">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
-          <!-- -->
-          <c>@id</c>
-          <c>IRI</c>
-          <c>Identifier for this Metadata Statement</c>
-          <!-- -->
-          <c>metadataStatement</c>
-          <c>Text</c>
-          <c>The JWT metadata statement</c>
-        </texttable>
-      </t>
-    </section>
   </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
