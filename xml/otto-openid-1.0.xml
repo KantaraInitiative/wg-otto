@@ -90,11 +90,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>The unique identifier issued by the RA</c>
           <!-- -->
-          <c><spanx style="bold">configuration_endpoint</spanx></c>
+          <c><spanx style="strong">configuration_endpoint</spanx></c>
           <c>URI</c>
           <c>URL for .well-known/openid-configuration</c>
           <!-- -->
@@ -128,7 +128,7 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>The unique identifier issued by the RA</c>
           <!-- -->
@@ -158,15 +158,15 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>unique identifier for the claim</c>
           <!-- -->
-          <c><spanx style="bold">name</spanx></c>
+          <c><spanx style="strong">name</spanx></c>
           <c>Text</c>
           <c>Name to display to humans</c>
           <!-- -->
-          <c><spanx style="bold">additionalType</spanx></c>
+          <c><spanx style="strong">additionalType</spanx></c>
           <c>URL</c>
           <c>More specific type for the claim</c>
           <!-- -->
@@ -201,15 +201,15 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>unique identifier for the scope</c>
           <!-- -->
-          <c><spanx style="bold">name</spanx></c>
+          <c><spanx style="strong">name</spanx></c>
           <c>Name to display to humans</c>
           <c>Text</c>
           <!-- -->
-          <c><spanx style="bold">description</spanx></c>
+          <c><spanx style="strong">description</spanx></c>
           <c>Text</c>
           <c>Human language description of the scope</c>
           <!-- -->
@@ -231,11 +231,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c></c>
           <!-- -->
-          <c><spanx style="bold">name</spanx></c>
+          <c><spanx style="strong">name</spanx></c>
           <c>Name to display to humans</c>
           <c>Text</c>
           <!-- -->
@@ -257,11 +257,11 @@
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
           <!-- -->
-          <c><spanx style="bold">@id</spanx></c>
+          <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>Identifier for this Metadata Statement</c>
           <!-- -->
-          <c><spanx style="bold">metadataStatement</spanx></c>
+          <c><spanx style="strong">metadataStatement</spanx></c>
           <c>Text</c>
           <c>The JWT metadata statement</c>
         </texttable>
