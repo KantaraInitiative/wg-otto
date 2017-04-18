@@ -2,7 +2,9 @@
   "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
   "schema": "http://schema.org",
-  "xsd": "http://www.w3.org/2001/XMLSchema#"
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+  "obi": "https://w3id.org/openbadges#",
+  "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf"
 },
   "@graph": [
                 {
@@ -49,6 +51,14 @@
                         {
                             "@id": "schema:Thing"
                         }
+                },
+                {
+                    "@id": "trust:TrustMarkDefinition",
+                    "@type": "rdfs:Class",
+                },
+                {
+                    "@id": "trust:TrustMark",
+                    "@type": "rdfs:Class",
                 },
                 {"@id": "otto:dataProtectionCodeOfConduct",
                   "@type": "rdf:Property",
@@ -279,6 +289,39 @@
                   "@type": "rdf:Property",
                   "rangeIncludes":{
                       "@id": "schema:Text"
+                    }
+                },
+                {
+                  "@id": "otto:badgeSupported",
+                  "@type": "rdf:Property",
+                  "domainIncludes":[
+                      {
+                        "@id": "otto:Federation"
+                      },
+                      {
+                        "@id": "otto:Participant"
+                      }
+                    ],
+                  "rangeIncludes":{
+                       "@id": "obi:BadgeClass"
+                    }
+                },
+                {"@id": "otto:trustMarkDefinitionSupported",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "trust:TrustmarkDefinition"
+                    }
+                },
+                {"@id": "otto:trustMarkAsserted",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Participant"
+                    },
+                  "rangeIncludes":{
+                      "@id": "trust:Trustmark"
                     }
                 }
   ]

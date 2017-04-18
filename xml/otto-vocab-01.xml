@@ -236,6 +236,14 @@
           <c>URL</c>
           <c>Operational practices and technical details for participation
             in the Federation.</c>
+          <!-- -->
+          <c>trustMarkDefinitionSupported</c>
+          <c>TrustMarkDefinition or array of TrustMarkDefinition</c>
+          <c>What kinds of Trustmarks are supported by the federation</c>
+          <!-- -->
+          <c>badgeSupported</c>
+          <c>BadgeClass or array of BadgeClass</c>
+          <c>What kinds of Badges are supported by the federation</c>
       </texttable>
       </t>
     </section>
@@ -288,6 +296,14 @@
           <c>securityContact</c>
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
+          <!-- -->
+          <c>trustMarkAsserted</c>
+          <c>Trustmark or array of TrustMark</c>
+          <c>Link to TrustMarks the Participant claims</c>
+          <!-- -->
+          <c>badgeSupported</c>
+          <c>BadgeClass or array of BadgeClass</c>
+          <c>What Badges the Participant issues</c>
       </texttable>
       </t>
     </section>
