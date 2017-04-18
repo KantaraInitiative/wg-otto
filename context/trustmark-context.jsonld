@@ -1,6 +1,6 @@
 {"@context":{
   "otto": "https://docs.kantarainitiative.org/otto/otto-vocab-1.0",
-  "ottotrustmark": "https://docs.kantarainitiative.org/otto/otto-trustmark-1.0",
+  "trustmark": "https://docs.kantarainitiative.org/otto/otto-trustmark-1.0",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
   "schema": "http://schema.org",
   "xsd": "http://www.w3.org/2001/XMLSchema#",
@@ -8,7 +8,7 @@
 },
 "@graph": [
   {
-      "@id": "ottotrustmark:TrustmarkDefinition",
+      "@id": "trustmark:TrustmarkDefinition",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -16,7 +16,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:TermType",
+      "@id": "trustmark:TermType",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -24,7 +24,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:SourceType",
+      "@id": "trustmark:SourceType",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -32,7 +32,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:ConformanceCriterion",
+      "@id": "trustmark:ConformanceCriterion",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -40,7 +40,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:AssessmentSteps",
+      "@id": "trustmark:AssessmentSteps",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -48,7 +48,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:Citation",
+      "@id": "trustmark:Citation",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -56,7 +56,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:Artifact",
+      "@id": "trustmark:Artifact",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -64,7 +64,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:ParameterDefinition",
+      "@id": "trustmark:ParameterDefinition",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -72,7 +72,7 @@
           }
   },
   {
-      "@id": "ottotrustmark:ParameterKind",
+      "@id": "trustmark:ParameterKind",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -80,7 +80,7 @@
           }
   },
   {
-    "@id": "ottotrustmark:trustmarkAsserted",
+    "@id": "trustmark:trustmarkAsserted",
     "@type": "rdf:Property",
     "domainIncludes":[
         {
@@ -91,14 +91,14 @@
         }
       ],
     "rangeIncludes":{
-         "@id": "ottotrustmark:TrustmarkDefinition"
+         "@id": "trustmark:TrustmarkDefinition"
       }
   },
   {
-    "@id": "ottotrustmark:trustmarkReferenceAttributeName",
+    "@id": "trustmark:trustmarkReferenceAttributeName",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:URL"
@@ -109,22 +109,22 @@
     "@type": "rdf:Property",
     "domainIncludes":[
         {
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
         {
-          "@id": "ottotrustmark:TermType"
+          "@id": "trustmark:TermType"
         },
         {
-          "@id": "ottotrustmark:ConformanceCriterion"
+          "@id": "trustmark:ConformanceCriterion"
         },
         {
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         },
         {
-          "@id": "ottotrustmark:Artifact"
+          "@id": "trustmark:Artifact"
         },
         {
-             "@id": "ottotrustmark:ParameterDefinition"
+             "@id": "trustmark:ParameterDefinition"
         }
       ],
     "rangeIncludes":{
@@ -135,7 +135,7 @@
     "@id": "schema:version",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":[
       {
@@ -151,22 +151,22 @@
     "@type": "rdf:Property",
     "domainIncludes":[
         {
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
         {
-          "@id": "ottotrustmark:ConformanceCriterion"
+          "@id": "trustmark:ConformanceCriterion"
         },
         {
-           "@id": "ottotrustmark:Citation"
+           "@id": "trustmark:Citation"
         },
         {
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         },
         {
-          "@id": "ottotrustmark:Artifact"
+          "@id": "trustmark:Artifact"
         },
         {
-             "@id": "ottotrustmark:ParameterDefinition"
+             "@id": "trustmark:ParameterDefinition"
         }
       ],
     "rangeIncludes":{
@@ -174,284 +174,284 @@
       }
   },
   {
-    "@id": "ottotrustmark:publicationDateTime",
+    "@id": "trustmark:publicationDateTime",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Date"
       }
   },
   {
-    "@id": "ottotrustmark:trustmarkDefiningOrganization",
+    "@id": "trustmark:trustmarkDefiningOrganization",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Organization"
       }
   },
   {
-    "@id": "ottotrustmark:targetStakeholderDescription",
+    "@id": "trustmark:targetStakeholderDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:targetRecipientDescription",
+    "@id": "trustmark:targetRecipientDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:targetRelyingPartyDescription",
+    "@id": "trustmark:targetRelyingPartyDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:targetProviderDescription",
+    "@id": "trustmark:targetProviderDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:providerEligibilityCriteria",
+    "@id": "trustmark:providerEligibilityCriteria",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:assessorQualificationsDescription",
+    "@id": "trustmark:assessorQualificationsDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:trustmarkRevocationCriteria",
+    "@id": "trustmark:trustmarkRevocationCriteria",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:extensionDescription",
+    "@id": "trustmark:extensionDescription",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:legalNotice",
+    "@id": "trustmark:legalNotice",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:notes",
+    "@id": "trustmark:notes",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:description"
       }
   },
   {
-    "@id": "ottotrustmark:supercedes",
+    "@id": "trustmark:supercedes",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:TrustmarkDefinition"
+         "@id": "trustmark:TrustmarkDefinition"
       }
   },
   {
-    "@id": "ottotrustmark:supercededBy",
+    "@id": "trustmark:supercededBy",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:TrustmarkDefinition"
+         "@id": "trustmark:TrustmarkDefinition"
       }
   },
   {
-    "@id": "ottotrustmark:deprecated",
+    "@id": "trustmark:deprecated",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Boolean"
       }
   },
   {
-    "@id": "ottotrustmark:satisfies",
+    "@id": "trustmark:satisfies",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:TrustmarkDefinition"
+         "@id": "trustmark:TrustmarkDefinition"
       }
   },
   {
-    "@id": "ottotrustmark:keywords",
+    "@id": "trustmark:keywords",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:term",
+    "@id": "trustmark:term",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:TermType"
       }
   },
   {
-    "@id": "ottotrustmark:source",
+    "@id": "trustmark:source",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":[
       {
-         "@id": "ottotrustmark:SourceType"
+         "@id": "trustmark:SourceType"
       },
       {
-         "@id": "ottotrustmark:Citation"
+         "@id": "trustmark:Citation"
       }
     ],
   },
   {
-    "@id": "ottotrustmark:conformanceCriteria",
+    "@id": "trustmark:conformanceCriteria",
     "@type": "rdf:Property",
     "domainIncludes":[
         {
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
         {
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         }
       ],
     "rangeIncludes":{
-         "@id": "ottotrustmark:ConformanceCriteria"
+         "@id": "trustmark:ConformanceCriteria"
       }
   },
   {
-    "@id": "ottotrustmark:assessmentSteps",
+    "@id": "trustmark:assessmentSteps",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:AssessmentSteps"
+         "@id": "trustmark:AssessmentSteps"
       }
   },
   {
-    "@id": "ottotrustmark:issuanceCriteria",
+    "@id": "trustmark:issuanceCriteria",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TrustmarkDefinition"
+          "@id": "trustmark:TrustmarkDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:IssuanceCriteria"
+         "@id": "trustmark:IssuanceCriteria"
       }
   },
   {
-    "@id": "ottotrustmark:abbreviation",
+    "@id": "trustmark:abbreviation",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:TermType"
-        },
-    "rangeIncludes":{
-         "@id": "schema:Text"
-      }
-  },
-  {
-    "@id": "ottotrustmark:definition",
-    "@type": "rdf:Property",
-    "domainIncludes":{
-          "@id": "ottotrustmark:"
+          "@id": "trustmark:TermType"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:sourceIdentifier",
+    "@id": "trustmark:definition",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:SourceType"
+          "@id": "trustmark:"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:sourceReference",
+    "@id": "trustmark:sourceIdentifier",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:SourceType"
+          "@id": "trustmark:SourceType"
         },
     "rangeIncludes":{
          "@id": "schema:Text"
       }
   },
   {
-    "@id": "ottotrustmark:ref",
+    "@id": "trustmark:sourceReference",
+    "@type": "rdf:Property",
+    "domainIncludes":{
+          "@id": "trustmark:SourceType"
+        },
+    "rangeIncludes":{
+         "@id": "schema:Text"
+      }
+  },
+  {
+    "@id": "trustmark:ref",
     "@type": "rdf:Property",
     "domainIncludes":[
         {
-          "@id": "ottotrustmark:SourceType"
+          "@id": "trustmark:SourceType"
         },
         {
-              "@id": "ottotrustmark:ConformanceCriterion"
+              "@id": "trustmark:ConformanceCriterion"
         }
       ],
     "rangeIncludes":{
@@ -459,14 +459,14 @@
       }
   },
   {
-    "@id": "ottotrustmark:number",
+    "@id": "trustmark:number",
     "@type": "rdf:Property",
     "domainIncludes":[
         {
-          "@id": "ottotrustmark:ConformanceCriterion"
+          "@id": "trustmark:ConformanceCriterion"
         },
         {
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         }
       ],
     "rangeIncludes":{
@@ -474,73 +474,73 @@
       }
   },
   {
-    "@id": "ottotrustmark:citation",
+    "@id": "trustmark:citation",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:ConformanceCriterion"
+          "@id": "trustmark:ConformanceCriterion"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:Citation"
+         "@id": "trustmark:Citation"
       }
   },
   {
-    "@id": "ottotrustmark:",
+    "@id": "trustmark:",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:"
+          "@id": "trustmark:"
         },
     "rangeIncludes":{
          "@id": ""
       }
   },
   {
-    "@id": "ottotrustmark:artifact",
+    "@id": "trustmark:artifact",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:Artifact"
+         "@id": "trustmark:Artifact"
       }
   },
   {
-    "@id": "ottotrustmark:parameterDefinition",
+    "@id": "trustmark:parameterDefinition",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:AssessmentSteps"
+          "@id": "trustmark:AssessmentSteps"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:ParameterDefinition"
+         "@id": "trustmark:ParameterDefinition"
       }
   },
   {
-    "@id": "ottotrustmark:parameterKind",
+    "@id": "trustmark:parameterKind",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:ParameterDefinition"
+          "@id": "trustmark:ParameterDefinition"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:ParameterKind"
+         "@id": "trustmark:ParameterKind"
       }
   },
   {
-    "@id": "ottotrustmark:required",
+    "@id": "trustmark:required",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:ParameterDefinition"
+          "@id": "trustmark:ParameterDefinition"
         },
     "rangeIncludes":{
          "@id": "schema:Boolean"
       }
   },
   {
-    "@id": "ottotrustmark:parameterDefinitionType",
+    "@id": "trustmark:parameterDefinitionType",
     "@type": "rdf:Property",
     "domainIncludes":{
-          "@id": "ottotrustmark:"
+          "@id": "trustmark:"
         },
     "rangeIncludes":{
-         "@id": "ottotrustmark:ParameterKind"
+         "@id": "trustmark:ParameterKind"
       }
   }
  ]
