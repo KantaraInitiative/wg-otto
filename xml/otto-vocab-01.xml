@@ -188,7 +188,7 @@
           <c>The public, human readible website for the Federation</c>
           <!-- -->
           <c>operates</c>
-          <c>Entity</c>
+          <c>Entity or array of Entity</c>
           <c>A service operated by the Federation</c>
           <!-- -->
           <c><spanx style="strong">registeredBy</spanx></c>
