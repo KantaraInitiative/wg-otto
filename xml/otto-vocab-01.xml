@@ -203,7 +203,7 @@
           <c>array of Entity</c>
           <c>List of services registered to the federation by Participants</c>
           <!-- -->
-          <c>sponsor</c>
+          <c><spanx style="strong">sponsor</spanx></c>
           <c>A Participant or array of Participants</c>
           <c>The organization legally responsible for management of the
             Federation</c>

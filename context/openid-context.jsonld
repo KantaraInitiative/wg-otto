@@ -47,7 +47,7 @@
           }
   },
   {
-      "@id": "openid:MetadataStatement",
+      "@id": "openid:MetadataStatements",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
@@ -117,7 +117,7 @@
       }
   },
   {
-    "@id": "openid:metadataStatement",
+    "@id": "openid:metadataStatements",
     "@type": "rdf:Property",
     "domainIncludes": [
         {
@@ -128,7 +128,17 @@
         }
       ],
       "rangeIncludes":{
-        "@id": "schema:Text"
+        "@id": "openid:MetadataStatements"
+      }
+  },
+  {
+    "@id": "openid:federation",
+    "@type": "rdf:Property",
+    "domainIncludes": {
+          "@id": "openid:MetadataStatements"
+        },
+      "rangeIncludes":{
+        "@id": "otto:Federation"
       }
   },
   {

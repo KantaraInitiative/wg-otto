@@ -102,6 +102,10 @@
           <c>Text</c>
           <c>Description of the OP</c>
           <!-- -->
+          <c>metadataStatement</c>
+          <c>MetadataStatement or array of MetadataStatement</c>
+          <c>Claims about this OP signed by the federation</c>
+          <!-- -->
           <c>category</c>
           <c>Text</c>
           <c>Category assigned by the Federation</c>
@@ -141,7 +145,7 @@
           <c>Category assigned by the Federation</c>
           <!-- -->
           <c>metadataStatement</c>
-          <c>MetadataStatement</c>
+          <c>MetadataStatement or array of MetadataStatement</c>
           <c>Signed JWT issued by Federation</c>
           <!-- -->
           <c>memberOf</c>
@@ -261,9 +265,15 @@
           <c>IRI</c>
           <c>Identifier for this Metadata Statement</c>
           <!-- -->
+          <c><spanx style="strong">federation</spanx></c>
+          <c>Fedeation</c>
+          <c>The federation that issued the MetadataStatement</c>
+          <!-- -->
           <c><spanx style="strong">metadataStatement</spanx></c>
           <c>Text</c>
           <c>The JWT metadata statement</c>
+
+
         </texttable>
       </t>
     </section>
