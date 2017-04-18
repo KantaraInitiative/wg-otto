@@ -1,6 +1,6 @@
 {"@context":{
-  "otto": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0",
-  "ottobadge": "https://docs.kantarainitiative.org/otto/openid-badge-1.0",
+  "otto": "https://docs.kantarainitiative.org/otto/otto-vocab-1.0",
+  "ottobadge": "https://docs.kantarainitiative.org/otto/otto-badge-1.0",
   "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
   "schema": "http://schema.org",
   "xsd": "http://www.w3.org/2001/XMLSchema#",

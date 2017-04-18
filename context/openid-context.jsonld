@@ -172,7 +172,7 @@
       }
   },
   {
-    "@id": "schema:associatedScope",
+    "@id": "openid:associatedScope",
     "@type": "rdf:Property",
     "domainIncludes": {
         "@id": "openid:Scope"
@@ -200,7 +200,7 @@
     }
   },
   {
-    "@id": "schema:configuration_endpoint",
+    "@id": "openid:configuration_endpoint",
     "@type": "rdf:Property",
     "domainIncludes": {
         "@id": "openid:OpenIDProvider"
