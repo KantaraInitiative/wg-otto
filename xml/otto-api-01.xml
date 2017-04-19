@@ -37,8 +37,8 @@
       </address>
     </author>
 
-    <author fullname="Janusz Ulanwski," initials="J."
-      surname="Ulanwski">
+    <author fullname="Janusz Ulanowski," initials="J."
+      surname="Ulanowski">
       <organization>HEAnet</organization>
 
       <address>
@@ -62,7 +62,7 @@
       </address>
     </author>
 
-    <date day="2" month="4" year="2017" />
+    <date day="2" month="April" year="2017" />
 
     <abstract>
     <t>This specification defines standard application interfaces that enable
