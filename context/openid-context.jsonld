@@ -57,10 +57,17 @@
   {
     "@id": "openid:scope",
     "@type": "rdf:Property",
-    "domainIncludes": {
+    "domainIncludes": [
+      {
         "@id": "openid:OpenIDProvider"
+      },
+      {
+        "@id": "openid:OpenIDRelyingParty"
+      },
+      {
+        "@id": "otto:Requirement"
       }
-    ,
+    ],
       "rangeIncludes":{
         "@id": "openid:Scope"
       }
@@ -73,10 +80,10 @@
         "@id": "openid:OpenIDProvider"
       },
       {
-        "@id": "otto:Federation"
+        "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "openid:OpenIDRelyingParty"
+        "@id": "otto:Requirement"
       }
     ],
     "rangeIncludes":{
@@ -94,7 +101,7 @@
         "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "openid:OpenIDRelyingParty"
+        "@id": "otto:Requirement"
       }
     ],
       "rangeIncludes":{
@@ -206,7 +213,7 @@
         }
       ],
     "rangeIncludes":{
-      "@id": "openid:Federation"
+      "@id": "otto:Federation"
     }
   },
   {

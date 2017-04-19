@@ -53,6 +53,15 @@
                         }
                 },
                 {
+                    "@id": "otto:Requirement",
+                    "@type": "rdfs:Class",
+                    "rdfs:comment": "Support required by a Federation of Entities",
+                    "rdfs:subClassOf":
+                        {
+                            "@id": "schema:Thing"
+                        }
+                },
+                {
                     "@id": "trust:TrustMarkDefinition",
                     "@type": "rdfs:Class",
                 },
@@ -323,6 +332,16 @@
                   "rangeIncludes":{
                       "@id": "trust:Trustmark"
                     }
+                },
+                {"@id": "otto:requirement",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:Federation"
+                    },
+                  "rangeIncludes":{
+                      "@id": "trust:Requirement"
+                    }
                 }
+
   ]
 }

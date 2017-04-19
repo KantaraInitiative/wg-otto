@@ -204,7 +204,7 @@
           <c>List of services registered to the federation by Participants</c>
           <!-- -->
           <c><spanx style="strong">sponsor</spanx></c>
-          <c>A Participant or array of Participants</c>
+          <c>An Organization or array of Organization</c>
           <c>The organization legally responsible for management of the
             Federation</c>
           <!-- -->
@@ -244,6 +244,10 @@
           <c>badgeSupported</c>
           <c>BadgeClass or array of BadgeClass</c>
           <c>What kinds of Badges are supported by the federation</c>
+          <!-- -->
+          <c>requirement</c>
+          <c>Requirement or array of Requirement</c>
+          <c>Technical requirement(s) for federated entities</c>
       </texttable>
       </t>
     </section>
