@@ -272,11 +272,32 @@
           <c><spanx style="strong">metadataStatement</spanx></c>
           <c>Text</c>
           <c>The JWT metadata statement</c>
-
-
         </texttable>
       </t>
     </section>
+
+    <section anchor="Requirement" title="Properties added to Requirement">
+      <t>
+        <texttable anchor="table_req" title="Requirement">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c>userClaim</c>
+          <c>UserClaim or array of UserClaim</c>
+          <c>If used, what is the required name for this user claim</c>
+          <!-- -->
+          <c>scope</c>
+          <c>Scope or array of Scope</c>
+          <c>If used, what is the name of this scope</c>
+          <!-- -->
+          <c>acr</c>
+          <c>Acr or array of Acr</c>
+          <c>If used, what is the name of this acr</c>
+        </texttable>
+      </t>
+    </section>
+
   </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
