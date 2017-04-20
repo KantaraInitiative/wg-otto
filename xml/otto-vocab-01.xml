@@ -350,6 +350,7 @@
 
       </t>
     </section>
+
     <section anchor="metadata" title="Metadata">
       <t>
         <texttable anchor="table_metadata" title="Metadata">
@@ -371,6 +372,21 @@
         </texttable>
      </t>
     </section>
+
+    <section anchor="requirement" title="Requirment">
+      <t>
+        <texttable anchor="table_req" title="Requirement">
+          <ttcol align='left'>Property</ttcol>
+          <ttcol align='left'>Expected Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c><spanx style="strong">@id</spanx></c>
+          <c>IRI</c>
+          <c>Unique IRI for the Requirement</c>
+        </texttable>
+     </t>
+    </section>
+
   </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">
