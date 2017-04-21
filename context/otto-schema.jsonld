@@ -64,11 +64,11 @@
                 },
                 {
                     "@id": "trust:TrustMarkDefinition",
-                    "@type": "rdfs:Class",
+                    "@type": "rdfs:Class"
                 },
                 {
                     "@id": "trust:TrustMark",
-                    "@type": "rdfs:Class",
+                    "@type": "rdfs:Class"
                 },
                 {"@id": "otto:dataProtectionCodeOfConduct",
                   "@type": "rdf:Property",
@@ -325,7 +325,7 @@
                     },
                     {
                       "@id": "iri:IRI"
-                    },
+                    }
                   ]
                 },
                 {"@id": "otto:trustMarkDefinitionSupported",

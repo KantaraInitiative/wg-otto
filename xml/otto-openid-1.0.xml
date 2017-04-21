@@ -266,7 +266,7 @@
           <c>Identifier for this Metadata Statement</c>
           <!-- -->
           <c><spanx style="strong">federation</spanx></c>
-          <c>Fedeation</c>
+          <c>Federation</c>
           <c>The federation that issued the MetadataStatement</c>
           <!-- -->
           <c><spanx style="strong">metadataStatement</spanx></c>
