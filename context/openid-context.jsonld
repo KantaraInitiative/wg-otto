@@ -192,10 +192,10 @@
     "@id": "openid:associatedScope",
     "@type": "rdf:Property",
     "domainIncludes": {
-        "@id": "openid:Scope"
+        "@id": "openid:UserClaim"
       },
       "rangeIncludes":{
-        "@id": "openid:UserClaim"
+        "@id": "openid:Scope"
       }
   },
   {

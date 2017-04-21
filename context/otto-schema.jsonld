@@ -4,7 +4,8 @@
   "schema": "http://schema.org",
   "xsd": "http://www.w3.org/2001/XMLSchema#",
   "obi": "https://w3id.org/openbadges#",
-  "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf"
+  "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
+  "iri": "https://www.ietf.org/rfc/rfc3987.txt"
 },
   "@graph": [
                 {
@@ -247,6 +248,13 @@
                     },
                     {
                       "@id": "otto:Participant"
+                    },
+                    {
+                      "@id": "otto:Metadata"
+                    },
+
+                    {
+                      "@id": "otto:Requirement"
                     }
                    ]
                 },
@@ -311,27 +319,44 @@
                         "@id": "otto:Participant"
                       }
                     ],
-                  "rangeIncludes":{
+                  "rangeIncludes":[
+                    {
                        "@id": "obi:BadgeClass"
-                    }
+                    },
+                    {
+                      "@id": "iri:IRI"
+                    },
+                  ]
                 },
                 {"@id": "otto:trustMarkDefinitionSupported",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Federation"
                     },
-                  "rangeIncludes":{
-                      "@id": "trust:TrustmarkDefinition"
-                    }
+                  "rangeIncludes":
+                    [
+                      {
+                        "@id": "trust:TrustmarkDefinition"
+                      },
+                      {
+                        "@id": "schema:URL"
+                      }
+                    ]
                 },
                 {"@id": "otto:trustMarkAsserted",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Participant"
                     },
-                  "rangeIncludes":{
+                  "rangeIncludes":
+                  [
+                    {
                       "@id": "trust:Trustmark"
+                    },
+                    {
+                      "@id": "schema:URL"
                     }
+                  ]
                 },
                 {"@id": "otto:requirement",
                   "@type": "rdf:Property",

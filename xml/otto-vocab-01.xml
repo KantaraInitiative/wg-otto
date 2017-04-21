@@ -158,7 +158,8 @@
           <c>The base URL for the RA</c>
           <!-- -->
           <c>registers</c>
-          <c>Federation</c>
+          <c>Instance or array of Federation, Entity, Participant,
+          Metadata, or Requirement.</c>
           <c>A Federation or an array of Federations hosted by the RA</c>
       </texttable>
       </t>
@@ -238,11 +239,11 @@
             in the Federation.</c>
           <!-- -->
           <c>trustMarkDefinitionSupported</c>
-          <c>TrustMarkDefinition or array of TrustMarkDefinition</c>
+          <c>instance or array of TrustMarkDefinition or URL</c>
           <c>What kinds of Trustmarks are supported by the federation</c>
           <!-- -->
           <c>badgeSupported</c>
-          <c>BadgeClass or array of BadgeClass</c>
+          <c>instance or array of BadgeClass or IRI</c>
           <c>What kinds of Badges are supported by the federation</c>
           <!-- -->
           <c>requirement</c>
@@ -302,11 +303,11 @@
           <c>Person(s) to contact in the event of an urgent security issue</c>
           <!-- -->
           <c>trustMarkAsserted</c>
-          <c>Trustmark or array of TrustMark</c>
+          <c>instance or array of Trustmark or URL</c>
           <c>Link to TrustMarks the Participant claims</c>
           <!-- -->
           <c>badgeSupported</c>
-          <c>BadgeClass or array of BadgeClass</c>
+          <c>instance or array of BadgeClass or IRI</c>
           <c>What Badges the Participant issues</c>
       </texttable>
       </t>
