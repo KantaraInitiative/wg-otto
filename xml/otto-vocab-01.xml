@@ -347,6 +347,10 @@
           <c>metadata</c>
           <c>Metadata</c>
           <c>The metadata for this Entity</c>
+          <!-- -->
+          <c>category</c>
+          <c>Text</c>
+          <c>Category assigned by the Federation</c>
       </texttable>
 
       </t>
@@ -374,7 +378,7 @@
      </t>
     </section>
 
-    <section anchor="requirement" title="Requirment">
+    <section anchor="schema" title="Schema">
       <t>
         <texttable anchor="table_req" title="Requirement">
           <ttcol align='left'>Property</ttcol>
@@ -384,6 +388,30 @@
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Requirement</c>
+          <!-- -->
+          <c><spanx style="strong">name</spanx></c>
+          <c>Text or IRI</c>
+          <c>Identifier for this schema item</c>
+          <!-- -->
+          <c><spanx style="strong">category</spanx></c>
+          <c>Text</c>
+          <c>Values defined by profiles, i.e. "SALM attribute" or "OAuth Scope"</c>
+          <!-- -->
+          <c>description</c>
+          <c>Text</c>
+          <c>Human understandible explanation of this term.</c>
+          <!-- -->
+          <c><spanx style="strong">required</spanx></c>
+          <c>Boolean</c>
+          <c>Whether this schema element is required</c>
+          <!-- -->
+          <c>url</c>
+          <c>URL</c>
+          <c>URL with more information about this schema</c>
+          <!-- -->
+          <c>supportedBy</c>
+          <c>instance or array of Federation or Entity</c>
+          <c>Which federations support this schema</c>
         </texttable>
      </t>
     </section>

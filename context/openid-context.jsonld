@@ -27,7 +27,7 @@
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
-              "@id": "schema:Thing"
+              "@id": "schema:Schema"
           }
   },
   {
@@ -35,15 +35,7 @@
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
-              "@id": "schema:Thing"
-          }
-  },
-  {
-      "@id": "openid:Acr",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "schema:Thing"
+              "@id": "schema:Schema"
           }
   },
   {
@@ -65,7 +57,7 @@
         "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "otto:Requirement"
+        "@id": "otto:Schema"
       }
     ],
       "rangeIncludes":{
@@ -83,7 +75,7 @@
         "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "otto:Requirement"
+        "@id": "otto:Schema"
       }
     ],
     "rangeIncludes":{
@@ -101,7 +93,7 @@
         "@id": "openid:OpenIDRelyingParty"
       },
       {
-        "@id": "otto:Requirement"
+        "@id": "otto:Schema"
       }
     ],
       "rangeIncludes":{
@@ -149,21 +141,6 @@
       }
   },
   {
-    "@id": "schema:memberOf",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "otto:OpenIDRelyingParty"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "otto:Federation"
-      }
-  },
-  {
     "@id": "openid:signed_jwks_uri",
     "@type": "rdf:Property",
     "domainIncludes": {
@@ -171,21 +148,6 @@
       },
       "rangeIncludes":{
         "@id": "schema:URI"
-      }
-  },
-  {
-    "@id": "schema:category",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "schema:Text"
       }
   },
   {
@@ -197,24 +159,6 @@
       "rangeIncludes":{
         "@id": "openid:Scope"
       }
-  },
-  {
-    "@id": "openid:supportedBy",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-        {
-          "@id": "openid:UserClaim"
-        },
-        {
-          "@id": "openid:Scope"
-        },
-        {
-          "@id": "openid:Acr"
-        }
-      ],
-    "rangeIncludes":{
-      "@id": "otto:Federation"
-    }
   },
   {
     "@id": "openid:configuration_endpoint",

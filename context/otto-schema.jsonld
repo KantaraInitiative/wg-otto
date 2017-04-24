@@ -54,9 +54,9 @@
                         }
                 },
                 {
-                    "@id": "otto:Requirement",
+                    "@id": "otto:Schema",
                     "@type": "rdfs:Class",
-                    "rdfs:comment": "Support required by a Federation of Entities",
+                    "rdfs:comment": "Abstract class describing terms used by the Federation",
                     "rdfs:subClassOf":
                         {
                             "@id": "schema:Thing"
@@ -77,12 +77,6 @@
                     },
                   "rangeIncludes":{
                       "@id": "schema:URL"
-                    }
-                },
-                {"@id": "otto:description",
-                  "@type": "rdf:Property",
-                  "rangeIncludes":{
-                      "@id": "schema:description"
                     }
                 },
                 {"@id": "otto:entity_endpoint",
@@ -166,12 +160,6 @@
                       "@id": "schema:Text"
                     }
                 },
-                {"@id": "otto:member",
-                  "@type": "rdf:Property",
-                  "rangeIncludes":{
-                      "@id": "schema:member"
-                    }
-                },
                 {"@id": "otto:metadata",
                   "@type": "rdf:Property",
                   "domainIncludes": {
@@ -179,18 +167,6 @@
                     },
                   "rangeIncludes":{
                       "@id": "otto:Metadata"
-                    }
-                },
-                {"@id": "otto:memberOf",
-                  "@type": "rdf:Property",
-                  "rangeIncludes":{
-                      "@id": "schema:memberOf"
-                    }
-                },
-                {"@id": "otto:name",
-                  "@type": "rdf:Property",
-                  "rangeIncludes":{
-                      "@id": "schema:name"
                     }
                 },
                 {"@id": "otto:operates",
@@ -252,9 +228,8 @@
                     {
                       "@id": "otto:Metadata"
                     },
-
                     {
-                      "@id": "otto:Requirement"
+                      "@id": "otto:Schema"
                     }
                    ]
                 },
@@ -358,15 +333,40 @@
                     }
                   ]
                 },
-                {"@id": "otto:requirement",
+                {"@id": "otto:required",
                   "@type": "rdf:Property",
                   "domainIncludes": {
-                      "@id": "otto:Federation"
+                      "@id": "otto:Schema"
                     },
                   "rangeIncludes":{
-                      "@id": "trust:Requirement"
+                      "@id": "schema:Boolean"
                     }
+                },
+                {
+                  "@id": "openid:supportedBy",
+                  "@type": "rdf:Property",
+                  "domainIncludes":
+                      {
+                        "@id": "otto:Schema"
+                      },
+                  "rangeIncludes":{
+                    "@id": "otto:Federation"
+                  }
+                },
+                {
+                  "@id": "schema:category",
+                  "@type": "rdf:Property",
+                  "domainIncludes":[
+                    {
+                      "@id": "otto:Entity"
+                    },
+                    {
+                      "@id": "otto:Schema"
+                    }
+                  ],
+                  "rangeIncludes":{
+                    "@id": "schema:Text"
+                  }
                 }
-
   ]
 }
