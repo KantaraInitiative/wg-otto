@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 xsltproc rfc2629.xslt otto-vocab-01.xml > ../html/otto-vocab-1.0.html
 
