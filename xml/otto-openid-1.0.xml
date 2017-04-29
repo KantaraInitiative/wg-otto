@@ -178,6 +178,28 @@
       </t>
     </section>
 
+    <section anchor="categories" title="Categories">
+      <t>
+        <texttable anchor="table_cat" title="Categories">
+          <ttcol align='left'>Category</ttcol>
+          <ttcol align='left'>Type</ttcol>
+          <ttcol align='left'>Description</ttcol>
+          <!-- -->
+          <c anchor="UserClaim">UserClaim</c>
+          <c>SchemaCategory</c>
+          <c>Piece of information about a person</c>
+          <!-- -->
+          <c anchor="Scope">Scope</c>
+          <c>SchemaCategory</c>
+          <c>Authorization to access information about a person</c>
+          <!-- -->
+          <c anchor="Acr">Acr</c>
+          <c>SchemaCategory</c>
+          <c>A workflow for authentication</c>
+        </texttable>
+     </t>
+    </section>
+
   </section>
 
     <section anchor="Acknowledgments" title="Acknowledgments">

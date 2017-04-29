@@ -349,8 +349,8 @@
           <c>The metadata for this Entity</c>
           <!-- -->
           <c>category</c>
-          <c>Text</c>
-          <c>Category assigned by the Federation</c>
+          <c>Category</c>
+          <c>Used for assignment of standard Category defined in extension</c>
       </texttable>
 
       </t>
@@ -394,8 +394,8 @@
           <c>Identifier for this schema item</c>
           <!-- -->
           <c><spanx style="strong">category</spanx></c>
-          <c>Text</c>
-          <c>Values defined by profiles, i.e. "SALM attribute" or "OAuth Scope"</c>
+          <c>Category</c>
+          <c>Extensions defined in extensions like "attribute" or "scope"</c>
           <!-- -->
           <c>description</c>
           <c>Text</c>
@@ -412,6 +412,10 @@
           <c>supportedBy</c>
           <c>instance or array of Federation or Entity</c>
           <c>Which federations support this schema</c>
+          <!-- -->
+          <c>sameAs</c>
+          <c>URL</c>
+          <c>Link to another similiar schema class</c>
         </texttable>
      </t>
     </section>

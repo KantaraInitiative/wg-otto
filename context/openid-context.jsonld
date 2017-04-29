@@ -39,6 +39,14 @@
           }
   },
   {
+      "@id": "openid:Acr",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Schema"
+          }
+  },
+  {
       "@id": "openid:MetadataStatements",
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
@@ -169,6 +177,18 @@
       "rangeIncludes":{
         "@id": "schema:URI"
       }
+  },
+  {
+    "@id": "openid:UserClaim",
+    "@type": "otto:SchemaCategory",
+  },
+  {
+    "@id": "openid:Acr",
+    "@type": "otto:SchemaCategory",
+  },
+  {
+    "@id": "openid:Scope",
+    "@type": "otto:SchemaCategory",
   }
  ]
 }
