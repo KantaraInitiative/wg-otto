@@ -288,10 +288,6 @@
           <c>Entity</c>
           <c>A service operated by the Participant</c>
           <!-- -->
-          <c>supports</c>
-          <c>Schema or array of Schema</c>
-          <c>What schema is supported by this Entity</c>
-          <!-- -->
           <c><spanx style="strong">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
           <c>The RA where the Participant is registered</c>
@@ -359,6 +355,10 @@
           <c>category</c>
           <c>Category</c>
           <c>Used for assignment of standard Category defined in extension</c>
+          <!-- -->
+          <c>supports</c>
+          <c>Schema or array of Schema</c>
+          <c>What schema is supported by this Entity</c>
       </texttable>
 
       </t>
