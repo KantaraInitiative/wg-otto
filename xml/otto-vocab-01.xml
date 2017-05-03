@@ -380,7 +380,7 @@
 
     <section anchor="schema" title="Schema">
       <t>
-        <texttable anchor="table_req" title="Requirement">
+        <texttable anchor="table_req" title="Schema">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
