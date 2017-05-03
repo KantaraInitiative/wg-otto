@@ -192,6 +192,10 @@
           <c>Entity or array of Entity</c>
           <c>A service operated by the Federation</c>
           <!-- -->
+          <c>supports</c>
+          <c>Schema or array of Schema</c>
+          <c>What schema is supported by this Federation</c>
+          <!-- -->
           <c><spanx style="strong">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
           <c>The RA where the federation is hosted</c>
@@ -283,6 +287,10 @@
           <c>operates</c>
           <c>Entity</c>
           <c>A service operated by the Participant</c>
+          <!-- -->
+          <c>supports</c>
+          <c>Schema or array of Schema</c>
+          <c>What schema is supported by this Entity</c>
           <!-- -->
           <c><spanx style="strong">registeredBy</spanx></c>
           <c>RegistrationAuthority</c>
