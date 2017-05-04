@@ -1,175 +1,181 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
 <!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
-"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
-<!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
-<!ENTITY RFC3986 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml">
-<!ENTITY RFC5785 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
-<!ENTITY RFC7159 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml">
-<!ENTITY RFC6749 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
-<!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
-]>
+        "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
+        <!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
+        <!ENTITY RFC3986 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3986.xml">
+        <!ENTITY RFC5785 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.5785.xml">
+        <!ENTITY RFC7159 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7159.xml">
+        <!ENTITY RFC6749 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.6749.xml">
+        <!ENTITY RFC7591 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.7591.xml">
+        ]>
 <rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
      target="draft" version="1.0">
-  <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+    <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
-  <?rfc toc='yes' ?>
+    <?rfc toc='yes' ?>
 
-  <?rfc tocdepth='4' ?>
+    <?rfc tocdepth='4' ?>
 
-  <?rfc symrefs='yes' ?>
+    <?rfc symrefs='yes' ?>
 
-  <?rfc sortrefs='yes' ?>
+    <?rfc sortrefs='yes' ?>
 
-  <?rfc compact='yes' ?>
+    <?rfc compact='yes' ?>
 
-  <?rfc subcompact='no' ?>
+    <?rfc subcompact='no' ?>
 
-  <front>
-    <title abbrev="OTTO Core">OTTO API's 1.0</title>
+    <front>
+        <title abbrev="OTTO Core">OTTO API's 1.0</title>
 
-    <author fullname="Michael Schwartz" initials="M." role="editor"
-      surname="Schwartz">
-      <organization>Gluu</organization>
+        <author fullname="Michael Schwartz" initials="M." role="editor"
+                surname="Schwartz">
+            <organization>Gluu</organization>
 
-      <address>
-        <email>mike@gluu.org</email>
-      </address>
-    </author>
+            <address>
+                <email>mike@gluu.org</email>
+            </address>
+        </author>
 
-    <author fullname="Janusz Ulanowski," initials="J."
-      surname="Ulanowski">
-      <organization>HEAnet</organization>
+        <author fullname="Janusz Ulanowski," initials="J."
+                surname="Ulanowski">
+            <organization>HEAnet</organization>
 
-      <address>
-        <email>janusz.ulanowski@heanet.ie</email>
-      </address>
-    </author>
+            <address>
+                <email>janusz.ulanowski@heanet.ie</email>
+            </address>
+        </author>
 
-    <author fullname="Yuriy Zabrovarnyy" initials="Y." surname="Zabrovarnyy">
-      <organization>Gluu</organization>
+        <author fullname="Yuriy Zabrovarnyy" initials="Y." surname="Zabrovarnyy">
+            <organization>Gluu</organization>
 
-      <address>
-        <email>yuriy@gluu.org</email>
-      </address>
-    </author>
+            <address>
+                <email>yuriy@gluu.org</email>
+            </address>
+        </author>
 
-    <author fullname="Meghna Joshi" initials="M." surname="Joshi">
-      <organization>Gluu</organization>
+        <author fullname="Meghna Joshi" initials="M." surname="Joshi">
+            <organization>Gluu</organization>
 
-      <address>
-        <email>meg@gluu.org</email>
-      </address>
-    </author>
+            <address>
+                <email>meg@gluu.org</email>
+            </address>
+        </author>
 
-    <date day="2" month="April" year="2017" />
+        <date day="2" month="April" year="2017"/>
 
-    <abstract>
-    <t>This specification defines standard application interfaces that enable
-      the creation and management of multi-party federations.
-    </t>
-    </abstract>
-  </front>
+        <abstract>
+            <t>This specification defines standard application interfaces that enable
+                the creation and management of multi-party federations.
+            </t>
+        </abstract>
+    </front>
 
-  <middle>
-    <section anchor="introduction" title="Introduction">
-      <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
-        standards to enable the interoperable management of multi-party
-        federations--where a central authority creates the rules for membership,
-        enabling the participants to more efficiently collaborate. The goal of
-        OTTO is to support a range of trust models from very low to very high.
-        By providing a common set of API's and a data model, the OTTO standard
-        provides a scalable technical infrastructure to solve organizational
-        challenges in a number of different ecosystems.
-      </t>
-
-      <section title="Notational Conventions">
-        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-        "OPTIONAL" in this document are to be interpreted as described in
-        <xref target="RFC2119" />.</t>
-
-        <t>Unless otherwise noted, all protocol properties and values are case
-        sensitive.</t>
-      </section>
-
-      <section anchor="terminology" title="Terminology">
-        <t>This specification introduces the following terms
-          <list hangIndent="6" style="hanging">
-            <t hangText="Federation">
-              A group of autonomous organizations that agree to abide the
-              authority of a central organization to reduce the cost
-              of collaboration.
-           </t>
-
-            <t hangText="Registration Authority">
-              An organization that hosts the hardware and software used
-              by Federation operators.
+    <middle>
+        <section anchor="introduction" title="Introduction">
+            <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
+                standards to enable the interoperable management of multi-party
+                federations--where a central authority creates the rules for membership,
+                enabling the participants to more efficiently collaborate. The goal of
+                OTTO is to support a range of trust models from very low to very high.
+                By providing a common set of API's and a data model, the OTTO standard
+                provides a scalable technical infrastructure to solve organizational
+                challenges in a number of different ecosystems.
             </t>
 
-            <t hangText="Participant">
-              An organization that registers with a Registration Authority
-              for the purpose of joining a Federation.
+            <section title="Notational Conventions">
+                <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+                    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+                    "OPTIONAL" in this document are to be interpreted as described in
+                    <xref target="RFC2119"/>.
+                </t>
+
+                <t>Unless otherwise noted, all protocol properties and values are case
+                    sensitive.
+                </t>
+            </section>
+
+            <section anchor="terminology" title="Terminology">
+                <t>This specification introduces the following terms
+                    <list hangIndent="6" style="hanging">
+                        <t hangText="Federation">
+                            A group of autonomous organizations that agree to abide the
+                            authority of a central organization to reduce the cost
+                            of collaboration.
+                        </t>
+
+                        <t hangText="Registration Authority">
+                            An organization that hosts the hardware and software used
+                            by Federation operators.
+                        </t>
+
+                        <t hangText="Participant">
+                            An organization that registers with a Registration Authority
+                            for the purpose of joining a Federation.
+                        </t>
+
+                        <t hangText="Entity">
+                            A techincal service operated by a Particpant, such as
+                            an identity provider, website or mobile application.
+                        </t>
+
+                        <t hangText="Issuer">
+                            Location of the Registration Authority, which MUST be a URI
+                            <xref target="RFC3986"/>
+                            with a scheme component that MUST be
+                            https, a host component, and optionally, port and path components
+                            and no query or fragment components.
+                        </t>
+
+                    </list>
+                </t>
+            </section>
+
+            <section anchor="security" title="Security Considerations">
+                <t>
+                    This specification defines several APIs. The Registration Authority
+                    MUST use TLS protection over these endpoints, governed by
+                    <xref target="BCP195"/>, which discusses deployment and
+                    adoption characteristics of different TLS versions. All endpoints
+                    other then the .well-known configuration endpoint SHOULD require some
+                    form of authentication and access control, such as Client Authentication
+                    as described in
+                    <xref target="RFC6749"/>
+                    or a separate OAuth access
+                    token. The methods of managing and validating these authentication
+                    credentials are out of scope of this specification.
+                </t>
+            </section>
+
+        </section>
+
+        <section anchor="configuration-endpoint"
+                 title="Configuration Endpoint">
+            <t>
+                This endpoint returns the JSON-LD for the RegistrationAuthority class,
+                which includes information useful to clients prior to making requests.
+                Registration Authority MUST make this JSON-LD class available at the
+                path formed by concatenating the string
+                <spanx style="verb">/.well-known/otto-configuration</spanx>
+                to the Issuer. The syntax and semantics of
+                <spanx style="verb">.well-known</spanx>
+                are defined in<xref target="RFC5785"/>, and MUST point to a JSON
+                document compliant with this specification and MUST be returned using
+                the <spanx style="verb">application/json</spanx> content type.
             </t>
 
-            <t hangText="Entity">
-              A techincal service operated by a Particpant, such as
-              an identity provider, website or mobile application.
-            </t>
-
-            <t hangText="Issuer">
-              Location of the Registration Authority, which MUST be a URI
-              <xref target="RFC3986" /> with a scheme component that MUST be
-              https, a host component, and optionally, port and path components
-              and no query or fragment components.
-            </t>
-
-          </list></t>
-      </section>
-
-      <section anchor="security" title="Security Considerations">
-      <t>
-        This specification defines several APIs. The Registration Authority
-        MUST use TLS protection over these endpoints, governed by
-        <xref target="BCP195" />, which discusses deployment and
-        adoption characteristics of different TLS versions. All endpoints
-        other then the .well-known configuration endpoint SHOULD require some
-        form of authentication and access control, such as Client Authentication
-        as described in <xref target="RFC6749" /> or a separate OAuth access
-        token. The methods of managing and validating these authentication
-        credentials are out of scope of this specification.
-      </t>
-      </section>
-
-    </section>
-
-    <section anchor="configuration-endpoint"
-               title="Configuration Endpoint">
-       <t>
-         This endpoint returns the JSON-LD for the RegistrationAuthority class,
-         which includes information useful to clients prior to making requests.
-         Registration Authority MUST make this JSON-LD class available at the
-         path formed by concatenating the string
-         <spanx style="verb">/.well-known/otto-configuration</spanx>
-         to the Issuer. The syntax and semantics of
-         <spanx style="verb">.well-known</spanx>
-         are defined in <xref target="RFC5785" />, and MUST point to a JSON
-         document compliant with this specification and MUST be returned using
-         the <spanx style="verb">application/json</spanx> content type.
-       </t>
-
-     <section anchor="configuration-example"
-                title="Configuration example">
-           <figure>
-               <preamble>Non-normative example of a configuration request:</preamble>
-               <artwork><![CDATA[GET /otto/.well-known/otto-configuration HTTP/1.1
+            <section anchor="configuration-example"
+                     title="Configuration example">
+                <figure>
+                    <preamble>Non-normative example of a configuration request:</preamble>
+                    <artwork><![CDATA[GET /otto/.well-known/otto-configuration HTTP/1.1
 Host: ra.org]]>
-              </artwork>
-           </figure>
+                    </artwork>
+                </figure>
 
-           <figure>
-               <preamble>Non-normative example of a configuration response:</preamble>
-               <artwork><![CDATA[HTTP/1.1 200 OK
+                <figure>
+                    <preamble>Non-normative example of a configuration response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -185,188 +191,1232 @@ Content-Type: application/json
                  "https://ra.acme.ex/otto/federation/348159fd-8441"]
 }
 ]]>
-              </artwork>
-           </figure>
+                    </artwork>
+                </figure>
 
-      </section>
+            </section>
 
-    </section>
-
-    <section anchor="federation-endpoint"
-               title="Federation Endpoint">
-        <t>
-          This endpoint, hosted by the Registration Authority, enables the
-          creation and managment of Federations.
-        </t>
-
-        <section anchor="search-federation"
-                   title="Search Federation">
         </section>
 
-        <section anchor="create-federation"
-                   title="Create Federation">
+        <section anchor="federation-endpoint"
+                 title="Federation Endpoint">
+            <t>
+                This endpoint, hosted by the Registration Authority, enables the
+                creation and managment of Federations.
+            </t>
+
+            <section anchor="search-federation"
+                     title="Search Federation">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/federations HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "http://otto-test.gluu.org/otto/federation_list",
+  "federations": [
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3d"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/federations?depth=federations HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "http://otto-test.gluu.org/otto/federation_list",
+  "federations": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed1",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "fedearation fedearation",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+      ],
+      "federates": [
+        "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+      ],
+      "member": [
+        "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        "58fdfa39a6a02d203267da37"
+      ],
+      "supports": [
+        "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      ],
+      "requirement": []
+    }
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+  "url": "http://otto-test.gluu.org/otto/federation",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "fedearation fedearation",
+  "dataProtectionCodeOfConduct": "https://fd.org",
+  "federationAgreement": "https://fd.org",
+  "federationPolicy": "https://fd.org",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "sponsor": [
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+  ],
+  "federates": [
+    "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+  ],
+  "member": [
+    "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+  ],
+  "trustMarkDefinitionSupported": [
+    "https://fd.org"
+  ],
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "supports": [
+    "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+  ],
+  "requirement": []
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="create-federation"
+                     title="Create Federation">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/federations HTTP/1.1
+{
+	"name": "fed1",
+	"url": "http://otto-test.gluu.org/otto/federation",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"description": "fedearation fedearation",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}],
+	"dataProtectionCodeOfConduct": "https://fd.org",
+	"federationAgreement": "https://fd.org",
+	"federationPolicy": "https://fd.org"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="update-federation"
+                     title="Update Federation">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[PUT /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+	"name": "fed1",
+	"url": "http://otto-test.gluu.org/otto/federation",
+	"description": "fedearation fedearation",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}],
+	"dataProtectionCodeOfConduct": "https://fd.org",
+	"federationAgreement": "https://fd.org",
+	"federationPolicy": "https://fd.org"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="delete-federation"
+                     title="Delete Federation">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[DELETE /otto/federations/5909b4218489131c19abfa29 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="leave-federation"
+                     title="Leave Federation">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-federation-entity"
+                     title="Link entity to federation">
+                <t>
+                    This endpoint, Link entity to the federation.
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="add-new-service"
+                     title="Add new service to federation">
+                <t>
+                    This endpoint, add new service(entity) to the federation.
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
+{
+	"name": "entity 1",
+	"url": "http://otto-test.gluu.org/otto/entity",
+	"registeredBy": "https://localhost:5053",
+	"description": "entity entity",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"metadata": "58f5da4957d53d2ffbbb31e0"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-participant-member-federation"
+                     title="Link participant(member) to federation">
+                <t>
+                    This endpoint, Link participant as a member to federation
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-participant-sponsor-federation"
+                     title="Link participant(sponsor) to federation">
+                <t>
+                    This endpoint, Link participant as a sponsor to federation
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
         </section>
 
-        <section anchor="update-federation"
-                   title="Update Federation">
+        <section anchor="participant-endpoint"
+                 title="Participant Endpoint">
+            <t>
+                This endpoint, hosted by the Registration Authority, enables
+                the registration and management of information about an organization
+                so it can be associated with a Federation.
+            </t>
+
+            <section anchor="fetch-participant"
+                     title="Fetch Participant">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/participant HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "participant": [
+    "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/participant?depth=participants HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "participant": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+      "name": "participant 1",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "operates": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "badgeSupported": [
+        "58fdfa39a6a02d203267da37"
+      ],
+      "trustMarkAsserted": "http://pa.org"
+    }
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/participant/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+  "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+  "name": "participant 1",
+  "url": "http://otto-test.gluu.org/otto/participant",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "participant participant",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "memberOf": [
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+  ],
+  "operates": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "trustMarkAsserted": "http://pa.org"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="create-participant"
+                     title="Create Participant">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/participant HTTP/1.1
+{
+	"name": "participant1",
+	"url": "http://otto-test.gluu.org/otto/participant",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"description": "participant participant",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/participant/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="update-participant"
+                     title="Update Participant">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[PUT /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+	"name": "participant1",
+	"url": "http://otto-test.gluu.org/otto/participant",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"description": "participant participant",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="delete-participant"
+                     title="Delete Participant">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[DELETE /otto/participant/5909b4218489131c19abfa29 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-participant-memberOf-federation"
+                     title="Link participant(member) of federation">
+                <t>
+                    This endpoint, Link participant as a member of federation
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-entity-service-participant"
+                     title="Link entity(service) to participant">
+                <t>
+                    This endpoint, Link entity as a service to participant
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
         </section>
 
-        <section anchor="join-federation"
-                   title="Join Federation">
+        <section anchor="entity-endpoint"
+                 title="Entity Endpoint">
+            <t>
+                This endpoint, hosted by the Registration Authority, enables
+                the registration and management of digital services at the federation.
+            </t>
+
+            <section anchor="fetch-entity"
+                     title="Fetch Entity">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "entity": [
+    "http://otto-test.gluu.org/otto/entity/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed5"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity?depth=entities HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "entity": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "entity entity",
+      "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "federatedBy": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ]
+    }
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "entity entity",
+      "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "federatedBy": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ]
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="create-entity"
+                     title="Create Entity">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/entity HTTP/1.1
+{
+	"name": "entity 1",
+	"url": "http://otto-test.gluu.org/otto/entity",
+	"registeredBy": "https://localhost:5053",
+	"description": "entity entity",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"metadata": "58f5da4957d53d2ffbbb31e0"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/entity/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="update-entity"
+                     title="Update Entity">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[PUT /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+	"name": "entity 1",
+	"url": "http://otto-test.gluu.org/otto/entity",
+	"registeredBy": "https://localhost:5053",
+	"description": "entity entity",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"metadata": "58f5da4957d53d2ffbbb31e0"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="delete-entity"
+                     title="Delete Entity">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[DELETE /otto/entity/5909b4218489131c19abfa29 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-entity-federation"
+                     title="Link entity with federation">
+                <t>
+                    This endpoint, Link entity with existing federation
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
         </section>
 
-        <section anchor="leave-federation"
-                   title="Leave Federation">
+        <section anchor="metadata-endpoint"
+                 title="Metadata Endpoint">
+            <t>
+                This endpoint, hosted by the Registration Authority, enables
+                the registration and management of digital services at the federation.
+            </t>
+
+            <section anchor="fetch-metadata"
+                     title="Fetch Metadata">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/metadata HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "metadata": [
+    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/metadata?depth=metadata HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "metadata": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
+      "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "metadataFormat": "Metadata Format",
+      "expiration": "2017-04-18T09:20:09.138Z"
+    }
+  ]
+}
+
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/metadata/58f5da4957d53d2ffbbb31e0 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
+  "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+  "metadataFormat": "Metadata Format",
+  "expiration": "2017-04-18T09:20:09.138Z"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="create-metadata"
+                     title="Create Metadata">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/metadata HTTP/1.1
+{
+	"metadataFormat": "metadata format ....",
+	"expiration": "10/10/2017"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/metadata/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="update-metadata"
+                     title="Update Metadata">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[PUT /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1
+
+{
+	"metadataFormat": "metadata format ....",
+	"expiration": "10/10/2017"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="delete-metadata"
+                     title="Delete Metadata">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[DELETE /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
         </section>
 
-        <section anchor="delete-federation"
-                   title="Delete Federation">
+        <section anchor="schema-endpoint"
+                 title="Schema Endpoint">
+            <t>
+                This endpoint, hosted by the Registration Authority, enables
+                the registration and management of digital services at the federation.
+            </t>
+
+            <section anchor="fetch-schema"
+                     title="Fetch Schema">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/schema HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "schema": [
+    "http://otto-test.gluu.org/otto/schema/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed5"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/schema?depth=schema HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "schema": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+      "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+      "name": "given_name",
+      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+      "required": false,
+      "url": "https://en.wikipedia.org/wiki/Given_name",
+      "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c",
+      "supportedBy": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ]
+    }
+  ]
+}
+
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/schema/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+  "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+  "name": "given_name",
+  "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+  "required": false,
+  "url": "https://en.wikipedia.org/wiki/Given_name",
+  "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c",
+  "supportedBy": [
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="create-schema"
+                     title="Create Schema">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[POST /otto/schema HTTP/1.1
+{
+   "name":"given_name",
+   "category":"https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+   "description":"Person's first name",
+   "required":false,
+   "url":"https://en.wikipedia.org/wiki/Given_name",
+   "sameAs":[
+      "https://schema.org/givenName",
+      "https://erasmus.gluu.org/schema/457c"
+   ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/schema/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="update-schema"
+                     title="Update Schema">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[PUT /otto/schema/5909b4218489131c19abfa29 HTTP/1.1
+{
+   "name":"given_name",
+   "category":"https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+   "description":"Person's first name",
+   "required":false,
+   "url":"https://en.wikipedia.org/wiki/Given_name",
+   "sameAs":[
+      "https://schema.org/givenName",
+      "https://erasmus.gluu.org/schema/457c"
+   ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="delete-schema"
+                     title="Delete Schema">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[DELETE /otto/schema/5909b4218489131c19abfa29 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-schema-federation"
+                     title="Link schema with federation">
+                <t>
+                    This endpoint, Link schema with existing federation
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="link-schema-entity"
+                     title="Link schema with entity">
+                <t>
+                    This endpoint, Link schema with existing entity
+                </t>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+            </section>
         </section>
 
-    </section>
+        <section anchor="Acknowledgments" title="Acknowledgments">
+            <t>The following people made contributions to the development of this
+                specification:
+                <list style="symbols">
 
-    <section anchor="participant-endpoint"
-               title="Participant Endpoint">
-        <t>
-          This endpoint, hosted by the Registration Authority, enables
-          the registration and management of information about an organization
-          so it can be associated with a Federation.
-        </t>
+                    <t>Judith Bush</t>
 
-        <section anchor="fetch-participant"
-                   title="Fetch Participant">
+                    <t>Steve Carmody</t>
+
+                    <t>Peter Davis</t>
+
+                    <t>Keith Hazelton</t>
+
+                    <t>Roland Hedberg</t>
+
+                    <t>Rainer H??rbe</t>
+
+                    <t>Leif Johansson</t>
+
+                    <t>Alan Karp</t>
+
+                    <t>Nate Klingenstein</t>
+
+                    <t>Ken Klingenstein</t>
+
+                    <t>Eve Maler</t>
+
+                    <t>Nicholas Roy</t>
+
+                    <t>Rhys Smith</t>
+
+                    <t>David Walker</t>
+
+                    <t>Colin Wallis</t>
+
+                    <t>Jim Willeke</t>
+
+                    <t>Ian Young</t>
+
+                </list>
+            </t>
+
+            <t>Additional contributors to this specification include the Kantara OTTO
+                Work Group participants, a list of whom can be found at<xref
+                        target="OttoWgParticipants"/>.
+            </t>
         </section>
+    </middle>
 
-        <section anchor="create-participant"
-                   title="Create Participant">
-        </section>
+    <back>
+        <references title="Normative References">
+            <reference anchor="BCP195" target="https://tools.ietf.org/html/bcp195">
+                <front>
+                    <title>Recommendations for Secure Use of Transport Layer Security
+                        (TLS) and Datagram Transport Layer Security (DTLS)
+                    </title>
 
-        <section anchor="update-participant"
-                   title="Update Participant">
-        </section>
+                    <author initials="Y." surname="Sheffer">
+                        <organization/>
+                    </author>
 
-        <section anchor="delete-participant"
-                   title="Delete Participant">
-        </section>
+                    <date day="" month="May" year="2015"/>
+                </front>
+            </reference>
 
-    </section>
+            <!-- -->
+            &RFC2119;
 
-    <section anchor="entity-endpoint"
-               title="Entity Endpoint">
-        <t>
-          This endpoint, hosted by the Registration Authority, enables
-          the registration and management of digital services at the federation.
-        </t>
+            <!-- Uniform Resource Identifier (URI): Generic Syntax -->
+            &RFC3986;
 
-        <section anchor="fetch-entity"
-                   title="Fetch entity">
-        </section>
+            <!-- Defining Well-Known Uniform Resource Identifiers (URIs) -->
+            &RFC5785;
 
-        <section anchor="create-entity"
-                   title="Create entity">
-        </section>
+            <!-- The OAuth 2.0 Authorization Framework -->
+            &RFC6749;
 
-        <section anchor="update-entity"
-                   title="Update entity">
-        </section>
+            <!--  The JavaScript Object Notation (JSON) Data Interchange Format -->
+            &RFC7159;
 
-        <section anchor="delete-entity"
-                   title="Delete entity">
-        </section>
+        </references>
 
-    </section>
+        <references title="Informative References">
 
-    <section anchor="Acknowledgments" title="Acknowledgments">
-      <t>The following people made contributions to the development of this
-        specification:<list style="symbols">
+            <reference anchor="OttoWgParticipants"
+                       target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
+                <front>
+                    <title>OTTO Participant Roster</title>
 
-          <t>Judith Bush</t>
-
-          <t>Steve Carmody</t>
-
-          <t>Peter Davis</t>
-
-          <t>Keith Hazelton</t>
-
-          <t>Roland Hedberg</t>
-
-          <t>Rainer H??rbe</t>
-
-          <t>Leif Johansson</t>
-
-          <t>Alan Karp</t>
-
-          <t>Nate Klingenstein</t>
-
-          <t>Ken Klingenstein</t>
-
-          <t>Eve Maler</t>
-
-          <t>Nicholas Roy</t>
-
-          <t>Rhys Smith</t>
-
-          <t>David Walker</t>
-
-          <t>Colin Wallis</t>
-
-          <t>Jim Willeke</t>
-
-          <t>Ian Young</t>
-
-        </list></t>
-
-      <t>Additional contributors to this specification include the Kantara OTTO
-      Work Group participants, a list of whom can be found at <xref
-      target="OttoWgParticipants" />.</t>
-    </section>
-  </middle>
-
-  <back>
-    <references title="Normative References">
-        <reference anchor="BCP195" target="https://tools.ietf.org/html/bcp195">
-          <front>
-            <title>Recommendations for Secure Use of Transport Layer Security
-            (TLS) and Datagram Transport Layer Security (DTLS)</title>
-
-            <author initials="Y." surname="Sheffer">
-              <organization />
-            </author>
-
-            <date day="" month="May" year="2015" />
-          </front>
-        </reference>
-
-        <!-- -->
-        &RFC2119;
-
-        <!-- Uniform Resource Identifier (URI): Generic Syntax -->
-        &RFC3986;
-
-        <!-- Defining Well-Known Uniform Resource Identifiers (URIs) -->
-        &RFC5785;
-
-        <!-- The OAuth 2.0 Authorization Framework -->
-        &RFC6749;
-
-        <!--  The JavaScript Object Notation (JSON) Data Interchange Format -->
-        &RFC7159;
-
-    </references>
-
-    <references title="Informative References">
-
-      <reference anchor="OttoWgParticipants"
-                 target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
-        <front>
-          <title>OTTO Participant Roster</title>
-
-          <author initials="M." surname="Schwartz">
-            <organization>Schwartz</organization>
-          </author>
-          <date day="" month="" year="2016" />
-        </front>
-      </reference>
-    </references>
-  </back>
+                    <author initials="M." surname="Schwartz">
+                        <organization>Schwartz</organization>
+                    </author>
+                    <date day="" month="" year="2016"/>
+                </front>
+            </reference>
+        </references>
+    </back>
 </rfc>
