@@ -388,7 +388,7 @@
 
     <section anchor="schema" title="Schema">
       <t>
-        <texttable anchor="table_req" title="Schema">
+        <texttable anchor="table_schema" title="Schema">
           <ttcol align='left'>Property</ttcol>
           <ttcol align='left'>Expected Type</ttcol>
           <ttcol align='left'>Description</ttcol>
@@ -422,7 +422,7 @@
           <c>Which federations support this schema</c>
           <!-- -->
           <c>sameAs</c>
-          <c>URL</c>
+          <c>URL or array of URL</c>
           <c>Link to another similiar schema class</c>
         </texttable>
      </t>
