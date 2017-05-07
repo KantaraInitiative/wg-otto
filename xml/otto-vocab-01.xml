@@ -249,10 +249,6 @@
           <c>badgeSupported</c>
           <c>instance or array of BadgeClass or IRI</c>
           <c>What kinds of Badges are supported by the federation</c>
-          <!-- -->
-          <c>requirement</c>
-          <c>Requirement or array of Requirement</c>
-          <c>Technical requirement(s) for federated entities</c>
       </texttable>
       </t>
     </section>
