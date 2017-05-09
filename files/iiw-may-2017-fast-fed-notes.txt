@@ -1,0 +1,120 @@
+IIW SESSION: OTTO-ifying FastFed
+
+The IDP's and RP's of a federation need to agree on certain things
+to drive down the cost of single sign-on. This includes user
+claims, but may also include OAuth scopes and authentication details
+like acr and amr. (See OpenID Connect client metadata for a defintion
+of these terms:
+http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata )
+
+OTTO is a set of API's and a JSON model that can be used to automate
+the operation of a multi-party federation (like InCommon...) The OTTO
+WG decided to leverage JSON-LD. There is an extensive schema already defined
+at https://schema.org In particular, we re-used the JSON-LD classes for
+Organization and Thing quite a bit. See:
+  https://schema.org/Thing
+  https://schema.org/Organization
+
+The advantage of JSON-LD was that it provided some linked data capabilities,
+but looked like "normal" JSON to developers who didn't care about these
+features.
+
+On Tue, Darin McAdams presented an overview of progress in the OpenID
+FastFed Workig Group: http://openid.net/wg/fastfed/  You can see a spec
+straw man at: http://gluu.co/fast-fed-strawman
+
+In that document, a configuration response from an IDP is proposed:
+
+{
+ “identity_provider”: {
+ “name”: “Awesome IdP”
+ “logo_uri”: “https://example.com/images/idp_logo.png”,
+ “auth_protocols”: [“SAML”,”OIDC”], #In practice, only 1 protocol typically
+chosen.
+ “saml_metadata_uri”: “https://tenant12345.example.com/saml-metadata.xml”,
+ “oidc_configuration_uri”: “https://tenant12345.example.com/oidc-configuration”,
+ “token_endpoint”: “https://tenant12345.example.com/token”,
+ “scim_endpoint”: “https://tenant12345.example.com/scim”,
+ “supported_attributes”: {
+ "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User",
+ "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"],
+ "id",
+ "userName",
+ "name": {
+ "familyName",
+ "givenName",
+ },
+ "displayName",
+ "emails",
+ "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+ "employeeNumber",
+ "costCenter",
+ "manager": {
+  "value"
+  }
+  }
+  }
+ }
+
+ Mike Schwartz's feedback was that perhaps OTTO's JSON-LD model could
+ enable a more elegant expression of this information.
+
+Current draft OTTO JSON-LD vocabulary can be found here:
+  - OTTO Core Vocab   : http://gluu.co/otto-vocab
+  - OTTO OpenID Vocab : http://gluu.co/openid-vocab
+
+OTTO Vocab defines several classes:
+   Registration Authority
+   Federation
+   Participant
+   Entity
+   Metadata
+   Schema
+
+OpenID provides more specific classes:
+  OpenID Provider (subclass of Entity)
+  OpenID Relying Party (subclass of Entity)
+  User Claim (subclass of Schema)
+  Scope (subclass of Schema)
+  Metadata Statement (subclass of Metadata)
+  Categories (Defines values of enumeration like "OpenID Connect user claim")
+
+An entity, like an OpenID Provider, could reference certain schema as supported
+by either linking to it, or providing the schema JSON-LD in the "supports"
+property. Of course, an array can be used to specify multiple schema
+objects.
+
+Any schema object can specify certain common properties like:
+  name
+  description
+  required (boolean)
+  url
+  category (to enable searches like: return all "OpenID Connect Scopes")
+  sameAs
+
+The "sameAs" property could be used to specify equivilancy. For example,
+an OpenID Connect Provider may use the claim "family_name", which is equivalent
+to "sn" in SAML. Using links enables the specific schema objects to describe
+what's relevent to their counter parties (like SAML2 URI, which OpenID Connect
+client's wouldn't care about.)
+
+Currently OTTO has only defined a profile for OpenID Connect, but SAML is in
+the works. A profile for SCIM also seems like a good idea. Another advantage
+of using OTTO is that it is inherently extensible locally, or through the
+collaboration of standards groups or ecosystems.
+
+Using OTTO to define a Fast Fed IDP response, perhaps it could look something
+like this:
+
+{
+  "entity": [{SAML IDP}, {OpenID Provider}],
+  "Schema": [ {OpenID UserClaim 1},
+              {OpenID UserClaim 2},
+              {SCIM UserClaim 1},
+              {OpenID Connect ACR},
+              ...],
+  "Organization": {}
+}
+
+The above syntax is simpler and is potentially more expressive, and more standard (by leveraging
+existing schema from schema.org).

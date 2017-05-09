@@ -97,7 +97,7 @@ In Openid context:
 }
 ```
 
-So a sample schema for `given_name` might look something like this
+So a non-normative example for `given_name`:
 
 {
   "@id": "https://erasmus.gluu.org/schema/9f90"
