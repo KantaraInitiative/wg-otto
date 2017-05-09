@@ -288,8 +288,7 @@ Content-Type: application/json
       ],
       "supports": [
         "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
-      ],
-      "requirement": []
+      ]
     }
   ]
 }
@@ -354,8 +353,7 @@ Content-Type: application/json
   ],
   "supports": [
     "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
-  ],
-  "requirement": []
+  ]
 }
 ]]>
                     </artwork>
@@ -849,7 +847,8 @@ Content-Type: application/json
       "federatedBy": [
         "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
       ],
-      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ]
+      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ],
+      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
     }
   ]
 }
@@ -879,7 +878,8 @@ Content-Type: application/json
       "federatedBy": [
         "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
       ],
-      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ]
+      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ],
+      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
 }
 ]]>
                     </artwork>
@@ -897,7 +897,8 @@ Content-Type: application/json
 	"registeredBy": "https://localhost:5053",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
-	"metadata": "58f5da4957d53d2ffbbb31e0"
+	"metadata": "58f5da4957d53d2ffbbb31e0",
+	"category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
 }
 ]]>
                     </artwork>
@@ -926,7 +927,8 @@ Content-Type: application/json
 	"registeredBy": "https://localhost:5053",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
-	"metadata": "58f5da4957d53d2ffbbb31e0"
+	"metadata": "58f5da4957d53d2ffbbb31e0",
+	"category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
 }
 ]]>
                     </artwork>
