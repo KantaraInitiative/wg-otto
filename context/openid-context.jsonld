@@ -37,15 +37,7 @@
           {
               "@id": "schema:Schema"
           }
-  },
-  {
-      "@id": "openid:Acr",
-      "@type": "rdfs:Class",
-      "rdfs:subClassOf":
-          {
-              "@id": "schema:Schema"
-          }
-  },
+  }
   {
       "@id": "openid:MetadataStatements",
       "@type": "rdfs:Class",
@@ -55,57 +47,23 @@
           }
   },
   {
-    "@id": "openid:scope",
+    "@id": "openid:associatedScope",
     "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
+    "domainIncludes": {
+        "@id": "openid:UserClaim"
       },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      },
-      {
-        "@id": "otto:Schema"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "openid:Scope"
-      }
+    "rangeIncludes":{
+      "@id": "openid:Scope"
+    }
   },
   {
     "@id": "openid:userClaim",
     "@type": "rdf:Property",
-    "domainIncludes":[
-      {
-        "@id": "openid:OpenIDProvider"
+    "domainIncludes":      {
+        "@id": "openid:Scope"
       },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      },
-      {
-        "@id": "otto:Schema"
-      }
-    ],
     "rangeIncludes":{
         "@id": "openid:UserClaim"
-      }
-  },
-  {
-    "@id": "openid:acr",
-    "@type": "rdf:Property",
-    "domainIncludes": [
-      {
-        "@id": "openid:OpenIDProvider"
-      },
-      {
-        "@id": "openid:OpenIDRelyingParty"
-      },
-      {
-        "@id": "otto:Schema"
-      }
-    ],
-      "rangeIncludes":{
-        "@id": "openid:Acr"
       }
   },
   {
@@ -159,16 +117,6 @@
       }
   },
   {
-    "@id": "openid:associatedScope",
-    "@type": "rdf:Property",
-    "domainIncludes": {
-        "@id": "openid:UserClaim"
-      },
-      "rangeIncludes":{
-        "@id": "openid:Scope"
-      }
-  },
-  {
     "@id": "openid:configuration_endpoint",
     "@type": "rdf:Property",
     "domainIncludes": {
@@ -181,14 +129,22 @@
   {
     "@id": "openid:UserClaim",
     "@type": "otto:SchemaCategory",
+    "rdfs:label": "UserClaim"
   },
   {
     "@id": "openid:Acr",
     "@type": "otto:SchemaCategory",
+    "rdfs:label": "Acr"
   },
   {
     "@id": "openid:Scope",
     "@type": "otto:SchemaCategory",
+    "rdfs:label": "Scope"
+  },
+  {
+    "@id": "openid:OpenIDFederation",
+    "@type": "otto:MetadataCategory",
+    "rdfs:label": "OpenIDFederation"
   }
  ]
 }

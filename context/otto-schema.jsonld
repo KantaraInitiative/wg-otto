@@ -373,6 +373,9 @@
                     },
                     {
                       "@id": "otto:Schema"
+                    },
+                    {
+                      "@id": "otto:Metadata"
                     }
                   ],
                   "rangeIncludes":{
@@ -395,6 +398,13 @@
                 },
                 {
                   "@id": "otto:EntityCategory",
+                  "@type": "rdfs:Class",
+                  "rdfs:subClassOf": {
+                    "@id": "otto:Category"
+                  }
+                },
+                {
+                  "@id": "otto:MetadataCategory",
                   "@type": "rdfs:Class",
                   "rdfs:subClassOf": {
                     "@id": "otto:Category"

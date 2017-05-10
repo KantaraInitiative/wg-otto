@@ -192,6 +192,10 @@
           <c>Entity or array of Entity</c>
           <c>A service operated by the Federation</c>
           <!-- -->
+          <c>metadata</c>
+          <c>Metadata or array of Metadata</c>
+          <c>The metadata (including public signing key) for this Federation</c>
+          <!-- -->
           <c>supports</c>
           <c>Schema or array of Schema</c>
           <c>What schema is supported by this Federation</c>
@@ -328,6 +332,10 @@
           <c>Text</c>
           <c>A human friendly name for the Entity</c>
           <!-- -->
+          <c>operatedBy</c>
+          <c>Federation or Participant</c>
+          <c>The organization that is responsible for this Entity</c>
+          <!-- -->
           <c>url</c>
           <c>URL</c>
           <c>The public, human readible website for the Entity</c>
@@ -370,6 +378,10 @@
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
           <c>Unique IRI for the Entity</c>
+          <!-- -->
+          <c><spanx style="strong">category</spanx></c>
+          <c>Category</c>
+          <c>Enables extensions to define standard categories for searching</c>
           <!-- -->
           <c>metadataFormat</c>
           <c>Text</c>
