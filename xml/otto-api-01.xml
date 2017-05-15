@@ -207,6 +207,7 @@ Content-Type: application/json
 
             <section anchor="search-federation"
                      title="Search Federation">
+
                 <figure>
                     <preamble>Request:</preamble>
                     <artwork><![CDATA[GET /otto/federations HTTP/1.1 ]]>
@@ -249,7 +250,7 @@ Content-Type: application/json
       "name": "fed1",
       "url": "http://otto-test.gluu.org/otto/federation",
       "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
-      "description": "fedearation fedearation",
+      "description": "fedearation first",
       "dataProtectionCodeOfConduct": "https://fd.org",
       "federationAgreement": "https://fd.org",
       "federationPolicy": "https://fd.org",
@@ -284,10 +285,63 @@ Content-Type: application/json
         "https://fd.org"
       ],
       "badgeSupported": [
-        "58fdfa39a6a02d203267da37"
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
       ],
       "supports": [
         "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      ],
+      "metadata": [
+        "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+      ]
+    },
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed2",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "fedearation Second",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+      ],
+      "federates": [
+        "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+      ],
+      "member": [
+        "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+      ],
+      "supports": [
+        "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      ],
+      "metadata": [
+        "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
       ]
     }
   ]
@@ -298,8 +352,7 @@ Content-Type: application/json
 
                 <figure>
                     <preamble>Request:</preamble>
-                    <artwork>
-                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]>
+                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
@@ -307,7 +360,6 @@ Content-Type: application/json
                     <preamble>Response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
-
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
   "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
@@ -353,11 +405,346 @@ Content-Type: application/json
   ],
   "supports": [
     "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+  ],
+  "metadata": [
+    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
   ]
 }
 ]]>
                     </artwork>
                 </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+  "url": "http://otto-test.gluu.org/otto/federation",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "fedearation fedearation",
+  "dataProtectionCodeOfConduct": "https://fd.org",
+  "federationAgreement": "https://fd.org",
+  "federationPolicy": "https://fd.org",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "sponsor": [
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+  ],
+  "federates": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "entity entity",
+      "metadata": {
+        "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+      },
+      "federatedBy": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ]
+    }
+  ],
+  "member": [
+    "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+  ],
+  "trustMarkDefinitionSupported": [
+    "https://fd.org"
+  ],
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "supports": [
+    "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+  ],
+  "metadata": [
+    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+  ]
+}
+
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=all HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+  "url": "http://otto-test.gluu.org/otto/federation",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "fedearation fedearation",
+  "dataProtectionCodeOfConduct": "https://fd.org",
+  "federationAgreement": "https://fd.org",
+  "federationPolicy": "https://fd.org",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "sponsor": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+      "name": "participant 1",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+        }
+      ],
+      "operates": {
+        "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+      },
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ],
+      "trustMarkAsserted": "http://pa.org"
+    }
+  ],
+  "federates": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "entity entity",
+      "metadata": {
+        "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+      },
+      "federatedBy": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ]
+    }
+  ],
+  "member": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
+      "name": "participant 2",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [],
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ]
+    }
+  ],
+  "trustMarkDefinitionSupported": [
+    "https://fd.org"
+  ],
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "supports": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+      "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+      "name": "given_name",
+      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+      "required": false,
+      "url": "https://en.wikipedia.org/wiki/Given_name",
+      "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c"
+    }
+  ],
+  "metadata": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
+      "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "metadataFormat": "Metadata Format",
+      "expiration": "2017-04-18T09:20:09.138Z"
+    }
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "contactNo": "+485647556566",
+    "name": "Security Person1"
+  }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=all&filter=.supports HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+    "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+    "name": "given_name",
+    "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+    "required": false,
+    "url": "https://en.wikipedia.org/wiki/Given_name",
+    "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c"
+  }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/federations?pageno=1&pagelength=5 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "http://otto-test.gluu.org/otto/federations",
+  "federations": [
+    "http://otto-test.gluu.org/otto/federations/59157847d1285b2273ef83d2",
+    "http://otto-test.gluu.org/otto/federations/5915784bd1285b2273ef83d3",
+    "http://otto-test.gluu.org/otto/federations/59157850d1285b2273ef83d4",
+    "http://otto-test.gluu.org/otto/federations/59157854d1285b2273ef83d5",
+    "http://otto-test.gluu.org/otto/federations/59157857d1285b2273ef83d6"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
             </section>
 
             <section anchor="create-federation"
@@ -481,9 +868,9 @@ Content-Type: application/json
                     <preamble>Request:</preamble>
                     <artwork><![CDATA[POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
 {
-	"name": "entity 1",
+	"name": "fed 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "https://localhost:5053",
+	"registeredBy": "http://otto-test.gluu.org",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"metadata": "58f5da4957d53d2ffbbb31e0"
@@ -568,6 +955,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
+  "@context": "http://otto-test.gluu.org/otto/participant",
   "participant": [
     "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
@@ -589,7 +977,39 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
+  "@context": "http://otto-test.gluu.org/otto/participant",
   "participant": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
+      "name": "participant 2",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [],
+      "badgeSupported": [
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+      ],
+      "operates": ""
+    },
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
       "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
@@ -620,7 +1040,7 @@ Content-Type: application/json
       ],
       "operates": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
       "badgeSupported": [
-        "58fdfa39a6a02d203267da37"
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
       ],
       "trustMarkAsserted": "http://pa.org"
     }
@@ -632,8 +1052,7 @@ Content-Type: application/json
 
                 <figure>
                     <preamble>Request:</preamble>
-                    <artwork>
-                        <![CDATA[GET /otto/participant/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
@@ -675,6 +1094,331 @@ Content-Type: application/json
     "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
   ],
   "trustMarkAsserted": "http://pa.org"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+  "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+  "name": "participant 1",
+  "url": "http://otto-test.gluu.org/otto/participant",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "participant participant",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "memberOf": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed1",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "fedearation fedearation",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+        }
+      ],
+      "federates": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+        }
+      ],
+      "member": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+        }
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ],
+      "metadata": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+        }
+      ]
+    }
+  ],
+  "operates": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "trustMarkAsserted": "http://pa.org"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=all HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+  "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+  "name": "participant 1",
+  "url": "http://otto-test.gluu.org/otto/participant",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "participant participant",
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ],
+  "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person1"
+    }
+  ],
+  "technicalContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Technical Person1"
+    }
+  ],
+  "memberOf": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed1",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "fedearation fedearation",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+        }
+      ],
+      "federates": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+        }
+      ],
+      "member": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+        }
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ],
+      "metadata": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+        }
+      ]
+    }
+  ],
+  "operates": {
+    "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+    "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+    "name": "entity 1",
+    "url": "http://otto-test.gluu.org/otto/entity",
+    "registeredBy": {
+      "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+    },
+    "description": "entity entity",
+    "metadata": "58f5da4957d53d2ffbbb31e0",
+    "federatedBy": [
+      {
+        "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      }
+    ],
+    "supports": [
+      {
+        "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      }
+    ]
+  },
+  "badgeSupported": [
+    "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+  ],
+  "trustMarkAsserted": "http://pa.org"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "contactNo": "+485647556566",
+    "name": "Security Person1"
+  }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=all&filter=.operates HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+    "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+    "name": "entity 1",
+    "url": "http://otto-test.gluu.org/otto/entity",
+    "registeredBy": {
+      "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+    },
+    "description": "entity entity",
+    "metadata": "58f5da4957d53d2ffbbb31e0",
+    "federatedBy": [
+      {
+        "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      }
+    ],
+    "supports": [
+      {
+        "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      }
+    ]
+  }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/participant?pageno=1&pagelength=5 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "http://otto-test.gluu.org/otto/participant",
+  "federations": [
+    "http://otto-test.gluu.org/otto/participant/59157847d1285b2273ef83d2",
+    "http://otto-test.gluu.org/otto/participant/5915784bd1285b2273ef83d3",
+    "http://otto-test.gluu.org/otto/participant/59157850d1285b2273ef83d4",
+    "http://otto-test.gluu.org/otto/participant/59157854d1285b2273ef83d5",
+    "http://otto-test.gluu.org/otto/participant/59157857d1285b2273ef83d6"
+  ]
 }
 ]]>
                     </artwork>
@@ -814,7 +1558,8 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-  "entity": [
+  "@context": "http://otto-test.gluu.org/otto/entity",
+  "participant": [
     "http://otto-test.gluu.org/otto/entity/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed5"
   ]
@@ -835,10 +1580,11 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
+  "@context": "http://localhost:5053/otto/entity",
   "entity": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
-      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6",
       "name": "entity 1",
       "url": "http://otto-test.gluu.org/otto/entity",
       "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
@@ -847,8 +1593,9 @@ Content-Type: application/json
       "federatedBy": [
         "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
       ],
-      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ],
-      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
+      "supports": [
+        "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956"
+      ]
     }
   ]
 }
@@ -858,7 +1605,7 @@ Content-Type: application/json
 
                 <figure>
                     <preamble>Request:</preamble>
-                    <artwork><![CDATA[GET /otto/entity/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    <artwork><![CDATA[GET /otto/entity/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
@@ -868,18 +1615,282 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
-      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
-      "name": "entity 1",
-      "url": "http://otto-test.gluu.org/otto/entity",
-      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
-      "description": "entity entity",
-      "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
-      "federatedBy": [
-        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+  "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6",
+  "name": "entity 1",
+  "url": "http://otto-test.gluu.org/otto/entity",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "entity entity",
+  "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+  "federatedBy": [
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+  ],
+  "supports": [
+    "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?depth=federatedBy HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+  "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6",
+  "name": "entity 1",
+  "url": "http://otto-test.gluu.org/otto/entity",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "entity entity",
+  "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+  "federatedBy": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed1",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "fedearation fedearation",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
       ],
-      "supports": [ "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956" ],
-      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+        }
+      ],
+      "federates": [
+        {
+          "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6"
+        }
+      ],
+      "member": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+        }
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ],
+      "metadata": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+        }
+      ]
+    }
+  ],
+  "supports": [
+    "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity/58f720e1a10d8e1012e76ed5?depth=all HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+  "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6",
+  "name": "entity 1",
+  "url": "http://otto-test.gluu.org/otto/entity",
+  "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+  "description": "entity entity",
+  "metadata": {
+    "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
+    "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+    "metadataFormat": "Metadata Format",
+    "expiration": "2017-04-18T09:20:09.138Z"
+  },
+  "federatedBy": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+      "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+      "name": "fed1",
+      "url": "http://otto-test.gluu.org/otto/federation",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "fedearation fedearation",
+      "dataProtectionCodeOfConduct": "https://fd.org",
+      "federationAgreement": "https://fd.org",
+      "federationPolicy": "https://fd.org",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "sponsor": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+        }
+      ],
+      "federates": [
+        {
+          "@id": "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6"
+        }
+      ],
+      "member": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+        }
+      ],
+      "trustMarkDefinitionSupported": [
+        "https://fd.org"
+      ],
+      "badgeSupported": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ],
+      "metadata": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+        }
+      ]
+    }
+  ],
+  "supports": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+      "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956",
+      "name": "given_name",
+      "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+      "required": false,
+      "url": "https://en.wikipedia.org/wiki/Given_name",
+      "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c"
+    }
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  "entity 1"
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?depth=all&filter=.supports HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+    "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
+    "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956",
+    "name": "given_name",
+    "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+    "required": false,
+    "url": "https://en.wikipedia.org/wiki/Given_name",
+    "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c"
+  }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/entity?pageno=1&pagelength=5 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "http://otto-test.gluu.org/otto/entity",
+  "federations": [
+    "http://otto-test.gluu.org/otto/entity/59157847d1285b2273ef83d2",
+    "http://otto-test.gluu.org/otto/entity/5915784bd1285b2273ef83d3",
+    "http://otto-test.gluu.org/otto/entity/59157850d1285b2273ef83d4",
+    "http://otto-test.gluu.org/otto/entity/59157854d1285b2273ef83d5",
+    "http://otto-test.gluu.org/otto/entity/59157857d1285b2273ef83d6"
+  ]
 }
 ]]>
                     </artwork>
@@ -894,7 +1905,7 @@ Content-Type: application/json
 {
 	"name": "entity 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "https://localhost:5053",
+	"registeredBy": "http://otto-test.gluu.org",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"metadata": "58f5da4957d53d2ffbbb31e0",
@@ -924,7 +1935,7 @@ Content-Type: application/json
 {
 	"name": "entity 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "https://localhost:5053",
+	"registeredBy": "http://otto-test.gluu.org",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"metadata": "58f5da4957d53d2ffbbb31e0",
@@ -999,9 +2010,10 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-  "metadata": [
-    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
-    "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+  "@context": "http://otto-test.gluu.org/otto/metadata",
+  "participant": [
+    "http://otto-test.gluu.org/otto/metadata/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed5"
   ]
 }
 ]]>
@@ -1020,6 +2032,7 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
+  "@context": "http://localhost:5053/otto/metadata",
   "metadata": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
@@ -1029,14 +2042,13 @@ Content-Type: application/json
     }
   ]
 }
-
 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
                     <preamble>Request:</preamble>
-                    <artwork><![CDATA[GET /otto/metadata/58f5da4957d53d2ffbbb31e0 HTTP/1.1 ]]>
+                    <artwork><![CDATA[GET /otto/metadata/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
@@ -1044,12 +2056,52 @@ Content-Type: application/json
                     <preamble>Response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
-
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
   "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
   "metadataFormat": "Metadata Format",
   "expiration": "2017-04-18T09:20:09.138Z"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/metadata/58f5da4957d53d2ffbbb31e0?filter=.metadataFormat HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  "Metadata Format"
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/metadata?pageno=1&pagelength=5 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "http://otto-test.gluu.org/otto/metadata",
+  "federations": [
+    "http://otto-test.gluu.org/otto/metadata/59157847d1285b2273ef83d2",
+    "http://otto-test.gluu.org/otto/metadata/5915784bd1285b2273ef83d3",
+    "http://otto-test.gluu.org/otto/metadata/59157850d1285b2273ef83d4",
+    "http://otto-test.gluu.org/otto/metadata/59157854d1285b2273ef83d5",
+    "http://otto-test.gluu.org/otto/metadata/59157857d1285b2273ef83d6"
+  ]
 }
 ]]>
                     </artwork>
@@ -1140,7 +2192,8 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
-  "schema": [
+  "@context": "http://otto-test.gluu.org/otto/schema",
+  "participant": [
     "http://otto-test.gluu.org/otto/schema/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed5"
   ]
@@ -1161,29 +2214,30 @@ Content-Type: application/json
 Content-Type: application/json
 
 {
+  "@context": "http://localhost:5053/otto/schema",
   "schema": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
-      "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+      "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956",
       "name": "given_name",
       "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
       "required": false,
       "url": "https://en.wikipedia.org/wiki/Given_name",
       "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c",
       "supportedBy": [
-        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+        "http://localhost:5053/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+        "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6"
       ]
     }
   ]
 }
-
 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
                     <preamble>Request:</preamble>
-                    <artwork><![CDATA[GET /otto/schema/58f720c7a10d8e1012e76ed4 HTTP/1.1 ]]>
+                    <artwork><![CDATA[GET /otto/schema/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
@@ -1191,17 +2245,58 @@ Content-Type: application/json
                     <preamble>Response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
-
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
-  "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956",
+  "@id": "http://localhost:5053/otto/schema/590afffd30dd080ed3cda956",
   "name": "given_name",
   "category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
   "required": false,
   "url": "https://en.wikipedia.org/wiki/Given_name",
   "sameAs": "https://schema.org/givenName,https://erasmus.gluu.org/schema/457c",
   "supportedBy": [
-    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+    "http://localhost:5053/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+    "http://localhost:5053/otto/entity/58f7218ca10d8e1012e76ed6"
+  ]
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/schema/58f5da4957d53d2ffbbb31e0?filter=.name HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  "given_name"
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork><![CDATA[GET /otto/schema?pageno=1&pagelength=5 HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "http://otto-test.gluu.org/otto/schema",
+  "federations": [
+    "http://otto-test.gluu.org/otto/schema/59157847d1285b2273ef83d2",
+    "http://otto-test.gluu.org/otto/schema/5915784bd1285b2273ef83d3",
+    "http://otto-test.gluu.org/otto/schema/59157850d1285b2273ef83d4",
+    "http://otto-test.gluu.org/otto/schema/59157854d1285b2273ef83d5",
+    "http://otto-test.gluu.org/otto/schema/59157857d1285b2273ef83d6"
   ]
 }
 ]]>
@@ -1322,6 +2417,29 @@ Content-Type: application/json
                     </artwork>
                 </figure>
             </section>
+
+            <section anchor="schema-category"
+                     title="Schema Categories">
+                <figure>
+                    <preamble>Request:</preamble>
+                    <artwork>
+                        <![CDATA[POST /otto/schema/categories HTTP/1.1 ]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+[
+  "http://localhost:5053/schema_category/acr.jsonld",
+  "http://localhost:5053/schema_category/scope.jsonld",
+  "http://localhost:5053/schema_category/userclaim.jsonld"
+]
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
         </section>
 
         <section anchor="Acknowledgments" title="Acknowledgments">
