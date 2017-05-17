@@ -1,0 +1,75 @@
+{"@context":{
+  "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "schema": "http://schema.org",
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+  "obi": "https://w3id.org/openbadges#",
+  "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
+  "iri": "https://www.ietf.org/rfc/rfc3987.txt",
+
+  "md": "urn:oasis:names:tc:SAML:2.0:metadata",
+  "ds": "http://www.w3.org/2000/09/xmldsig#",
+  "xenc": "http://www.w3.org/2000/09/xmlenc#",
+  "saml": "urn:oasis:names:tc:SAML:2.0:assertion",
+  "xmlns": "http://www.w3.org/2001/XMLSchema>"
+},
+  "@graph": [
+                {
+                    "@id": "md:EntityDescriptor",
+                    "@type": "saml:EntityDescriptorType",
+                    "rdfs:comment": "The metadata structure for EntityDescriptors"
+                },
+
+                {
+                    "@id": "md:EntityDescriptorType",
+                    "@type": "rdfs:Class",
+                    "rdfs:comment": "The Type for EntityDescriptors",
+
+                    "attributes": [
+                        {    "@id": "md:entityID",
+                             "@type": "md:entityIDType",
+                             "rdfs:comment": "Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents."
+                        },
+
+                        {
+                            "@id": "md:entityIDType",
+                            "@type": "xsd:anyURI",
+                            "rdfs:comment": "The Type for EntityIDs; URI, length <= 1024"
+                        },
+
+                        {    "@id": "validUntil",
+                             "@type": "xsd:dateTime",
+                             "rdfs:comment": "Optional attribute indicates the expiration time of the metadata contained in the element and any contained elements."
+                        },
+
+                        {    "@id": "cacheDuration",
+                             "@type": "xsd:duration",
+                             "rdfs:comment": "Optional attribute indicates the maximum length of time a consumer should cache the metadata contained in the element and any contained elements."
+                        },
+
+                        {    "@id": "id",
+                             "@type": "xsd:NCname",
+                             "rdfs:comment": "Optional. Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents."
+
+                        },
+
+                        {   "@id": "other",
+                            "@type": "xsd:anyAttribute"
+                        } ]
+                },
+                {   "@id": "ds:Signature",
+                    "@type": "ds:SignatureType",
+                    "rdfs:comment": "An XML signature that authenticates the containing element and its contents."
+                },
+
+                {   "@id": "Extensions",
+                    "@type": "md:ExtensionsType",
+                    "rdfs:comment": "This contains optional metadata extensions that are agreed upon between a metadata publisher and consumer. Extension elements MUST be namespace-qualified by a non-SAML-defined namespace."
+                },
+
+                {   "@id": "RoleDescriptor",
+                    "@type": "RoleDescriptorType",
+                    "rdfs:comment": "An abstract extension point that contains common descriptive information intended to provide processing commonality across different roles. New roles can be defined by extending its abstract RoleDescriptorType complex type."
+                }
+          ]
+    }
