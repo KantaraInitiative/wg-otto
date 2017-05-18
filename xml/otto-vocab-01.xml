@@ -388,7 +388,7 @@
           <c>The serialization type of the metadata</c>
           <!-- -->
           <c>expiration</c>
-          <c>dateTime"</c>
+          <c>dateTime</c>
           <c>The date at which this metadata is no longer valid</c>
         </texttable>
      </t>

@@ -137,7 +137,7 @@
     "rdfs:label": "Acr"
   },
   {
-    "@id": "openid:Scope",
+    "@id": "openid:ScopeCategory",
     "@type": "otto:SchemaCategory",
     "rdfs:label": "Scope"
   },
