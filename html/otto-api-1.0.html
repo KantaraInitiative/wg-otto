@@ -708,7 +708,8 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.15"><p>Request:</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1
+                    </pre></div><div id="rfc.figure.u.15"><p>Request:</p><pre>
+                        GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.16"><p>Response:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -720,7 +721,8 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.17"><p>Request:</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact,.name HTTP/1.1
+                    </pre></div><div id="rfc.figure.u.17"><p>Request:</p><pre>
+                        GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact,.name HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.18"><p>Response:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -785,9 +787,11 @@ Content-Type: application/json
                     </pre></div><div id="rfc.figure.u.24"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div><div id="delete-federation"><h3 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4</a> <a href="#delete-federation">Delete Federation</a></h3><div id="rfc.figure.u.25"><p>Request:</p><pre>DELETE /otto/federations/5909b4218489131c19abfa29 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.26"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="leave-federation"><h3 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a> <a href="#leave-federation">Leave Federation</a></h3><div id="rfc.figure.u.27"><p>Request:</p><pre>DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="leave-federation"><h3 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a> <a href="#leave-federation">Leave Federation</a></h3><div id="rfc.figure.u.27"><p>Request:</p><pre>
+                        DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.28"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-federation-entity"><h3 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6</a> <a href="#link-federation-entity">Link entity to federation</a></h3><div id="rfc.section.3.6.p.1"><p>This endpoint, Link entity to the federation.</p></div><div id="rfc.figure.u.29"><p>Request:</p><pre>POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-federation-entity"><h3 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6</a> <a href="#link-federation-entity">Link entity to federation</a></h3><div id="rfc.section.3.6.p.1"><p>This endpoint, Link entity to the federation.</p></div><div id="rfc.figure.u.29"><p>Request:</p><pre>
+                        POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.30"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div><div id="add-new-service"><h3 id="rfc.section.3.7"><a href="#rfc.section.3.7">3.7</a> <a href="#add-new-service">Add new service to federation</a></h3><div id="rfc.section.3.7.p.1"><p>This endpoint, add new service(entity) to the federation.</p></div><div id="rfc.figure.u.31"><p>Request:</p><pre>POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
 {
@@ -805,9 +809,11 @@ Content-Type: application/json
   "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
 }
 
-                    </pre></div></div><div id="link-participant-member-federation"><h3 id="rfc.section.3.8"><a href="#rfc.section.3.8">3.8</a> <a href="#link-participant-member-federation">Link participant(member) to federation</a></h3><div id="rfc.section.3.8.p.1"><p>This endpoint, Link participant as a member to federation</p></div><div id="rfc.figure.u.33"><p>Request:</p><pre>POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-participant-member-federation"><h3 id="rfc.section.3.8"><a href="#rfc.section.3.8">3.8</a> <a href="#link-participant-member-federation">Link participant(member) to federation</a></h3><div id="rfc.section.3.8.p.1"><p>This endpoint, Link participant as a member to federation</p></div><div id="rfc.figure.u.33"><p>Request:</p><pre>
+                        POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.34"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-participant-sponsor-federation"><h3 id="rfc.section.3.9"><a href="#rfc.section.3.9">3.9</a> <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></h3><div id="rfc.section.3.9.p.1"><p>This endpoint, Link participant as a sponsor to federation</p></div><div id="rfc.figure.u.35"><p>Request:</p><pre>POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-participant-sponsor-federation"><h3 id="rfc.section.3.9"><a href="#rfc.section.3.9">3.9</a> <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></h3><div id="rfc.section.3.9.p.1"><p>This endpoint, Link participant as a sponsor to federation</p></div><div id="rfc.figure.u.35"><p>Request:</p><pre>
+                        POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.36"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div></div><hr class="noprint"><div id="participant-endpoint"><h2 id="rfc.section.4" class="np"><a href="#rfc.section.4">4.</a> <a href="#participant-endpoint">Participant Endpoint</a></h2><div id="rfc.section.4.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of information about an organization so it can be associated with a Federation.</p></div><div id="fetch-participant"><h3 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1</a> <a href="#fetch-participant">Fetch Participant</a></h3><div id="rfc.figure.u.37"><p>Request:</p><pre>GET /otto/participant HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.38"><p>Response:</p><pre>HTTP/1.1 200 OK
@@ -1135,7 +1141,8 @@ Content-Type: application/json
   "trustMarkAsserted": "http://pa.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.47"><p>Request:</p><pre>GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1
+                    </pre></div><div id="rfc.figure.u.47"><p>Request:</p><pre>
+                        GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.48"><p>Response:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1144,7 +1151,8 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.49"><p>Request:</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?filter=.name,.securityContact HTTP/1.1
+                    </pre></div><div id="rfc.figure.u.49"><p>Request:</p><pre>
+                        GET /otto/participant/58f720e1a10d8e1012e76ed5?filter=.name,.securityContact HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.50"><p>Response:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1204,9 +1212,11 @@ Content-Type: application/json
                     </pre></div><div id="rfc.figure.u.56"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div><div id="delete-participant"><h3 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4</a> <a href="#delete-participant">Delete Participant</a></h3><div id="rfc.figure.u.57"><p>Request:</p><pre>DELETE /otto/participant/5909b4218489131c19abfa29 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.58"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-participant-memberOf-federation"><h3 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5</a> <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></h3><div id="rfc.section.4.5.p.1"><p>This endpoint, Link participant as a member of federation</p></div><div id="rfc.figure.u.59"><p>Request:</p><pre>POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-participant-memberOf-federation"><h3 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5</a> <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></h3><div id="rfc.section.4.5.p.1"><p>This endpoint, Link participant as a member of federation</p></div><div id="rfc.figure.u.59"><p>Request:</p><pre>
+                        POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.60"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-entity-service-participant"><h3 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6</a> <a href="#link-entity-service-participant">Link entity(service) to participant</a></h3><div id="rfc.section.4.6.p.1"><p>This endpoint, Link entity as a service to participant</p></div><div id="rfc.figure.u.61"><p>Request:</p><pre>POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-entity-service-participant"><h3 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6</a> <a href="#link-entity-service-participant">Link entity(service) to participant</a></h3><div id="rfc.section.4.6.p.1"><p>This endpoint, Link entity as a service to participant</p></div><div id="rfc.figure.u.61"><p>Request:</p><pre>
+                        POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.62"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div></div><hr class="noprint"><div id="entity-endpoint"><h2 id="rfc.section.5" class="np"><a href="#rfc.section.5">5.</a> <a href="#entity-endpoint">Entity Endpoint</a></h2><div id="rfc.section.5.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-entity"><h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a> <a href="#fetch-entity">Fetch Entity</a></h3><div id="rfc.figure.u.63"><p>Request:</p><pre>GET /otto/entity HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.64"><p>Response:</p><pre>HTTP/1.1 200 OK
@@ -1440,7 +1450,8 @@ Content-Type: application/json
                     </pre></div><div id="rfc.figure.u.82"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div><div id="delete-entity"><h3 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4</a> <a href="#delete-entity">Delete Entity</a></h3><div id="rfc.figure.u.83"><p>Request:</p><pre>DELETE /otto/entity/5909b4218489131c19abfa29 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.84"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-entity-federation"><h3 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5</a> <a href="#link-entity-federation">Link entity with federation</a></h3><div id="rfc.section.5.5.p.1"><p>This endpoint, Link entity with existing federation</p></div><div id="rfc.figure.u.85"><p>Request:</p><pre>POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-entity-federation"><h3 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5</a> <a href="#link-entity-federation">Link entity with federation</a></h3><div id="rfc.section.5.5.p.1"><p>This endpoint, Link entity with existing federation</p></div><div id="rfc.figure.u.85"><p>Request:</p><pre>
+                        POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.86"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div></div><hr class="noprint"><div id="metadata-endpoint"><h2 id="rfc.section.6" class="np"><a href="#rfc.section.6">6.</a> <a href="#metadata-endpoint">Metadata Endpoint</a></h2><div id="rfc.section.6.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-metadata"><h3 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1</a> <a href="#fetch-metadata">Fetch Metadata</a></h3><div id="rfc.figure.u.87"><p>Request:</p><pre>GET /otto/metadata HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.88"><p>Response:</p><pre>HTTP/1.1 200 OK
@@ -1698,11 +1709,14 @@ Content-Type: application/json
                     </pre></div><div id="rfc.figure.u.118"><p>Response:</p><pre>HTTP/1.1 200 OK 
                     </pre></div></div><div id="delete-schema"><h3 id="rfc.section.7.4"><a href="#rfc.section.7.4">7.4</a> <a href="#delete-schema">Delete Schema</a></h3><div id="rfc.figure.u.119"><p>Request:</p><pre>DELETE /otto/schema/5909b4218489131c19abfa29 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.120"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-schema-federation"><h3 id="rfc.section.7.5"><a href="#rfc.section.7.5">7.5</a> <a href="#link-schema-federation">Link schema with federation</a></h3><div id="rfc.section.7.5.p.1"><p>This endpoint, Link schema with existing federation</p></div><div id="rfc.figure.u.121"><p>Request:</p><pre>POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-schema-federation"><h3 id="rfc.section.7.5"><a href="#rfc.section.7.5">7.5</a> <a href="#link-schema-federation">Link schema with federation</a></h3><div id="rfc.section.7.5.p.1"><p>This endpoint, Link schema with existing federation</p></div><div id="rfc.figure.u.121"><p>Request:</p><pre>
+                        POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.122"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-schema-entity"><h3 id="rfc.section.7.6"><a href="#rfc.section.7.6">7.6</a> <a href="#link-schema-entity">Link schema with entity</a></h3><div id="rfc.section.7.6.p.1"><p>This endpoint, Link schema with existing entity</p></div><div id="rfc.figure.u.123"><p>Request:</p><pre>POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1
+                    </pre></div></div><div id="link-schema-entity"><h3 id="rfc.section.7.6"><a href="#rfc.section.7.6">7.6</a> <a href="#link-schema-entity">Link schema with entity</a></h3><div id="rfc.section.7.6.p.1"><p>This endpoint, Link schema with existing entity</p></div><div id="rfc.figure.u.123"><p>Request:</p><pre>
+                        POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.124"><p>Response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="schema-category"><h3 id="rfc.section.7.7"><a href="#rfc.section.7.7">7.7</a> <a href="#schema-category">Schema Categories</a></h3><div id="rfc.figure.u.125"><p>Request:</p><pre>POST /otto/schema/categories HTTP/1.1
+                    </pre></div></div><div id="schema-category"><h3 id="rfc.section.7.7"><a href="#rfc.section.7.7">7.7</a> <a href="#schema-category">Schema Categories</a></h3><div id="rfc.figure.u.125"><p>Request:</p><pre>
+                        POST /otto/schema/categories HTTP/1.1 
                     </pre></div><div id="rfc.figure.u.126"><p>Response:</p><pre>HTTP/1.1 200 OK
 [
   "http://otto-test.gluu.org/schema_category/acr.jsonld",
