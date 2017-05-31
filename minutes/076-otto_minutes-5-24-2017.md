@@ -34,22 +34,72 @@ request, not necessarily that the federation has accepted it for publication
 
 ## Discussion of adding PATCH
 
-SCIM 2.0 defines PATCH:
-  https://tools.ietf.org/html/rfc7644#section-3.5.2
-
-Leverages JSON Patch RFC 6902:
-  https://tools.ietf.org/html/rfc6902
-
-Currently the API's support PUT. This requires replacement of the entire
+Currently the OTTO API's support PUT. This requires replacement of the entire
 object. It's sort of dangerous to do this. It's also prossible that certain
 properties might not be writable by the owner. For example, a registration
 authority or federation might manage certain propeties for an organization.
 This would make it more difficult to delegate permissions to update.
 
+PATCH could allow more granularity in updating properties of the class. SCIM uses PATCH, which is based on JSON Patch.
+
+Some of the group think we should leave this to 'version 2.0' Mike posits that
+it's better to get it right on the first go-around, as there is a long lag
+between releasing a new spec, and for implemntations to catch up. If we know
+we need it, we should just take the time and define it. It's three pages in the
+SCIM spec, so it's not too bad.
+
+SCIM 2.0 defines PATCH:
+  https://tools.ietf.org/html/rfc7644#section-3.5.2
+
+JSON Patch RFC 6902:
+  https://tools.ietf.org/html/rfc6902
+
+JSON Pointer RFC 6901:
+  https://tools.ietf.org/html/rfc6901.
 
 
+Here are Judith's notes:
+```
+JSON pointer describes a path to a specific JSON value.  We are also using a flavor of "XPath for JSON" as our query language: we chose JSpath as "most succinct."
 
-## Next Meeting 5/24 12pm US Eastern Time
+They are somewhat different as my notes below outline.
+
+While JSON Patch will simplify implementing PATCH, it is worth noting the two different syntaxes to follow.
+
+----
+
+Differences between JSON Pointer & JSPath
+
+How to deal with various characters:
+
+JSON Pointer: '~' needs to be encoded as '~0' and '/' needs to be encoded as '~1' when these characters appear in a reference token.
+JSPath: If you need to locate properties containing non-alphanumerical characters, you have to quote them
+The whole document
+
+JSON Pointer: //
+JSPath: .
+To describe a token/property immediately descended from context
+
+JSON Pointer: /token
+JSPath: .property
+To reference an array member (both 0 based):
+
+JSON Pointer: "/#"
+JSPath: [#]
+JSON Pointer allows one to reference the (non-existent) array member after the last existing array member: /-
+
+As a query language JSPath has
+
+wildcard * for the properties
+.. to refer to arbitrary depth ("locates property deeply descended from context items"
+more array actions for queries including ranges
+allows negative indices to count from the end
+joins on properties using parenthesis and pipe; eg: ( .prop1 | .prop2)
+absolute path notation: "If location path starts with the caret (^) you are using an absolute location path. This syntax is used to locate a property when another context is already used in the location path and/or the object predicates."
+
+```
+
+## Next Meeting 5/31 12pm US Eastern Time
 
 *** NOTE: No meeting 5/3 because of IIW! ***
 
