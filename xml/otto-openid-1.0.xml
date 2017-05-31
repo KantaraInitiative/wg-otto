@@ -197,9 +197,17 @@
           <c>SchemaCategory</c>
           <c>A workflow for authentication</c>
           <!-- -->
-          <c anchor="OpenIDFederation">Acr</c>
+          <c anchor="OpenIDMetadataCategory">OpenID</c>
           <c>MetadataCategory</c>
           <c>Facilitates search of metadata for a federation</c>
+          <!-- -->
+          <c anchor="OPentityCategory">OP</c>
+          <c>EntityCategory</c>
+          <c>Identifies entity as an OpenID Provider</c>
+          <!-- -->
+          <c anchor="RPentityCategory">RP</c>
+          <c>EntityCategory</c>
+          <c>Identifies entity as an OpenID Relying Party</c>
         </texttable>
      </t>
     </section>
