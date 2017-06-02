@@ -147,6 +147,46 @@
                 </t>
             </section>
 
+            <section title="Search Syntax">
+                OTTO API provides the depth and filter searching feature.
+                <t>
+                    depth: Depth parameter provides facility to deeply populate a records and you can get the full response of given depth parameter. You can also passed multiple comma separated depth parameters. If depth parameter is possible to populated then you can get full response other wise you got error with "Invalid depth parameter".
+                    <preamble>The below depth parameter deeply populate a given federation's federates and for output <xref target="search-federation"/>. Non-normative examples of a depth request.</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]>
+                    </artwork>
+
+                    <preamble>The below depth parameter deeply populate this given federation's federates and member. for outputs <xref target="search-federation"/>. Non-normative examples of a multiple depth request.</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates,member HTTP/1.1 ]]>
+                    </artwork>
+                </t>
+
+                <t>
+                    filter: Filter parameter provides facility to filter the records by passing JSPath filter value which is always start from dot(.) and you can get the filter response as per given JSPath parameter value. You can also passed multiple comma separated filter parameters. If filter parameter is possible to filter then you can get filtered response other wise you got error with "Invalid JSPath".
+                    <preamble>The below parameter filter the name property and you can get filtered output with only name key. for outputs <xref target="search-federation"/>. Non-normative examples of a filter request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 ]]>
+                    </artwork>
+
+                    <preamble>You can get filtered output with name and federates key. for outputs <xref target="search-federation"/>. Non-normative examples of a multiple filter request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name,.federates HTTP/1.1 ]]>
+                    </artwork>
+
+                    <preamble>You can get filtered output with name and federates key. for outputs <xref target="search-federation"/>. Non-normative examples of a filter and depth request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates.name HTTP/1.1 ]]>
+                    </artwork>
+
+                    <preamble>You can get filtered output with federates which name is "entity 1". for outputs <xref target="search-federation"/>. Non-normative examples of a JSPath condition in request:</preamble>
+                    <artwork>
+                        <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates{.name==="entity 1"} HTTP/1.1 ]]>
+                    </artwork>
+                </t>
+
+            </section>
+
         </section>
 
         <section anchor="configuration-endpoint"
@@ -202,47 +242,195 @@ Content-Type: application/json
                  title="Federation Endpoint">
             <t>
                 This endpoint, hosted by the Registration Authority, enables the
-                creation and managment of Federations.
+                creation and management of Federations.
             </t>
 
-            <section anchor="search-federation"
-                     title="Search Federation">
-
+            <section anchor="create-federation"
+                     title="Create Federation">
+                <t>
+                    It is POST API to create federation. you need to passed the required parameter to add the new federation.
+                </t>
                 <figure>
-                    <preamble>Request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations HTTP/1.1 ]]>
-                    </artwork>
-                </figure>
-
-                <figure>
-                    <preamble>Response:</preamble>
-                    <artwork><![CDATA[HTTP/1.1 200 OK
-Content-Type: application/json
-
+                    <preamble>
+                        Their are several properties which used for federation.
+                        <t>
+                            <texttable anchor="table_federation" title="Federation">
+                                <ttcol align='left'>Property</ttcol>
+                                <ttcol align='left'>Value</ttcol>
+                                <ttcol align='left'>Description</ttcol>
+                                <!-- -->
+                                <c><spanx style="strong">name</spanx></c>
+                                <c>REQUIRED</c>
+                                <c>A human friendly name for the Federation</c>
+                                <!-- -->
+                                <c>description</c>
+                                <c>OPTIONAL</c>
+                                <c>Optional information about the RA</c>          <!-- -->
+                                <!-- -->
+                                <c>url</c>
+                                <c>OPTIONAL</c>
+                                <c>The public, human readible website for the Federation</c>
+                                <!-- -->
+                                <c>operates</c>
+                                <c>OPTIONAL</c>
+                                <c>It is Entity or array of Entity. A service operated by the Federation</c>
+                                <!-- -->
+                                <c>metadata</c>
+                                <c>OPTIONAL</c>
+                                <c>It is Metadata or array of Metadata. The metadata (including public signing key) for this Federation</c>
+                                <!-- -->
+                                <c>supports</c>
+                                <c>OPTIONAL</c>
+                                <c>It is Schema or array of Schema. What schema is supported by this Federation</c>
+                                <!-- -->
+                                <c><spanx style="strong">registeredBy</spanx></c>
+                                <c>REQUIRED</c>
+                                <c>The Registration Authority where the federation is hosted</c>
+                                <!-- -->
+                                <c>member</c>
+                                <c>OPTIONAL</c>
+                                <c>It is array of Participants. List of organizational members of the Federation</c>
+                                <!-- -->
+                                <c>federates</c>
+                                <c>OPTIONAL</c>
+                                <c>It is array of Entity. List of services registered to the federation by Participants</c>
+                                <!-- -->
+                                <c><spanx style="strong">sponsor</spanx></c>
+                                <c>REQUIRED</c>
+                                <c>It is An Organization or array of Organization. The organization legally responsible for management of the
+                                    Federation</c>
+                                <!-- -->
+                                <c>technicalContact</c>
+                                <c>OPTIONAL</c>
+                                <c>It is Person or array of Person. Person(s) responsible for registering and maintaining the policies
+                                    and technical data related to the organization's participation in
+                                    the Federation</c>
+                                <!-- -->
+                                <c>executiveContact</c>
+                                <c>OPTIONAL</c>
+                                <c>It is Person or array of Person. Person(s) responsible for all decisions and delegations of authority
+                                    for the Federation</c>
+                                <!-- -->
+                                <c>securityContact</c>
+                                <c>OPTIONAL</c>
+                                <c>Person(s) to contact in the event of an urgent security issue</c>
+                                <!-- -->
+                                <c>dataProtectionCodeOfConduct</c>
+                                <c>OPTIONAL</c>
+                                <c>It is URL. The provisions regarding handling of personal information by the
+                                    Federation Participants</c>
+                                <!-- -->
+                                <c>federationAgreement</c>
+                                <c>OPTIONAL</c>
+                                <c>It is URL. The rights and responsibilities of the Participant</c>
+                                <!-- -->
+                                <c>federationPolicy</c>
+                                <c>OPTIONAL</c>
+                                <c>It is URL. Operational practices and technical details for participation
+                                    in the Federation.</c>
+                                <!-- -->
+                                <c>trustMarkDefinitionSupported</c>
+                                <c>OPTIONAL</c>
+                                <c>It is instance or array of TrustMarkDefinition or URL. What kinds of Trustmarks are supported by the federation</c>
+                                <!-- -->
+                                <c>badgeSupported</c>
+                                <c>OPTIONAL</c>
+                                <c>It is instance or array of BadgeClass or IRI. What kinds of Badges are supported by the federation</c>
+                            </texttable>
+                        </t>
+                    </preamble>
+                    <preamble>Non-normative example of add a federation request</preamble>
+                    <artwork><![CDATA[POST /otto/federations HTTP/1.1
 {
-  "@context": "http://otto-test.gluu.org/otto/federation_list",
-  "federations": [
-    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
-    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3d"
-  ]
+	"name": "fed1",
+	"url": "http://otto-test.gluu.org/otto/federation",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"description": "fedearation fedearation",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}],
+	"dataProtectionCodeOfConduct": "https://fd.org",
+	"federationAgreement": "https://fd.org",
+	"federationPolicy": "https://fd.org"
 }
 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations?depth=federations HTTP/1.1 ]]>
+                    <preamble>Non-normative example of add a federation response:</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+            </section>
+
+            <section anchor="search-federation"
+                     title="Search Federation">
+                <t>
+                    This is GET api used to fetch federation information. Their are several way to fetch federation information. you can fetch all the records, fetch all records with depth, fetch specific federation and also filtered using filter parameter.
+                </t>
+
+                <figure>
+                    <preamble>Non-normative example of a federation request to fetch all federation list.</preamble>
+                    <artwork><![CDATA[GET /otto/federations HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response with json array.
+                    </preamble>
+                    <preamble>
+                        <list hangIndent="6" style="hanging">
+                            <t hangText="federations">
+                                Contain list of federation array
+                            </t>
+
+                            <t hangText="itemsPerPage">
+                                Non-negative integer.  Specifies the number of query results returned in a query response page, e.g., 10.
+                            </t>
+
+                            <t hangText="totalResults">
+                                Non-negative integer.  Specifies the total number
+                                of results matching the client query, e.g., 1000.
+                            </t>
+
+                            <t hangText="startIndex">
+                                The 1-based index of the first result in the current set of query results, e.g., 1.
+                            </t>
+                        </list>
+                    </preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/federation_list",
+  "federations": [
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+    "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3d"
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Non-normative example of a federation request to fetch deep information of each federation. </preamble>
+                    <artwork><![CDATA[GET /otto/federations?depth=federations HTTP/1.1 ]]></artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Non-normative example of a federation response, for response description see the <xref target="create-federation"/></preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
   "federations": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
@@ -344,20 +532,23 @@ Content-Type: application/json
         "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
       ]
     }
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request by passing unique id to fetch specific full response of federation.</preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response, for response description see the <xref target="create-federation"/>.</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -415,13 +606,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response, for response description see the <xref target="create-federation"/>. It populate the federates of this federation.</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -502,13 +693,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request with depth parameter</preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=sponsor,federates HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response, for response description of federation see the <xref target="create-federation"/>. It populate the sponsor and federates of this federation.</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -613,17 +804,17 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request when invalid depth parameter is passed, It response with "Invalid depth parameter"</preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=description HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "Error(s)": [
+  "error": [
     "Invalid depth parameter"
   ]
 }
@@ -632,14 +823,14 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request using filter parameter</preamble>
                     <artwork>
                         <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response with filter parameter. It will filter json object as per given JSPath. JSPath is always start from dot(.)</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -655,14 +846,14 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request using multiple depth parameter:</preamble>
                     <artwork>
                         <![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact,.name HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response with multiple depth parameter:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -681,68 +872,68 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request using pageno and pagelength parameter</preamble>
+                    <preamble>
+                        <list hangIndent="6" style="hanging">
+                            <t hangText="pageno">
+                                The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.
+                            </t>
+
+                            <t hangText="pagelength">
+                                Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.
+                            </t>
+                        </list>
+                    </preamble>
                     <artwork><![CDATA[GET /otto/federations?pageno=1&pagelength=5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
+                    <preamble>
+                        <list hangIndent="6" style="hanging">
+                            <t hangText="federations">
+                                Contain list of federation array
+                            </t>
+
+                            <t hangText="itemsPerPage">
+                                Non-negative integer.  Specifies the number of query results returned in a query response page, e.g., 10.
+                            </t>
+
+                            <t hangText="totalResults">
+                                Non-negative integer.  Specifies the total number
+                                of results matching the client query, e.g., 1000.
+                            </t>
+
+                            <t hangText="startIndex">
+                                The 1-based index of the first result in the current set of query results, e.g., 1.
+                            </t>
+                        </list>
+                    </preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@context": "http://otto-test.gluu.org/otto/federations",
   "federations": [
     "http://otto-test.gluu.org/otto/federations/59157847d1285b2273ef83d2",
     "http://otto-test.gluu.org/otto/federations/5915784bd1285b2273ef83d3",
     "http://otto-test.gluu.org/otto/federations/59157850d1285b2273ef83d4",
     "http://otto-test.gluu.org/otto/federations/59157854d1285b2273ef83d5",
     "http://otto-test.gluu.org/otto/federations/59157857d1285b2273ef83d6"
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 ]]>
                     </artwork>
                 </figure>
 
-            </section>
-
-            <section anchor="create-federation"
-                     title="Create Federation">
-                <figure>
-                    <preamble>Request:</preamble>
-                    <artwork><![CDATA[POST /otto/federations HTTP/1.1
-{
-	"name": "fed1",
-	"url": "http://otto-test.gluu.org/otto/federation",
-	"registeredBy": "58f5da4957d53d2ffbbb31df",
-	"description": "fedearation fedearation",
-	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
-	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
-	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}],
-	"dataProtectionCodeOfConduct": "https://fd.org",
-	"federationAgreement": "https://fd.org",
-	"federationPolicy": "https://fd.org"
-}
-]]>
-                    </artwork>
-                </figure>
-
-                <figure>
-                    <preamble>Response:</preamble>
-                    <artwork><![CDATA[HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
-}
-]]>
-                    </artwork>
-                </figure>
             </section>
 
             <section anchor="update-federation"
                      title="Update Federation">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of update a federation request</preamble>
                     <artwork><![CDATA[PUT /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "fed1",
@@ -760,7 +951,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of update a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -769,13 +960,13 @@ Content-Type: application/json
             <section anchor="delete-federation"
                      title="Delete Federation">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[DELETE /otto/federations/5909b4218489131c19abfa29 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -784,14 +975,14 @@ Content-Type: application/json
             <section anchor="leave-federation"
                      title="Leave Federation">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -804,14 +995,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -824,7 +1015,7 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "fed 1",
@@ -839,7 +1030,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -857,14 +1048,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -877,14 +1068,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -903,13 +1094,13 @@ Content-Type: application/json
             <section anchor="fetch-participant"
                      title="Fetch Participant">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -925,13 +1116,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant?depth=participant HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1010,13 +1201,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1059,13 +1250,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1170,13 +1361,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf,operates HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1279,14 +1470,14 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1299,14 +1490,14 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[GET /otto/participant/58f720e1a10d8e1012e76ed5?filter=.name,.securityContact HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1325,13 +1516,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/participant?pageno=1&pagelength=5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1352,7 +1543,7 @@ Content-Type: application/json
             <section anchor="create-participant"
                      title="Create Participant">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[POST /otto/participant HTTP/1.1
 {
 	"name": "participant1",
@@ -1368,7 +1559,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1382,7 +1573,7 @@ Content-Type: application/json
             <section anchor="update-participant"
                      title="Update Participant">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[PUT /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "participant1",
@@ -1398,7 +1589,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1407,13 +1598,13 @@ Content-Type: application/json
             <section anchor="delete-participant"
                      title="Delete Participant">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[DELETE /otto/participant/5909b4218489131c19abfa29 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1426,14 +1617,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1446,14 +1637,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1471,13 +1662,13 @@ Content-Type: application/json
             <section anchor="fetch-entity"
                      title="Fetch Entity">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1493,13 +1684,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity?depth=entity HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1528,13 +1719,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1558,13 +1749,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?depth=registeredBy HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1597,13 +1788,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity/58f720e1a10d8e1012e76ed5?depth=depth=federatedBy,supports HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1687,13 +1878,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1706,13 +1897,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name,.supports HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1728,13 +1919,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/entity?pageno=1&pagelength=5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1755,7 +1946,7 @@ Content-Type: application/json
             <section anchor="create-entity"
                      title="Create Entity">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[POST /otto/entity HTTP/1.1
 {
 	"name": "entity 1",
@@ -1771,7 +1962,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1785,7 +1976,7 @@ Content-Type: application/json
             <section anchor="update-entity"
                      title="Update Entity">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[PUT /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "entity 1",
@@ -1801,7 +1992,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1810,13 +2001,13 @@ Content-Type: application/json
             <section anchor="delete-entity"
                      title="Delete Entity">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[DELETE /otto/entity/5909b4218489131c19abfa29 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1829,14 +2020,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -1854,13 +2045,13 @@ Content-Type: application/json
             <section anchor="fetch-metadata"
                      title="Fetch Metadata">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/metadata HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1876,13 +2067,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/metadata?depth=metadata HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -1902,13 +2093,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/metadata/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1922,13 +2113,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/metadata/58f5da4957d53d2ffbbb31e0?filter=.metadataFormat HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1941,13 +2132,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/metadata?pageno=1&pagelength=5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1968,7 +2159,7 @@ Content-Type: application/json
             <section anchor="create-metadata"
                      title="Create Metadata">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[POST /otto/metadata HTTP/1.1
 {
 	"metadataFormat": "metadata format ....",
@@ -1979,7 +2170,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -1993,7 +2184,7 @@ Content-Type: application/json
             <section anchor="update-metadata"
                      title="Update Metadata">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[PUT /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1
 
 {
@@ -2005,7 +2196,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2014,13 +2205,13 @@ Content-Type: application/json
             <section anchor="delete-metadata"
                      title="Delete Metadata">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[DELETE /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2038,13 +2229,13 @@ Content-Type: application/json
             <section anchor="fetch-schema"
                      title="Fetch Schema">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -2060,13 +2251,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema?depth=schema HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 
@@ -2092,13 +2283,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema/58f720e1a10d8e1012e76ed5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2118,13 +2309,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema/590afffd30dd080ed3cda956?depth=supportedBy HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2193,13 +2384,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema/58f5da4957d53d2ffbbb31e0?filter=.name HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2212,13 +2403,13 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[GET /otto/schema?pageno=1&pagelength=5 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2239,7 +2430,7 @@ Content-Type: application/json
             <section anchor="create-schema"
                      title="Create Schema">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[POST /otto/schema HTTP/1.1
 {
    "name":"given_name",
@@ -2257,7 +2448,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -2271,7 +2462,7 @@ Content-Type: application/json
             <section anchor="update-schema"
                      title="Update Schema">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[PUT /otto/schema/5909b4218489131c19abfa29 HTTP/1.1
 {
    "name":"given_name",
@@ -2289,7 +2480,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2298,13 +2489,13 @@ Content-Type: application/json
             <section anchor="delete-schema"
                      title="Delete Schema">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork><![CDATA[DELETE /otto/schema/5909b4218489131c19abfa29 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2317,14 +2508,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2337,14 +2528,14 @@ Content-Type: application/json
                 </t>
 
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -2353,14 +2544,14 @@ Content-Type: application/json
             <section anchor="schema-category"
                      title="Schema Categories">
                 <figure>
-                    <preamble>Request:</preamble>
+                    <preamble>Non-normative example of a federation request</preamble>
                     <artwork>
                         <![CDATA[POST /otto/schema/categories HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Response:</preamble>
+                    <preamble>Non-normative example of a federation response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 [
   "http://otto-test.gluu.org/schema_category/acr.jsonld",
