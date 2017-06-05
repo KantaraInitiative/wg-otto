@@ -388,13 +388,7 @@ ul p {
       content: normal;
     }
 }
-</style><link rel="Author" href="#rfc.authors"><link rel="Copyright" href="#rfc.copyright"><link rel="Chapter" title="1 Introduction" href="#rfc.section.1"><link rel="Chapter" title="2 Configuration Endpoint" href="#rfc.section.2"><link rel="Chapter" title="3 Federation Endpoint" href="#rfc.section.3"><link rel="Chapter" title="4 Participant Endpoint" href="#rfc.section.4"><link rel="Chapter" title="5 Entity Endpoint" href="#rfc.section.5"><link rel="Chapter" title="6 Metadata Endpoint" href="#rfc.section.6"><link rel="Chapter" title="7 Schema Endpoint" href="#rfc.section.7"><link rel="Chapter" title="8 Acknowledgments" href="#rfc.section.8"><link rel="Chapter" href="#rfc.section.9" title="9 References"><meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.736, 2015/06/05 18:58:55, XSLT vendor: libxslt http://xmlsoft.org/XSLT/"><link rel="schema.dct" href="http://purl.org/dc/terms/"><meta name="dct.creator" content="Schwartz, M."><meta name="dct.creator" content="Ulanowski, J."><meta name="dct.creator" content="Zabrovarnyy, Y."><meta name="dct.creator" content="Joshi, M."><meta name="dct.identifier" content="urn:ietf:id:otto-core"><meta name="dct.issued" scheme="ISO8601" content="2017-04-02"><meta name="dct.abstract" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."><meta name="description" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."></head><body><img class="kantara" src="https://kantarainitiative.org/wp-content/uploads/2014/07/img1.png" alt="Kantara Initiative"><div id="rfc.title"><h1 class="kantara">OTTO API's 1.0</h1></div><p><table class="header kantara"><tbody><tr><td class="left kantara">Version:</td><td class="left kantara">1.0</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Date:</td><td class="left kantara">2017-4-2</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Editor:</td><td class="left kantara">Michael Schwartz, Gluu</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Authors:</td><td class="left kantara">Janusz Ulanowski,, HEAnet</td></tr><tr><td class="left kantara"></td><td class="left kantara"></td></tr><tr><td class="left kantara"></td><td class="left kantara">Meghna Joshi, Gluu</td></tr></tbody></table></p><h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2><p>This specification defines standard application interfaces that enable the creation and management of multi-party federations.</p><div id="rfc.status"><h2><a href="#rfc.status">Status of This Document</a></h2><p>This document is a draft technical specification produced by the <a href="https://kantarainitiative.org/confluence/display/otto/Home">OTTO Work Group</a>. See the Kantara Initiative <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/KI+Operating+Procedures+_V1.1_+2009-10-10.pdf">Operating Procedures</a> for more information.</p></div><div id="rfc.copyrightnotice"><h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2><p>Copyright © 2017 Kantara Initiative and the persons identified as the document authors. All rights reserved.</p><p>This document is subject to the <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/Kantara%20Initiative%20IPR%20Policies%20_V1.1_.pdf?version=1&amp;modificationDate=1244488630000&amp;api=v2">Kantara IPR Policy - Option Patent &amp; Copyright: Reciprocal Royalty Free with Opt-Out to Reasonable And Non discriminatory (RAND)</a> (<a href="https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=41025689">HTML version</a>).</p></div><hr class="noprint"><div id="rfc.toc"><h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2><ul class="toc"><li><a href="#rfc.section.1">1.</a>   <a href="#introduction">Introduction</a><ul><li><a href="#rfc.section.1.1">1.1</a>   <a href="#rfc.section.1.1">Notational Conventions</a></li><li><a href="#rfc.section.1.2">1.2</a>   <a href="#terminology">Terminology</a></li><li><a href="#rfc.section.1.3">1.3</a>   <a href="#security">Security Considerations</a></li><li><a href="#rfc.section.1.4">1.4</a>   <a href="#rfc.section.1.4">Search Syntax</a></li></ul></li><li><a href="#rfc.section.2">2.</a>   <a href="#configuration-endpoint">Configuration Endpoint</a><ul><li><a href="#rfc.section.2.1">2.1</a>   <a href="#configuration-example">Configuration example</a></li></ul></li><li><a href="#rfc.section.3">3.</a>   <a href="#federation-endpoint">Federation Endpoint</a><ul><li><a href="#rfc.section.3.1">3.1</a>   <a href="#create-federation">Create Federation</a></li><li><a href="#rfc.section.3.2">3.2</a>   <a href="#search-federation">Search Federation</a></li><li><a href="#rfc.section.3.3">3.3</a>   <a href="#update-federation">Update Federation</a></li><li><a href="#rfc.section.3.4">3.4</a>   <a href="#delete-federation">Delete Federation</a></li><li><a href="#rfc.section.3.5">3.5</a>   <a href="#leave-federation">Leave Federation</a></li><li><a href="#rfc.section.3.6">3.6</a>   <a href="#link-federation-entity">Link entity to federation</a></li><li><a href="#rfc.section.3.7">3.7</a>   <a href="#add-new-service">Add new service to federation</a></li><li><a href="#rfc.section.3.8">3.8</a>   <a href="#link-participant-member-federation">Link participant(member) to federation</a></li><li><a href="#rfc.section.3.9">3.9</a>   <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></li></ul></li><li><a href="#rfc.section.4">4.</a>   <a href="#participant-endpoint">Participant Endpoint</a><ul><li><a href="#rfc.section.4.1">4.1</a>   <a href="#fetch-participant">Fetch Participant</a></li><li><a href="#rfc.section.4.2">4.2</a>   <a href="#create-participant">Create Participant</a></li><li><a href="#rfc.section.4.3">4.3</a>   <a href="#update-participant">Update Participant</a></li><li><a href="#rfc.section.4.4">4.4</a>   <a href="#delete-participant">Delete Participant</a></li><li><a href="#rfc.section.4.5">4.5</a>   <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></li><li><a href="#rfc.section.4.6">4.6</a>   <a href="#link-entity-service-participant">Link entity(service) to participant</a></li></ul></li><li><a href="#rfc.section.5">5.</a>   <a href="#entity-endpoint">Entity Endpoint</a><ul><li><a href="#rfc.section.5.1">5.1</a>   <a href="#fetch-entity">Fetch Entity</a></li><li><a href="#rfc.section.5.2">5.2</a>   <a href="#create-entity">Create Entity</a></li><li><a href="#rfc.section.5.3">5.3</a>   <a href="#update-entity">Update Entity</a></li><li><a href="#rfc.section.5.4">5.4</a>   <a href="#delete-entity">Delete Entity</a></li><li><a href="#rfc.section.5.5">5.5</a>   <a href="#link-entity-federation">Link entity with federation</a></li></ul></li><li><a href="#rfc.section.6">6.</a>   <a href="#metadata-endpoint">Metadata Endpoint</a><ul><li><a href="#rfc.section.6.1">6.1</a>   <a href="#fetch-metadata">Fetch Metadata</a></li><li><a href="#rfc.section.6.2">6.2</a>   <a href="#create-metadata">Create Metadata</a></li><li><a href="#rfc.section.6.3">6.3</a>   <a href="#update-metadata">Update Metadata</a></li><li><a href="#rfc.section.6.4">6.4</a>   <a href="#delete-metadata">Delete Metadata</a></li></ul></li><li><a href="#rfc.section.7">7.</a>   <a href="#schema-endpoint">Schema Endpoint</a><ul><li><a href="#rfc.section.7.1">7.1</a>   <a href="#fetch-schema">Fetch Schema</a></li><li><a href="#rfc.section.7.2">7.2</a>   <a href="#create-schema">Create Schema</a></li><li><a href="#rfc.section.7.3">7.3</a>   <a href="#update-schema">Update Schema</a></li><li><a href="#rfc.section.7.4">7.4</a>   <a href="#delete-schema">Delete Schema</a></li><li><a href="#rfc.section.7.5">7.5</a>   <a href="#link-schema-federation">Link schema with federation</a></li><li><a href="#rfc.section.7.6">7.6</a>   <a href="#link-schema-entity">Link schema with entity</a></li><li><a href="#rfc.section.7.7">7.7</a>   <a href="#schema-category">Schema Categories</a></li></ul></li><li><a href="#rfc.section.8">8.</a>   <a href="#Acknowledgments">Acknowledgments</a></li><li><a href="#rfc.section.9">9.</a>   <a href="#rfc.references">References</a><ul><li><a href="#rfc.section.9.1">9.1</a>   <a href="#rfc.references.1">Normative References</a></li><li><a href="#rfc.section.9.2">9.2</a>   <a href="#rfc.references.2">Informative References</a></li></ul></li><li><a href="#rfc.authors">Authors' Addresses</a></li></ul></div><hr class="noprint"><div id="introduction"><h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a> <a href="#introduction">Introduction</a></h2><div id="rfc.section.1.p.1"><p>The Open Trust Taxonomy for Federation Operators (OTTO) defines standards to enable the interoperable management of multi-party federations--where a central authority creates the rules for membership, enabling the participants to more efficiently collaborate. The goal of OTTO is to support a range of trust models from very low to very high. By providing a common set of API's and a data model, the OTTO standard provides a scalable technical infrastructure to solve organizational challenges in a number of different ecosystems.</p></div><div><h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a> Notational Conventions</h3><div id="rfc.section.1.1.p.1"><p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.</p></div><div id="rfc.section.1.1.p.2"><p>Unless otherwise noted, all protocol properties and values are case sensitive.</p></div></div><div id="terminology"><h3 id="rfc.section.1.2"><a href="#rfc.section.1.2">1.2</a> <a href="#terminology">Terminology</a></h3><div id="rfc.section.1.2.p.1"><p>This specification introduces the following terms </p><dl><dt>Federation</dt><dd style="margin-left: 4.2em">A group of autonomous organizations that agree to abide the authority of a central organization to reduce the cost of collaboration.</dd><dt>Registration Authority</dt><dd style="margin-left: 4.2em">An organization that hosts the hardware and software used by Federation operators.</dd><dt>Participant</dt><dd style="margin-left: 4.2em">An organization that registers with a Registration Authority for the purpose of joining a Federation.</dd><dt>Entity</dt><dd style="margin-left: 4.2em">A techincal service operated by a Particpant, such as an identity provider, website or mobile application.</dd><dt>Issuer</dt><dd style="margin-left: 4.2em">Location of the Registration Authority, which MUST be a URI <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a> with a scheme component that MUST be https, a host component, and optionally, port and path components and no query or fragment components.</dd></dl></div></div><div id="security"><h3 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3</a> <a href="#security">Security Considerations</a></h3><div id="rfc.section.1.3.p.1"><p>This specification defines several APIs. The Registration Authority MUST use TLS protection over these endpoints, governed by <a href="#BCP195"><cite title="Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)">[BCP195]</cite></a>, which discusses deployment and adoption characteristics of different TLS versions. All endpoints other then the .well-known configuration endpoint SHOULD require some form of authentication and access control, such as Client Authentication as described in <a href="#RFC6749"><cite title="The OAuth 2.0 Authorization Framework">[RFC6749]</cite></a> or a separate OAuth access token. The methods of managing and validating these authentication credentials are out of scope of this specification.</p></div></div><div><h3 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4</a> Search Syntax</h3><div id="rfc.section.1.4.p.1"><p>depth: Depth parameter provides facility to deeply populate a records and you can get the full response of given depth parameter. You can also passed multiple comma separated depth parameters. If depth parameter is possible to populated then you can get full response other wise you got error with "Invalid depth parameter". <p>The below depth parameter deeply populate a given federation's federates and for output <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a depth request.</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1
-                    </pre> <p>The below depth parameter deeply populate this given federation's federates and member. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a multiple depth request.</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates,member HTTP/1.1
-                    </pre> </p></div><div id="rfc.section.1.4.p.2"><p>filter: Filter parameter provides facility to filter the records by passing JSPath filter value which is always start from dot(.) and you can get the filter response as per given JSPath parameter value. You can also passed multiple comma separated filter parameters. If filter parameter is possible to filter then you can get filtered response other wise you got error with "Invalid JSPath". <p>The below parameter filter the name property and you can get filtered output with only name key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a filter request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1
-                    </pre> <p>You can get filtered output with name and federates key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a multiple filter request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name,.federates HTTP/1.1
-                    </pre> <p>You can get filtered output with name and federates key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a filter and depth request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&amp;filter=.federates.name HTTP/1.1
-                    </pre> <p>You can get filtered output with federates which name is "entity 1". for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a JSPath condition in request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&amp;filter=.federates{.name==="entity 1"} HTTP/1.1
-                    </pre> </p></div></div></div><hr class="noprint"><div id="configuration-endpoint"><h2 id="rfc.section.2" class="np"><a href="#rfc.section.2">2.</a> <a href="#configuration-endpoint">Configuration Endpoint</a></h2><div id="rfc.section.2.p.1"><p>This endpoint returns the JSON-LD for the RegistrationAuthority class, which includes information useful to clients prior to making requests. Registration Authority MUST make this JSON-LD class available at the path formed by concatenating the string <tt>/.well-known/otto-configuration</tt> to the Issuer. The syntax and semantics of <tt>.well-known</tt> are defined in<a href="#RFC5785"><cite title="Defining Well-Known Uniform Resource Identifiers (URIs)">[RFC5785]</cite></a>, and MUST point to a JSON document compliant with this specification and MUST be returned using the <tt>application/json</tt> content type.</p></div><div id="configuration-example"><h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a> <a href="#configuration-example">Configuration example</a></h3><div id="rfc.figure.u.1"><p>Non-normative example of a configuration request:</p><pre>GET /otto/.well-known/otto-configuration HTTP/1.1
+</style><link rel="Author" href="#rfc.authors"><link rel="Copyright" href="#rfc.copyright"><link rel="Chapter" title="1 Introduction" href="#rfc.section.1"><link rel="Chapter" title="2 Configuration Endpoint" href="#rfc.section.2"><link rel="Chapter" title="3 Federation Endpoint" href="#rfc.section.3"><link rel="Chapter" title="4 Participant Endpoint" href="#rfc.section.4"><link rel="Chapter" title="5 Entity Endpoint" href="#rfc.section.5"><link rel="Chapter" title="6 Metadata Endpoint" href="#rfc.section.6"><link rel="Chapter" title="7 Schema Endpoint" href="#rfc.section.7"><link rel="Chapter" title="8 Acknowledgments" href="#rfc.section.8"><link rel="Chapter" href="#rfc.section.9" title="9 References"><meta name="generator" content="http://greenbytes.de/tech/webdav/rfc2629.xslt, Revision 1.736, 2015/06/05 18:58:55, XSLT vendor: libxslt http://xmlsoft.org/XSLT/"><link rel="schema.dct" href="http://purl.org/dc/terms/"><meta name="dct.creator" content="Schwartz, M."><meta name="dct.creator" content="Ulanowski, J."><meta name="dct.creator" content="Zabrovarnyy, Y."><meta name="dct.creator" content="Joshi, M."><meta name="dct.identifier" content="urn:ietf:id:otto-core"><meta name="dct.issued" scheme="ISO8601" content="2017-04-02"><meta name="dct.abstract" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."><meta name="description" content="This specification defines standard application interfaces that enable the creation and management of multi-party federations."></head><body><img class="kantara" src="https://kantarainitiative.org/wp-content/uploads/2014/07/img1.png" alt="Kantara Initiative"><div id="rfc.title"><h1 class="kantara">OTTO API's 1.0</h1></div><p><table class="header kantara"><tbody><tr><td class="left kantara">Version:</td><td class="left kantara">1.0</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Date:</td><td class="left kantara">2017-4-2</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Editor:</td><td class="left kantara">Michael Schwartz, Gluu</td></tr><tr><td class="kantara" colspan="2"> </td></tr><tr><td class="left kantara">Authors:</td><td class="left kantara">Janusz Ulanowski,, HEAnet</td></tr><tr><td class="left kantara"></td><td class="left kantara"></td></tr><tr><td class="left kantara"></td><td class="left kantara">Meghna Joshi, Gluu</td></tr></tbody></table></p><h2 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h2><p>This specification defines standard application interfaces that enable the creation and management of multi-party federations.</p><div id="rfc.status"><h2><a href="#rfc.status">Status of This Document</a></h2><p>This document is a draft technical specification produced by the <a href="https://kantarainitiative.org/confluence/display/otto/Home">OTTO Work Group</a>. See the Kantara Initiative <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/KI+Operating+Procedures+_V1.1_+2009-10-10.pdf">Operating Procedures</a> for more information.</p></div><div id="rfc.copyrightnotice"><h2><a href="#rfc.copyrightnotice">Copyright Notice</a></h2><p>Copyright © 2017 Kantara Initiative and the persons identified as the document authors. All rights reserved.</p><p>This document is subject to the <a href="https://kantarainitiative.org/confluence/download/attachments/2293776/Kantara%20Initiative%20IPR%20Policies%20_V1.1_.pdf?version=1&amp;modificationDate=1244488630000&amp;api=v2">Kantara IPR Policy - Option Patent &amp; Copyright: Reciprocal Royalty Free with Opt-Out to Reasonable And Non discriminatory (RAND)</a> (<a href="https://kantarainitiative.org/confluence/pages/viewpage.action?pageId=41025689">HTML version</a>).</p></div><hr class="noprint"><div id="rfc.toc"><h2 class="np"><a href="#rfc.toc">Table of Contents</a></h2><ul class="toc"><li><a href="#rfc.section.1">1.</a>   <a href="#introduction">Introduction</a><ul><li><a href="#rfc.section.1.1">1.1</a>   <a href="#rfc.section.1.1">Notational Conventions</a></li><li><a href="#rfc.section.1.2">1.2</a>   <a href="#terminology">Terminology</a></li><li><a href="#rfc.section.1.3">1.3</a>   <a href="#security">Security Considerations</a></li><li><a href="#rfc.section.1.4">1.4</a>   <a href="#search-syntax">Search Syntax</a></li></ul></li><li><a href="#rfc.section.2">2.</a>   <a href="#configuration-endpoint">Configuration Endpoint</a><ul><li><a href="#rfc.section.2.1">2.1</a>   <a href="#configuration-example">Configuration example</a></li></ul></li><li><a href="#rfc.section.3">3.</a>   <a href="#federation-endpoint">Federation Endpoint</a><ul><li><a href="#rfc.section.3.1">3.1</a>   <a href="#create-federation">Create Federation</a></li><li><a href="#rfc.section.3.2">3.2</a>   <a href="#search-federation">Search Federation</a></li><li><a href="#rfc.section.3.3">3.3</a>   <a href="#update-federation">Update Federation</a></li><li><a href="#rfc.section.3.4">3.4</a>   <a href="#delete-federation">Delete Federation</a></li><li><a href="#rfc.section.3.5">3.5</a>   <a href="#leave-federation">Leave Federation</a></li><li><a href="#rfc.section.3.6">3.6</a>   <a href="#link-federation-entity">Link entity to federation</a></li><li><a href="#rfc.section.3.7">3.7</a>   <a href="#add-new-service">Add new service to federation</a></li><li><a href="#rfc.section.3.8">3.8</a>   <a href="#link-participant-member-federation">Link participant(member) to federation</a></li><li><a href="#rfc.section.3.9">3.9</a>   <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></li></ul></li><li><a href="#rfc.section.4">4.</a>   <a href="#participant-endpoint">Participant Endpoint</a><ul><li><a href="#rfc.section.4.1">4.1</a>   <a href="#create-participant">Create Participant</a></li><li><a href="#rfc.section.4.2">4.2</a>   <a href="#fetch-participant">Fetch Participant</a></li><li><a href="#rfc.section.4.3">4.3</a>   <a href="#update-participant">Update Participant</a></li><li><a href="#rfc.section.4.4">4.4</a>   <a href="#delete-participant">Delete Participant</a></li><li><a href="#rfc.section.4.5">4.5</a>   <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></li><li><a href="#rfc.section.4.6">4.6</a>   <a href="#link-entity-service-participant">Link entity(service) to participant</a></li></ul></li><li><a href="#rfc.section.5">5.</a>   <a href="#entity-endpoint">Entity Endpoint</a><ul><li><a href="#rfc.section.5.1">5.1</a>   <a href="#create-entity">Create Entity</a></li><li><a href="#rfc.section.5.2">5.2</a>   <a href="#fetch-entity">Fetch Entity</a></li><li><a href="#rfc.section.5.3">5.3</a>   <a href="#update-entity">Update entity</a></li><li><a href="#rfc.section.5.4">5.4</a>   <a href="#delete-entity">Delete Entity</a></li><li><a href="#rfc.section.5.5">5.5</a>   <a href="#link-entity-federation">Link entity with federation</a></li></ul></li><li><a href="#rfc.section.6">6.</a>   <a href="#metadata-endpoint">Metadata Endpoint</a><ul><li><a href="#rfc.section.6.1">6.1</a>   <a href="#create-metadata">Create Metadata</a></li><li><a href="#rfc.section.6.2">6.2</a>   <a href="#fetch-metadata">Fetch Metadata</a></li><li><a href="#rfc.section.6.3">6.3</a>   <a href="#update-metadata">Update Metadata</a></li><li><a href="#rfc.section.6.4">6.4</a>   <a href="#delete-metadata">Delete Metadata</a></li></ul></li><li><a href="#rfc.section.7">7.</a>   <a href="#schema-endpoint">Schema Endpoint</a><ul><li><a href="#rfc.section.7.1">7.1</a>   <a href="#create-schema">Create schema</a></li><li><a href="#rfc.section.7.2">7.2</a>   <a href="#fetch-schema">Fetch Schema</a></li><li><a href="#rfc.section.7.3">7.3</a>   <a href="#update-schema">Update Schema</a></li><li><a href="#rfc.section.7.4">7.4</a>   <a href="#delete-schema">Delete Schema</a></li><li><a href="#rfc.section.7.5">7.5</a>   <a href="#link-schema-federation">Link schema with federation</a></li><li><a href="#rfc.section.7.6">7.6</a>   <a href="#link-schema-entity">Link schema with entity</a></li><li><a href="#rfc.section.7.7">7.7</a>   <a href="#schema-category">Schema Categories</a></li></ul></li><li><a href="#rfc.section.8">8.</a>   <a href="#Acknowledgments">Acknowledgments</a></li><li><a href="#rfc.section.9">9.</a>   <a href="#rfc.references">References</a><ul><li><a href="#rfc.section.9.1">9.1</a>   <a href="#rfc.references.1">Normative References</a></li><li><a href="#rfc.section.9.2">9.2</a>   <a href="#rfc.references.2">Informative References</a></li></ul></li><li><a href="#rfc.authors">Authors' Addresses</a></li></ul></div><hr class="noprint"><div id="introduction"><h2 id="rfc.section.1" class="np"><a href="#rfc.section.1">1.</a> <a href="#introduction">Introduction</a></h2><div id="rfc.section.1.p.1"><p>The Open Trust Taxonomy for Federation Operators (OTTO) defines standards to enable the interoperable management of multi-party federations--where a central authority creates the rules for membership, enabling the participants to more efficiently collaborate. The goal of OTTO is to support a range of trust models from very low to very high. By providing a common set of API's and a data model, the OTTO standard provides a scalable technical infrastructure to solve organizational challenges in a number of different ecosystems.</p></div><div><h3 id="rfc.section.1.1"><a href="#rfc.section.1.1">1.1</a> Notational Conventions</h3><div id="rfc.section.1.1.p.1"><p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119"><cite title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</cite></a>.</p></div><div id="rfc.section.1.1.p.2"><p>Unless otherwise noted, all protocol properties and values are case sensitive.</p></div></div><div id="terminology"><h3 id="rfc.section.1.2"><a href="#rfc.section.1.2">1.2</a> <a href="#terminology">Terminology</a></h3><div id="rfc.section.1.2.p.1"><p>This specification introduces the following terms </p><dl><dt>Federation</dt><dd style="margin-left: 4.2em">A group of autonomous organizations that agree to abide the authority of a central organization to reduce the cost of collaboration.</dd><dt>Registration Authority</dt><dd style="margin-left: 4.2em">An organization that hosts the hardware and software used by Federation operators.</dd><dt>Participant</dt><dd style="margin-left: 4.2em">An organization that registers with a Registration Authority for the purpose of joining a Federation.</dd><dt>Entity</dt><dd style="margin-left: 4.2em">A techincal service operated by a Particpant, such as an identity provider, website or mobile application.</dd><dt>Issuer</dt><dd style="margin-left: 4.2em">Location of the Registration Authority, which MUST be a URI <a href="#RFC3986"><cite title="Uniform Resource Identifier (URI): Generic Syntax">[RFC3986]</cite></a> with a scheme component that MUST be https, a host component, and optionally, port and path components and no query or fragment components.</dd></dl></div></div><div id="security"><h3 id="rfc.section.1.3"><a href="#rfc.section.1.3">1.3</a> <a href="#security">Security Considerations</a></h3><div id="rfc.section.1.3.p.1"><p>This specification defines several APIs. The Registration Authority MUST use TLS protection over these endpoints, governed by <a href="#BCP195"><cite title="Recommendations for Secure Use of Transport Layer Security (TLS) and Datagram Transport Layer Security (DTLS)">[BCP195]</cite></a>, which discusses deployment and adoption characteristics of different TLS versions. All endpoints other then the .well-known configuration endpoint SHOULD require some form of authentication and access control, such as Client Authentication as described in <a href="#RFC6749"><cite title="The OAuth 2.0 Authorization Framework">[RFC6749]</cite></a> or a separate OAuth access token. The methods of managing and validating these authentication credentials are out of scope of this specification.</p></div></div><div id="search-syntax"><h3 id="rfc.section.1.4"><a href="#rfc.section.1.4">1.4</a> <a href="#search-syntax">Search Syntax</a></h3><div id="rfc.section.1.4.p.1"><p>depth: Depth parameter provides facility to deeply populate a records and you can get the full response of given depth parameter. You can also passed multiple comma separated depth parameters. If depth parameter is possible to populated then you can get full response other wise you got error with "Invalid depth parameter". <p>The below depth parameter deeply populate a given federation's federates and for output <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a depth request.</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 </pre> <p>The below depth parameter deeply populate this given federation's federates and member. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a multiple depth request.</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates,member HTTP/1.1 </pre> </p></div><div id="rfc.section.1.4.p.2"><p>filter: Filter parameter provides facility to filter the records by passing JSPath filter value which is always start from dot(.) and you can get the filter response as per given JSPath parameter value. You can also passed multiple comma separated filter parameters. If filter parameter is possible to filter then you can get filtered response other wise you got error with "Invalid JSPath". <p>The below parameter filter the name property and you can get filtered output with only name key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a filter request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 </pre> <p>You can get filtered output with name and federates key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a multiple filter request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name,.federates HTTP/1.1 </pre> <p>You can get filtered output with name and federates key. for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a filter and depth request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&amp;filter=.federates.name HTTP/1.1 </pre> <p>You can get filtered output with federates which name is "entity 1". for outputs <a href="#search-federation" title="Search Federation">Section 3.2</a>. Non-normative examples of a JSPath condition in request:</p> <pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&amp;filter=.federates{.name==="entity 1"} HTTP/1.1 </pre> </p></div></div></div><hr class="noprint"><div id="configuration-endpoint"><h2 id="rfc.section.2" class="np"><a href="#rfc.section.2">2.</a> <a href="#configuration-endpoint">Configuration Endpoint</a></h2><div id="rfc.section.2.p.1"><p>This endpoint returns the JSON-LD for the RegistrationAuthority class, which includes information useful to clients prior to making requests. Registration Authority MUST make this JSON-LD class available at the path formed by concatenating the string <tt>/.well-known/otto-configuration</tt> to the Issuer. The syntax and semantics of <tt>.well-known</tt> are defined in<a href="#RFC5785"><cite title="Defining Well-Known Uniform Resource Identifiers (URIs)">[RFC5785]</cite></a>, and MUST point to a JSON document compliant with this specification and MUST be returned using the <tt>application/json</tt> content type.</p></div><div id="configuration-example"><h3 id="rfc.section.2.1"><a href="#rfc.section.2.1">2.1</a> <a href="#configuration-example">Configuration example</a></h3><div id="rfc.figure.u.1"><p>Non-normative example of a configuration request:</p><pre>GET /otto/.well-known/otto-configuration HTTP/1.1
 Host: ra.org
                     </pre></div><div id="rfc.figure.u.2"><p>Non-normative example of a configuration response:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
@@ -412,11 +406,12 @@ Content-Type: application/json
                  "https://ra.acme.ex/otto/federation/348159fd-8441"]
 }
 
-                    </pre></div></div></div><hr class="noprint"><div id="federation-endpoint"><h2 id="rfc.section.3" class="np"><a href="#rfc.section.3">3.</a> <a href="#federation-endpoint">Federation Endpoint</a></h2><div id="rfc.section.3.p.1"><p>This endpoint, hosted by the Registration Authority, enables the creation and management of Federations.</p></div><div id="create-federation"><h3 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a> <a href="#create-federation">Create Federation</a></h3><div id="rfc.section.3.1.p.1"><p>It is POST API to create federation. you need to passed the required parameter to add the new federation.</p></div><div id="rfc.figure.u.3"><p>Their are several properties which used for federation. <div id="rfc.section.3.1.p.1"><div id="rfc.table.1"><div id="table_federation"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 1: Federation</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>name</strong></td><td class="left">REQUIRED</td><td class="left">A human friendly name for the Federation</td></tr><tr><td class="left">description</td><td class="left">OPTIONAL</td><td class="left">Optional information about the RA</td></tr><tr><td class="left">url</td><td class="left">OPTIONAL</td><td class="left">The public, human readible website for the Federation</td></tr><tr><td class="left">operates</td><td class="left">OPTIONAL</td><td class="left">It is Entity or array of Entity. A service operated by the Federation</td></tr><tr><td class="left">metadata</td><td class="left">OPTIONAL</td><td class="left">It is Metadata or array of Metadata. The metadata (including public signing key) for this Federation</td></tr><tr><td class="left">supports</td><td class="left">OPTIONAL</td><td class="left">It is Schema or array of Schema. What schema is supported by this Federation</td></tr><tr><td class="left"><strong>registeredBy</strong></td><td class="left">REQUIRED</td><td class="left">The Registration Authority where the federation is hosted</td></tr><tr><td class="left">member</td><td class="left">OPTIONAL</td><td class="left">It is array of Participants. List of organizational members of the Federation</td></tr><tr><td class="left">federates</td><td class="left">OPTIONAL</td><td class="left">It is array of Entity. List of services registered to the federation by Participants</td></tr><tr><td class="left"><strong>sponsor</strong></td><td class="left">REQUIRED</td><td class="left">It is An Organization or array of Organization. The organization legally responsible for management of the Federation</td></tr><tr><td class="left">technicalContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person. Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</td></tr><tr><td class="left">executiveContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person. Person(s) responsible for all decisions and delegations of authority for the Federation</td></tr><tr><td class="left">securityContact</td><td class="left">OPTIONAL</td><td class="left">Person(s) to contact in the event of an urgent security issue</td></tr><tr><td class="left">dataProtectionCodeOfConduct</td><td class="left">OPTIONAL</td><td class="left">It is URL. The provisions regarding handling of personal information by the Federation Participants</td></tr><tr><td class="left">federationAgreement</td><td class="left">OPTIONAL</td><td class="left">It is URL. The rights and responsibilities of the Participant</td></tr><tr><td class="left">federationPolicy</td><td class="left">OPTIONAL</td><td class="left">It is URL. Operational practices and technical details for participation in the Federation.</td></tr><tr><td class="left">trustMarkDefinitionSupported</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of TrustMarkDefinition or URL. What kinds of Trustmarks are supported by the federation</td></tr><tr><td class="left">badgeSupported</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of BadgeClass or IRI. What kinds of Badges are supported by the federation</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a federation request</p><pre>POST /otto/federations HTTP/1.1
+                    </pre></div></div></div><hr class="noprint"><div id="federation-endpoint"><h2 id="rfc.section.3" class="np"><a href="#rfc.section.3">3.</a> <a href="#federation-endpoint">Federation Endpoint</a></h2><div id="rfc.section.3.p.1"><p>This endpoint, hosted by the Registration Authority, enables the creation and management of Federations.</p></div><div id="create-federation"><h3 id="rfc.section.3.1"><a href="#rfc.section.3.1">3.1</a> <a href="#create-federation">Create Federation</a></h3><div id="rfc.section.3.1.p.1"><p>This is POST API to create federation. you need to passed the required parameter to add the new federation. If you try to add federation with same name which is already exist then it return response with error key with message is "Federation already exist with same name".</p></div><div id="rfc.figure.u.3"><p>Their are several properties which used for federation. <div id="rfc.section.3.1.p.1"><div id="rfc.table.1"><div id="table_federation"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 1: Federation</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>name</strong></td><td class="left">REQUIRED</td><td class="left">A human friendly name for the Federation</td></tr><tr><td class="left">description</td><td class="left">OPTIONAL</td><td class="left">Optional information about the RA</td></tr><tr><td class="left">url</td><td class="left">OPTIONAL</td><td class="left">The public, human readible website for the Federation</td></tr><tr><td class="left">operates</td><td class="left">OPTIONAL</td><td class="left">It is Entity or array of Entity. A service operated by the Federation</td></tr><tr><td class="left">metadata</td><td class="left">OPTIONAL</td><td class="left">It is Metadata or array of Metadata. The metadata (including public signing key) for this Federation</td></tr><tr><td class="left">supports</td><td class="left">OPTIONAL</td><td class="left">It is Schema or array of Schema. What schema is supported by this Federation</td></tr><tr><td class="left"><strong>registeredBy</strong></td><td class="left">REQUIRED</td><td class="left">The Registration Authority where the federation is hosted</td></tr><tr><td class="left">member</td><td class="left">OPTIONAL</td><td class="left">It is array of Participants. List of organizational members of the Federation</td></tr><tr><td class="left">federates</td><td class="left">OPTIONAL</td><td class="left">It is array of Entity. List of services registered to the federation by Participants</td></tr><tr><td class="left"><strong>sponsor</strong></td><td class="left">REQUIRED</td><td class="left">It is An Organization or array of Organization. The organization legally responsible for management of the Federation</td></tr><tr><td class="left">technicalContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person. Person(s) responsible for registering and maintaining the policies and technical data related to the organization's participation in the Federation</td></tr><tr><td class="left">executiveContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person. Person(s) responsible for all decisions and delegations of authority for the Federation</td></tr><tr><td class="left">securityContact</td><td class="left">OPTIONAL</td><td class="left">Person(s) to contact in the event of an urgent security issue</td></tr><tr><td class="left">dataProtectionCodeOfConduct</td><td class="left">OPTIONAL</td><td class="left">It is URL. The provisions regarding handling of personal information by the Federation Participants</td></tr><tr><td class="left">federationAgreement</td><td class="left">OPTIONAL</td><td class="left">It is URL. The rights and responsibilities of the Participant</td></tr><tr><td class="left">federationPolicy</td><td class="left">OPTIONAL</td><td class="left">It is URL. Operational practices and technical details for participation in the Federation.</td></tr><tr><td class="left">trustMarkDefinitionSupported</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of TrustMarkDefinition or URL. What kinds of Trustmarks are supported by the federation</td></tr><tr><td class="left">badgeSupported</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of BadgeClass or IRI. What kinds of Badges are supported by the federation</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a federation request</p><pre>POST /otto/federations HTTP/1.1
 {
 	"name": "fed1",
 	"url": "http://otto-test.gluu.org/otto/federation",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"sponsor": "58f720c7a10d8e1012e76ed4",
 	"description": "fedearation fedearation",
 	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
 	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
@@ -426,14 +421,14 @@ Content-Type: application/json
 	"federationPolicy": "https://fd.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.4"><p>Non-normative example of add a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.4"><p>Non-normative example of add a federation response:</p><p>In response it return with "@id" key, This is Unique IRI for the newly added Federation</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
 }
 
-                    </pre></div></div><div id="search-federation"><h3 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2</a> <a href="#search-federation">Search Federation</a></h3><div id="rfc.section.3.2.p.1"><p>This is GET api used to fetch federation information. Their are several way to fetch federation information. you can fetch all the records, fetch all records with depth, fetch specific federation and also filtered using filter parameter.</p></div><div id="rfc.figure.u.5"><p>Non-normative example of a federation request to fetch all federation list.</p><pre>GET /otto/federations HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.6"><p>Non-normative example of a federation response with json array.</p><p><dl><dt>federations</dt><dd style="margin-left: 4.2em">Contain list of federation array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
+                    </pre></div></div><div id="search-federation"><h3 id="rfc.section.3.2"><a href="#rfc.section.3.2">3.2</a> <a href="#search-federation">Search Federation</a></h3><div id="rfc.section.3.2.p.1"><p>This is GET api to fetch federation information. Their are several way to fetch federation information. you can fetch all the records, fetch all records with depth, fetch specific federation and also filtered using filter parameter.</p></div><div id="rfc.figure.u.5"><p>Non-normative example of a federation request to fetch all federation list.</p><pre>GET /otto/federations HTTP/1.1 
+                    </pre></div><div id="rfc.figure.u.6"><p>Non-normative example of a federation response with json array.</p><p><dl><dt>federations</dt><dd style="margin-left: 4.2em">List of federation</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -446,7 +441,7 @@ Content-Type: application/json
   "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.7"><p>Non-normative example of a federation request to fetch deep information of each federation.</p><pre>GET /otto/federations?depth=federations HTTP/1.1 </pre></div><div id="rfc.figure.u.8"><p>Non-normative example of a federation response, for response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a></p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.7"><p>Non-normative example of a federation request to fetch deep information of each federation.</p><pre>GET /otto/federations?depth=federations HTTP/1.1 </pre></div><div id="rfc.figure.u.8"><p>Non-normative example of a federation response with fetch deep information, for federation response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a></p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -557,8 +552,7 @@ Content-Type: application/json
   "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.9"><p>Non-normative example of a federation request by passing unique id to fetch specific full response of federation.</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.10"><p>Non-normative example of a federation response, for response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a>.</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.9"><p>Non-normative example of a federation request by passing unique id to fetch specific full response of specific federation. When federation not exist, it return response "Federation doesn't exist"</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 </pre></div><div id="rfc.figure.u.10"><p>Non-normative example of a federation response of specific federation, for response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a>.</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
@@ -611,8 +605,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.11"><p>Non-normative example of a federation request</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.12"><p>Non-normative example of a federation response, for response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a>. It populate the federates of this federation.</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.11"><p>Non-normative example of a federation request ot fetch depth of specific federation. for depth parameter description refer <a href="#search-syntax" title="Search Syntax">Section 1.4</a></p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 </pre></div><div id="rfc.figure.u.12"><p>Non-normative example of a federation response with deep populate of specific federation, for response description see the <a href="#create-federation" title="Create Federation">Section 3.1</a>.</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
@@ -688,8 +681,7 @@ Content-Type: application/json
 }
 
 
-                    </pre></div><div id="rfc.figure.u.13"><p>Non-normative example of a federation request with depth parameter</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=sponsor,federates HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.14"><p>Non-normative example of a federation response, for response description of federation see the <a href="#create-federation" title="Create Federation">Section 3.1</a>. It populate the sponsor and federates of this federation.</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.13"><p>Non-normative example of a federation request with multiple depth parameter</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=sponsor,federates HTTP/1.1 </pre></div><div id="rfc.figure.u.14"><p>Non-normative example of a federation response of multiple depth parameter, for response description of federation see the <a href="#create-federation" title="Create Federation">Section 3.1</a>. It populate the sponsor and federates of this federation.</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
@@ -789,8 +781,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.15"><p>Non-normative example of a federation request when invalid depth parameter is passed, It response with "Invalid depth parameter"</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=description HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.16"><p>Non-normative example of a federation response</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.15"><p>Non-normative example of a federation request when invalid depth parameter is passed, It response with "Invalid depth parameter"</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=description HTTP/1.1 </pre></div><div id="rfc.figure.u.16"><p>Non-normative example of a federation response</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "error": [
@@ -798,9 +789,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.17"><p>Non-normative example of a federation request using filter parameter</p><pre>
-                        GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.18"><p>Non-normative example of a federation response with filter parameter. It will filter json object as per given JSPath. JSPath is always start from dot(.)</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.17"><p>Non-normative example of a federation request using filter parameter</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact HTTP/1.1 </pre></div><div id="rfc.figure.u.18"><p>Non-normative example of a federation response with filter parameter. It will filter json object as per given JSPath. JSPath is always start from dot(.)</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "securityContact": [
@@ -811,9 +800,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.19"><p>Non-normative example of a federation request using multiple depth parameter:</p><pre>
-                        GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact,.name HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.20"><p>Non-normative example of a federation response with multiple depth parameter:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.19"><p>Non-normative example of a federation request using multiple filter parameter:</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.securityContact,.name HTTP/1.1 </pre></div><div id="rfc.figure.u.20"><p>Non-normative example of a federation response with multiple depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "securityContact": [
@@ -827,8 +814,46 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.21"><p>Non-normative example of a federation request using pageno and pagelength parameter</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/federations?pageno=1&amp;pagelength=5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.22"><p>Non-normative example of a federation response:</p><p><dl><dt>federations</dt><dd style="margin-left: 4.2em">Contain list of federation array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.21"><p>Non-normative example of a federation request using filter condition parameter:</p><pre>GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.member{.name==="participant 2"} HTTP/1.1 </pre></div><div id="rfc.figure.u.22"><p>Non-normative example of a federation response with filter condition parameter:</p><pre>HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "member{.name===\"participant 2\"}": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
+      "name": "participant 2",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [],
+      "badgeSupported": [
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+      ],
+      "operates": ""
+    }
+  ]
+}
+
+
+                    </pre></div><div id="rfc.figure.u.23"><p>Non-normative example of a federation request using pageno and pagelength parameter:</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/federations?pageno=1&amp;pagelength=5 HTTP/1.1 </pre></div><div id="rfc.figure.u.24"><p>Non-normative example of a federation response of page no and page length parameter:</p><p><dl><dt>federations</dt><dd style="margin-left: 4.2em">Contain list of federation array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "federations": [
@@ -843,7 +868,7 @@ Content-Type: application/json
   "startIndex": 1
 }
 
-                    </pre></div></div><div id="update-federation"><h3 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3</a> <a href="#update-federation">Update Federation</a></h3><div id="rfc.figure.u.23"><p>Non-normative example of update a federation request</p><pre>PUT /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+                    </pre></div></div><div id="update-federation"><h3 id="rfc.section.3.3"><a href="#rfc.section.3.3">3.3</a> <a href="#update-federation">Update Federation</a></h3><div id="rfc.section.3.3.p.1"><p>This is PUT API to update federation. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter. The possible parameter you can passed for update, refer <a href="#create-federation" title="Create Federation">Section 3.1</a> </p></div><div id="rfc.figure.u.25"><p>Non-normative example of update a federation request</p><pre>PUT /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "fed1",
 	"url": "http://otto-test.gluu.org/otto/federation",
@@ -856,55 +881,83 @@ Content-Type: application/json
 	"federationPolicy": "https://fd.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.24"><p>Non-normative example of update a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="delete-federation"><h3 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4</a> <a href="#delete-federation">Delete Federation</a></h3><div id="rfc.figure.u.25"><p>Non-normative example of a federation request</p><pre>DELETE /otto/federations/5909b4218489131c19abfa29 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.26"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="leave-federation"><h3 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a> <a href="#leave-federation">Leave Federation</a></h3><div id="rfc.figure.u.27"><p>Non-normative example of a federation request</p><pre>
-                        DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.28"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-federation-entity"><h3 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6</a> <a href="#link-federation-entity">Link entity to federation</a></h3><div id="rfc.section.3.6.p.1"><p>This endpoint, Link entity to the federation.</p></div><div id="rfc.figure.u.29"><p>Non-normative example of a federation request</p><pre>
-                        POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.30"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="add-new-service"><h3 id="rfc.section.3.7"><a href="#rfc.section.3.7">3.7</a> <a href="#add-new-service">Add new service to federation</a></h3><div id="rfc.section.3.7.p.1"><p>This endpoint, add new service(entity) to the federation.</p></div><div id="rfc.figure.u.31"><p>Non-normative example of a federation request</p><pre>POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
+                    </pre></div><div id="rfc.figure.u.26"><p>Non-normative example of update a federation response. It return response with status 200 when successfully updated the federation.</p><pre>HTTP/1.1 200 OK 
+                    </pre></div></div><div id="delete-federation"><h3 id="rfc.section.3.4"><a href="#rfc.section.3.4">3.4</a> <a href="#delete-federation">Delete Federation</a></h3><div id="rfc.section.3.4.p.1"><p>This is DELETE API to delete federation. you just need to passed unique id of federation in federation endpoint.</p></div><div id="rfc.figure.u.27"><p>Non-normative example of delete a federation request:</p><pre>DELETE /otto/federations/5909b4218489131c19abfa29 HTTP/1.1 </pre></div><div id="rfc.figure.u.28"><p>Non-normative example of delete a federation success response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.figure.u.29"><p>Non-normative example of delete a federation error response when federation not found.</p><pre>HTTP/1.1 404 OK
 {
-	"name": "fed 1",
+  "error": [
+    "Federation doesn't exist"
+  ]
+}
+
+                    </pre></div></div><div id="leave-federation"><h3 id="rfc.section.3.5"><a href="#rfc.section.3.5">3.5</a> <a href="#leave-federation">Leave Federation</a></h3><div id="rfc.section.3.5.p.1"><p>This is DELETE API for remove services of this federation. It remove entity reference from federates of federation.</p></div><div id="rfc.section.3.5.p.2"><p>Their are two path request parameter. </p><dl><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd><dt>Entity Id</dt><dd style="margin-left: 4.2em">Second path parameter is entity unique id.</dd></dl></div><div id="rfc.figure.u.30"><p>Non-normative example of a federation leave request</p><pre>DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.31"><p>Non-normative example of a federation leave success response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.figure.u.32"><p>Non-normative example of a federation leave fail response when federation not found:</p><pre>HTTP/1.1 404 OK
+{
+  "error": [
+    "Federation doesn't exist"
+  ]
+}
+</pre></div><div id="rfc.figure.u.33"><p>Non-normative example of a federation leave fail response when entity doesn't exist in federates:</p><pre>HTTP/1.1 404 OK
+{
+  "error": [
+    "Entity doesn't exist in Federation"
+  ]
+}
+</pre></div><div id="rfc.figure.u.34"><p>Non-normative example of a federation leave fail response when passed any invalid id:</p><pre>HTTP/1.1 404 OK
+{
+  "error": [
+    "Invalid Federation Id"
+  ]
+}
+</pre></div></div><div id="link-federation-entity"><h3 id="rfc.section.3.6"><a href="#rfc.section.3.6">3.6</a> <a href="#link-federation-entity">Link entity to federation</a></h3><div id="rfc.section.3.6.p.1"><p>This is POST API for add services to this federation. It add entity reference to federates of federation.</p></div><div id="rfc.section.3.6.p.2"><p>Their are two path request parameter. </p><dl><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd><dt>Entity Id</dt><dd style="margin-left: 4.2em">Second path parameter is entity unique id.</dd></dl></div><div id="rfc.figure.u.35"><p>Non-normative example of a federation link to entity request</p><pre>POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.36"><p>Non-normative example of a federation link to entity response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.section.3.6.p.3"><p>You can get error response as per like <a href="#leave-federation" title="Leave Federation">Section 3.5</a> </p></div></div><div id="add-new-service"><h3 id="rfc.section.3.7"><a href="#rfc.section.3.7">3.7</a> <a href="#add-new-service">Add new service to federation</a></h3><div id="rfc.section.3.7.p.1"><p>This is POST API for add a new service into federation. It will added new service(entity) to federation and linked this newly added service(entity) to federation.</p></div><div id="rfc.section.3.7.p.2"><p>Their are two request parameter. </p><dl><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd><dt>Entity</dt><dd style="margin-left: 4.2em">This is full requested body of entity. for possible parameter refer <a href="#create-entity" title="Create Entity">Section 5.1</a> </dd></dl></div><div id="rfc.figure.u.37"><p>Non-normative example of a federation request to add new service:</p><pre>POST /otto/federation/5909b4218489131c19abfa29 HTTP/1.1
+{
+	"name": "entity 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "http://otto-test.gluu.org",
+	"registeredBy": "https://localhost:5053",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"metadata": "58f5da4957d53d2ffbbb31e0"
 }
 
-                    </pre></div><div id="rfc.figure.u.32"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.38"><p>Non-normative example of a federation response from add new service:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@id": "http://otto-test.gluu.org/otto/federations/5909b4218489131c19abfa29"
 }
 
-                    </pre></div></div><div id="link-participant-member-federation"><h3 id="rfc.section.3.8"><a href="#rfc.section.3.8">3.8</a> <a href="#link-participant-member-federation">Link participant(member) to federation</a></h3><div id="rfc.section.3.8.p.1"><p>This endpoint, Link participant as a member to federation</p></div><div id="rfc.figure.u.33"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.34"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-participant-sponsor-federation"><h3 id="rfc.section.3.9"><a href="#rfc.section.3.9">3.9</a> <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></h3><div id="rfc.section.3.9.p.1"><p>This endpoint, Link participant as a sponsor to federation</p></div><div id="rfc.figure.u.35"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.36"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div></div><hr class="noprint"><div id="participant-endpoint"><h2 id="rfc.section.4" class="np"><a href="#rfc.section.4">4.</a> <a href="#participant-endpoint">Participant Endpoint</a></h2><div id="rfc.section.4.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of information about an organization so it can be associated with a Federation.</p></div><div id="fetch-participant"><h3 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1</a> <a href="#fetch-participant">Fetch Participant</a></h3><div id="rfc.figure.u.37"><p>Non-normative example of a federation request</p><pre>GET /otto/participant HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.38"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div></div><div id="link-participant-member-federation"><h3 id="rfc.section.3.8"><a href="#rfc.section.3.8">3.8</a> <a href="#link-participant-member-federation">Link participant(member) to federation</a></h3><div id="rfc.section.3.8.p.1"><p>This is POST API for link participant as a member of federation. It added participant reference to member of federation.</p></div><div id="rfc.section.3.8.p.2"><p>Their are two request parameter. </p><dl><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd><dt>Participant Id</dt><dd style="margin-left: 4.2em">Second path parameter is participant unique id.</dd></dl></div><div id="rfc.figure.u.39"><p>Non-normative example of a link participant to federation request:</p><pre>POST /otto/federations/5909b4218489131c19abfa29/participant/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.40"><p>Non-normative example of a link participant to federation federation response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.section.3.8.p.3"><p>You can get error response as per like <a href="#leave-federation" title="Leave Federation">Section 3.5</a> </p></div></div><div id="link-participant-sponsor-federation"><h3 id="rfc.section.3.9"><a href="#rfc.section.3.9">3.9</a> <a href="#link-participant-sponsor-federation">Link participant(sponsor) to federation</a></h3><div id="rfc.section.3.9.p.1"><p>This is POST API for link participant as a sponsor of federation. It added participant reference to sponsor of federation.</p></div><div id="rfc.section.3.9.p.2"><p>Their are two request parameter. </p><dl><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd><dt>Participant Id</dt><dd style="margin-left: 4.2em">Second path parameter is participant unique id.</dd></dl></div><div id="rfc.figure.u.41"><p>Non-normative example of a link participant as a sponsor of federation request:</p><pre>POST /otto/federations/5909b4218489131c19abfa29/sponsor/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.42"><p>Non-normative example of a link participant as a sponsor of federation response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.section.3.9.p.3"><p>You can get error response as per like <a href="#leave-federation" title="Leave Federation">Section 3.5</a> </p></div></div></div><hr class="noprint"><div id="participant-endpoint"><h2 id="rfc.section.4" class="np"><a href="#rfc.section.4">4.</a> <a href="#participant-endpoint">Participant Endpoint</a></h2><div id="rfc.section.4.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of information about an organization so it can be associated with a Federation.</p></div><div id="create-participant"><h3 id="rfc.section.4.1"><a href="#rfc.section.4.1">4.1</a> <a href="#create-participant">Create Participant</a></h3><div id="rfc.section.4.1.p.1"><p>This is POST API to create participant. you need to passed the required parameter to add the new participant. If you try to add participant with same name which is already exist then it return response with error key with message is "Participant already exist with same name".</p></div><div id="rfc.figure.u.43"><p>Their are several properties which used for participant. <div id="rfc.section.4.1.p.1"><div id="rfc.table.2"><div id="table_participant"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 2: Participant</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>name</strong></td><td class="left">REQUIRED</td><td class="left">A human friendly name for the Participant</td></tr><tr><td class="left">url</td><td class="left">OPTIONAL</td><td class="left">The public website for the Participant</td></tr><tr><td class="left">description</td><td class="left">OPTIONAL</td><td class="left">Optional information about the Participant</td></tr><tr><td class="left">memberOf</td><td class="left">OPTIONAL</td><td class="left">It is Federation or array of Federation, A federation to which this Participant is a member</td></tr><tr><td class="left">operates</td><td class="left">OPTIONAL</td><td class="left">It is entity, A service operated by the Participant</td></tr><tr><td class="left"><strong>registeredBy</strong></td><td class="left">REQUIRED</td><td class="left">It is registration authority, where the Participant is registered</td></tr><tr><td class="left">technicalContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person, Person(s) responsible for registering and maintaining the policies and technical data related to the Federation</td></tr><tr><td class="left">executiveContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person, Person responsible for all decisions and delegations of authority for the Participant</td></tr><tr><td class="left">securityContact</td><td class="left">OPTIONAL</td><td class="left">It is Person or array of Person, Person(s) to contact in the event of an urgent security issue</td></tr><tr><td class="left">trustMarkAsserted</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of Trustmark or URL, Link to TrustMarks the Participant claims</td></tr><tr><td class="left">badgeSupported</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of BadgeClass or IRI, What Badges the Participant issues</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a participant request</p><pre>POST /otto/entity HTTP/1.1
+{
+	"name": "participant1",
+	"url": "http://otto-test.gluu.org/otto/participant",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
+	"description": "participant participant",
+	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
+	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
+	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}]
+}
+
+                    </pre></div><div id="rfc.figure.u.44"><p>Non-normative example of add a participant response:</p><p>In response it return with "@id" key, This is Unique IRI for the newly added participant</p><pre>HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/participant/5909b4218489131c19abfa29"
+}
+
+                    </pre></div></div><div id="fetch-participant"><h3 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2</a> <a href="#fetch-participant">Fetch Participant</a></h3><div id="rfc.figure.u.45"><p>Non-normative example of a get all participant request</p><pre>GET /otto/participant HTTP/1.1 
+                    </pre></div><div id="rfc.figure.u.46"><p>Non-normative example of a get all participant response:</p><p><dl><dt>participant</dt><dd style="margin-left: 4.2em">List of participant</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/participant",
   "participant": [
     "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.39"><p>Non-normative example of a federation request</p><pre>GET /otto/participant?depth=participant HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.40"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.47"><p>Non-normative example of a participant request with depth parameter:</p><pre>GET /otto/participant?depth=participant HTTP/1.1 </pre></div><div id="rfc.figure.u.48"><p>Non-normative example of a participant response from depth parameter. for participant response description see the <a href="#create-participant" title="Create Participant">Section 4.1</a></p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/participant",
   "participant": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
@@ -971,11 +1024,13 @@ Content-Type: application/json
       ],
       "trustMarkAsserted": "http://pa.org"
     }
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.41"><p>Non-normative example of a federation request</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.42"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.49"><p>Non-normative example of a fetch specific participant information by passing participant unique id:</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5 HTTP/1.1 </pre></div><div id="rfc.figure.u.50"><p>Non-normative example of a participant response from specific participant. for participant response description see the <a href="#create-participant" title="Create Participant">Section 4.1</a></p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -1013,8 +1068,7 @@ Content-Type: application/json
   "trustMarkAsserted": "http://pa.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.43"><p>Non-normative example of a federation request</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.44"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.51"><p>Non-normative example of a participant request with specified id and depth parameter:</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf HTTP/1.1 </pre></div><div id="rfc.figure.u.52"><p>Non-normative example of a participant response from with specified id and depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
@@ -1114,8 +1168,7 @@ Content-Type: application/json
   "trustMarkAsserted": "http://pa.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.45"><p>Non-normative example of a federation request</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf,operates HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.46"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.53"><p>Non-normative example of a participant request with multiple depth parameter:</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?depth=memberOf,operates HTTP/1.1 </pre></div><div id="rfc.figure.u.54"><p>Non-normative example of a participant response from multiple depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
@@ -1213,9 +1266,7 @@ Content-Type: application/json
   "trustMarkAsserted": "http://pa.org"
 }
 
-                    </pre></div><div id="rfc.figure.u.47"><p>Non-normative example of a federation request</p><pre>
-                        GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.48"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.55"><p>Non-normative example of a participant request with filter parameter:</p><pre>GET /otto/participant/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 </pre></div><div id="rfc.figure.u.56"><p>Non-normative example of a participant response from filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "name": [
@@ -1223,9 +1274,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.49"><p>Non-normative example of a federation request</p><pre>
-                        GET /otto/participant/58f720e1a10d8e1012e76ed5?filter=.name,.securityContact HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.50"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.57"><p>Non-normative example of a participant request with multiple filter parameter:</p><pre>GET /otto/participant/58f720e1a10d8e1012e76ed5?filter=.name,.securityContact HTTP/1.1 </pre></div><div id="rfc.figure.u.58"><p>Non-normative example of a participant response from multiple filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "name": [
@@ -1239,21 +1288,22 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.51"><p>Non-normative example of a federation request</p><pre>GET /otto/participant?pageno=1&amp;pagelength=5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.52"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.59"><p>Non-normative example of a participant request using pageno and pagelength parameter:</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/participant?pageno=1&amp;pagelength=5 HTTP/1.1 </pre></div><div id="rfc.figure.u.60"><p>Non-normative example of a participant response of page no and page length parameter:</p><p><dl><dt>participant</dt><dd style="margin-left: 4.2em">Contain list of participant array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@context": "http://otto-test.gluu.org/otto/participant",
-  "federations": [
-    "http://otto-test.gluu.org/otto/participant/59157847d1285b2273ef83d2",
-    "http://otto-test.gluu.org/otto/participant/5915784bd1285b2273ef83d3",
-    "http://otto-test.gluu.org/otto/participant/59157850d1285b2273ef83d4",
-    "http://otto-test.gluu.org/otto/participant/59157854d1285b2273ef83d5",
-    "http://otto-test.gluu.org/otto/participant/59157857d1285b2273ef83d6"
-  ]
+  "participant": [
+    "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed6",
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed7",
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed8"
+  ],
+  "totalResults": 11,
+  "itemsPerPage": 5,
+  "startIndex": 1
 }
 
-                    </pre></div></div><div id="create-participant"><h3 id="rfc.section.4.2"><a href="#rfc.section.4.2">4.2</a> <a href="#create-participant">Create Participant</a></h3><div id="rfc.figure.u.53"><p>Non-normative example of a federation request</p><pre>POST /otto/participant HTTP/1.1
+                    </pre></div></div><div id="update-participant"><h3 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3</a> <a href="#update-participant">Update Participant</a></h3><div id="rfc.section.4.3.p.1"><p>This is PUT API to update participant. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter. The possible parameter you can passed for update, refer <a href="#create-participant" title="Create Participant">Section 4.1</a> </p></div><div id="rfc.figure.u.61"><p>Non-normative example of a update participant request</p><pre>PUT /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "participant1",
 	"url": "http://otto-test.gluu.org/otto/participant",
@@ -1264,46 +1314,37 @@ Content-Type: application/json
 	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}]
 }
 
-                    </pre></div><div id="rfc.figure.u.54"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
-Content-Type: application/json
+                    </pre></div><div id="rfc.figure.u.62"><p>Non-normative example of a update participant response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="delete-participant"><h3 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4</a> <a href="#delete-participant">Delete Participant</a></h3><div id="rfc.figure.u.63"><p>Non-normative example of a delete participant request</p><pre>DELETE /otto/participant/5909b4218489131c19abfa29 HTTP/1.1 </pre></div><div id="rfc.figure.u.64"><p>Non-normative example of a delete participant response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="link-participant-memberOf-federation"><h3 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5</a> <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></h3><div id="rfc.section.4.5.p.1"><p>This is POST API for link participant as a member of federation. It added federation reference to memberOf in participant.</p></div><div id="rfc.section.4.5.p.2"><p>Their are two request parameter. </p><dl><dt>Participant Id</dt><dd style="margin-left: 4.2em">Second path parameter is participant unique id.</dd><dt>Federation Id</dt><dd style="margin-left: 4.2em">first path parameter is federation unique id.</dd></dl></div><div id="rfc.figure.u.65"><p>Non-normative example of a participant request</p><pre>POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.66"><p>Non-normative example of a participant response:</p><pre>HTTP/1.1 200 OK </pre></div><div id="rfc.section.4.5.p.3"><p>You can get error response as per like <a href="#leave-federation" title="Leave Federation">Section 3.5</a> </p></div></div><div id="link-entity-service-participant"><h3 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6</a> <a href="#link-entity-service-participant">Link entity(service) to participant</a></h3><div id="rfc.section.4.6.p.1"><p>This is POST API for link entity as a service of participant. It is a service operated by the Participant.</p></div><div id="rfc.section.4.6.p.2"><p>Their are two request parameter. </p><dl><dt>Participant Id</dt><dd style="margin-left: 4.2em">Second path parameter is participant unique id.</dd><dt>Entity Id</dt><dd style="margin-left: 4.2em">first path parameter is entity unique id.</dd></dl></div><div id="rfc.figure.u.67"><p>Non-normative example of a link entity to participant request</p><pre>POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.68"><p>Non-normative example of a link entity to participant response:</p><pre>HTTP/1.1 200 OK </pre></div></div></div><hr class="noprint"><div id="entity-endpoint"><h2 id="rfc.section.5" class="np"><a href="#rfc.section.5">5.</a> <a href="#entity-endpoint">Entity Endpoint</a></h2><div id="rfc.section.5.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="create-entity"><h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a> <a href="#create-entity">Create Entity</a></h3><div id="rfc.section.5.1.p.1"><p>This is POST API to create entity. you need to passed the required parameter to add the new entity. If you try to add entity with same name which is already exist then it return response with error key with message is "entity already exist with same name".</p></div><div id="rfc.figure.u.69"><p>Their are several properties which used for entity. <div id="rfc.section.5.1.p.1"><div id="rfc.table.3"><div id="table_entity"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 3: Entity</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>name</strong></td><td class="left">REQUIRED</td><td class="left">A human friendly name for the Entity</td></tr><tr><td class="left">operatedBy</td><td class="left">OPTIONAL</td><td class="left">It is Federation or Participant, The organization that is responsible for this Entity</td></tr><tr><td class="left">url</td><td class="left">OPTIONAL</td><td class="left">The public, human readible website for the Entity</td></tr><tr><td class="left">description</td><td class="left">OPTIONAL</td><td class="left">Optional information about the Entity</td></tr><tr><td class="left"><strong>registeredBy</strong></td><td class="left">REQUIRED</td><td class="left">The RA which registered this entity</td></tr><tr><td class="left">federatedBy</td><td class="left">OPTIONAL</td><td class="left">It is Federation or array of Federation, The federation to which this entity is affiliated</td></tr><tr><td class="left">metadata</td><td class="left">OPTIONAL</td><td class="left">The metadata for this Entity</td></tr><tr><td class="left">category</td><td class="left">OPTIONAL</td><td class="left">Used for assignment of standard Category defined in extension</td></tr><tr><td class="left">supports</td><td class="left">OPTIONAL</td><td class="left">It is Schema or array of Schema, What schema is supported by this Entity</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a entity request</p><pre>POST /otto/entity HTTP/1.1
 {
-  "@id": "http://otto-test.gluu.org/otto/participant/5909b4218489131c19abfa29"
-}
-
-                    </pre></div></div><div id="update-participant"><h3 id="rfc.section.4.3"><a href="#rfc.section.4.3">4.3</a> <a href="#update-participant">Update Participant</a></h3><div id="rfc.figure.u.55"><p>Non-normative example of a federation request</p><pre>PUT /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
-{
-	"name": "participant1",
-	"url": "http://otto-test.gluu.org/otto/participant",
+	"name": "entity 1",
+	"url": "http://otto-test.gluu.org/otto/entity",
+	"registeredBy": "http://otto-test.gluu.org",
+	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
-	"description": "participant participant",
-	"securityContact": [{"name":"Security Person1", "contactNo":"+485647556566"}],
-	"executiveContact": [{"name":"Executive Person1", "contactNo":"+485647556566"}],
-	"technicalContact": [{"name":"Technical Person1", "contactNo":"+485647556566"}]
+	"metadata": "58f5da4957d53d2ffbbb31e0",
+	"category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
 }
 
-                    </pre></div><div id="rfc.figure.u.56"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="delete-participant"><h3 id="rfc.section.4.4"><a href="#rfc.section.4.4">4.4</a> <a href="#delete-participant">Delete Participant</a></h3><div id="rfc.figure.u.57"><p>Non-normative example of a federation request</p><pre>DELETE /otto/participant/5909b4218489131c19abfa29 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.58"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-participant-memberOf-federation"><h3 id="rfc.section.4.5"><a href="#rfc.section.4.5">4.5</a> <a href="#link-participant-memberOf-federation">Link participant(member) of federation</a></h3><div id="rfc.section.4.5.p.1"><p>This endpoint, Link participant as a member of federation</p></div><div id="rfc.figure.u.59"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/participant/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.60"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-entity-service-participant"><h3 id="rfc.section.4.6"><a href="#rfc.section.4.6">4.6</a> <a href="#link-entity-service-participant">Link entity(service) to participant</a></h3><div id="rfc.section.4.6.p.1"><p>This endpoint, Link entity as a service to participant</p></div><div id="rfc.figure.u.61"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.62"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div></div><hr class="noprint"><div id="entity-endpoint"><h2 id="rfc.section.5" class="np"><a href="#rfc.section.5">5.</a> <a href="#entity-endpoint">Entity Endpoint</a></h2><div id="rfc.section.5.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-entity"><h3 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1</a> <a href="#fetch-entity">Fetch Entity</a></h3><div id="rfc.figure.u.63"><p>Non-normative example of a federation request</p><pre>GET /otto/entity HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.64"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.70"><p>Non-normative example of add a entity response:</p><p>In response it return with "@id" key, It is Unique IRI for the newly added entity</p><pre>HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/entity/5909b4218489131c19abfa29"
+}
+
+                    </pre></div></div><div id="fetch-entity"><h3 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a> <a href="#fetch-entity">Fetch Entity</a></h3><div id="rfc.figure.u.71"><p>Non-normative example of a get all entity request</p><pre>GET /otto/entity HTTP/1.1 </pre></div><div id="rfc.figure.u.72"><p>Non-normative example of a get all entity response:</p><p><dl><dt>entity</dt><dd style="margin-left: 4.2em">List of entity</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/entity",
   "entity": [
     "http://otto-test.gluu.org/otto/entity/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed5"
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.65"><p>Non-normative example of a federation request</p><pre>GET /otto/entity?depth=entity HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.66"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.73"><p>Non-normative example of a entity with depth parameter request</p><pre>GET /otto/entity?depth=entity HTTP/1.1 </pre></div><div id="rfc.figure.u.74"><p>Non-normative example of a entity response from depth parameter. for entity response description see the <a href="#create-entity" title="Create Entity">Section 5.1</a></p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -1324,11 +1365,13 @@ Content-Type: application/json
         "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
       ]
     }
-  ]
+  ],
+  "totalResults": 1,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.67"><p>Non-normative example of a federation request</p><pre>GET /otto/entity/58f720e1a10d8e1012e76ed5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.68"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.75"><p>Non-normative example of a fetch specific entity request by passing unique entity id:</p><pre>GET /otto/entity/58f720e1a10d8e1012e76ed5 HTTP/1.1 </pre></div><div id="rfc.figure.u.76"><p>Non-normative example of a entity response from specified entity unique id. for entity response description see the <a href="#create-entity" title="Create Entity">Section 5.1</a></p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -1347,8 +1390,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.69"><p>Non-normative example of a federation request</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?depth=registeredBy HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.70"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.77"><p>Non-normative example of a entity request with specified entity and depth parameter:</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?depth=registeredBy HTTP/1.1 </pre></div><div id="rfc.figure.u.78"><p>Non-normative example of a entity response from specified entity and depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
@@ -1376,8 +1418,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.71"><p>Non-normative example of a federation request</p><pre>GET /otto/entity/58f720e1a10d8e1012e76ed5?depth=depth=federatedBy,supports HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.72"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.79"><p>Non-normative example of a entity request with multiple depth parameter:</p><pre>GET /otto/entity/58f720e1a10d8e1012e76ed5?depth=depth=federatedBy,supports HTTP/1.1 </pre></div><div id="rfc.figure.u.80"><p>Non-normative example of a entity response from multiple depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
@@ -1456,17 +1497,14 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.73"><p>Non-normative example of a federation request</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.74"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.81"><p>Non-normative example of a entity request with filter parameter:</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name HTTP/1.1 </pre></div><div id="rfc.figure.u.82"><p>Non-normative example of a entity response from filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "name": [
     "entity 1"
   ]
 }
-
-                    </pre></div><div id="rfc.figure.u.75"><p>Non-normative example of a federation request</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name,.supports HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.76"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+</pre></div><div id="rfc.figure.u.83"><p>Non-normative example of a entity request with multiple filter parameter:</p><pre>GET /otto/entity/58f7218ca10d8e1012e76ed6?filter=.name,.supports HTTP/1.1 </pre></div><div id="rfc.figure.u.84"><p>Non-normative example of a federation response from multiple filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "name": [
@@ -1477,21 +1515,22 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.77"><p>Non-normative example of a federation request</p><pre>GET /otto/entity?pageno=1&amp;pagelength=5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.78"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.85"><p>Non-normative example of a entity request using pageno and pagelength parameter:</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/entity?pageno=1&amp;pagelength=5 HTTP/1.1 
+                    </pre></div><div id="rfc.figure.u.86"><p>Non-normative example of a entity response of page no and page length parameter:</p><p><dl><dt>entity</dt><dd style="margin-left: 4.2em">Contain list of entity array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@context": "http://otto-test.gluu.org/otto/entity",
-  "federations": [
-    "http://otto-test.gluu.org/otto/entity/59157847d1285b2273ef83d2",
-    "http://otto-test.gluu.org/otto/entity/5915784bd1285b2273ef83d3",
-    "http://otto-test.gluu.org/otto/entity/59157850d1285b2273ef83d4",
-    "http://otto-test.gluu.org/otto/entity/59157854d1285b2273ef83d5",
-    "http://otto-test.gluu.org/otto/entity/59157857d1285b2273ef83d6"
-  ]
+  "entity": [
+    "http://otto-test.gluu.org/otto/entity/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed5",
+    "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed6",
+    "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed7",
+    "http://otto-test.gluu.org/otto/entity/58f720e1a10d8e1012e76ed8"
+  ],
+  "totalResults": 11,
+  "itemsPerPage": 5,
+  "startIndex": 1
 }
-
-                    </pre></div></div><div id="create-entity"><h3 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2</a> <a href="#create-entity">Create Entity</a></h3><div id="rfc.figure.u.79"><p>Non-normative example of a federation request</p><pre>POST /otto/entity HTTP/1.1
+</pre></div></div><div id="update-entity"><h3 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3</a> <a href="#update-entity">Update entity</a></h3><div id="rfc.section.5.3.p.1"><p>This is PUT API to update entity. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter. The possible parameter you can passed for update, refer <a href="#create-entity" title="Create Entity">Section 5.1</a> </p></div><div id="rfc.figure.u.87"><p>Non-normative example of a update entity request</p><pre>PUT /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "entity 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
@@ -1502,47 +1541,37 @@ Content-Type: application/json
 	"category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
 }
 
-                    </pre></div><div id="rfc.figure.u.80"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.88"><p>Non-normative example of a update entity response:</p><pre>HTTP/1.1 200 OK 
+                    </pre></div></div><div id="delete-entity"><h3 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4</a> <a href="#delete-entity">Delete Entity</a></h3><div id="rfc.section.5.4.p.1"><p>This is DELETE API to delete entity. you need to pass schema unique id for delete specific entity.</p></div><div id="rfc.figure.u.89"><p>Non-normative example of a entity request</p><pre>DELETE /otto/entity/5909b4218489131c19abfa29 HTTP/1.1 </pre></div><div id="rfc.figure.u.90"><p>Non-normative example of a entity response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="link-entity-federation"><h3 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5</a> <a href="#link-entity-federation">Link entity with federation</a></h3><div id="rfc.section.5.5.p.1"><p>This is POST API for link entity to federation. The federation to which this entity is affiliated.</p></div><div id="rfc.section.5.5.p.2"><p>Their are two request parameter. </p><dl><dt>Entity Id</dt><dd style="margin-left: 4.2em">first path parameter is entity unique id.</dd><dt>Federation Id</dt><dd style="margin-left: 4.2em">Second path parameter is Federation unique id.</dd></dl></div><div id="rfc.figure.u.91"><p>Non-normative example of a link entity with federation request:</p><pre>POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.92"><p>Non-normative example of a link entity with federation response:</p><pre>HTTP/1.1 200 OK </pre></div></div></div><hr class="noprint"><div id="metadata-endpoint"><h2 id="rfc.section.6" class="np"><a href="#rfc.section.6">6.</a> <a href="#metadata-endpoint">Metadata Endpoint</a></h2><div id="rfc.section.6.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="create-metadata"><h3 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1</a> <a href="#create-metadata">Create Metadata</a></h3><div id="rfc.section.6.1.p.1"><p>This is POST API to create metadata. you need to passed the required parameter to add the new metadata.</p></div><div id="rfc.figure.u.93"><p>Their are several properties which used for metadata. <div id="rfc.section.6.1.p.1"><div id="rfc.table.4"><div id="table_metadata"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 4: Metadata</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>category</strong></td><td class="left">REQUIRED</td><td class="left">It is Category. Enables extensions to define standard categories for searching</td></tr><tr><td class="left">metadataFormat</td><td class="left">OPTIONAL</td><td class="left">The serialization type of the metadata</td></tr><tr><td class="left">expiration</td><td class="left">OPTIONAL</td><td class="left">The date at which this metadata is no longer valid</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a metadata request</p><pre>POST /otto/entity HTTP/1.1
+{
+	"name": "BASIC",
+	"descrption": "BASIC............",
+	"category": "http://otto-test.gluu.org/schema_category/scope.jsonld"
+}
+
+                    </pre></div><div id="rfc.figure.u.94"><p>Non-normative example of add a metadata response:</p><p>In response it return with "@id" key, It is Unique IRI for the newly added metadata</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@id": "http://otto-test.gluu.org/otto/entity/5909b4218489131c19abfa29"
+  "@id": "http://otto-test.gluu.org/otto/metadata/5909b4218489131c19abfa29"
 }
 
-                    </pre></div></div><div id="update-entity"><h3 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3</a> <a href="#update-entity">Update Entity</a></h3><div id="rfc.figure.u.81"><p>Non-normative example of a federation request</p><pre>PUT /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
-{
-	"name": "entity 1",
-	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "http://otto-test.gluu.org",
-	"description": "entity entity",
-	"registeredBy": "58f5da4957d53d2ffbbb31df",
-	"metadata": "58f5da4957d53d2ffbbb31e0",
-	"category": "https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim"
-}
-
-                    </pre></div><div id="rfc.figure.u.82"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="delete-entity"><h3 id="rfc.section.5.4"><a href="#rfc.section.5.4">5.4</a> <a href="#delete-entity">Delete Entity</a></h3><div id="rfc.figure.u.83"><p>Non-normative example of a federation request</p><pre>DELETE /otto/entity/5909b4218489131c19abfa29 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.84"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-entity-federation"><h3 id="rfc.section.5.5"><a href="#rfc.section.5.5">5.5</a> <a href="#link-entity-federation">Link entity with federation</a></h3><div id="rfc.section.5.5.p.1"><p>This endpoint, Link entity with existing federation</p></div><div id="rfc.figure.u.85"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/entity/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.86"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div></div><hr class="noprint"><div id="metadata-endpoint"><h2 id="rfc.section.6" class="np"><a href="#rfc.section.6">6.</a> <a href="#metadata-endpoint">Metadata Endpoint</a></h2><div id="rfc.section.6.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-metadata"><h3 id="rfc.section.6.1"><a href="#rfc.section.6.1">6.1</a> <a href="#fetch-metadata">Fetch Metadata</a></h3><div id="rfc.figure.u.87"><p>Non-normative example of a federation request</p><pre>GET /otto/metadata HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.88"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div></div><div id="fetch-metadata"><h3 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a> <a href="#fetch-metadata">Fetch Metadata</a></h3><div id="rfc.figure.u.95"><p>Non-normative example of a get all metadata request</p><pre>GET /otto/metadata HTTP/1.1 </pre></div><div id="rfc.figure.u.96"><p>Non-normative example of a get all metadata response:</p><p><dl><dt>metadata</dt><dd style="margin-left: 4.2em">List of metadata</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/metadata",
-  "participant": [
+  "metadata": [
     "http://otto-test.gluu.org/otto/metadata/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed5"
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.89"><p>Non-normative example of a federation request</p><pre>GET /otto/metadata?depth=metadata HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.90"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.97"><p>Non-normative example of a metadata request with depth parameter:</p><pre>GET /otto/metadata?depth=metadata HTTP/1.1 </pre></div><div id="rfc.figure.u.98"><p>Non-normative example of a metadata response from depth parameter:</p><p><dl><dt>metadata</dt><dd style="margin-left: 4.2em">List of metadata</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/metadata",
   "metadata": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
@@ -1550,11 +1579,13 @@ Content-Type: application/json
       "metadataFormat": "Metadata Format",
       "expiration": "2017-04-18T09:20:09.138Z"
     }
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.91"><p>Non-normative example of a federation request</p><pre>GET /otto/metadata/58f720e1a10d8e1012e76ed5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.92"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.99"><p>Non-normative example of a metadata request to fetch specific metadata:</p><pre>GET /otto/metadata/58f720e1a10d8e1012e76ed5 HTTP/1.1 </pre></div><div id="rfc.figure.u.100"><p>Non-normative example of a metadata response from specified metadata:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#metadata",
@@ -1563,8 +1594,8 @@ Content-Type: application/json
   "expiration": "2017-04-18T09:20:09.138Z"
 }
 
-                    </pre></div><div id="rfc.figure.u.93"><p>Non-normative example of a federation request</p><pre>GET /otto/metadata/58f5da4957d53d2ffbbb31e0?filter=.metadataFormat HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.94"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.101"><p>Non-normative example of a metadata request with filter parameter:</p><pre>GET /otto/metadata/58f5da4957d53d2ffbbb31e0?filter=.metadataFormat HTTP/1.1 
+                    </pre></div><div id="rfc.figure.u.102"><p>Non-normative example of a metadata response from filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "metadataFormat": [
@@ -1572,56 +1603,61 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.95"><p>Non-normative example of a federation request</p><pre>GET /otto/metadata?pageno=1&amp;pagelength=5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.96"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.103"><p>Non-normative example of a metadata request using pageno and pagelength parameter:</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/metadata?pageno=1&amp;pagelength=5 HTTP/1.1 </pre></div><div id="rfc.figure.u.104"><p>Non-normative example of a metadata response of page no and page length parameter:</p><p><dl><dt>entity</dt><dd style="margin-left: 4.2em">Contain list of metadata array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@context": "http://otto-test.gluu.org/otto/metadata",
-  "federations": [
-    "http://otto-test.gluu.org/otto/metadata/59157847d1285b2273ef83d2",
-    "http://otto-test.gluu.org/otto/metadata/5915784bd1285b2273ef83d3",
-    "http://otto-test.gluu.org/otto/metadata/59157850d1285b2273ef83d4",
-    "http://otto-test.gluu.org/otto/metadata/59157854d1285b2273ef83d5",
-    "http://otto-test.gluu.org/otto/metadata/59157857d1285b2273ef83d6"
-  ]
+  "metadata": [
+    "http://otto-test.gluu.org/otto/metadata/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed5",
+    "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed6",
+    "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed7",
+    "http://otto-test.gluu.org/otto/metadata/58f720e1a10d8e1012e76ed8"
+  ],
+  "totalResults": 11,
+  "itemsPerPage": 5,
+  "startIndex": 1
 }
 
-                    </pre></div></div><div id="create-metadata"><h3 id="rfc.section.6.2"><a href="#rfc.section.6.2">6.2</a> <a href="#create-metadata">Create Metadata</a></h3><div id="rfc.figure.u.97"><p>Non-normative example of a federation request</p><pre>POST /otto/metadata HTTP/1.1
-{
-	"metadataFormat": "metadata format ....",
-	"expiration": "10/10/2017"
-}
-
-                    </pre></div><div id="rfc.figure.u.98"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "@id": "http://otto-test.gluu.org/otto/metadata/5909b4218489131c19abfa29"
-}
-
-                    </pre></div></div><div id="update-metadata"><h3 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3</a> <a href="#update-metadata">Update Metadata</a></h3><div id="rfc.figure.u.99"><p>Non-normative example of a federation request</p><pre>PUT /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1
+                    </pre></div></div><div id="update-metadata"><h3 id="rfc.section.6.3"><a href="#rfc.section.6.3">6.3</a> <a href="#update-metadata">Update Metadata</a></h3><div id="rfc.section.6.3.p.1"><p>This is PUT API to update metadata. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter. The possible parameter you can passed for update, refer <a href="#create-metadata" title="Create Metadata">Section 6.1</a> </p></div><div id="rfc.figure.u.105"><p>Non-normative example of a metadata update request</p><pre>PUT /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1
 
 {
 	"metadataFormat": "metadata format ....",
 	"expiration": "10/10/2017"
 }
 
-                    </pre></div><div id="rfc.figure.u.100"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="delete-metadata"><h3 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4</a> <a href="#delete-metadata">Delete Metadata</a></h3><div id="rfc.figure.u.101"><p>Non-normative example of a federation request</p><pre>DELETE /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.102"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div></div><hr class="noprint"><div id="schema-endpoint"><h2 id="rfc.section.7" class="np"><a href="#rfc.section.7">7.</a> <a href="#schema-endpoint">Schema Endpoint</a></h2><div id="rfc.section.7.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="fetch-schema"><h3 id="rfc.section.7.1"><a href="#rfc.section.7.1">7.1</a> <a href="#fetch-schema">Fetch Schema</a></h3><div id="rfc.figure.u.103"><p>Non-normative example of a federation request</p><pre>GET /otto/schema HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.104"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.106"><p>Non-normative example of a metadata update response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="delete-metadata"><h3 id="rfc.section.6.4"><a href="#rfc.section.6.4">6.4</a> <a href="#delete-metadata">Delete Metadata</a></h3><div id="rfc.figure.u.107"><p>Non-normative example of a metadata request</p><pre>DELETE /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1 </pre></div><div id="rfc.figure.u.108"><p>Non-normative example of a metadata response:</p><pre>HTTP/1.1 200 OK </pre></div></div></div><hr class="noprint"><div id="schema-endpoint"><h2 id="rfc.section.7" class="np"><a href="#rfc.section.7">7.</a> <a href="#schema-endpoint">Schema Endpoint</a></h2><div id="rfc.section.7.p.1"><p>This endpoint, hosted by the Registration Authority, enables the registration and management of digital services at the federation.</p></div><div id="create-schema"><h3 id="rfc.section.7.1"><a href="#rfc.section.7.1">7.1</a> <a href="#create-schema">Create schema</a></h3><div id="rfc.section.7.1.p.1"><p>This is POST API to create schema. you need to passed the required parameter to add the new schema.</p></div><div id="rfc.figure.u.109"><p>Their are several properties which used for schema. <div id="rfc.section.7.1.p.1"><div id="rfc.table.5"><div id="table_schema"></div><table class="tt full tcenter" cellpadding="3" cellspacing="0"><caption>Table 5: Schema</caption><thead><tr><th class="left">Property</th><th class="left">Value</th><th class="left">Description</th></tr></thead><tbody><tr><td class="left"><strong>name</strong></td><td class="left">REQUIRED</td><td class="left">Identifier for this schema item</td></tr><tr><td class="left"><strong>category</strong></td><td class="left">REQUIRED</td><td class="left">Extensions defined in extensions like "attribute" or "scope"</td></tr><tr><td class="left">description</td><td class="left">OPTIONAL</td><td class="left">Human understandible explanation of this term.</td></tr><tr><td class="left"><strong>required</strong></td><td class="left">REQUIRED</td><td class="left">Whether this schema element is required</td></tr><tr><td class="left">url</td><td class="left">URL</td><td class="left">URL with more information about this schema</td></tr><tr><td class="left">supportedBy</td><td class="left">OPTIONAL</td><td class="left">It is instance or array of Federation or Entity. Which federations support this schema</td></tr><tr><td class="left">sameAs</td><td class="left">OPTIONAL</td><td class="left">It is URL or array of URL. Link to another similiar schema class</td></tr></tbody></table></div></div> </p><p>Non-normative example of add a schema request</p><pre>POST /otto/schema HTTP/1.1
+{
+   "name":"given_name",
+   "category":"https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
+   "description":"Person's first name",
+   "required":false,
+   "url":"https://en.wikipedia.org/wiki/Given_name",
+   "sameAs":[
+      "https://schema.org/givenName",
+      "https://erasmus.gluu.org/schema/457c"
+   ]
+}
+
+                    </pre></div><div id="rfc.figure.u.110"><p>Non-normative example of add a schema response:</p><p>In response it return with "@id" key, It is Unique IRI for the newly added schema</p><pre>HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@id": "http://otto-test.gluu.org/otto/schema/5909b4218489131c19abfa29"
+}
+
+                    </pre></div></div><div id="fetch-schema"><h3 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a> <a href="#fetch-schema">Fetch Schema</a></h3><div id="rfc.figure.u.111"><p>Non-normative example of a get all schema request</p><pre>GET /otto/schema HTTP/1.1 </pre></div><div id="rfc.figure.u.112"><p>Non-normative example of a get all schema response:</p><p><dl><dt>schema</dt><dd style="margin-left: 4.2em">List of schema</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
-  "@context": "http://otto-test.gluu.org/otto/schema",
-  "participant": [
+  "schema": [
     "http://otto-test.gluu.org/otto/schema/58f720c7a10d8e1012e76ed4",
     "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed5"
-  ]
+  ],
+  "totalResults": 2,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.105"><p>Non-normative example of a federation request</p><pre>GET /otto/schema?depth=schema HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.106"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.113"><p>Non-normative example of a schema request with depth parameter:</p><pre>GET /otto/schema?depth=schema HTTP/1.1 </pre></div><div id="rfc.figure.u.114"><p>Non-normative example of a federation response from depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 
 {
@@ -1639,11 +1675,13 @@ Content-Type: application/json
         "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
       ]
     }
-  ]
+  ],
+  "totalResults": 1,
+  "itemsPerPage": 0,
+  "startIndex": 1
 }
 
-                    </pre></div><div id="rfc.figure.u.107"><p>Non-normative example of a federation request</p><pre>GET /otto/schema/58f720e1a10d8e1012e76ed5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.108"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.115"><p>Non-normative example of a schema request to fetch specific schema unique Id:</p><pre>GET /otto/schema/58f720e1a10d8e1012e76ed5 HTTP/1.1 </pre></div><div id="rfc.figure.u.116"><p>Non-normative example of a schema response from specified schema unique Id:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
@@ -1658,8 +1696,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.109"><p>Non-normative example of a federation request</p><pre>GET /otto/schema/590afffd30dd080ed3cda956?depth=supportedBy HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.110"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.117"><p>Non-normative example of a schema request with specified schema and depth parameter:</p><pre>GET /otto/schema/590afffd30dd080ed3cda956?depth=supportedBy HTTP/1.1 </pre></div><div id="rfc.figure.u.118"><p>Non-normative example of a schema response from specified schema and depth parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#schema",
@@ -1723,8 +1760,7 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.111"><p>Non-normative example of a federation request</p><pre>GET /otto/schema/58f5da4957d53d2ffbbb31e0?filter=.name HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.112"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.119"><p>Non-normative example of a schema request with filter parameter:</p><pre>GET /otto/schema/58f5da4957d53d2ffbbb31e0?filter=.name HTTP/1.1 </pre></div><div id="rfc.figure.u.120"><p>Non-normative example of a schema response from filter parameter:</p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
   "name": [
@@ -1732,21 +1768,22 @@ Content-Type: application/json
   ]
 }
 
-                    </pre></div><div id="rfc.figure.u.113"><p>Non-normative example of a federation request</p><pre>GET /otto/schema?pageno=1&amp;pagelength=5 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.114"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.121"><p>Non-normative example of a schema request using pageno and pagelength parameter:</p><p><dl><dt>pageno</dt><dd style="margin-left: 4.2em">The 1-based index of the first query result. A value less than 1 SHALL be interpreted as 1.</dd><dt>pagelength</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the desired maximum number of query results per page, e.g., 10.</dd></dl> </p><pre>GET /otto/metadata?pageno=1&amp;pagelength=5 HTTP/1.1 </pre></div><div id="rfc.figure.u.122"><p>Non-normative example of a metadata response of page no and page length parameter:</p><p><dl><dt>schema</dt><dd style="margin-left: 4.2em">Contain list of schema array</dd><dt>itemsPerPage</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the number of query results returned in a query response page, e.g., 10.</dd><dt>totalResults</dt><dd style="margin-left: 4.2em">Non-negative integer. Specifies the total number of results matching the client query, e.g., 1000.</dd><dt>startIndex</dt><dd style="margin-left: 4.2em">The 1-based index of the first result in the current set of query results, e.g., 1.</dd></dl> </p><pre>HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "@context": "http://otto-test.gluu.org/otto/schema",
-  "federations": [
-    "http://otto-test.gluu.org/otto/schema/59157847d1285b2273ef83d2",
-    "http://otto-test.gluu.org/otto/schema/5915784bd1285b2273ef83d3",
-    "http://otto-test.gluu.org/otto/schema/59157850d1285b2273ef83d4",
-    "http://otto-test.gluu.org/otto/schema/59157854d1285b2273ef83d5",
-    "http://otto-test.gluu.org/otto/schema/59157857d1285b2273ef83d6"
-  ]
+  "schema": [
+    "http://otto-test.gluu.org/otto/schema/58f720c7a10d8e1012e76ed4",
+    "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed5",
+    "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed6",
+    "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed7",
+    "http://otto-test.gluu.org/otto/schema/58f720e1a10d8e1012e76ed8"
+  ],
+  "totalResults": 11,
+  "itemsPerPage": 5,
+  "startIndex": 1
 }
 
-                    </pre></div></div><div id="create-schema"><h3 id="rfc.section.7.2"><a href="#rfc.section.7.2">7.2</a> <a href="#create-schema">Create Schema</a></h3><div id="rfc.figure.u.115"><p>Non-normative example of a federation request</p><pre>POST /otto/schema HTTP/1.1
+                    </pre></div></div><div id="update-schema"><h3 id="rfc.section.7.3"><a href="#rfc.section.7.3">7.3</a> <a href="#update-schema">Update Schema</a></h3><div id="rfc.section.7.3.p.1"><p>This is PUT API to update schema. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter. The possible parameter you can passed for update, refer <a href="#create-schema" title="Create schema">Section 7.1</a> </p></div><div id="rfc.figure.u.123"><p>Non-normative example of a schema update request</p><pre>PUT /otto/schema/5909b4218489131c19abfa29 HTTP/1.1
 {
    "name":"given_name",
    "category":"https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
@@ -1759,37 +1796,7 @@ Content-Type: application/json
    ]
 }
 
-                    </pre></div><div id="rfc.figure.u.116"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
-Content-Type: application/json
-{
-  "@id": "http://otto-test.gluu.org/otto/schema/5909b4218489131c19abfa29"
-}
-
-                    </pre></div></div><div id="update-schema"><h3 id="rfc.section.7.3"><a href="#rfc.section.7.3">7.3</a> <a href="#update-schema">Update Schema</a></h3><div id="rfc.figure.u.117"><p>Non-normative example of a federation request</p><pre>PUT /otto/schema/5909b4218489131c19abfa29 HTTP/1.1
-{
-   "name":"given_name",
-   "category":"https://docs.kantarainitiative.org/otto/openid-vocab-1.0#UserClaim",
-   "description":"Person's first name",
-   "required":false,
-   "url":"https://en.wikipedia.org/wiki/Given_name",
-   "sameAs":[
-      "https://schema.org/givenName",
-      "https://erasmus.gluu.org/schema/457c"
-   ]
-}
-
-                    </pre></div><div id="rfc.figure.u.118"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="delete-schema"><h3 id="rfc.section.7.4"><a href="#rfc.section.7.4">7.4</a> <a href="#delete-schema">Delete Schema</a></h3><div id="rfc.figure.u.119"><p>Non-normative example of a federation request</p><pre>DELETE /otto/schema/5909b4218489131c19abfa29 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.120"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-schema-federation"><h3 id="rfc.section.7.5"><a href="#rfc.section.7.5">7.5</a> <a href="#link-schema-federation">Link schema with federation</a></h3><div id="rfc.section.7.5.p.1"><p>This endpoint, Link schema with existing federation</p></div><div id="rfc.figure.u.121"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.122"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="link-schema-entity"><h3 id="rfc.section.7.6"><a href="#rfc.section.7.6">7.6</a> <a href="#link-schema-entity">Link schema with entity</a></h3><div id="rfc.section.7.6.p.1"><p>This endpoint, Link schema with existing entity</p></div><div id="rfc.figure.u.123"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.124"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK 
-                    </pre></div></div><div id="schema-category"><h3 id="rfc.section.7.7"><a href="#rfc.section.7.7">7.7</a> <a href="#schema-category">Schema Categories</a></h3><div id="rfc.figure.u.125"><p>Non-normative example of a federation request</p><pre>
-                        POST /otto/schema/categories HTTP/1.1 
-                    </pre></div><div id="rfc.figure.u.126"><p>Non-normative example of a federation response:</p><pre>HTTP/1.1 200 OK
+                    </pre></div><div id="rfc.figure.u.124"><p>Non-normative example of a schema update response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="delete-schema"><h3 id="rfc.section.7.4"><a href="#rfc.section.7.4">7.4</a> <a href="#delete-schema">Delete Schema</a></h3><div id="rfc.section.7.4.p.1"><p>This is DELETE API to delete schema. you need to pass schema unique id for delete specific schema.</p></div><div id="rfc.figure.u.125"><p>Non-normative example of a delete schema request</p><pre>DELETE /otto/schema/5909b4218489131c19abfa29 HTTP/1.1 </pre></div><div id="rfc.figure.u.126"><p>Non-normative example of a delete schema response:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="link-schema-federation"><h3 id="rfc.section.7.5"><a href="#rfc.section.7.5">7.5</a> <a href="#link-schema-federation">Link schema with federation</a></h3><div id="rfc.section.7.5.p.1"><p>This is POST API for link schema to federation. It show which federations support this schema.</p></div><div id="rfc.section.7.5.p.2"><p>Their are two request parameter. </p><dl><dt>Schema Id</dt><dd style="margin-left: 4.2em">first path parameter is schema unique id.</dd><dt>Federation Id</dt><dd style="margin-left: 4.2em">Second path parameter is Federation unique id.</dd></dl></div><div id="rfc.figure.u.127"><p>Non-normative example of a schema request to link with federation:</p><pre>POST /otto/schema/5909b4218489131c19abfa29/federation/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.128"><p>Non-normative example of a schema response to link with federation:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="link-schema-entity"><h3 id="rfc.section.7.6"><a href="#rfc.section.7.6">7.6</a> <a href="#link-schema-entity">Link schema with entity</a></h3><div id="rfc.section.7.6.p.1"><p>This is POST API for link schema to entity. It show which entity support this schema.</p></div><div id="rfc.section.7.6.p.2"><p>Their are two request parameter. </p><dl><dt>Schema Id</dt><dd style="margin-left: 4.2em">first path parameter is schema unique id.</dd><dt>Entity Id</dt><dd style="margin-left: 4.2em">Second path parameter is entity unique id.</dd></dl></div><div id="rfc.figure.u.129"><p>Non-normative example of a schema request to link with entity:</p><pre>POST /otto/schema/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 </pre></div><div id="rfc.figure.u.130"><p>Non-normative example of a schema response to link with entity:</p><pre>HTTP/1.1 200 OK </pre></div></div><div id="schema-category"><h3 id="rfc.section.7.7"><a href="#rfc.section.7.7">7.7</a> <a href="#schema-category">Schema Categories</a></h3><div id="rfc.section.7.7.p.1"><p>Fetch categories.</p></div><div id="rfc.figure.u.131"><p>Non-normative example of a fetch categories request</p><pre>POST /otto/schema/categories HTTP/1.1 </pre></div><div id="rfc.figure.u.132"><p>Non-normative example of a fetch categories response:</p><pre>HTTP/1.1 200 OK
 [
   "http://otto-test.gluu.org/schema_category/acr.jsonld",
   "http://otto-test.gluu.org/schema_category/scope.jsonld",
