@@ -148,33 +148,230 @@
             </section>
 
             <section anchor="search-syntax" title="Search Syntax">
-                OTTO API provides the depth and filter searching feature.
                 <t>
-                    depth: Depth parameter provides facility to deeply populate a records and you can get the full response of given depth parameter. You can also passed multiple comma separated depth parameters. If depth parameter is possible to populated then you can get full response other wise you got error with "Invalid depth parameter".
-                    <preamble>The below depth parameter deeply populate a given federation's federates and for output <xref target="search-federation"/>. Non-normative examples of a depth request.</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]></artwork>
-
-                    <preamble>The below depth parameter deeply populate this given federation's federates and member. for outputs <xref target="search-federation"/>. Non-normative examples of a multiple depth request.</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates,member HTTP/1.1 ]]></artwork>
+                    OTTO API supports the depth and the filter searching feature. Those are the query parameter to passed in HTTP GET Request. which provide facility to search, navigate and filter the record.
                 </t>
 
-                <t>
-                    filter: Filter parameter provides facility to filter the records by passing JSPath filter value which is always start from dot(.) and you can get the filter response as per given JSPath parameter value. You can also passed multiple comma separated filter parameters. If filter parameter is possible to filter then you can get filtered response other wise you got error with "Invalid JSPath".
-                    <preamble>The below parameter filter the name property and you can get filtered output with only name key. for outputs <xref target="search-federation"/>. Non-normative examples of a filter request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 ]]></artwork>
+                <section anchor="depth-parameter" title="Depth Parameter">
+                    <t>
+                        The depth parameter provides the facility to deeply populate records with the full response. The depth parameter also supports to passed the multiple commas separated values. If depth parameter is possible to populated then it returns full response otherwise return an error with "Invalid depth parameter". You can only have depth parameter for the IRI scheme which returns JSON as response.
 
-                    <preamble>You can get filtered output with name and federates key. for outputs <xref target="search-federation"/>. Non-normative examples of a multiple filter request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name,.federates HTTP/1.1 ]]></artwork>
+                        <preamble>The below example is without depth parameter. which only shows the IRI value of the field. Non-normative examples of a without depth request.</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]></artwork>
 
-                    <preamble>You can get filtered output with name and federates key. for outputs <xref target="search-federation"/>. Non-normative examples of a filter and depth request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates.name HTTP/1.1 ]]></artwork>
+                        <preamble>Non-normative response of without depth parameter. Some text was removed for readability (indicated by "..."). The detail description of federation refer <xref target="create-federation" />:</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+  ...
+  "sponsor": [
+    "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5"
+  ],
+  "federates": [
+    "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6"
+  ],
+  "member": [
+    "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4"
+  ],
+  ...
+}
 
-                    <preamble>You can get filtered output with federates which name is "entity 1". for outputs <xref target="search-federation"/>. Non-normative examples of a JSPath condition in request:</preamble>
-                    <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates{.name==="entity 1"} HTTP/1.1 ]]></artwork>
-                </t>
+]]>
+                        </artwork>
 
+                        <preamble>The below example with depth parameter which deeply populates the federates and return the full response of federates of the Federation. Non-normative examples of a depth request.</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]></artwork>
+
+                        <preamble>Non-normative response of depth parameter. Some text was removed for readability (indicated by "..."). The detail description of federation refer <xref target="create-federation" /> and federates refer <xref target="create-entity" />:</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+  ...
+  "federates": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": {
+        "@id": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df"
+      },
+      "description": "entity entity",
+      "metadata": {
+        "@id": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0"
+      },
+      "federatedBy": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+        }
+      ],
+      "supports": [
+        {
+          "@id": "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+        }
+      ]
+    }
+  ],
+  ...
+}
+
+]]>
+                        </artwork>
+
+                        <preamble>The below depth parameter deeply populate the federates and sponsor and return the full response of federates and sponsor of the Federation. Non-normative examples of a multiple depth request.</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates,sponsor HTTP/1.1 ]]></artwork>
+
+                        <preamble>Non-normative response of multiple depth parameter. The detail description of federation refer <xref target="create-federation" />, for federates refer <xref target="create-entity" /> and for member refer <xref target="create-participant" /> : </preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#federation",
+  "@id": "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c",
+  "name": "fed1",
+ ...
+  "sponsor": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
+      "@id": "http://otto-test.gluu.org/otto/participant/58f720e1a10d8e1012e76ed5",
+      "name": "participant 1",
+      "url": "http://otto-test.gluu.org/otto/participant",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "participant participant",
+      "securityContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Security Person1"
+        }
+      ],
+      "executiveContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Executive Person1"
+        }
+      ],
+      "technicalContact": [
+        {
+          "contactNo": "+485647556566",
+          "name": "Technical Person1"
+        }
+      ],
+      "memberOf": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "operates": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "badgeSupported": [
+        "http://otto-test.gluu.org/otto/badge/58fdfa39a6a02d203267da37"
+      ],
+      "trustMarkAsserted": "http://pa.org"
+    }
+  ],
+  "federates": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "entity entity",
+      "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "federatedBy": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "supports": [
+        "http://otto-test.gluu.org/otto/schema/590afffd30dd080ed3cda956"
+      ]
+    }
+  ],
+  ...
+}
+]]>
+                        </artwork>
+                    </t>
+                </section>
+
+                <section anchor="filter-parameter" title="Filter Parameter">
+                    <t>
+                        OTTO API supports the depth and the filter feature to navigate, search and filter the record. Those are the request query parameter to passed in HTTP GET Request. The depth parameter allows to deeply populated the record and return full response. The filter parameter enables to navigate and find data within your JSON documents. To select items in JSPath, you use a location path which consists of one or more location steps.
+                        Every location step starts with one period (.) or two periods (..), depending on the item you're trying to select. It returns the result with the same key which you are passed in filter request. for detail description refer <eref target="https://www.npmjs.com/package/jspath">JSPath Filter</eref>.
+
+                        <preamble>The below parameter filter find the name property and return filtered output with name key. Non-normative examples of a filter request:</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name HTTP/1.1 ]]></artwork>
+                        <preamble>Non-normative response of filter parameter: </preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "name": [
+    "fed1"
+  ]
+}
+]]>
+                        </artwork>
+
+                        <preamble>Filter parameter allows passing multiple parameters by the separating comma(,). Non-normative examples of a multiple filter request:</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?filter=.name,.securityContact HTTP/1.1 ]]></artwork>
+                        <preamble>Non-normative response of multiple filter parameter: </preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "name": [
+    "fed1"
+  ],
+  "securityContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Security Person1"
+    }
+  ]
+}
+]]>
+                        </artwork>
+
+                        <preamble>Filter parameter allows filtering using nested property. Non-normative examples of a filter using nested property and depth request:</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates.name HTTP/1.1 ]]></artwork>
+                        <preamble>Non-normative examples of a filter using nested property and depth response: </preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "federates.name": [
+    "entity 1"
+  ]
+}
+]]>
+                        </artwork>
+
+                        <preamble>Filter parameter allows Object predicates can be used in a path expression to filter a subset of items according to boolean expressions working on the properties of each item. All object predicates are parenthesized by curly brackets ({ and }). Non-normative examples of a filter using boolean expressions and depth request:</preamble>
+                        <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates&filter=.federates{.name==="entity 1"} HTTP/1.1 ]]></artwork>
+                        <preamble>Non-normative examples of a filter using boolean expressions and depth request: </preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK
+Content-Type: application/json
+{
+  "federates{.name===\"entity 1\"}": [
+    {
+      "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
+      "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
+      "name": "entity 1",
+      "url": "http://otto-test.gluu.org/otto/entity",
+      "registeredBy": "http://otto-test.gluu.org/otto/registrationAuthority/58f5da4957d53d2ffbbb31df",
+      "description": "entity entity",
+      "metadata": "http://otto-test.gluu.org/otto/metadata/58f5da4957d53d2ffbbb31e0",
+      "federatedBy": [
+        "http://otto-test.gluu.org/otto/federations/58f7200bcf5e0a0f09cf2c3c"
+      ],
+      "supports": []
+    }
+  ]
+}
+]]>
+                        </artwork>
+                    </t>
+                </section>
             </section>
-
         </section>
 
         <section anchor="configuration-endpoint"
@@ -236,11 +433,11 @@ Content-Type: application/json
             <section anchor="create-federation"
                      title="Create Federation">
                 <t>
-                    This is POST API to create federation. you need to passed the required parameter to add the new federation. If you try to add federation with same name which is already exist then it return response with error key with message is "Federation already exist with same name".
+                    This is POST API endpoint to create the federation. It needs to pass the required parameter to add the new federation. If you try to add federation with the same name which already exists then it returns response with error key with the message is "Federation already exist with the same name".
                 </t>
                 <figure>
                     <preamble>
-                        Their are several properties which used for federation.
+                        There are several properties which used for federation.
                         <t>
                             <texttable anchor="table_federation" title="Federation">
                                 <ttcol align='left'>Property</ttcol>
@@ -253,23 +450,23 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>description</c>
                                 <c>OPTIONAL</c>
-                                <c>Optional information about the RA</c>          <!-- -->
+                                <c>It is Optional information about the RA</c>          <!-- -->
                                 <!-- -->
                                 <c>url</c>
                                 <c>OPTIONAL</c>
-                                <c>The public, human readible website for the Federation</c>
+                                <c>The public, human readable website for the Federation</c>
                                 <!-- -->
                                 <c>operates</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Entity or array of Entity. A service operated by the Federation</c>
+                                <c>It is the Entity or array of Entity. A service operated by the Federation</c>
                                 <!-- -->
                                 <c>metadata</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Metadata or array of Metadata. The metadata (including public signing key) for this Federation</c>
+                                <c>It is the Metadata or array of Metadata. The metadata (including public signing key) for this Federation</c>
                                 <!-- -->
                                 <c>supports</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Schema or array of Schema. What schema is supported by this Federation</c>
+                                <c>It is the Schema or array of Schema. It describes what schema is supported by this Federation.</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
                                 <c>REQUIRED</c>
@@ -277,26 +474,26 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>member</c>
                                 <c>OPTIONAL</c>
-                                <c>It is array of Participants. List of organizational members of the Federation</c>
+                                <c>It is the array of Participants. List of organizational members of the Federation</c>
                                 <!-- -->
                                 <c>federates</c>
                                 <c>OPTIONAL</c>
-                                <c>It is array of Entity. List of services registered to the federation by Participants</c>
+                                <c>It is the array of Entity. List of services registered to the federation by Participants</c>
                                 <!-- -->
                                 <c><spanx style="strong">sponsor</spanx></c>
                                 <c>REQUIRED</c>
-                                <c>It is An Organization or array of Organization. The organization legally responsible for management of the
+                                <c>It is an Organization or array of Organization. The organization legally responsible for management of the
                                     Federation</c>
                                 <!-- -->
                                 <c>technicalContact</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Person or array of Person. Person(s) responsible for registering and maintaining the policies
+                                <c>It is the Person or array of Person. Person(s) responsible for registering and maintaining the policies
                                     and technical data related to the organization's participation in
                                     the Federation</c>
                                 <!-- -->
                                 <c>executiveContact</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Person or array of Person. Person(s) responsible for all decisions and delegations of authority
+                                <c>It is the Person or array of Person. Person(s) responsible for all decisions and delegations of authority
                                     for the Federation</c>
                                 <!-- -->
                                 <c>securityContact</c>
@@ -305,25 +502,25 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>dataProtectionCodeOfConduct</c>
                                 <c>OPTIONAL</c>
-                                <c>It is URL. The provisions regarding handling of personal information by the
+                                <c>It is the URL. The provisions regarding handling of personal information by the
                                     Federation Participants</c>
                                 <!-- -->
                                 <c>federationAgreement</c>
                                 <c>OPTIONAL</c>
-                                <c>It is URL. The rights and responsibilities of the Participant</c>
+                                <c>It is the URL. The rights and responsibilities of the Participant</c>
                                 <!-- -->
                                 <c>federationPolicy</c>
                                 <c>OPTIONAL</c>
-                                <c>It is URL. Operational practices and technical details for participation
+                                <c>It is the URL. Operational practices and technical details for participation
                                     in the Federation.</c>
                                 <!-- -->
                                 <c>trustMarkDefinitionSupported</c>
                                 <c>OPTIONAL</c>
-                                <c>It is instance or array of TrustMarkDefinition or URL. What kinds of Trustmarks are supported by the federation</c>
+                                <c>It is the instance or array of TrustMarkDefinition or URL. What kinds of Trustmarks are supported by the federation</c>
                                 <!-- -->
                                 <c>badgeSupported</c>
                                 <c>OPTIONAL</c>
-                                <c>It is instance or array of BadgeClass or IRI. What kinds of Badges are supported by the federation</c>
+                                <c>It is the instance or array of BadgeClass or IRI. What kinds of Badges are supported by the federation</c>
                             </texttable>
                         </t>
                     </preamble>
@@ -348,7 +545,7 @@ Content-Type: application/json
 
                 <figure>
                     <preamble>Non-normative example of add a federation response:</preamble>
-                    <preamble>In response it return with "@id" key, This is Unique IRI for the newly added Federation</preamble>
+                    <preamble>In response it return with "@id" key, This is Unique IRI for the newly added Federation: </preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -362,17 +559,17 @@ Content-Type: application/json
             <section anchor="search-federation"
                      title="Search Federation">
                 <t>
-                    This is GET api to fetch federation information. Their are several way to fetch federation information. you can fetch all the records, fetch all records with depth, fetch specific federation and also filtered using filter parameter.
+                    This is GET API endpoint to fetch federation information. There are several ways to fetch federation information. you can fetch all the records, fetch all records with depth, fetch specific federation and also filtered using JSPath filter parameter.
                 </t>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request to fetch all federation list.</preamble>
+                    <preamble>Non-normative example of a federation request to fetch all federation list:</preamble>
                     <artwork><![CDATA[GET /otto/federations HTTP/1.1 ]]>
                     </artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation response with json array.</preamble>
+                    <preamble>Non-normative example of a federation response with json array: </preamble>
                     <preamble>
                         <list hangIndent="6" style="hanging">
                             <t hangText="federations">
@@ -410,7 +607,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request to fetch deep information of each federation.</preamble>
+                    <preamble>Non-normative example of a federation request to fetch deep information of each federation:</preamble>
                     <artwork><![CDATA[GET /otto/federations?depth=federations HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -531,7 +728,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request by passing unique id to fetch specific full response of specific federation. When federation not exist, it return response "Federation doesn't exist"</preamble>
+                    <preamble>Non-normative example of a federation request by passing the unique id to fetch specific full response of specific federation. When federation not exists, it returns response "Federation doesn't exist": </preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -594,12 +791,12 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request ot fetch depth of specific federation. for depth parameter description refer <xref target="search-syntax" /></preamble>
+                    <preamble>Non-normative example of a federation request ot fetch depth of specific federation. for depth parameter description refer <xref target="search-syntax" />: </preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=federates HTTP/1.1 ]]></artwork>
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation response with deep populate of specific federation, for response description see the <xref target="create-federation"/>.</preamble>
+                    <preamble>Non-normative example of a federation response with deep populate of specific federation, for response description see the <xref target="create-federation"/>: </preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
@@ -680,7 +877,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request with multiple depth parameter</preamble>
+                    <preamble>Non-normative example of a federation request with multiple depth parameter: </preamble>
                     <artwork><![CDATA[GET /otto/federations/58f7200bcf5e0a0f09cf2c3c?depth=sponsor,federates HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -902,7 +1099,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a federation request using pageno and pagelength parameter:</preamble>
+                    <preamble>Non-normative example of a federation request using page no and page length parameter:</preamble>
                     <preamble>
                         <list hangIndent="6" style="hanging">
                             <t hangText="pageno">
@@ -962,11 +1159,10 @@ Content-Type: application/json
             <section anchor="update-federation"
                      title="Update Federation">
                 <t>
-                    This is PUT API to update federation. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter.
-                    The possible parameter you can passed for update, refer <xref target="create-federation"/>
+                    This is PUT API endpoint to update federation. you need to pass the value of the field which you want to update. It will update only those field which you passed into parameter. The possible parameter you can passed for update, refer <xref target="create-federation"/>:
                 </t>
                 <figure>
-                    <preamble>Non-normative example of update a federation request</preamble>
+                    <preamble>Non-normative example of update a federation request: </preamble>
                     <artwork><![CDATA[PUT /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "fed1",
@@ -984,7 +1180,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of update a federation response. It return response with status 200 when successfully updated the federation.</preamble>
+                    <preamble>Non-normative example of update a Federation response. It returns response with status 200 when successfully updated the federation.</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
@@ -993,7 +1189,7 @@ Content-Type: application/json
             <section anchor="delete-federation"
                      title="Delete Federation">
                 <t>
-                    This is DELETE API to delete federation. you just need to passed unique id of federation in federation endpoint.
+                    This is DELETE API endpoint to delete federation. It needs to passed unique id of the federation in the federation endpoint.
                 </t>
                 <figure>
                     <preamble>Non-normative example of delete a federation request:</preamble>
@@ -1006,7 +1202,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of delete a federation error response when federation not found.</preamble>
+                    <preamble>Non-normative example of deleting a federation error response when federation not found: </preamble>
                     <artwork><![CDATA[HTTP/1.1 404 OK
 {
   "error": [
@@ -1021,7 +1217,7 @@ Content-Type: application/json
             <section anchor="leave-federation"
                      title="Leave Federation">
                 <t>
-                    This is DELETE API for remove services of this federation. It remove entity reference from federates of federation.
+                    This is DELETE API for remove services of this federation. It removes entity reference from the federates of the Federation.
                 </t>
                 <t>
                     Their are two path request parameter.
@@ -1036,7 +1232,7 @@ Content-Type: application/json
                     </list>
                 </t>
                 <figure>
-                    <preamble>Non-normative example of a federation leave request</preamble>
+                    <preamble>Non-normative example of a federation leave request: </preamble>
                     <artwork><![CDATA[DELETE /otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -1082,22 +1278,22 @@ Content-Type: application/json
             <section anchor="link-federation-entity"
                      title="Link entity to federation">
                 <t>
-                    This is POST API for add services to this federation. It add entity reference to federates of federation.
+                    This is POST API endpoint for add services to this federation. It adds entity reference to federates of the Federation.
                 </t>
                 <t>
                     Their are two path request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Federation Id">
-                            first path parameter is federation unique id.
+                            The first path parameter is federation unique id.
                         </t>
 
                         <t hangText="Entity Id">
-                            Second path parameter is entity unique id.
+                            The second path parameter is entity unique id.
                         </t>
                     </list>
                 </t>
                 <figure>
-                    <preamble>Non-normative example of a federation link to entity request</preamble>
+                    <preamble>Non-normative example of a federation link to entity request: </preamble>
                     <artwork><![CDATA[POST/otto/federations/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -1106,19 +1302,19 @@ Content-Type: application/json
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]></artwork>
                 </figure>
 
-                <t> You can get error response as per like <xref target="leave-federation"/> </t>
+                <t> It return response as per like <xref target="leave-federation"/> </t>
             </section>
 
             <section anchor="add-new-service"
                      title="Add new service to federation">
                 <t>
-                    This is POST API for add a new service into federation. It will added new service(entity) to federation and linked this newly added service(entity) to federation.
+                    This is POST API endpoint for add a new service into the federation. It will add new service(entity) to the federation and linked this newly added service(entity) to the Federation.
                 </t>
                 <t>
                     Their are two request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Federation Id">
-                            first path parameter is federation unique id.
+                            The first path parameter is federation unique id.
                         </t>
 
                         <t hangText="Entity">
@@ -1156,17 +1352,17 @@ Content-Type: application/json
             <section anchor="link-participant-member-federation"
                      title="Link participant(member) to federation">
                 <t>
-                    This is POST API for link participant as a member of federation. It added participant reference to member of federation.
+                    This is POST API endpoint for link participant as a member of the Federation. It adds participant reference to the member of the Federation.
                 </t>
                 <t>
                     Their are two request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Federation Id">
-                            first path parameter is federation unique id.
+                            The first path parameter is federation unique id.
                         </t>
 
                         <t hangText="Participant Id">
-                            Second path parameter is participant unique id.
+                            The second path parameter is participant unique id.
                         </t>
                     </list>
                 </t>
@@ -1180,23 +1376,23 @@ Content-Type: application/json
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]></artwork>
                 </figure>
 
-                <t> You can get error response as per like <xref target="leave-federation"/> </t>
+                <t> It return response as per like <xref target="leave-federation"/> </t>
             </section>
 
             <section anchor="link-participant-sponsor-federation"
                      title="Link participant(sponsor) to federation">
                 <t>
-                    This is POST API for link participant as a sponsor of federation. It added participant reference to sponsor of federation.
+                    This is POST API endpoint for link participant as a sponsor of the Federation. It adds the participant reference to the sponsor of the Federation.
                 </t>
                 <t>
                     Their are two request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Federation Id">
-                            first path parameter is federation unique id.
+                            The first path parameter is federation unique id.
                         </t>
 
                         <t hangText="Participant Id">
-                            Second path parameter is participant unique id.
+                            The second path parameter is participant unique id.
                         </t>
                     </list>
                 </t>
@@ -1210,7 +1406,7 @@ Content-Type: application/json
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]></artwork>
                 </figure>
 
-                <t> You can get error response as per like <xref target="leave-federation"/> </t>
+                <t>It return response as per like <xref target="leave-federation"/> </t>
             </section>
         </section>
 
@@ -1225,7 +1421,7 @@ Content-Type: application/json
             <section anchor="create-participant"
                      title="Create Participant">
                 <t>
-                    This is POST API to create participant. you need to passed the required parameter to add the new participant. If you try to add participant with same name which is already exist then it return response with error key with message is "Participant already exist with same name".
+                    This is POST API endpoint to create participant. It needs to pass the required parameter to add the new participant. If you try to add participant with the same name which already exists then it returns response with error key with the message is "Participant already exist with the same name".
                 </t>
                 <figure>
                     <preamble>
@@ -1246,41 +1442,41 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>description</c>
                                 <c>OPTIONAL</c>
-                                <c>Optional information about the Participant</c>
+                                <c>It is Optional information about the Participant</c>
                                 <!-- -->
                                 <c>memberOf</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Federation or array of Federation, A federation to which this Participant is a member</c>
+                                <c>It is the Federation or array of Federation, A federation to which this Participant is a member</c>
                                 <!-- -->
                                 <c>operates</c>
                                 <c>OPTIONAL</c>
-                                <c>It is entity, A service operated by the Participant</c>
+                                <c>It is the entity, A service operated by the Participant</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
                                 <c>REQUIRED</c>
-                                <c>It is registration authority, where the Participant is registered</c>
+                                <c>It is the registration authority, where the Participant is registered</c>
                                 <!-- -->
                                 <c>technicalContact</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Person or array of Person, Person(s) responsible for registering and maintaining the policies
+                                <c>It is the Person or array of Person, Person(s) responsible for registering and maintaining the policies
                                     and technical data related to the Federation</c>
                                 <!-- -->
                                 <c>executiveContact</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Person or array of Person, Person responsible for all decisions and delegations of authority
+                                <c>It is the Person or array of Person, Person responsible for all decisions and delegations of authority
                                     for the Participant</c>
                                 <!-- -->
                                 <c>securityContact</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Person or array of Person, Person(s) to contact in the event of an urgent security issue</c>
+                                <c>It is the Person or array of Person, Person(s) to contact in the event of an urgent security issue</c>
                                 <!-- -->
                                 <c>trustMarkAsserted</c>
                                 <c>OPTIONAL</c>
-                                <c>It is instance or array of Trustmark or URL, Link to TrustMarks the Participant claims</c>
+                                <c>It is the instance or array of Trustmark or URL, Link to TrustMarks the Participant claims</c>
                                 <!-- -->
                                 <c>badgeSupported</c>
                                 <c>OPTIONAL</c>
-                                <c>It is instance or array of BadgeClass or IRI, What Badges the Participant issues</c>
+                                <c>It is the instance or array of BadgeClass or IRI, What Badges the Participant issues</c>
                             </texttable>
                         </t>
                     </preamble>
@@ -1315,7 +1511,7 @@ Content-Type: application/json
             <section anchor="fetch-participant"
                      title="Fetch Participant">
                 <figure>
-                    <preamble>Non-normative example of a get all participant request</preamble>
+                    <preamble>Non-normative example of a get all participant request:</preamble>
                     <artwork><![CDATA[GET /otto/participant HTTP/1.1 ]]>
                     </artwork>
                 </figure>
@@ -1753,7 +1949,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a participant request using pageno and pagelength parameter:</preamble>
+                    <preamble>Non-normative example of a participant request using page no and page length parameter:</preamble>
                     <preamble>
                         <list hangIndent="6" style="hanging">
                             <t hangText="pageno">
@@ -1773,7 +1969,7 @@ Content-Type: application/json
                     <preamble>
                         <list hangIndent="6" style="hanging">
                             <t hangText="participant">
-                                Contain list of participant array
+                                The list of participant array
                             </t>
 
                             <t hangText="itemsPerPage">
@@ -1812,11 +2008,10 @@ Content-Type: application/json
             <section anchor="update-participant"
                      title="Update Participant">
                 <t>
-                    This is PUT API to update participant. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter.
-                    The possible parameter you can passed for update, refer <xref target="create-participant"/>
+                    This is PUT API endpoint to update the Participant. It needs to pass the value of the field which you want to update. It will update only those field which you passed into the parameter. The possible parameter you can passed for update, refer <xref target="create-participant"/>.
                 </t>
                 <figure>
-                    <preamble>Non-normative example of a update participant request</preamble>
+                    <preamble>Non-normative example of a update participant request:</preamble>
                     <artwork><![CDATA[PUT /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
 {
 	"name": "participant1",
@@ -1853,17 +2048,17 @@ Content-Type: application/json
             <section anchor="link-participant-memberOf-federation"
                      title="Link participant(member) of federation">
                 <t>
-                    This is POST API for link participant as a member of federation. It added federation reference to memberOf in participant.
+                    This is POST API endpoint for link participant as a member of Federation. It added the federation reference to memberOf in the participant.
                 </t>
                 <t>
                     Their are two request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Participant Id">
-                            Second path parameter is participant unique id.
+                            The first path parameter is participant unique id.
                         </t>
 
                         <t hangText="Federation Id">
-                            first path parameter is federation unique id.
+                            The second path parameter is federation unique id.
                         </t>
                     </list>
                 </t>
@@ -1876,29 +2071,29 @@ Content-Type: application/json
                     <preamble>Non-normative example of a participant response:</preamble>
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]></artwork>
                 </figure>
-                
-                <t> You can get error response as per like <xref target="leave-federation"/> </t>
+
+                <t> It return response as per like <xref target="leave-federation"/> </t>
             </section>
 
             <section anchor="link-entity-service-participant"
                      title="Link entity(service) to participant">
                 <t>
-                    This is POST API for link entity as a service of participant. It is a service operated by the Participant.
+                    This is POST API endpoint for link entity as a service of the Participant. It is a service operated by the Participant.
                 </t>
                 <t>
                     Their are two request parameter.
                     <list hangIndent="6" style="hanging">
                         <t hangText="Participant Id">
-                            Second path parameter is participant unique id.
+                            The first path parameter is participant unique id.
                         </t>
 
                         <t hangText="Entity Id">
-                            first path parameter is entity unique id.
+                            The second path parameter is entity unique id.
                         </t>
                     </list>
                 </t>
                 <figure>
-                    <preamble>Non-normative example of a link entity to participant request</preamble>
+                    <preamble>Non-normative example of a link entity to participant request:</preamble>
                     <artwork><![CDATA[POST /otto/participant/5909b4218489131c19abfa29/entity/58f7218ca10d8e1012e76ed6 HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -1920,7 +2115,7 @@ Content-Type: application/json
             <section anchor="create-entity"
                      title="Create Entity">
                 <t>
-                    This is POST API to create entity. you need to passed the required parameter to add the new entity. If you try to add entity with same name which is already exist then it return response with error key with message is "entity already exist with same name".
+                    This is POST API endpoint to create entity. It needs to pass the required parameter to add the new entity. If you try to add entity with same name which is already exist then it return response with error key with message is "entity already exist with same name".
                 </t>
                 <figure>
                     <preamble>
@@ -1937,7 +2132,7 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>operatedBy</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Federation or Participant, The organization that is responsible for this Entity</c>
+                                <c>It is the Federation or Participant, The organization that is responsible for this Entity</c>
                                 <!-- -->
                                 <c>url</c>
                                 <c>OPTIONAL</c>
@@ -1945,7 +2140,7 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>description</c>
                                 <c>OPTIONAL</c>
-                                <c>Optional information about the Entity</c>
+                                <c>It is Optional information about the Entity</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
                                 <c>REQUIRED</c>
@@ -1953,7 +2148,7 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>federatedBy</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Federation or array of Federation, The federation to which this entity is affiliated</c>
+                                <c>It is the Federation or array of Federation, The federation to which this entity is affiliated</c>
                                 <!-- -->
                                 <c>metadata</c>
                                 <c>OPTIONAL</c>
@@ -1961,11 +2156,11 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>category</c>
                                 <c>OPTIONAL</c>
-                                <c>Used for assignment of standard Category defined in extension</c>
+                                <c>It is the category, Used for assignment of standard Category defined in extension</c>
                                 <!-- -->
                                 <c>supports</c>
                                 <c>OPTIONAL</c>
-                                <c>It is Schema or array of Schema, What schema is supported by this Entity</c>
+                                <c>It is the Schema or array of Schema, What schema is supported by this Entity</c>
                             </texttable>
 
                         </t>
@@ -2334,8 +2529,7 @@ Content-Type: application/json
             <section anchor="update-entity"
                      title="Update entity">
                 <t>
-                    This is PUT API to update entity. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter.
-                    The possible parameter you can passed for update, refer <xref target="create-entity"/>
+                    This is PUT API endpoint to update the entity. It needs to pass the value of the field which you want to update. It will update only those field which you passed into the parameter. The possible parameter you can passed for update, refer <xref target="create-entity"/>.
                 </t>
                 <figure>
                     <preamble>Non-normative example of a update entity request</preamble>
@@ -2363,7 +2557,7 @@ Content-Type: application/json
             <section anchor="delete-entity"
                      title="Delete Entity">
                 <t>
-                    This is DELETE API to delete entity. you need to pass schema unique id for delete specific entity.
+                    This is DELETE API to delete entity. It needs to pass the entity unique id for delete specific entity.
                 </t>
                 <figure>
                     <preamble>Non-normative example of a entity request</preamble>
@@ -2379,7 +2573,7 @@ Content-Type: application/json
             <section anchor="link-entity-federation"
                      title="Link entity with federation">
                 <t>
-                    This is POST API for link entity to federation. The federation to which this entity is affiliated.
+                    This is POST API for link entity to the federation. The federation to which this entity is affiliated.
                 </t>
                 <t>
                     Their are two request parameter.
@@ -2411,13 +2605,13 @@ Content-Type: application/json
                  title="Metadata Endpoint">
             <t>
                 This endpoint, hosted by the Registration Authority, enables
-                the registration and management of digital services at the federation.
+                the management of metadata of the federation.
             </t>
 
             <section anchor="create-metadata"
                      title="Create Metadata">
                 <t>
-                    This is POST API to create metadata. you need to passed the required parameter to add the new metadata.
+                    This is POST API endpoint to create metadata. It needs to pass the required parameter to add the new metadata.
                 </t>
                 <figure>
                     <preamble>
@@ -2431,7 +2625,7 @@ Content-Type: application/json
                                 <!-- -->
                                 <c><spanx style="strong">category</spanx></c>
                                 <c>REQUIRED</c>
-                                <c>It is Category. Enables extensions to define standard categories for searching</c>
+                                <c>It is the Category. Enables extensions to define standard categories for searching</c>
                                 <!-- -->
                                 <c>metadataFormat</c>
                                 <c>OPTIONAL</c>
@@ -2658,11 +2852,10 @@ Content-Type: application/json
             <section anchor="update-metadata"
                      title="Update Metadata">
                 <t>
-                    This is PUT API to update metadata. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter.
-                    The possible parameter you can passed for update, refer <xref target="create-metadata"/>
+                    This is PUT API endpoint to update metadata. It needs to pass the value of the field which you want to update. It will update only those field which you passed into the parameter. The possible parameter need to pass for update, refer <xref target="create-metadata"/>.
                 </t>
                 <figure>
-                    <preamble>Non-normative example of a metadata update request</preamble>
+                    <preamble>Non-normative example of a metadata update request:</preamble>
                     <artwork><![CDATA[PUT /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1
 
 {
@@ -2681,8 +2874,11 @@ Content-Type: application/json
 
             <section anchor="delete-metadata"
                      title="Delete Metadata">
+                <t>
+                    This is DELETE API endpoint to delete metadata. It needs to pass the unique id of metadata.
+                </t>
                 <figure>
-                    <preamble>Non-normative example of a metadata request</preamble>
+                    <preamble>Non-normative example of a metadata request: </preamble>
                     <artwork><![CDATA[DELETE /otto/metadata/5909b4218489131c19abfa29 HTTP/1.1 ]]></artwork>
                 </figure>
 
@@ -2698,13 +2894,13 @@ Content-Type: application/json
                  title="Schema Endpoint">
             <t>
                 This endpoint, hosted by the Registration Authority, enables
-                the registration and management of digital services at the federation.
+                the management of schema supported by federation.
             </t>
 
             <section anchor="create-schema"
                      title="Create schema">
                 <t>
-                    This is POST API to create schema. you need to passed the required parameter to add the new schema.
+                    This is POST API to create schema. It needs to pass the required parameter to add the new schema.
                 </t>
                 <figure>
                     <preamble>
@@ -2722,11 +2918,11 @@ Content-Type: application/json
                                 <!-- -->
                                 <c><spanx style="strong">category</spanx></c>
                                 <c>REQUIRED</c>
-                                <c>Extensions defined in extensions like "attribute" or "scope"</c>
+                                <c>The Extensions defined in extensions like "attribute" or "scope"</c>
                                 <!-- -->
                                 <c>description</c>
                                 <c>OPTIONAL</c>
-                                <c>Human understandible explanation of this term.</c>
+                                <c>The Human understandable explanation of this term.</c>
                                 <!-- -->
                                 <c><spanx style="strong">required</spanx></c>
                                 <c>REQUIRED</c>
@@ -2734,15 +2930,15 @@ Content-Type: application/json
                                 <!-- -->
                                 <c>url</c>
                                 <c>URL</c>
-                                <c>URL with more information about this schema</c>
+                                <c>The URL with more information about this schema</c>
                                 <!-- -->
                                 <c>supportedBy</c>
                                 <c>OPTIONAL</c>
-                                <c>It is instance or array of Federation or Entity. Which federations support this schema</c>
+                                <c>It is the instance or array of Federation or Entity. Which federations support this schema</c>
                                 <!-- -->
                                 <c>sameAs</c>
                                 <c>OPTIONAL</c>
-                                <c>It is URL or array of URL. Link to another similiar schema class</c>
+                                <c>It is the URL or array of URL. Link to another similiar schema class</c>
                             </texttable>
                         </t>
                     </preamble>
@@ -2973,7 +3169,7 @@ Content-Type: application/json
                 </figure>
 
                 <figure>
-                    <preamble>Non-normative example of a schema request using pageno and pagelength parameter:</preamble>
+                    <preamble>Non-normative example of a schema request using page no and page length parameter:</preamble>
                     <preamble>
                         <list hangIndent="6" style="hanging">
                             <t hangText="pageno">
@@ -3032,7 +3228,7 @@ Content-Type: application/json
             <section anchor="update-schema"
                      title="Update Schema">
                 <t>
-                    This is PUT API to update schema. you need to passed the fields value which you want to update. It will update only those field which you passed in put parameter.
+                    This is PUT API endpoint to update the schema. It needs to pass the value of the field which you want to update. It will update only those field which you passed into parameter.
                     The possible parameter you can passed for update, refer <xref target="create-schema"/>
                 </t>
                 <figure>
@@ -3078,7 +3274,7 @@ Content-Type: application/json
             <section anchor="link-schema-federation"
                      title="Link schema with federation">
                 <t>
-                    This is POST API for link schema to federation. It show which federations support this schema.
+                    This is POST API endpoint for link schema to the Federation. It shows which federations support this schema.
                 </t>
                 <t>
                     Their are two request parameter.
@@ -3107,7 +3303,7 @@ Content-Type: application/json
             <section anchor="link-schema-entity"
                      title="Link schema with entity">
                 <t>
-                    This is POST API for link schema to entity. It show which entity support this schema.
+                    This is POST API endpoint for link schema to the Entity. It show which entity support this schema.
                 </t>
                 <t>
                     Their are two request parameter.
@@ -3157,7 +3353,6 @@ Content-Type: application/json
             </section>
 
         </section>
-
         <section anchor="Acknowledgments" title="Acknowledgments">
             <t>The following people made contributions to the development of this
                 specification:
