@@ -338,9 +338,11 @@ Content-Type: application/json
                         <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "federates.name": [
-    "entity 1"
-  ]
+  "federates": {
+    "name": [
+      "entity 1"
+    ]
+  }
 }
 ]]>
                         </artwork>
@@ -351,7 +353,7 @@ Content-Type: application/json
                         <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "federates{.name===\"entity 1\"}": [
+  "federates": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#entity",
       "@id": "http://otto-test.gluu.org/otto/entity/58f7218ca10d8e1012e76ed6",
@@ -445,7 +447,7 @@ Content-Type: application/json
                                 <ttcol align='left'>Description</ttcol>
                                 <!-- -->
                                 <c><spanx style="strong">name</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>A human friendly name for the Federation</c>
                                 <!-- -->
                                 <c>description</c>
@@ -469,7 +471,7 @@ Content-Type: application/json
                                 <c>It is the Schema or array of Schema. It describes what schema is supported by this Federation.</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>The Registration Authority where the federation is hosted</c>
                                 <!-- -->
                                 <c>member</c>
@@ -481,7 +483,7 @@ Content-Type: application/json
                                 <c>It is the array of Entity. List of services registered to the federation by Participants</c>
                                 <!-- -->
                                 <c><spanx style="strong">sponsor</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>It is an Organization or array of Organization. The organization legally responsible for management of the
                                     Federation</c>
                                 <!-- -->
@@ -1059,7 +1061,7 @@ Content-Type: application/json
                     <artwork><![CDATA[HTTP/1.1 200 OK
 Content-Type: application/json
 {
-  "member{.name===\"participant 2\"}": [
+  "member": [
     {
       "@context": "https://rawgit.com/KantaraInitiative/wg-otto/master/html/otto-vocab-1.0.html#participant",
       "@id": "http://otto-test.gluu.org/otto/participant/58f720c7a10d8e1012e76ed4",
@@ -1184,6 +1186,243 @@ Content-Type: application/json
                     <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                     </artwork>
                 </figure>
+            </section>
+                        
+            <section anchor="patch-federation"
+                     title="Patch Federation">
+                <t>
+                    HTTP PATCH is an OPTIONAL server function that enables clients to
+                    update one or more attributes of a federation resource using a sequence of
+                    operations to "add", "remove", or "replace" values.
+                </t>
+                <t>
+                    The body of an HTTP PATCH request MUST contain the attribute
+                    "Operations", whose value is an array of one or more PATCH
+                    operations.  Each PATCH operation object MUST have exactly one "op"
+                    member, whose value indicates the operation to perform and MAY be one
+                    of "add", "remove", or "replace".
+                </t>
+
+                <figure>
+                    <preamble>The following non-normative example show how to add a executive contact in federation request: </preamble>
+                    <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "add",
+"path": "executiveContact",
+"value": {
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <t>
+                    The "path" attribute value is a String containing an attribute path
+                    describing the target of the operation.  The "path" attribute is
+                    OPTIONAL for "add" and "replace" and is REQUIRED for "remove"
+                    operations.
+                </t>
+
+                <section anchor="add-patch-federation"
+                         title="Add Operation">
+                    <t>
+                        The "add" operation is used to add a new attribute value to an
+                        existing resource.
+                    </t>
+                    <t>
+                        The operation MUST contain a "value" member whose content specifies
+                        the value to be added.  The value MAY be a quoted value, or it may be
+                        a JSON object containing the sub-attributes of the complex attribute
+                        specified in the operation's "path".
+                    </t>
+
+                    <t>
+                        The result of the add operation depends upon what the target location
+                        indicated by "path" references:
+                    </t>
+
+                    <list style="symbols">
+                        <t>If omitted, the target location is assumed to be the resource
+                            itself.  The "value" parameter contains a set of attributes to be
+                            added to the resource.</t>
+
+                        <t>If the target location specifies a multi-valued attribute, a new
+                            value is added to the attribute.</t>
+                        <t>
+                            If the target location specifies a single-valued attribute, the
+                            existing value is replaced.
+                        </t>
+                    </list>
+
+                    <figure>
+                        <preamble>The following non-normative example shows how to add federates in federation: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"path":"federates",
+"value":["593e389eef45281765f96128"]
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to federation request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"value":{
+ "federates": ["593e389eef45281765f96128"]
+ }
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="replace-patch-federation"
+                         title="Replace Operation">
+                    <t>
+                        The "replace" operation replaces the value at the target location
+                        specified by the "path".  The operation performs the following
+                        functions, depending on the target location specified by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the "path" parameter is omitted, the target is assumed to be
+                            the resource itself.  In this case, the "value" attribute SHALL
+                            contain a list of one or more attributes that are to be replaced.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
+
+                        <t>If the target location is a single-value attribute, the attributes
+                            value is replaced.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation federation request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "replace",
+"path": "executiveContact",
+"value": [{
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+  }]
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property federation request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"replace",
+"value":{
+ "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+    }
+  ]
+ }
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation without path property Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="remove-patch-federation"
+                         title="Remove Operation">
+                    <t>
+                        The "remove" operation removes the value at the target location
+                        specified by the required attribute "path".  The operation performs
+                        the following functions, depending on the target location specified
+                        by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the target location is a single-value attribute, the attribute
+                            and its associated value is removed, and the attribute SHALL be
+                            considered unassigned null.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
+                            attribute SHALL be considered null array.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation federation request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "remove",
+"path": "executiveContact"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                </section>
+
+                <figure>
+                    <t>
+                        The following example shows how to passed multiple operation in patch.
+                    </t>
+                    <preamble>Non-normative example of multiple patch operation federation request: </preamble>
+                    <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+[
+ {
+  "op": "remove",
+  "path": "executiveContact"
+ },
+ {
+  "op": "replace",
+  "path": "name",
+  "value": "abc"
+ }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Non-normative example of multiple patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+
             </section>
 
             <section anchor="delete-federation"
@@ -1328,7 +1567,7 @@ Content-Type: application/json
 {
 	"name": "entity 1",
 	"url": "http://otto-test.gluu.org/otto/entity",
-	"registeredBy": "https://localhost:5053",
+	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"description": "entity entity",
 	"registeredBy": "58f5da4957d53d2ffbbb31df",
 	"metadata": "58f5da4957d53d2ffbbb31e0"
@@ -1408,6 +1647,7 @@ Content-Type: application/json
 
                 <t>It return response as per like <xref target="leave-federation"/> </t>
             </section>
+
         </section>
 
         <section anchor="participant-endpoint"
@@ -1433,7 +1673,7 @@ Content-Type: application/json
                                 <ttcol align='left'>Description</ttcol>
                                 <!-- -->
                                 <c><spanx style="strong">name</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>A human friendly name for the Participant</c>
                                 <!-- -->
                                 <c>url</c>
@@ -1453,7 +1693,7 @@ Content-Type: application/json
                                 <c>It is the entity, A service operated by the Participant</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>It is the registration authority, where the Participant is registered</c>
                                 <!-- -->
                                 <c>technicalContact</c>
@@ -2032,6 +2272,243 @@ Content-Type: application/json
                 </figure>
             </section>
 
+            <section anchor="patch-participant"
+                     title="Patch participant">
+                <t>
+                    HTTP PATCH is an OPTIONAL server function that enables clients to
+                    update one or more attributes of a participant resource using a sequence of
+                    operations to "add", "remove", or "replace" values.
+                </t>
+                <t>
+                    The body of an HTTP PATCH request MUST contain the attribute
+                    "Operations", whose value is an array of one or more PATCH
+                    operations.  Each PATCH operation object MUST have exactly one "op"
+                    member, whose value indicates the operation to perform and MAY be one
+                    of "add", "remove", or "replace".
+                </t>
+
+                <figure>
+                    <preamble>The following example shows how to add executive contact in participant: </preamble>
+                    <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "add",
+"path": "executiveContact",
+"value": {
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+  }
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <t>
+                    The "path" attribute value is a String containing an attribute path
+                    describing the target of the operation.  The "path" attribute is
+                    OPTIONAL for "add" and "replace" and is REQUIRED for "remove"
+                    operations.
+                </t>
+
+                <section anchor="add-patch-participant"
+                         title="Add Operation">
+                    <t>
+                        The "add" operation is used to add a new attribute value to an
+                        existing resource.
+                    </t>
+                    <t>
+                        The operation MUST contain a "value" member whose content specifies
+                        the value to be added.  The value MAY be a quoted value, or it may be
+                        a JSON object containing the sub-attributes of the complex attribute
+                        specified in the operation's "path".
+                    </t>
+
+                    <t>
+                        The result of the add operation depends upon what the target location
+                        indicated by "path" references:
+                    </t>
+
+                    <list style="symbols">
+                        <t>If omitted, the target location is assumed to be the resource
+                            itself.  The "value" parameter contains a set of attributes to be
+                            added to the resource.</t>
+
+                        <t>If the target location specifies a multi-valued attribute, a new
+                            value is added to the attribute.</t>
+                        <t>
+                            If the target location specifies a single-valued attribute, the
+                            existing value is replaced.
+                        </t>
+                    </list>
+
+                    <figure>
+                        <preamble>The following example show how to link participant with federation: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"path":"memberOf",
+"value":["5909b4218489131c19abfa29"]
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation participant response. It returns response with status 200 when successfully patch the participant.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to participant request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"value":{
+ "memberOf": ["5909b4218489131c19abfa29"]
+ }
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to participant response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="replace-patch-participant"
+                         title="Replace Operation">
+                    <t>
+                        The "replace" operation replaces the value at the target location
+                        specified by the "path".  The operation performs the following
+                        functions, depending on the target location specified by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the "path" parameter is omitted, the target is assumed to be
+                            the resource itself.  In this case, the "value" attribute SHALL
+                            contain a list of one or more attributes that are to be replaced.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
+
+                        <t>If the target location is a single-value attribute, the attributes
+                            value is replaced.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation participant request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "replace",
+"path": "executiveContact",
+"value": [{
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+  }]
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation participant response. It returns response with status 200 when successfully patch the participant.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]></artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property participant request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"replace",
+"value":{
+ "executiveContact": [
+    {
+      "contactNo": "+485647556566",
+      "name": "Executive Person2"
+    }
+  ]
+ }
+}
+]]></artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation without path property participant response. It returns response with status 200 when successfully patch the participant.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="remove-patch-participant"
+                         title="Remove Operation">
+                    <t>
+                        The "remove" operation removes the value at the target location
+                        specified by the required attribute "path".  The operation performs
+                        the following functions, depending on the target location specified
+                        by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the target location is a single-value attribute, the attribute
+                            and its associated value is removed, and the attribute SHALL be
+                            considered unassigned null.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
+                            attribute SHALL be considered null array.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation participant request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "remove",
+"path": "executiveContact"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation participant response. It returns response with status 200 when successfully patch the participant.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                </section>
+
+
+
+                <figure>
+                    <t>
+                        The following example shows how to passed multiple operation in patch.
+                    </t>
+                    <preamble>Non-normative example of multiple patch operation participant request: </preamble>
+                    <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+[
+ {
+  "op": "remove",
+  "path": "executiveContact"
+ },
+ {
+  "op": "replace",
+  "path": "name",
+  "value": "abc"
+ }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Non-normative example of multiple patch operation participant response. It returns response with status 200 when successfully patch the participant.</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+
+            </section>
+
             <section anchor="delete-participant"
                      title="Delete Participant">
                 <figure>
@@ -2127,7 +2604,7 @@ Content-Type: application/json
                                 <ttcol align='left'>Description</ttcol>
                                 <!-- -->
                                 <c><spanx style="strong">name</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>A human friendly name for the Entity</c>
                                 <!-- -->
                                 <c>operatedBy</c>
@@ -2143,7 +2620,7 @@ Content-Type: application/json
                                 <c>It is Optional information about the Entity</c>
                                 <!-- -->
                                 <c><spanx style="strong">registeredBy</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>The RA which registered this entity</c>
                                 <!-- -->
                                 <c>federatedBy</c>
@@ -2554,6 +3031,231 @@ Content-Type: application/json
                 </figure>
             </section>
 
+            <section anchor="patch-entity"
+                     title="Patch Entity">
+                <t>
+                    HTTP PATCH is an OPTIONAL server function that enables clients to
+                    update one or more attributes of a entity resource using a sequence of
+                    operations to "add", "remove", or "replace" values.
+                </t>
+                <t>
+                    The body of an HTTP PATCH request MUST contain the attribute
+                    "Operations", whose value is an array of one or more PATCH
+                    operations.  Each PATCH operation object MUST have exactly one "op"
+                    member, whose value indicates the operation to perform and MAY be one
+                    of "add", "remove", or "replace".
+                </t>
+
+                <figure>
+                    <preamble>The following example show how to add link entity with federation:</preamble>
+                    <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"path":"federatedBy",
+"value":"5909b4218489131c19abfa29"
+}
+]]>
+                    </artwork>
+                </figure>
+
+                <t>
+                    The "path" attribute value is a String containing an attribute path
+                    describing the target of the operation.  The "path" attribute is
+                    OPTIONAL for "add" and "replace" and is REQUIRED for "remove"
+                    operations.
+                </t>
+
+                <section anchor="add-patch-entity"
+                         title="Add Operation">
+                    <t>
+                        The "add" operation is used to add a new attribute value to an
+                        existing resource.
+                    </t>
+                    <t>
+                        The operation MUST contain a "value" member whose content specifies
+                        the value to be added.  The value MAY be a quoted value, or it may be
+                        a JSON object containing the sub-attributes of the complex attribute
+                        specified in the operation's "path".
+                    </t>
+
+                    <t>
+                        The result of the add operation depends upon what the target location
+                        indicated by "path" references:
+                    </t>
+
+                    <list style="symbols">
+                        <t>If omitted, the target location is assumed to be the resource
+                            itself.  The "value" parameter contains a set of attributes to be
+                            added to the resource.</t>
+
+                        <t>If the target location specifies a multi-valued attribute, a new
+                            value is added to the attribute.</t>
+                        <t>
+                            If the target location specifies a single-valued attribute, the
+                            existing value is replaced.
+                        </t>
+                    </list>
+
+                    <figure>
+                        <preamble>The following example show how to add link entity with federation:</preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"path":"federatedBy",
+"value":"5909b4218489131c19abfa29"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to entity request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"value":{
+  "federatedBy": "5909b4218489131c19abfa29"
+ }
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property to entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="replace-patch-entity"
+                         title="Replace Operation">
+                    <t>
+                        The "replace" operation replaces the value at the target location
+                        specified by the "path".  The operation performs the following
+                        functions, depending on the target location specified by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the "path" parameter is omitted, the target is assumed to be
+                            the resource itself.  In this case, the "value" attribute SHALL
+                            contain a list of one or more attributes that are to be replaced.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
+
+                        <t>If the target location is a single-value attribute, the attributes
+                            value is replaced.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>The following example show how to replace operator of entity. It will replace old operator with new operator: </preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"replace",
+"path": "operatedBy",
+"value":"5909b4218489131c19abfa28"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of add patch operation without path property entity request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"replace",
+"value":{
+ "operatedBy": "5909b4218489131c19abfa28"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of replace patch operation without path property entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+                </section>
+
+                <section anchor="remove-patch-entity"
+                         title="Remove Operation">
+                    <t>
+                        The "remove" operation removes the value at the target location
+                        specified by the required attribute "path".  The operation performs
+                        the following functions, depending on the target location specified
+                        by "path":
+                    </t>
+
+                    <list style="symbols">
+                        <t>If the target location is a single-value attribute, the attribute
+                            and its associated value is removed, and the attribute SHALL be
+                            considered unassigned null.</t>
+
+                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
+                            attribute SHALL be considered null array.</t>
+                    </list>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation entity request: </preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op": "remove",
+"path": "operatedBy"
+}
+]]>
+                        </artwork>
+                    </figure>
+
+                    <figure>
+                        <preamble>Non-normative example of remove patch operation entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        </artwork>
+                    </figure>
+
+                </section>
+
+                <figure>
+                    <t>
+                        The following non-normative example shows how to passed multiple operation in patch.
+                    </t>
+                    <preamble>Non-normative example of multiple patch operation entity request: </preamble>
+                    <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+[
+ {
+  "op": "remove",
+  "path": "operatedBy"
+ },
+ {
+  "op": "replace",
+  "path": "name",
+  "value": "abc"
+ }
+]
+]]>
+                    </artwork>
+                </figure>
+
+                <figure>
+                    <preamble>Non-normative example of multiple patch operation entity response. It returns response with status 200 when successfully patch the entity.</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+
+            </section>
+
             <section anchor="delete-entity"
                      title="Delete Entity">
                 <t>
@@ -2624,7 +3326,7 @@ Content-Type: application/json
 
                                 <!-- -->
                                 <c><spanx style="strong">category</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>It is the Category. Enables extensions to define standard categories for searching</c>
                                 <!-- -->
                                 <c>metadataFormat</c>
@@ -2913,11 +3615,11 @@ Content-Type: application/json
 
                                 <!-- -->
                                 <c><spanx style="strong">name</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>Identifier for this schema item</c>
                                 <!-- -->
                                 <c><spanx style="strong">category</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>The Extensions defined in extensions like "attribute" or "scope"</c>
                                 <!-- -->
                                 <c>description</c>
@@ -2925,7 +3627,7 @@ Content-Type: application/json
                                 <c>The Human understandable explanation of this term.</c>
                                 <!-- -->
                                 <c><spanx style="strong">required</spanx></c>
-                                <c>REQUIRED</c>
+                                <c><spanx style="strong">REQUIRED</spanx></c>
                                 <c>Whether this schema element is required</c>
                                 <!-- -->
                                 <c>url</c>
@@ -3353,6 +4055,7 @@ Content-Type: application/json
             </section>
 
         </section>
+
         <section anchor="Acknowledgments" title="Acknowledgments">
             <t>The following people made contributions to the development of this
                 specification:
