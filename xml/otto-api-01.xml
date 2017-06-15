@@ -1218,6 +1218,12 @@ Content-Type: application/json
                     </artwork>
                 </figure>
 
+                <figure>
+                    <preamble>Non-normative example of add patch operation Federation response.  On successful completion, the server either MUST return a 200 OK response code.</preamble>
+                    <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                    </artwork>
+                </figure>
+
                 <t>
                     The "path" attribute value is a String containing an attribute path
                     describing the target of the operation.  The "path" attribute is
@@ -1225,12 +1231,25 @@ Content-Type: application/json
                     operations.
                 </t>
 
+                <t>
+                    Valid examples of "path" are as follows:
+                </t>
+
+                <list style="numbers">
+                    <t>"path": "federates"</t>
+                    <t>"path":"securityContact.name"</t>
+                    <t>"path": "securityContact[name eq \"Person1\"]"</t>
+                    <t>"path": "securityContact[name eq \"Person1\"].name"</t>
+                    <t>"path":"/federates/59414908e7748f4d19541f46" -> Allow only for remove patch operation</t>
+                </list>
+
                 <section anchor="add-patch-federation"
                          title="Add Operation">
                     <t>
                         The "add" operation is used to add a new attribute value to an
                         existing resource.
                     </t>
+
                     <t>
                         The operation MUST contain a "value" member whose content specifies
                         the value to be added.  The value MAY be a quoted value, or it may be
@@ -1244,20 +1263,33 @@ Content-Type: application/json
                     </t>
 
                     <list style="symbols">
-                        <t>If omitted, the target location is assumed to be the resource
+                        <t>
+                            If omitted, the target location is assumed to be the resource
                             itself.  The "value" parameter contains a set of attributes to be
-                            added to the resource.</t>
+                            added to the resource.
+                        </t>
 
-                        <t>If the target location specifies a multi-valued attribute, a new
-                            value is added to the attribute.</t>
+                        <t>
+                            If the target location specifies a multi-valued attribute, a new
+                            value is added to the attribute.
+                        </t>
+
                         <t>
                             If the target location specifies a single-valued attribute, the
                             existing value is replaced.
                         </t>
+
+                        <t>
+                            If the target location specifies a complex attribute, a set of
+                            sub-attributes SHALL be specified in the "value" parameter.
+                        </t>
                     </list>
 
+                    <t>
+                        Below is the non-normative example of possible patch request.
+                    </t>
                     <figure>
-                        <preamble>The following non-normative example shows how to add federates in federation: </preamble>
+                        <preamble>The following non-normative example shows how to add entity as a federates in federation: </preamble>
                         <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
 "op":"add",
@@ -1266,15 +1298,7 @@ Content-Type: application/json
 }
 ]]>
                         </artwork>
-                    </figure>
 
-                    <figure>
-                        <preamble>Non-normative example of add patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
-                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
-                        </artwork>
-                    </figure>
-
-                    <figure>
                         <preamble>Non-normative example of add patch operation without path property to federation request: </preamble>
                         <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
@@ -1285,12 +1309,63 @@ Content-Type: application/json
 }
 ]]>
                         </artwork>
-                    </figure>
 
-                    <figure>
-                        <preamble>Non-normative example of add patch operation without path property to Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
-                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
+                        <preamble>Non-normative example of patch operation to passed single value in multivalued attribute: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"add",
+"value":{
+ "federates": "593e389eef45281765f96128"
+ }
+}
+]]>
                         </artwork>
+
+                        <preamble>Non-normative example of patch to single valued attribute: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op": "add",
+ "path": "name",
+ "value": "fed-test"
+}
+]]>
+                        </artwork>
+
+                        <preamble>Non-normative example of patch with path parameter condition. Currently It only allow equels(eq) operation: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op": "add",
+ "path": "securityContact[name eq \"sec12\"]",
+ "value": {
+      "contactNo": "+485647556566",
+      "name": "sec1"
+    }
+}
+]]>
+                        </artwork>
+
+                        <preamble>Non-normative example of patch to sub attribute: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op": "add",
+ "path": "securityContact[name eq \"Person1\"].name",
+ "value":"Person One"
+}
+]]>
+                        </artwork>
+
+                        <preamble>Non-normative example of patch to multiple attribute: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op": "add",
+ "value": {
+  "name":"fed-name",
+  "description": "fed-desc"
+ }
+}
+]]>
+                        </artwork>
+
                     </figure>
                 </section>
 
@@ -1303,38 +1378,58 @@ Content-Type: application/json
                     </t>
 
                     <list style="symbols">
-                        <t>If the "path" parameter is omitted, the target is assumed to be
+                        <t>
+                            If the "path" parameter is omitted, the target is assumed to be
                             the resource itself.  In this case, the "value" attribute SHALL
-                            contain a list of one or more attributes that are to be replaced.</t>
+                            contain a list of one or more attributes that are to be replaced.
+                        </t>
 
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
+                        <t>
+                            If the target location is a multi-valued attribute, the attribute and all values are replaced.
+                        </t>
 
-                        <t>If the target location is a single-value attribute, the attributes
-                            value is replaced.</t>
+                        <t>
+                            If the target location is a single-value attribute, the attributes
+                            value is replaced.
+                        </t>
+
+                        <t>
+                            If the target location specifies a complex attribute, a set of
+                            sub-attributes SHALL be specified in the "value" parameter, which
+                            replaces any existing values or adds where an attribute did not
+                            previously exist.  Sub-attributes that are not specified in the
+                            "value" parameter are left unchanged.
+                        </t>
+
+                        <t>
+                            If the target location is a multi-valued attribute and a value
+                            selection filter is specified that matches one or
+                            more values of the multi-valued attribute, then all matching
+                            record values SHALL be replaced.
+                        </t>
+
+                        <t>
+                            If the target location is a complex multi-valued attribute with a
+                            value selection filter ("valuePath") and a specific sub-attribute
+                            (e.g., "securityContact[name eq "abc"].contactNo"), the matching
+                            sub-attribute of all matching records is replaced.
+                        </t>
+
                     </list>
 
+                    <t>Replace patch also support all the possibilities as describe in <xref target="add-patch-federation"/> </t>
+
                     <figure>
-                        <preamble>Non-normative example of replace patch operation federation request: </preamble>
+                        <preamble>Non-normative example of replace patch operation federation request. It remove previous federates and adde new federates: </preamble>
                         <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
-"op": "replace",
-"path": "executiveContact",
-"value": [{
-      "contactNo": "+485647556566",
-      "name": "Executive Person2"
-  }]
+ "op": "replace",
+ "path": "federates",
+ "value": ["593e389eef45281765f96128"]
 }
 ]]>
                         </artwork>
-                    </figure>
 
-                    <figure>
-                        <preamble>Non-normative example of replace patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
-                        <artwork><![CDATA[HTTP/1.1 200 OK ]]>
-                        </artwork>
-                    </figure>
-
-                    <figure>
                         <preamble>Non-normative example of add patch operation without path property federation request: </preamble>
                         <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
@@ -1353,10 +1448,11 @@ Content-Type: application/json
                     </figure>
 
                     <figure>
-                        <preamble>Non-normative example of replace patch operation without path property Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
+                        <preamble>Non-normative example of replace patch operation Federation response. It returns response with status 200 when successfully patch the federation.</preamble>
                         <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                         </artwork>
                     </figure>
+
                 </section>
 
                 <section anchor="remove-patch-federation"
@@ -1369,20 +1465,59 @@ Content-Type: application/json
                     </t>
 
                     <list style="symbols">
-                        <t>If the target location is a single-value attribute, the attribute
+                        <t>
+                            If the target location is a single-value attribute, the attribute
                             and its associated value is removed, and the attribute SHALL be
-                            considered unassigned null.</t>
+                            considered unassigned null.
+                        </t>
 
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
-                            attribute SHALL be considered null array.</t>
+                        <t>
+                            If the target location is a multi-valued attribute, the attribute and all values are removed, and the
+                            attribute SHALL be considered null array.
+                        </t>
+
+                        <t>
+                            If the target location is a multi-valued attribute and a complex
+                            filter is specified comparing a "value", the values matched by the
+                            filter are removed.  If no other values remain after removal of
+                            the selected values, the multi-valued attribute SHALL be
+                            considered null.
+                        </t>
+
+                        <t>
+                            If the target location is a complex multi-valued attribute and a
+                            complex filter is specified based on the attribute's
+                            sub-attributes, the matching records are removed.  Sub-attributes
+                            whose values have been removed SHALL be considered unassigned.  If
+                            the complex multi-valued attribute has no remaining records, the
+                            attribute SHALL be considered unassigned.
+                        </t>
                     </list>
 
                     <figure>
-                        <preamble>Non-normative example of remove patch operation federation request: </preamble>
+                        <preamble>Non-normative example of remove patch operation federation request to remove specific federates from federation: </preamble>
                         <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
 {
-"op": "remove",
-"path": "executiveContact"
+ "op":"remove",
+ "path":"/federates/59414908e7748f4d19541f46"
+}
+]]>
+                        </artwork>
+
+                        <preamble>Non-normative example of remove patch operation federation request to removed multivalued attribute all values. It will remove all executiveContact: </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op": "remove",
+ "path": "executiveContact"
+}
+]]>
+                        </artwork>
+
+                        <preamble>Non-normative example of remove patch operation federation request with path parameter condition. It will remove executiveContact whose name is "sec2": </preamble>
+                        <artwork><![CDATA[PATCH /otto/federations/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op":"remove",
+ "path":"securityContact[name eq \"sec2\"]"
 }
 ]]>
                         </artwork>
@@ -1393,7 +1528,6 @@ Content-Type: application/json
                         <artwork><![CDATA[HTTP/1.1 200 OK ]]>
                         </artwork>
                     </figure>
-
                 </section>
 
                 <figure>
@@ -2287,21 +2421,6 @@ Content-Type: application/json
                     of "add", "remove", or "replace".
                 </t>
 
-                <figure>
-                    <preamble>The following example shows how to add executive contact in participant: </preamble>
-                    <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
-{
-"op": "add",
-"path": "executiveContact",
-"value": {
-      "contactNo": "+485647556566",
-      "name": "Executive Person2"
-  }
-}
-]]>
-                    </artwork>
-                </figure>
-
                 <t>
                     The "path" attribute value is a String containing an attribute path
                     describing the target of the operation.  The "path" attribute is
@@ -2313,32 +2432,8 @@ Content-Type: application/json
                          title="Add Operation">
                     <t>
                         The "add" operation is used to add a new attribute value to an
-                        existing resource.
+                        existing resource. refer <xref target="add-patch-federation" /> for add patch operation description.
                     </t>
-                    <t>
-                        The operation MUST contain a "value" member whose content specifies
-                        the value to be added.  The value MAY be a quoted value, or it may be
-                        a JSON object containing the sub-attributes of the complex attribute
-                        specified in the operation's "path".
-                    </t>
-
-                    <t>
-                        The result of the add operation depends upon what the target location
-                        indicated by "path" references:
-                    </t>
-
-                    <list style="symbols">
-                        <t>If omitted, the target location is assumed to be the resource
-                            itself.  The "value" parameter contains a set of attributes to be
-                            added to the resource.</t>
-
-                        <t>If the target location specifies a multi-valued attribute, a new
-                            value is added to the attribute.</t>
-                        <t>
-                            If the target location specifies a single-valued attribute, the
-                            existing value is replaced.
-                        </t>
-                    </list>
 
                     <figure>
                         <preamble>The following example show how to link participant with federation: </preamble>
@@ -2382,20 +2477,8 @@ Content-Type: application/json
                          title="Replace Operation">
                     <t>
                         The "replace" operation replaces the value at the target location
-                        specified by the "path".  The operation performs the following
-                        functions, depending on the target location specified by "path":
+                        specified by the "path". refer <xref target="replace-patch-federation" /> for detail replace patch description.
                     </t>
-
-                    <list style="symbols">
-                        <t>If the "path" parameter is omitted, the target is assumed to be
-                            the resource itself.  In this case, the "value" attribute SHALL
-                            contain a list of one or more attributes that are to be replaced.</t>
-
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
-
-                        <t>If the target location is a single-value attribute, the attributes
-                            value is replaced.</t>
-                    </list>
 
                     <figure>
                         <preamble>Non-normative example of replace patch operation participant request: </preamble>
@@ -2445,26 +2528,24 @@ Content-Type: application/json
                          title="Remove Operation">
                     <t>
                         The "remove" operation removes the value at the target location
-                        specified by the required attribute "path".  The operation performs
-                        the following functions, depending on the target location specified
-                        by "path":
+                        specified by the required attribute "path". Refer <xref target="remove-patch-federation" /> for detail description of remove patch.
                     </t>
 
-                    <list style="symbols">
-                        <t>If the target location is a single-value attribute, the attribute
-                            and its associated value is removed, and the attribute SHALL be
-                            considered unassigned null.</t>
-
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
-                            attribute SHALL be considered null array.</t>
-                    </list>
-
                     <figure>
+                        <preamble>Non-normative example of remove patch operation participant request to remove specific federation: </preamble>
+                        <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
+{
+ "op":"remove",
+ "path":"/memberOf/59414908e7748f4d19541f46"
+}
+]]>
+                        </artwork>
+
                         <preamble>Non-normative example of remove patch operation participant request: </preamble>
                         <artwork><![CDATA[PATCH /otto/participant/5909b4218489131c19abfa29 HTTP/1.1
 {
-"op": "remove",
-"path": "executiveContact"
+ "op": "remove",
+ "path": "executiveContact"
 }
 ]]>
                         </artwork>
@@ -2477,8 +2558,6 @@ Content-Type: application/json
                     </figure>
 
                 </section>
-
-
 
                 <figure>
                     <t>
@@ -3069,32 +3148,8 @@ Content-Type: application/json
                          title="Add Operation">
                     <t>
                         The "add" operation is used to add a new attribute value to an
-                        existing resource.
+                        existing resource. Refer <xref target="add-patch-federation" /> for detail description of patch add operation.
                     </t>
-                    <t>
-                        The operation MUST contain a "value" member whose content specifies
-                        the value to be added.  The value MAY be a quoted value, or it may be
-                        a JSON object containing the sub-attributes of the complex attribute
-                        specified in the operation's "path".
-                    </t>
-
-                    <t>
-                        The result of the add operation depends upon what the target location
-                        indicated by "path" references:
-                    </t>
-
-                    <list style="symbols">
-                        <t>If omitted, the target location is assumed to be the resource
-                            itself.  The "value" parameter contains a set of attributes to be
-                            added to the resource.</t>
-
-                        <t>If the target location specifies a multi-valued attribute, a new
-                            value is added to the attribute.</t>
-                        <t>
-                            If the target location specifies a single-valued attribute, the
-                            existing value is replaced.
-                        </t>
-                    </list>
 
                     <figure>
                         <preamble>The following example show how to add link entity with federation:</preamble>
@@ -3138,20 +3193,8 @@ Content-Type: application/json
                          title="Replace Operation">
                     <t>
                         The "replace" operation replaces the value at the target location
-                        specified by the "path".  The operation performs the following
-                        functions, depending on the target location specified by "path":
+                        specified by the "path". Refer <xref target="replace-patch-federation" /> for detail description of replace patch.
                     </t>
-
-                    <list style="symbols">
-                        <t>If the "path" parameter is omitted, the target is assumed to be
-                            the resource itself.  In this case, the "value" attribute SHALL
-                            contain a list of one or more attributes that are to be replaced.</t>
-
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are replaced.</t>
-
-                        <t>If the target location is a single-value attribute, the attributes
-                            value is replaced.</t>
-                    </list>
 
                     <figure>
                         <preamble>The following example show how to replace operator of entity. It will replace old operator with new operator: </preamble>
@@ -3194,21 +3237,19 @@ Content-Type: application/json
                          title="Remove Operation">
                     <t>
                         The "remove" operation removes the value at the target location
-                        specified by the required attribute "path".  The operation performs
-                        the following functions, depending on the target location specified
-                        by "path":
+                        specified by the required attribute "path". Refer <xref target="remove-patch-federation" /> for detail description of remove patch operation.
                     </t>
 
-                    <list style="symbols">
-                        <t>If the target location is a single-value attribute, the attribute
-                            and its associated value is removed, and the attribute SHALL be
-                            considered unassigned null.</t>
-
-                        <t>If the target location is a multi-valued attribute, the attribute and all values are removed, and the
-                            attribute SHALL be considered null array.</t>
-                    </list>
-
                     <figure>
+                        <preamble>Non-normative example of remove patch operation entity request to remove federation: </preamble>
+                        <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
+{
+"op":"remove",
+"path":"/federatedBy/59414908e7748f4d19541f46"
+}
+]]>
+                        </artwork>
+
                         <preamble>Non-normative example of remove patch operation entity request: </preamble>
                         <artwork><![CDATA[PATCH /otto/entity/5909b4218489131c19abfa29 HTTP/1.1
 {
