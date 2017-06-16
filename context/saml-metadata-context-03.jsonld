@@ -1,0 +1,187 @@
+{
+    "@context": 
+    {
+        "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
+        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+        "schema": "http://schema.org",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "obi": "https://w3id.org/openbadges#",
+        "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
+        "iri": "https://www.ietf.org/rfc/rfc3987.txt",
+        "md": "urn:oasis:names:tc:SAML:2.0:metadata",
+        "mdattr": "urn:oasis:names:tc:SAML:metadata:attribute ",
+        "ds": "http://www.w3.org/2000/09/xmldsig#",
+        "xenc": "http://www.w3.org/2000/09/xmlenc#",
+        "saml": "urn:oasis:names:tc:SAML:2.0:assertion",
+        "xmlns": "http://www.w3.org/2001/XMLSchema>"
+    },
+    
+    "@graph": 
+    [
+        {
+            "@id": "md:EntityDescriptor",
+            "@type": "rdfs:Class",
+            "rdfs:comment": "The metadata structure for SAML EntityDescriptors",
+            "rdfs:subClassOf": {"@id": "otto:Entity"}
+        },
+        {
+            "@id": "md:entityID",
+            "@type": "rdfs:Property",
+            "rdfs:comment": "Specifies the unique identifier of the SAML entity whose metadata is described by the element's contents.",
+            "domainIncludes": {"@id": "md:EntityDescriptor"},
+            "rangeIncludes": {"@id": "schema:URI"}
+        },
+        {
+             "@id": "md:RegistrationInfo",
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Identifies the Federation that registered this Entity.",
+             "rdfs:subClassOf": {"@id": "otto:RegistrationAuthority"}     
+        },       
+        {
+             "@id": "mdattr:EntityCategory",
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Identifies an Entity Category associated with this Entity.",
+             "rdfs:subClassOf": {"@id": "otto:Schema"}     
+        },       
+        {
+             "@id": "SPSSODescriptor",  
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Metadata for the SSO aspects of the SAML Service Provider",
+             "rdfs:subClassOf": {"@id": "otto:Schema"}
+        },
+
+        {
+             "@id": "protocolSupportEnumeration",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Protocols supported by this SAML endpoint type",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "schema:URI"}
+        },
+
+        {
+             "@id": "DiscoveryResponse",  
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Discovery elements for this SAML endpoint type",
+             "rdfs:subClassOf": {"@id": "otto:Schema"}
+        },
+
+        {
+             "@id": "Binding",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Binding for this SAML endpoint",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "schema:URI"}
+        },
+
+        {
+             "@id": "Location",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Location of this SAML endpoint",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "schema:URL"}
+        },
+        {
+             "@id": "Index",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Ordinal value of this endpoint URL",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "integer"}
+        },
+        
+        {
+             "@id": "SPSSODisplayName",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Display Name for the SP as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "string"}
+        },
+
+        {
+             "@id": "SPSSODescription",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Description of the SP as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "string"}
+        },
+
+        {
+             "@id": "SPSSOInformationURL",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "URL for more information about the SP as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "URL"}
+        },
+        
+        {
+             "@id": "SPSSOPrivacyURL",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "URL for more information about the SP Privacy Policy as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSODescriptor"},
+             "rangeIncludes": {"@id": "URL"}
+        },
+        
+        {
+             "@id": "SPSSOLogo",  
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Small Logo for the SP Privacy Policy as shown to user in Discovery UI",
+             "rdfs:subClassOf": {"@id": "otto:Schema"}
+        },
+
+
+        {
+             "@id": "SPSSOLogoHeight",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Height of small Logo for the SP Privacy Policy as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSOLogo"},
+             "rangeIncludes": {"@id": "integer"}
+        },
+        
+ 
+        {
+             "@id": "SPSSOLogoWidth",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Width of small Logo for the SP Privacy Policy as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSOLogo"},
+             "rangeIncludes": {"@id": "integer"}
+        },
+
+        {
+             "@id": "SPSSOLang",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Width of small Logo for the SP Privacy Policy as shown to user in Discovery UI",
+             "domainIncludes": {"@id": "SPSSOLogo"},
+             "rangeIncludes": {"@id": "string"}
+        },
+
+        {    
+             "@id": "KeyInfo",  
+             "@type": "rdfs:Class",
+             "rdfs:comment": "Metadata about SPSSO public key",
+             "rdfs:subClassOf": {"@id": "otto:Schema"}
+
+        },       
+
+        {    
+             "@id": "KeyInfoUse",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "Identifier for SPSSO key use type",
+             "domainIncludes": {"@id": "KeyInfo"},
+             "rangeIncludes": {"@id": "url"}
+
+        },
+
+        {    
+             "@id": "X509Data",  
+             "@type": "rdfs:Property",
+             "rdfs:comment": "SPSSOKeyValue",
+             "domainIncludes": {"@id": "KeyInfo"},
+             "rangeIncludes": {"@id": "base64"}
+
+        },
+
+        {
+        "rdfs:comment": "More to come: Entity's AssertionConsumerService, Organization, ContactPerson"
+        }
+
+    ]
+ }
