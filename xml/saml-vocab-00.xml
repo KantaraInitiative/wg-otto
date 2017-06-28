@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="US-ASCII"?>
 <?xml-stylesheet type='text/xsl' href='http://xml2rfc.tools.ietf.org/authoring/rfc2629.xslt' ?>
-<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN"
-"http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd" [
+<!DOCTYPE rfc PUBLIC "-//IETF//DTD RFC 2629//EN" "http://xml2rfc.tools.ietf.org/authoring/rfc2629.dtd"[
    <!ENTITY RFC2119 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml">
    <!ENTITY RFC3987 SYSTEM "http://xml2rfc.tools.ietf.org/public/rfc/bibxml/reference.RFC.3987.xml">
 ]>
-<rfc category="std" docName="otto-core" id="kantara" ipr="kantara"
-     target="draft" version="1.0">
+<rfc category="std" docName="otto-core" id="kantara" ipr="kantara" target="draft" version="1.0">
   <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 
   <?rfc toc='yes' ?>
@@ -22,48 +20,32 @@
   <?rfc subcompact='no' ?>
 
   <front>
-    <title abbrev="OTTO Core">OTTO Vocabulary 1.0</title>
+    <title abbrev="OTTO Core">OTTO: SAML Vocabulary 0.1</title>
 
-    <author fullname="Michael Schwartz" initials="M." role="editor"
-      surname="Schwartz">
-      <organization>Gluu</organization>
+    <author fullname="Keith Hazelton" initials="K." role="editor" surname="Hazelton">
+      <organization>Internet2</organization>
 
       <address>
-        <email>mike@gluu.org</email>
+        <email>khazelton@gmail.com</email>
       </address>
     </author>
 
-    <author fullname="Janusz Ulanowski," initials="J."
-      surname="Ulanowski">
-      <organization>HEAnet</organization>
-
-      <address>
-        <email>janusz.ulanowski@heanet.ie</email>
-      </address>
-    </author>
-
-    <author fullname="Judith Bush" initials="J." surname="Bush">
-      <organization>OCLC</organization>
-
-      <address>
-        <email>bushj@oclc.org</email>
-      </address>
-    </author>
-
-    <date day="12" month="April" year="2017" />
+    <date day="28" month="June" year="2017"/>
 
     <abstract>
       <t>This specification describes a method for packaging information
         about multi-party federations, and establishing mechanisms for
         its validation. It includes term definitions which appear in the
-        current JSON-LD context for the OTTO 1.0 specification.
+        current JSON-LD context for the SAML portion of OTTO 1.0 specification.
       </t>
     </abstract>
   </front>
 
   <middle>
     <section anchor="introduction" title="Introduction">
-      <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
+      <t>TBD
+      </t>
+      <t>  The Open Trust Taxonomy for Federation Operators (OTTO) defines
         standards to enable the interoperable management of multi-party
         federations--where a central authority creates the rules for membership,
         enabling the participants to more efficiently collaborate. The goal of
@@ -112,7 +94,7 @@
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
         "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
         "OPTIONAL" in this document are to be interpreted as described in
-        <xref target="RFC2119" />.</t>
+        <xref target="RFC2119"/>.</t>
 
         <t>Unless otherwise noted, all protocol properties and values are case
         sensitive. Fields marked in <spanx style="strong">strong</spanx> letters are
@@ -125,9 +107,9 @@
     <section anchor="registration-authority" title="Registration Authority">
       <t>
         <texttable anchor="table_ra" title="Registration Authority">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -168,9 +150,9 @@
     <section anchor="federation" title="Federation">
       <t>
         <texttable anchor="table_federation" title="Federation">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -260,9 +242,9 @@
     <section anchor="participant" title="Participant">
       <t>
         <texttable anchor="table_participant" title="Participant">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -320,9 +302,9 @@
     <section anchor="entity" title="Entity">
       <t>
         <texttable anchor="table_entity" title="Entity">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -371,9 +353,9 @@
     <section anchor="metadata" title="Metadata">
       <t>
         <texttable anchor="table_metadata" title="Metadata">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -397,9 +379,9 @@
     <section anchor="schema" title="Schema">
       <t>
         <texttable anchor="table_schema" title="Schema">
-          <ttcol align='left'>Property</ttcol>
-          <ttcol align='left'>Expected Type</ttcol>
-          <ttcol align='left'>Description</ttcol>
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
           <!-- -->
           <c><spanx style="strong">@id</spanx></c>
           <c>IRI</c>
@@ -445,8 +427,7 @@
         </list></t>
 
       <t>Additional contributors to this specification include the Kantara OTTO
-      Work Group participants, a list of whom can be found at <xref
-      target="OttoWgParticipants" />.</t>
+      Work Group participants, a list of whom can be found at <xref target="OttoWgParticipants"/>.</t>
     </section>
   </middle>
 
@@ -457,15 +438,14 @@
     </references>
 
     <references title="Informative References">
-      <reference anchor="OttoWgParticipants"
-target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
+      <reference anchor="OttoWgParticipants" target="http://kantarainitiative.org/confluence/display/OTTO/Participant+roster">
         <front>
           <title>OTTO Participant Roster</title>
 
           <author initials="M." surname="Schwartz">
             <organization>Schwartz</organization>
           </author>
-          <date day="" month="" year="2016" />
+          <date day="" month="" year="2016"/>
         </front>
       </reference>
     </references>
