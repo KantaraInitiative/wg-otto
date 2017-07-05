@@ -1197,7 +1197,7 @@ Content-Type: application/json
                 </t>
                 <t>
                     The body of an HTTP PATCH request MUST contain the attribute
-                    "Operations", whose value is an array of one or more PATCH
+                    "op", whose value is an array of one or more PATCH
                     operations.  Each PATCH operation object MUST have exactly one "op"
                     member, whose value indicates the operation to perform and MAY be one
                     of "add", "remove", or "replace".
@@ -2415,7 +2415,7 @@ Content-Type: application/json
                 </t>
                 <t>
                     The body of an HTTP PATCH request MUST contain the attribute
-                    "Operations", whose value is an array of one or more PATCH
+                    "op", whose value is an array of one or more PATCH
                     operations.  Each PATCH operation object MUST have exactly one "op"
                     member, whose value indicates the operation to perform and MAY be one
                     of "add", "remove", or "replace".
@@ -3119,7 +3119,7 @@ Content-Type: application/json
                 </t>
                 <t>
                     The body of an HTTP PATCH request MUST contain the attribute
-                    "Operations", whose value is an array of one or more PATCH
+                    "op", whose value is an array of one or more PATCH
                     operations.  Each PATCH operation object MUST have exactly one "op"
                     member, whose value indicates the operation to perform and MAY be one
                     of "add", "remove", or "replace".
