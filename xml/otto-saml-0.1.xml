@@ -50,14 +50,9 @@
     <section anchor="introduction" title="Introduction">
       <t>TBD
       </t>
-      <t>  The Open Trust Taxonomy for Federation Operators (OTTO) defines
+      <t>The Open Trust Taxonomy for Federation Operators (OTTO) defines
         standards to enable the interoperable management of multi-party
-        federations--where a central authority creates the rules for membership,
-        enabling the participants to more efficiently collaborate. The goal of
-        OTTO is to support a range of trust models from very low to very high.
-        By providing a common set of API's and a data model, the OTTO standard
-        provides a scalable technical infrastructure to solve organizational
-        challenges in a number of different ecosystems.
+        federations.
       </t>
 
       <t>
@@ -67,32 +62,6 @@
         in the OTTO JSON-LD context.
       </t>
 
-      <t>
-        The OTTO vocabulary defines several data classes used to express
-        the organizations, services and technical components of a multi-party
-        federation. There are three core classes: Federation, Participant,
-        and Entity.  Each class is a collection of properties and values, and
-        each defines which are mandatory and optional, as well as the
-        restrictions for the values of properties. If properties are included
-        in OTTO federation JSON that cannot be mapped to the JSON-LD terms
-        defined in the object's <spanx style="verb">@context</spanx>, they
-        are not considered part of the OTTO metadata's meaning.
-      </t>
-
-      <section anchor="extentions" title="Extensions">
-        <t>
-          Other organizations may publish additional properties beyond
-          those defined here. Extensions allow the community to declare how they
-          are adding information so that it can be understood and other issuers
-          can add the same sore of information in a compatible way.
-        </t>
-        <t>
-          Extension authors define and host a new JSON-LD context file
-          describing all the terms the extension covers. These context files may
-          further define any JSON-schema that implementations of the extension
-          should pass. If used, each schema is linked from the context and
-          hosted as a seperate JSON-schema files.
-        </t>
       </section>
 
       <section title="Notational Conventions">

@@ -1,0 +1,53 @@
+OTTO Vocab
+
+- Registration Authority
+- Federation
+- Participant
+- Entity
+- Metadata
+- Schema
+
+
+OpenID Vocab Extension
+
+- OpenID Provider
+- OpenID Relying Party
+- User Claim
+- Scope
+- Metadata Statement
+- Categories
+
+
+SAML Vocab Extension
+
+- SAML Entity
+  - Entity ID
+  - Entity Category (Otto:Category)
+  - Registrar (Otto:Registration Authority)
+  - SSO endpoint
+    - List of Discovery Responses
+    - List of Keys
+    - List of AssertionConsumer
+    - AttributeConsumer
+    - List of Requested Attributes
+    
+  - Organization (Otto:Participant(?))
+    - name
+    - displayName
+    - URL
+  - Contact Person
+    - admin
+    - support
+    - technical
+
+
+- SAML Entity - Service Provider (SP)
+  - Otto:Category
+  
+- SAML Entity - Identity Provider (IdP)
+  - Otto:Category
+  - Domain (samlMd:scope)
+  - List of SSO service
+  - Attribute Authority
+  - Attribute Service
+  

@@ -1,18 +1,33 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- The Ohio State University -->
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<EntitiesDescriptor xmlns="urn:oasis:names:tc:SAML:2.0:metadata" 
+    xmlns:alg="urn:oasis:names:tc:SAML:metadata:algsupport" 
+    xmlns:ds="http://www.w3.org/2000/09/xmldsig#" 
+    xmlns:idpdisc="urn:oasis:names:tc:SAML:profiles:SSO:idp-discovery-protocol" 
+    xmlns:init="urn:oasis:names:tc:SAML:profiles:SSO:request-init" 
+    xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi" 
+    xmlns:mdui="urn:oasis:names:tc:SAML:metadata:ui" 
+    xmlns:shibmd="urn:mace:shibboleth:metadata:1.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+      ID="INC20170331T184815" Name="urn:mace:incommon" validUntil="2017-04-14T18:48:15Z">
+<Extensions>
+  <mdrpi:PublicationInfo creationInstant="2017-03-31T18:48:15Z" publisher="https://incommon.org"/>
+</Extensions>
+
+<!-- the Ohio State University -->
 
 <EntityDescriptor entityID="https://carmenwiki.osu.edu/shibboleth" xmlns="urn:oasis:names:tc:SAML:2.0:metadata">
 
-    <Extensions xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute" xmlns:mdrpi="urn:oasis:names:tc:SAML:metadata:rpi">
-        <mdrpi:RegistrationInfo registrationAuthority="https://incommon.org"/>
-        
-    </Extensions><Extensions><mdattr:EntityAttributes xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">
-        <saml:Attribute Name="http://macedir.org/entity-category" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
+<Extensions>
+  <mdattr:EntityAttributes xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion"
+      xmlns:mdattr="urn:oasis:names:tc:SAML:metadata:attribute">
+        <saml:Attribute Name="http://macedir.org/entity-category" 
+            NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri">
             <saml:AttributeValue>http://id.incommon.org/category/research-and-scholarship</saml:AttributeValue>
             <saml:AttributeValue>http://refeds.org/category/research-and-scholarship</saml:AttributeValue>
             <saml:AttributeValue>http://id.incommon.org/category/registered-by-incommon</saml:AttributeValue>
         </saml:Attribute>
-    </mdattr:EntityAttributes></Extensions>
+  </mdattr:EntityAttributes>
+</Extensions>
     <SPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:1.1:protocol urn:oasis:names:tc:SAML:2.0:protocol">
         <md:Extensions xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata">
             <DiscoveryResponse xmlns="urn:oasis:names:tc:SAML:profiles:SSO:idp-discovery-protocol" Binding="urn:oasis:names:tc:SAML:profiles:SSO:idp-discovery-protocol" Location="https://carmenwiki.osu.edu/Shibboleth.sso/Login" index="1"/>
@@ -201,4 +216,5 @@
         <EmailAddress>security@osu.edu</EmailAddress>
     </ContactPerson>
 </EntityDescriptor>
+</EntitiesDescriptor>
 
