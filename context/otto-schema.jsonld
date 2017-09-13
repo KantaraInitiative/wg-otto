@@ -356,10 +356,14 @@
                 {
                   "@id": "openid:supports",
                   "@type": "rdf:Property",
-                  "domainIncludes":
-                      {
+                  "domainIncludes":[
+                        {
                         "@id": "otto:Federation"
-                      },
+                        },
+                        {
+                          "@id": "otto:Entity"
+                        }
+                      ],
                   "rangeIncludes":{
                     "@id": "otto:Schema"
                   }

@@ -357,7 +357,7 @@
           <c>The metadata for this Entity</c>
           <!-- -->
           <c>category</c>
-          <c>Category</c>
+          <c>Category or array of Category</c>
           <c>Used for assignment of standard Category defined in extension</c>
           <!-- -->
           <c>supports</c>
