@@ -78,7 +78,7 @@
       </address>
     </author>
 
-    <date year="2017" />
+    <date year="2017"/>
 
     <!-- If the month and year are both specified and are the current ones, xml2rfc will fill
          in the current day for you. If only the current year is specified, xml2rfc will fill
@@ -101,7 +101,7 @@
     <keyword>OTTO</keyword>
     <keyword>OIDC</keyword>
     <keyword>SAML</keyword>
-    <keyword>attribute</keyword>
+    <keyword>schema</keyword>   <keyword>attribute</keyword>
 
     <!-- Keywords will be incorporated into HTML output
          files in a meta tag but they have no effect on text or nroff
@@ -109,49 +109,143 @@
          keywords will be used for the search engine. -->
 
     <abstract>
-      <t>This specification defines terms to enable OTTO federations to
-        facilitate the collaboration of Participants deploying SAML-based
-        services.</t>
+      <t>This specification describes a method for packaging information about SAML-based federations, and establishing mechanisms for its validation. It includes term definitions which appear in the current JSON-LD context for the OTTO 1.0 specification.
+</t>
     </abstract>
   </front>
 
   <middle>
     <section title="Introduction">
-      <t>TBD</t>
+      <t>
+          The Open Trust Taxonomy for Federation Operators ("OTTO") defines
+          an extension mechanism to allow the community to add functionality in
+          a community compatible way. This specification was developed to enable
+          OTTO federations to support SAML-based identity services,
+          and defines all the terms used in the JSON-LD context file which
+          the extension covers.
+     </t>
     </section>
 
     <section title="Requirements Language">
         <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
         "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
-        document are to be interpreted as described in <xref
-        target="RFC2119">RFC 2119</xref>.</t>
+        document are to be interpreted as described in <xref target="RFC2119">RFC 2119</xref>.</t>
       </section>
+<section title="Notational Conventions">
+        <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+        "OPTIONAL" in this document are to be interpreted as described in
+        <xref target="RFC2119"/>.</t>
 
-    <section title="SAML-OTTO Vocabulary Extension">
-        <section anchor="openid-provider" title="OpenID Provider">
-            <texttable anchor="table_op" title="OpenID Provider">
-              <ttcol align='left'>Property</ttcol>
-              <ttcol align='left'>Expected Type</ttcol>
-              <ttcol align='left'>Description</ttcol>
+        <t>Unless otherwise noted, all protocol properties and values are case
+        sensitive.</t>
+      </section>
+    <section anchor="vocabulary" title="OTTO SAML Vocabulary Extension">
+    <section anchor="saml-entity" title="SAML Entity">
+            <texttable anchor="table_SAML_Entity" title="SAML Entity">
+              <ttcol align="left">Property</ttcol>
+              <ttcol align="left">Expected Type</ttcol>
+              <ttcol align="left">Description</ttcol>
               <!-- -->
-              <c><spanx style="strong">configuration_endpoint</spanx></c>
+              <c>Entity</c>
+              <c>Otto:Entity</c>
+              <c>Elements that are common to both SAML Entities and Otto Entities</c>
+              <!-- -->
+              <c>Refeds Entity Category</c>
               <c>URI</c>
-              <c>URL for .well-known/openid-configuration</c>
+              <c>URI identifier for a formal Refeds Entity Category (e.g., Research and Scholarship)</c>
               <!-- -->
-              <c>metadataStatement</c>
-              <c>MetadataStatement or array of MetadataStatement</c>
-              <c>Claims about this OP signed by the federation</c>
+              <c>SSO Endpoint</c>
+              <c>SAML SSO Endpoint</c>
+              <c>The characteristics of this endpoint as a party to Single Sign-On</c>
               <!-- -->
-              <c>signingKey</c>
-              <c>Text</c>
-              <c>Public part of the OP's signing key</c>
-              <!-- -->
-              <c>signed_jwks_uri</c>
-              <c>URL</c>
-              <c>URL for the OP configuration data</c>
           </texttable>
         </section>
+      <section anchor="saml-sso-endpoint" title="SAML SSO Endpoint">
+        <texttable anchor="table_SAML_SSO_Endpoint" title="SAML SSO Endpoint">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>Keys</c>
+          <c>Key Descriptor element or array of Key Descriptor elements as defined in |SAML:Metadata|</c>
+          <c>Public Keys for use in signing and encryption</c>
+          <!-- -->
+          <c>Extensions</c>
+          <c>SAML Metadata Extensions or array of Extensions</c>
+          <c>Extensions to the basic SAML Metadata Schema</c>
+          <!-- -->
+          
+        </texttable>
+      </section>
+      <section anchor="saml-sso-extension" title="SAML SSO Extensions">
+        <texttable anchor="table_SAML_SSO_Extension" title="SAML SSO Extension">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>UI metadata</c>
+          <c>SAML UI Metadata</c>
+          <c>descriptive information about the SSO User Interface</c>
+          <!-- -->
+        </texttable>
+      </section>
+      <section anchor="saml-service-provider-endpoint" title="SAML Service Provider Endpoint">
+        <texttable anchor="table_SAML_Service_Provider_Endpoint" title="SAML Service Provider Endpoint">
+        <ttcol align="left">Property</ttcol>
+        <ttcol align="left">Expected Type</ttcol>
+        <ttcol align="left">Description</ttcol>
+        <!-- -->
+        <c>SAML SSO Endpoint</c>
+        <c>SAML SSO Endpoint</c>
+        <c>SSO Endpoint elements shared by both IdPs and SPs</c>
+        <!-- -->
+        <c>SP SSO Descriptor</c>
+        <c>SP SSO Descriptor</c>
+        <c>elements unique to the SAML SP entity</c>
+        <!-- -->  
+        <c>Discovery Responses</c>
+        <c>DiscoveryResponse or array of DiscoveryResponses</c>
+        <c>URL(s) of the SSO Endpoints associated with this SAML Entity</c>
+        <!-- -->    
+        <c>Assertion Consumers</c>
+        <c>Assertion Consumer element or array of Assertion Consumer elements as defined in |SAML:Metadata|</c>
+        <c>URLs and type of endpoint that will be consuming attributes</c>
+        <!-- -->
+        <c>Attribute Consumer</c>
+        <c>Attribute Consumer element as defined in |SAML:Metadata|</c>
+        <c>Name and descriptive label for the service that will be consuming attributes</c>
+        <!-- -->
+        <c>Requested Attributes</c>
+        <c>List of attributes as defined in |SAML:Metadata|</c>
+        <c>Friendly name and name format of requested attributes</c>
+        <!-- -->
+      </texttable>
     </section>
+      <section anchor="saml-identity-provider-endpoint" title="SAML Identity Provider Endpoint">
+        <texttable anchor="table_SAML_Identity_Provider_Endpoint" title="SAML Identity Provider Endpoint">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>SAML SSO Endpoint</c>
+          <c>SAML SSO Endpoint</c>
+          <c>SSO Endpoint elements shared by both IdPs and SPs</c>
+          <!-- -->
+          <c>Single Sign-on Service</c>
+          <c>SAML SSO Service Element</c>
+          <c>SSO Service elements specific to SAML Identity Providers</c>
+          <!-- -->
+          <c>More TBD</c>
+          <c>...</c>
+          <c>...</c>
+          <!-- -->
+        </texttable>
+      </section>
+      
+    
+    </section>
+
     <section anchor="Acknowledgements" title="Acknowledgements">
       <t>TBD</t>
     </section>

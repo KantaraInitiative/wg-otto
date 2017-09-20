@@ -20,14 +20,14 @@ OpenID Vocab Extension
 
 SAML Vocab Extension
 
-- SAML Entity
+- SAML Entity (Otto:Entity)
   - Entity ID
   - Entity Category (Otto:Category)
   - Registrar (Otto:Registration Authority)
   - SSO endpoint
     - List of Discovery Responses
     - List of Keys
-    - List of AssertionConsumer
+    - List of AssertionConsumers
     - AttributeConsumer
     - List of Requested Attributes
     
