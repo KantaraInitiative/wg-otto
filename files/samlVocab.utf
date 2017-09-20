@@ -20,34 +20,35 @@ OpenID Vocab Extension
 
 SAML Vocab Extension
 
+<<<<<<< HEAD
 - SAML Entity (Otto:Entity)
   - Entity ID
   - Entity Category (Otto:Category)
   - Registrar (Otto:Registration Authority)
+=======
+- OTTO Entity - SAML Entity
+  - *Entity ID*
+  - *Category* (Otto:Category) (i.e. IDP, SP, IDP-SP)
+  - SAML Entity Category (i.e. Research & Scholarship)
+>>>>>>> a87caea4541be1d5d797dc0d482f9b3739066397
   - SSO endpoint
     - List of Discovery Responses
     - List of Keys
     - List of AssertionConsumers
     - AttributeConsumer
     - List of Requested Attributes
-    
-  - Organization (Otto:Participant(?))
-    - name
-    - displayName
-    - URL
-  - Contact Person
-    - admin
-    - support
-    - technical
-
-
-- SAML Entity - Service Provider (SP)
-  - Otto:Category
-  
-- SAML Entity - Identity Provider (IdP)
-  - Otto:Category
   - Domain (samlMd:scope)
   - List of SSO service
   - Attribute Authority
   - Attribute Service
-  
+
+- Service
+  - signingKey
+  - encyrptionKey
+  - endpoints
+  - category
+  - entity
+
+- Categories
+  - IDP
+  - SP
