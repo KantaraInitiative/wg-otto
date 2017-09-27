@@ -151,32 +151,47 @@
               <c>Otto:Entity</c>
               <c>Elements that are common to both SAML Entities and Otto Entities</c>
               <!-- -->
+             <c>Otto Category</c>
+              <c>Otto:Category</c>
+              <c>String, (URI?): Enumerated categories of entities of a particular type</c>
+              <!-- -->
               <c>Refeds Entity Category</c>
               <c>URI</c>
-              <c>URI identifier for a formal Refeds Entity Category (e.g., Research and Scholarship)</c>
+              <c>URI identifier for a registered Refeds Entity Category (e.g., Research and Scholarship)</c>
               <!-- -->
               <c>SSO Endpoint</c>
               <c>SAML SSO Endpoint</c>
               <c>The characteristics of this endpoint as a party to Single Sign-On</c>
               <!-- -->
-          </texttable>
+              <c>Organization</c>
+              <c>Organization</c>
+              <c>The Organization behind the SAML Entity</c>
+              <!-- -->
+              <c>Contacts</c>
+              <c>Contact</c>
+              <c>The Admin, Security and Technical contacts for this SAML Entity</c>
+              <!-- -->
+            </texttable>
         </section>
-      <section anchor="saml-sso-endpoint" title="SAML SSO Endpoint">
+      <section anchor="saml-sso-endpoint" title="SAML SSO Endpoint Entity">
         <texttable anchor="table_SAML_SSO_Endpoint" title="SAML SSO Endpoint">
           <ttcol align="left">Property</ttcol>
           <ttcol align="left">Expected Type</ttcol>
           <ttcol align="left">Description</ttcol>
           <!-- -->
-          <c>Keys</c>
-          <c>Key Descriptor element or array of Key Descriptor elements as defined in |SAML:Metadata|</c>
-          <c>Public Keys for use in signing and encryption</c>
+          <c>Protocols</c>
+          <c>URIs</c>
+          <c>List of supported protocols</c>
           <!-- -->
           <c>Extensions</c>
-          <c>SAML Metadata Extensions or array of Extensions</c>
+          <c>SAML SSO Extensions or array of Extensions</c>
           <c>Extensions to the basic SAML Metadata Schema</c>
           <!-- -->
-          
-        </texttable>
+          <c>Keys</c>
+          <c>List of Public keys of endpoint</c>
+          <c>Keys for signing (and encryption)</c>
+          <!-- -->
+       </texttable>
       </section>
       <section anchor="saml-sso-extension" title="SAML SSO Extensions">
         <texttable anchor="table_SAML_SSO_Extension" title="SAML SSO Extension">
@@ -236,10 +251,40 @@
           <c>SAML SSO Service Element</c>
           <c>SSO Service elements specific to SAML Identity Providers</c>
           <!-- -->
-          <c>More TBD</c>
-          <c>...</c>
-          <c>...</c>
+          <c>Registrar</c>
+          <c>OTTO:Registration Authority</c>
+          <c>The registrar for this SAML Identity Provider</c>
           <!-- -->
+          <c>Domain</c>
+          <c>samlMd:Scope</c>
+          <c>The domain for which this Identity Provider is authorized to make assertions</c>
+          <!-- -->
+          <c>Identity Provider Binding</c>
+          <c>Identity Provider SSO Binding or array of Identity Provider SSO Bindings</c>
+          <c>The binding supported by this Attribute Authority</c>
+          <!-- -->
+          
+        </texttable>
+      </section>
+      <section anchor="saml-attribute-authority-endpoint" title="SAML Attribute Authority Endpoint">
+        <texttable anchor="table_SAML_Attribute_Authority_Endpoint" title="SAML Attribute Authority Endpoint">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>SAML SSO Endpoint</c>
+          <c>SAML SSO Endpoint</c>
+          <c>SSO Endpoint elements shared by IdPs, SPs and AAs</c>
+          <!-- -->
+          <c>Domain</c>
+          <c>samlMd:Scope</c>
+          <c>The domain for which this Attribute Authority is authorized to make assertions</c>
+          <!-- -->
+          <c>Attribute Service Binding</c>
+          <c>URI</c>
+          <c>The binding supported by this Attribute Authority</c>
+          <!-- -->
+          
         </texttable>
       </section>
       
