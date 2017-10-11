@@ -17,7 +17,7 @@
   },
   "@graph": [
     {
-        "@id": "saml:SAMLEntitity",
+        "@id": "saml:SAMLEntity",
         "@type": "rdfs:Class",
         "rdfs:subClassOf":
             {
@@ -33,12 +33,52 @@
           }
     },
     {
+        "@id": "saml:IdpEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
+        "@id": "saml:SpEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
+        "@id": "saml:AttributeAuthorityEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
         "@id": "saml:Extensions",
         "@type": "rdfs:Class",
         "rdfs:subClassOf":
           {
               "@id": "schema:DigitalDocument"
           }
+    },
+    {
+        "@id": "saml:Attribute",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+            {
+                "@id": "otto:Schema"
+            }
+    },
+    {
+        "@id": "saml:SAMLMetadata",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+            {
+                "@id": "otto:Metadata"
+            }
     },
     {
       "@id": "saml:refedsEntityCategory",
