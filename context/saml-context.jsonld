@@ -84,7 +84,7 @@
       "@id": "saml:refedsEntityCategory",
       "@type": "rdf:Property",
       "domainIncludes": {
-          "@id": "openid:SAMLEntitity"
+          "@id": "openid:SAMLEntity"
         },
       "rangeIncludes":{
         "@id": "openid:URI"
@@ -94,38 +94,49 @@
       "@id": "saml:ssoEndpoint",
       "@type": "rdf:Property",
       "domainIncludes": {
-          "@id": "openid:SAMLEntitity"
+          "@id": "openid:SAMLEntity"
         },
       "rangeIncludes":{
         "@id": "saml:SSOEndpoint"
       }
     },
-    {"@id": "otto:executiveContact",
-      "@type": "rdf:Property",
-      "domainIncludes": {
-          "@id": "openid:SAMLEntitity"
-        },
-      "rangeIncludes":{
-          "@id": "schema:Person"
-        }
+    {"@id": "saml:organization",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An organization that defines common policies and operating procedures.",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Organization"
+          }
     },
-    {"@id": "otto:technicalContact",
-      "@type": "rdf:Property",
-      "domainIncludes": {
-          "@id": "openid:SAMLEntitity"
-        },
-      "rangeIncludes":{
-          "@id": "schema:Person"
-        }
+    {
+        "@id": "saml:adminContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
     },
-    {"@id": "otto:securityContact",
-      "@type": "rdf:Property",
-      "domainIncludes": {
-          "@id": "openid:SAMLEntitity"
-        },
-      "rangeIncludes":{
-          "@id": "schema:Person"
-        }
+    {
+        "@id": "saml:securityContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
+    },
+    {
+        "@id": "saml:technicalContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
     },
     {"@id": "saml:protocols",
       "@type": "rdf:Property",
