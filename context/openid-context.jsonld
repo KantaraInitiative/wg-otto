@@ -27,7 +27,7 @@
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
-              "@id": "schema:Schema"
+              "@id": "otto:Schema"
           }
   },
   {
@@ -35,7 +35,7 @@
       "@type": "rdfs:Class",
       "rdfs:subClassOf":
           {
-              "@id": "schema:Schema"
+              "@id": "otto:Schema"
           }
   },
   {
