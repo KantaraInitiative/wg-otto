@@ -363,6 +363,10 @@
           <c>supports</c>
           <c>Schema or array of Schema</c>
           <c>What schema is supported by this Entity</c>
+          <!-- -->
+          <c>operates</c>
+          <c>Thing or array of Thing</c>
+          <c>Technical resource operated by the Entity</c>
       </texttable>
 
       </t>
