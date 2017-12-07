@@ -223,7 +223,7 @@
             and technical data related to the organization's participation in
             the Federation</c>
           <!-- -->
-          <c>executiveContact</c>
+          <c>adminContact</c>
           <c>Person or array of Person</c>
           <c>Person responsible for all decisions and delegations of authority
             for the Federation</c>

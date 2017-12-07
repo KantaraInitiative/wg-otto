@@ -88,7 +88,7 @@
                       "@id": "schema:URL"
                     }
                 },
-                {"@id": "otto:executiveContact",
+                {"@id": "otto:adminContact",
                   "@type": "rdf:Property",
                   "domainIncludes": {
                       "@id": "otto:Federation"
