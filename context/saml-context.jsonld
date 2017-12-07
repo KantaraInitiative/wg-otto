@@ -26,7 +26,6 @@
     },
     {
         "@id": "saml:IdpEndpoint",
-        "__comment__": "Is this element necessary? seems not.",
         "@type": "rdfs:Class",
         "rdfs:subClassOf":
           {
@@ -85,6 +84,7 @@
     },
     {
       "@id": "saml:ssoEndpoint",
+      "__comment__": "Is this element necessary? seems not.",
       "@type": "rdf:Property",
       "domainIncludes": {
           "@id": "openid:SAMLEntity"
