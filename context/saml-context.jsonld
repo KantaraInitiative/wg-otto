@@ -25,14 +25,6 @@
             }
     },
     {
-        "@id": "saml:SSOEndpoint",
-        "@type": "rdfs:Class",
-        "rdfs:subClassOf":
-          {
-              "@id": "schema:Thing"
-          }
-    },
-    {
         "@id": "saml:IdpEndpoint",
         "@type": "rdfs:Class",
         "rdfs:subClassOf":
@@ -141,7 +133,10 @@
     {"@id": "saml:protocols",
       "@type": "rdf:Property",
       "domainIncludes": {
-          "@id": "openid:ssoEndpoint"
+          "@id": "saml:spEndpoint",
+          "@id": "saml:IdpEndpoint",
+          "@id": "saml:attributeAuthorityEndpoint"
+
         },
       "rangeIncludes":{
           "@id": "schema:URI"
@@ -150,9 +145,9 @@
     {"@id": "saml:extensions",
       "@type": "rdf:Property",
       "domainIncludes": {
-          "@id": "saml:ssoEndpoint",
-          "@id": "saml:",
-          "@id": "saml:",
+          "@id": "saml:spEndpoint",
+          "@id": "saml:IdpEndpoint",
+          "@id": "saml:attributeAuthorityEndpoint"
         },
       "rangeIncludes":{
           "@id": "saml:Extensions"
@@ -161,13 +156,26 @@
     {"@id": "saml:keys",
       "@type": "rdf:Property",
       "domainIncludes": {
-          "@id": "saml:Key",  # TODO Define Key Class
-          "@id": "saml:",
-          "@id": "saml:",
+        "@id": "saml:spEndpoint",
+        "@id": "saml:IdpEndpoint",
+        "@id": "saml:attributeAuthorityEndpoint"
         },
       "rangeIncludes":{
-          "@id": "saml:Extensions"
+          "@id": "saml:Key"
         }
     },
+    {"@id": "saml:spSsoDescriptor",
+      "@type": "rdfs:Class",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          },
+      "rangeIncludes": {
+        "@id": "saml:discoveryResponses",
+        "@id": "saml:assertionConsumers",
+        "@id": "saml:attributeConsumers",
+        "@id": "saml:requestedAttributes",
+      }
+    }
   ]
  }
