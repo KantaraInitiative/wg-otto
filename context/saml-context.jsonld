@@ -1,132 +1,168 @@
-{
-    "@context": {
-        "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
-        "saml1": "https://docs.kantarainitiative.org/otto/saml-1.0",
-        "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-        "schema": "http://schema.org",
-        "xsd": "http://www.w3.org/2001/XMLSchema#",
-        "obi": "https://w3id.org/openbadges#",
-        "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
-        "iri": "https://www.ietf.org/rfc/rfc3987.txt",
-        "md": "urn:oasis:names:tc:SAML:2.0:metadata",
-        "mdattr": "urn:oasis:names:tc:SAML:metadata:attribute ",
-        "ds": "http://www.w3.org/2000/09/xmldsig#",
-        "xenc": "http://www.w3.org/2000/09/xmlenc#",
-        "saml": "urn:oasis:names:tc:SAML:2.0:assertion",
-        "xmlns": "http://www.w3.org/2001/XMLSchema>"
+{"@context":
+  {
+  "otto": "https://docs.kantarainitiative.org/otto/vocab-1.0",
+  "saml1": "https://docs.kantarainitiative.org/otto/saml-1.0",
+  "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+  "schema": "http://schema.org",
+  "xsd": "http://www.w3.org/2001/XMLSchema#",
+  "obi": "https://w3id.org/openbadges#",
+  "trust": "https://trustmark.gtri.gatech.edu/specifications/trustmark-framework/1.1/tfts-1.1.pdf",
+  "iri": "https://www.ietf.org/rfc/rfc3987.txt",
+  "md": "urn:oasis:names:tc:SAML:2.0:metadata",
+  "mdattr": "urn:oasis:names:tc:SAML:metadata:attribute ",
+  "ds": "http://www.w3.org/2000/09/xmldsig#",
+  "xenc": "http://www.w3.org/2000/09/xmlenc#",
+  "saml": "urn:oasis:names:tc:SAML:2.0:assertion",
+  "xmlns": "http://www.w3.org/2001/XMLSchema>"
+  },
+  "@graph": [
+    {
+        "@id": "saml:SAMLEntity",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+            {
+                "@id": "otto:Entity"
+            }
     },
-    "@graph": [
-        {
-            "@id": "saml:SAMLEntity",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "otto:Entity"}
+    {
+        "@id": "saml:IdpEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
+        "@id": "saml:SpEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
+        "@id": "saml:AttributeAuthorityEndpoint",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:Thing"
+          }
+    },
+    {
+        "@id": "saml:Extensions",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+          {
+              "@id": "schema:DigitalDocument"
+          }
+    },
+    {
+        "@id": "saml:Attribute",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+            {
+                "@id": "otto:Schema"
+            }
+    },
+    {
+        "@id": "saml:SAMLMetadata",
+        "@type": "rdfs:Class",
+        "rdfs:subClassOf":
+            {
+                "@id": "otto:Metadata"
+            }
+    },
+    {
+      "@id": "saml:refedsEntityCategory",
+      "@type": "rdf:Property",
+      "domainIncludes": {
+          "@id": "openid:SAMLEntity"
         },
-        {
-            "@id": "saml:IdpEndpoint",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "schema:Thing"}
+      "rangeIncludes":{
+        "@id": "openid:URI"
+      }
+    },
+    {
+      "@id": "saml:ssoEndpoint",
+      "@type": "rdf:Property",
+      "domainIncludes": {
+          "@id": "openid:SAMLEntity"
         },
-        {
-            "@id": "saml:SpEndpoint",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "schema:Thing"}
-        },
-        {
-            "@id": "saml:AttributeAuthorityEndpoint",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "schema:Thing"}
-        },
-        {
-            "@id": "saml:Extensions",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "schema:DigitalDocument"}
-        },
-        {
-            "@id": "saml:Attribute",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "otto:Schema"}
-        },
-        {
-            "@id": "saml:SAMLMetadata",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "otto:Metadata"}
-        },
-        {
-            "@id": "saml:refedsEntityCategory",
-            "@type": "rdf:Property",
-            "domainIncludes": {"@id": "openid:SAMLEntity"},
-            "rangeIncludes": {"@id": "openid:URI"}
-        },
-        {
-            "@id": "saml:ssoEndpoint",
-            "@type": "rdf:Property",
-            "domainIncludes": {"@id": "openid:SAMLEntity"},
-            "rangeIncludes": {"@id": "saml:SSOEndpoint"}
-        },
-        {
-            "@id": "saml:organization",
-            "@type": "rdfs:Class",
-            "rdfs:comment": "An organization that defines common policies and operating procedures.",
-            "rdfs:subClassOf": {"@id": "schema:Organization"}
-        },
-        {
-            "@id": "saml:adminContact",
-            "@type": "rdf:Property",
-            "domainIncludes": {"@id": "saml:SAMLEntity"},
-            "rangeIncludes": {"@id": "schema:Person"}
-        },
-        {
-            "@id": "saml:securityContact",
-            "@type": "rdf:Property",
-            "domainIncludes": {"@id": "saml:SAMLEntity"},
-            "rangeIncludes": {"@id": "schema:Person"}
-        },
-        {
-            "@id": "saml:technicalContact",
-            "@type": "rdf:Property",
-            "domainIncludes": {"@id": "saml:SAMLEntity"},
-            "rangeIncludes": {"@id": "schema:Person"}
-        },
-        {
-            "@id": "saml:protocols",
-            "@type": "rdf:Property",
-            "domainIncludes": [
-                {"@id": "saml:spEndpoint"},
-                {"@id": "saml:IdpEndpoint"},
-                {"@id": "saml:attributeAuthorityEndpoint"}
-            ],
-            "rangeIncludes": {"@id": "schema:URI"}
-        },
-        {
-            "@id": "saml:extensions",
-            "@type": "rdf:Property",
-            "domainIncludes": [
-                {"@id": "saml:spEndpoint"},
-                {"@id": "saml:IdpEndpoint"},
-                {"@id": "saml:attributeAuthorityEndpoint"}
-            ],
-            "rangeIncludes": {"@id": "saml:Extensions"}
-        },
-        {
-            "@id": "saml:keys",
-            "@type": "rdf:Property",
-            "domainIncludes": [
-                {"@id": "saml:spEndpoint"},
-                {"@id": "saml:IdpEndpoint"},
-                {"@id": "saml:attributeAuthorityEndpoint"}
-            ],
-            "rangeIncludes": {"@id": "saml:Key"}
-        },
-        {
-            "@id": "saml:spSsoDescriptor",
-            "@type": "rdfs:Class",
-            "rdfs:subClassOf": {"@id": "schema:Thing"},
-            "rangeIncludes": [
-                {"@id": "saml:discoveryResponses"},
-                {"@id": "saml:assertionConsumers"},
-                {"@id": "saml:attributeConsumers"},
-                {"@id": "saml:requestedAttributes"}
-            ]
+      "rangeIncludes":{
+        "@id": "saml:SSOEndpoint"
+      }
+    },
+    {"@id": "saml:organization",
+      "@type": "rdfs:Class",
+      "rdfs:comment": "An organization that defines common policies and operating procedures.",
+      "rdfs:subClassOf":
+          {
+              "@id": "schema:Organization"
+          }
+    },
+    {
+        "@id": "saml:adminContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
+    },
+    {
+        "@id": "saml:securityContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
+    },
+    {
+        "@id": "saml:technicalContact",
+        "@type": "rdf:Property",
+        "domainIncludes": {
+            "@id": "saml:SAMLEntity"
+          },
+        "rangeIncludes":{
+            "@id": "schema:Person"
+          }
+    },
+    {"@id": "saml:protocols",
+      "@type": "rdf:Property",
+      "domainIncludes": [
+          {"@id": "saml:spEndpoint"},
+          {"@id": "saml:IdpEndpoint"},
+          {"@id": "saml:attributeAuthorityEndpoint"}
+
+        ],
+      "rangeIncludes":{
+          "@id": "schema:URI"
         }
-    ]
-}
+    },
+    {"@id": "saml:extensions",
+      "@type": "rdf:Property",
+      "domainIncludes": [
+          {"@id": "saml:spEndpoint"},
+          {"@id": "saml:IdpEndpoint"},
+          {"@id": "saml:attributeAuthorityEndpoint"}
+        ],
+      "rangeIncludes":{
+          "@id": "saml:Extensions"
+        }
+    },
+    {"@id": "saml:keys",
+      "@type": "rdf:Property",
+      "domainIncludes": [
+          {"@id": "saml:spEndpoint"},
+          {"@id": "saml:IdpEndpoint"},
+          {"@id": "saml:attributeAuthorityEndpoint"}
+        ],
+      "rangeIncludes":{
+          "@id": "saml:Key"
+        }
+    }
+  ]
+ }
