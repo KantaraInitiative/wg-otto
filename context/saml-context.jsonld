@@ -26,6 +26,7 @@
     },
     {
         "@id": "saml:IdpEndpoint",
+        "__comment__": "Is this element necessary? seems not.",
         "@type": "rdfs:Class",
         "rdfs:subClassOf":
           {
@@ -153,7 +154,8 @@
           "@id": "saml:Extensions"
         }
     },
-    {"@id": "saml:keys",
+    {"@id": "saml:keyDescriptor",
+      "__comment__": "was 'saml:keys'",
       "@type": "rdf:Property",
       "domainIncludes": [
           {"@id": "saml:spEndpoint"},
@@ -161,8 +163,23 @@
           {"@id": "saml:attributeAuthorityEndpoint"}
         ],
       "rangeIncludes":{
-          "@id": "saml:Key"
+          "@id": "ds:KeyInfo"
         }
+    },
+    {"@id": "saml:KeyInfo",
+          "@type": "rdf:Property",
+          "domainIncludes": {"@id": "saml:keyDescriptor"},
+          "rangeIncludes": "ds:X509Data"
+    },
+       {"@id": "ds:X509Data",
+          "@type": "rdf:Property",
+          "domainIncludes": {"@id": "saml:keyInfo"},
+          "rangeIncludes": "ds:X509Certificate"
+    },
+    {"@id": "ds:X509Certificate",
+          "@type": "rdf:Property",
+          "domainIncludes": {"@id": "saml:ds:X509Data"},
+          "rangeIncludes": "string"
     }
   ]
  }
