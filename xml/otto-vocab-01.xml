@@ -306,6 +306,10 @@
           <c>Person or array of Person</c>
           <c>Person(s) to contact in the event of an urgent security issue</c>
           <!-- -->
+          <c>privacyStatement</c>
+          <c>URL</c>
+          <c>Link to privacy information</c>
+          <!-- -->
           <c>trustMarkAsserted</c>
           <c>instance or array of Trustmark or URL</c>
           <c>Link to TrustMarks the Participant claims</c>
