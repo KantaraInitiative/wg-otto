@@ -161,7 +161,7 @@
               <!-- -->
               <c>SAML Entity Descriptor</c>
               <c>SAML Entity Descriptor</c>
-              <c>The Unique Identifier for this SAML Entity</c> 
+              <c>The Unique Identifier for this SAML Entity</c>
               <!-- -->
               <c>UI Information</c>
               <c>SAML UI Information</c>
@@ -169,11 +169,11 @@
               <!-- -->
               <c>SAML Service Provider Endpoint</c>
               <c>SAML Service Provider Endpoint or array of Service Provider Endpoint</c>
-              <c>The Service Provider Endpoints provided by this entity</c>              
+              <c>The Service Provider Endpoints provided by this entity</c>
               <!-- -->
               <c>SAML Identity Provider Endpoint</c>
               <c>SAML Identity Provider Endpoint or array of Service Provider Endpoint</c>
-              <c>The Identity Provider Endpoints provided by this entity</c>              
+              <c>The Identity Provider Endpoints provided by this entity</c>
               <!-- -->
               <c>SAML Attribute Authority Endpoint</c>
               <c>SAML Attribute Authority Endpoint or array of Attribute Authority Endpoint</c>
@@ -194,21 +194,21 @@
         <ttcol align="left">Property</ttcol>
         <ttcol align="left">Expected Type</ttcol>
         <ttcol align="left">Description</ttcol>
-        
+
           <!-- -->
           <c>Protocols</c>
           <c>URIs</c>
-          <c>List of supported protocols</c>
+          <c></c>
           <!-- -->
           <c>Keys</c>
-          <c>List of Public keys of endpoint</c>
-          <c>Keys for signing (and encryption)</c>
+          <c>Public keys for SAML signing and encryption</c>
+          <c>SAML:KeyDescriptor</c>
           <!-- -->
-        <!-- -->  
+        <!-- -->
         <c>Discovery Responses</c>
         <c>DiscoveryResponse or indexed array of DiscoveryResponses</c>
         <c>URL(s) of the SSO Endpoints associated with this SAML Service Provider Entity</c>
-        <!-- -->    
+        <!-- -->
         <c>Assertion Consumers</c>
         <c>Assertion Consumer element or array of Assertion Consumer elements as defined in |SAML:Metadata|</c>
         <c>URLs and type of endpoint that will be consuming attributes</c>
@@ -258,7 +258,7 @@
           <c>SAML Attribute Authority Endpoint</c>
           <c>The Attribute Authority endpoint associated with this IdP</c>
           <!-- -->
-          
+
         </texttable>
       </section>
       <section anchor="saml-attribute-authority-endpoint" title="SAML Attribute Authority Endpoint">
@@ -285,11 +285,11 @@
           <c>URI</c>
           <c>The binding supported by this Attribute Authority</c>
           <!-- -->
-          
+
         </texttable>
       </section>
-      
-    
+
+
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
