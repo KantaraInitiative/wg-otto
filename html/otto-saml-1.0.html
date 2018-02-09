@@ -391,12 +391,12 @@
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.8.4 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.8.5 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hazelton, K., Ed." />
   <meta name="dct.identifier" content="urn:ietf:id:otto-saml-draft-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-1-15" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-2-9" />
   <meta name="dct.abstract" content="This specification describes a method for packaging information about SAML-based federations, and establishing mechanisms for its validation. It includes term definitions which appear in the current JSON-LD context for the OTTO 1.0 specification.  " />
   <meta name="description" content="This specification describes a method for packaging information about SAML-based federations, and establishing mechanisms for its validation. It includes term definitions which appear in the current JSON-LD context for the OTTO 1.0 specification.  " />
 
@@ -417,10 +417,10 @@
 </tr>
 <tr>
 <td class="left">Intended status: Informational</td>
-<td class="right">January 15, 2018</td>
+<td class="right">February 9, 2018</td>
 </tr>
 <tr>
-<td class="left">Expires: July 19, 2018</td>
+<td class="left">Expires: August 13, 2018</td>
 <td class="right"></td>
 </tr>
 
@@ -437,7 +437,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on July 19, 2018.</p>
+<p>This Internet-Draft will expire on August 13, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -525,7 +525,7 @@
 <tr>
 <td class="left">SAML Entity Descriptor</td>
 <td class="left">SAML Entity Descriptor</td>
-<td class="left">The Unique Identifier for this SAML Entity</td>
+<td class="left">The full specification of a SAML Entity</td>
 </tr>
 <tr>
 <td class="left">UI Information</td>
@@ -539,23 +539,13 @@
 </tr>
 <tr>
 <td class="left">SAML Identity Provider Endpoint</td>
-<td class="left">SAML Identity Provider Endpoint or array of Service Provider Endpoint</td>
+<td class="left">SAML Identity Provider Endpoint or array of Identity Provider Endpoint</td>
 <td class="left">The Identity Provider Endpoints provided by this entity</td>
 </tr>
 <tr>
 <td class="left">SAML Attribute Authority Endpoint</td>
 <td class="left">SAML Attribute Authority Endpoint or array of Attribute Authority Endpoint</td>
 <td class="left">The Attribute Authority Endpoints provided by this entity</td>
-</tr>
-<tr>
-<td class="left">Organization</td>
-<td class="left">otto:participant</td>
-<td class="left">The Organization operating this SAML Entity</td>
-</tr>
-<tr>
-<td class="left">Contacts</td>
-<td class="left">Contacts</td>
-<td class="left">The Admin, Security and Technical contacts for this SAML Entity</td>
 </tr>
 </tbody>
 </table>
@@ -575,12 +565,12 @@
 <tr>
 <td class="left">Protocols</td>
 <td class="left">URIs</td>
-<td class="left">List of supported protocols</td>
+<td class="left"></td>
 </tr>
 <tr>
 <td class="left">Keys</td>
-<td class="left">List of Public keys of endpoint</td>
-<td class="left">Keys for signing (and encryption)</td>
+<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
+<td class="left">Public keys for SAML signing and encryption</td>
 </tr>
 <tr>
 <td class="left">Discovery Responses</td>
@@ -589,7 +579,7 @@
 </tr>
 <tr>
 <td class="left">Assertion Consumers</td>
-<td class="left">Assertion Consumer element or array of Assertion Consumer elements as defined in |SAML:Metadata|</td>
+<td class="left">Assertion Consumer element or array of Assertion Consumer element as defined in |SAML:Metadata|</td>
 <td class="left">URLs and type of endpoint that will be consuming attributes</td>
 </tr>
 <tr>
@@ -629,7 +619,7 @@
 </tr>
 <tr>
 <td class="left">Keys</td>
-<td class="left">List of Public keys of endpoint</td>
+<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
 <td class="left">Keys for signing (and encryption)</td>
 </tr>
 <tr>
@@ -674,7 +664,7 @@
 </tr>
 <tr>
 <td class="left">Keys</td>
-<td class="left">List of Public keys of endpoint</td>
+<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
 <td class="left">Keys for signing (and encryption)</td>
 </tr>
 <tr>
