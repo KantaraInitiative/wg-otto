@@ -7,6 +7,7 @@ OTTO Vocab
 - Metadata
 - Schema
 
+NB: Category type is undefined
 
 OpenID Vocab Extension
 
@@ -22,27 +23,45 @@ SAML Vocab Extension
 
 - SAML Entity (Otto:Entity)
   - Entity ID
+<<<<<<< HEAD
   - *Category* (Otto:Category) (i.e. IDP, SP, IDP-SP)
   - Registrar (Otto:Registration Authority)
   - SAML Entity Category (i.e. Research & Scholarship)
   - SSO endpoint
     - List of Discovery Responses
     - List of Keys
+=======
+  - Category (Otto:Category; i.e. IDP, SP, AA)
+  {Extensions}
+    - Refeds Entity Category (i.e. Research & Scholarship)
+  - SAML SSO Endpoint
+  - Organization
+  - List of Contacts
+
+  + SAML SSO Endpoint
+    - List of supported protocols
+    - Extensions
+      - UI Info
+    - Keys
+ 
+  + SPSSO endpoint (SAML SSO Endpoint)
+    - Extensions
+      - List of Discovery Responses
+>>>>>>> 8769404fa60d4553c4c4012ec90c68d51fe3e39e
     - List of AssertionConsumers
-    - AttributeConsumer
+    - AttributeConsumingService (name & description)
     - List of Requested Attributes
-  - Domain (samlMd:scope)
-  - List of SSO service
-  - Attribute Authority
-  - Attribute Service
 
-- Service
-  - signingKey
-  - encyrptionKey
-  - endpoints
-  - category
-  - entity
+  + IdPSSO endpoint
+    - Error URL
+    {Extensions}
+      - Registrar (Otto:Registration Authority)
+      - Domain (samlMd:scope)
+     - List of SSO service bindings
+    
+  + Attribute Authority endpoint
+    {Extensions}
+      - Domain (samlMd:scope)
+    - Attribute Service binding
 
-- Categories
-  - IDP
-  - SP
+
