@@ -175,7 +175,7 @@
           <c>SAML Metadata Extensions or array of Extensions</c>
           <c>Extensions to the basic SAML Metadata Schema</c>
           <!-- -->
-          
+
         </texttable>
       </section>
       <section anchor="saml-sso-extension" title="SAML SSO Extensions">
@@ -203,11 +203,11 @@
         <c>SP SSO Descriptor</c>
         <c>SP SSO Descriptor</c>
         <c>elements unique to the SAML SP entity</c>
-        <!-- -->  
+        <!-- -->
         <c>Discovery Responses</c>
         <c>DiscoveryResponse or array of DiscoveryResponses</c>
         <c>URL(s) of the SSO Endpoints associated with this SAML Entity</c>
-        <!-- -->    
+        <!-- -->
         <c>Assertion Consumers</c>
         <c>Assertion Consumer element or array of Assertion Consumer elements as defined in |SAML:Metadata|</c>
         <c>URLs and type of endpoint that will be consuming attributes</c>
@@ -236,14 +236,19 @@
           <c>SAML SSO Service Element</c>
           <c>SSO Service elements specific to SAML Identity Providers</c>
           <!-- -->
+          <c>Discovery Responses</c>
+          <c>DiscoveryResponse or array of DiscoveryResponses</c>
+          <c>URL(s) of the SSO Endpoints associated with this SAML Entity</c>
+          <!-- -->
+
           <c>More TBD</c>
           <c>...</c>
           <c>...</c>
           <!-- -->
         </texttable>
       </section>
-      
-    
+
+
     </section>
 
     <section anchor="Acknowledgements" title="Acknowledgements">
