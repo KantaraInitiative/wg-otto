@@ -378,10 +378,11 @@
 <link href="#rfc.section.2" rel="Chapter" title="2 Requirements Language">
 <link href="#rfc.section.3" rel="Chapter" title="3 Notational Conventions">
 <link href="#rfc.section.4" rel="Chapter" title="4 OTTO SAML Vocabulary Extension">
-<link href="#rfc.section.4.1" rel="Chapter" title="4.1 SAML Entity">
-<link href="#rfc.section.4.2" rel="Chapter" title="4.2 SAML Service Provider Endpoint">
-<link href="#rfc.section.4.3" rel="Chapter" title="4.3 SAML Identity Provider Endpoint">
-<link href="#rfc.section.4.4" rel="Chapter" title="4.4 SAML Attribute Authority Endpoint">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 SAML Entities">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 samlEntityDescriptor">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 samlServiceProviderEndpoint">
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 samlIdentityProvider">
+<link href="#rfc.section.4.5" rel="Chapter" title="4.5 samlAttributeAuthorityEndpoint">
 <link href="#rfc.section.5" rel="Chapter" title="5 Acknowledgements">
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
 <link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations">
@@ -391,12 +392,12 @@
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.8.5 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.9.6 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Hazelton, K., Ed." />
   <meta name="dct.identifier" content="urn:ietf:id:otto-saml-draft-01" />
-  <meta name="dct.issued" scheme="ISO8601" content="2018-2-9" />
+  <meta name="dct.issued" scheme="ISO8601" content="2018-22" />
   <meta name="dct.abstract" content="This specification describes a method for packaging information about SAML-based federations, and establishing mechanisms for its validation. It includes term definitions which appear in the current JSON-LD context for the OTTO 1.0 specification.  " />
   <meta name="description" content="This specification describes a method for packaging information about SAML-based federations, and establishing mechanisms for its validation. It includes term definitions which appear in the current JSON-LD context for the OTTO 1.0 specification.  " />
 
@@ -417,10 +418,10 @@
 </tr>
 <tr>
 <td class="left">Intended status: Informational</td>
-<td class="right">February 9, 2018</td>
+<td class="right">February 22, 2018</td>
 </tr>
 <tr>
-<td class="left">Expires: August 13, 2018</td>
+<td class="left">Expires: August 26, 2018</td>
 <td class="right"></td>
 </tr>
 
@@ -437,7 +438,7 @@
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on August 13, 2018.</p>
+<p>This Internet-Draft will expire on August 26, 2018.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -455,13 +456,15 @@
 </li>
 <li>4.   <a href="#rfc.section.4">OTTO SAML Vocabulary Extension</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">SAML Entity</a>
+<ul><li>4.1.   <a href="#rfc.section.4.1">SAML Entities</a>
 </li>
-<li>4.2.   <a href="#rfc.section.4.2">SAML Service Provider Endpoint</a>
+<li>4.2.   <a href="#rfc.section.4.2">samlEntityDescriptor</a>
 </li>
-<li>4.3.   <a href="#rfc.section.4.3">SAML Identity Provider Endpoint</a>
+<li>4.3.   <a href="#rfc.section.4.3">samlServiceProviderEndpoint</a>
 </li>
-<li>4.4.   <a href="#rfc.section.4.4">SAML Attribute Authority Endpoint</a>
+<li>4.4.   <a href="#rfc.section.4.4">samlIdentityProvider</a>
+</li>
+<li>4.5.   <a href="#rfc.section.4.5">samlAttributeAuthorityEndpoint</a>
 </li>
 </ul><li>5.   <a href="#rfc.section.5">Acknowledgements</a>
 </li>
@@ -495,12 +498,12 @@
 <a href="#rfc.section.4">4.</a> <a href="#vocabulary" id="vocabulary">OTTO SAML Vocabulary Extension</a>
 </h1>
 <h1 id="rfc.section.4.1">
-<a href="#rfc.section.4.1">4.1.</a> <a href="#saml-entity" id="saml-entity">SAML Entity</a>
+<a href="#rfc.section.4.1">4.1.</a> <a href="#saml-entities" id="saml-entities">SAML Entities</a>
 </h1>
 <div id="rfc.table.1"></div>
 <div id="table_SAML_Entity"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
-<caption>SAML Entity</caption>
+<caption>samlEntitiesDescriptor</caption>
 <thead><tr>
 <th class="left">Property</th>
 <th class="left">Expected Type</th>
@@ -508,54 +511,39 @@
 </tr></thead>
 <tbody>
 <tr>
-<td class="left">Entity</td>
-<td class="left">Otto:Entity</td>
-<td class="left">Elements that are common to both SAML Entities and Otto Entities</td>
+<td class="left">id</td>
+<td class="left">samlMD:ID</td>
+<td class="left">unique identifier for this collection of SAML entity descriptors</td>
 </tr>
 <tr>
-<td class="left">Otto Category</td>
-<td class="left">Otto:Category</td>
-<td class="left">String, (URI?): Enumerated categories of entities of a particular type</td>
+<td class="left">name</td>
+<td class="left">string</td>
+<td class="left">name of this collection of SAML entity descriptors</td>
 </tr>
 <tr>
-<td class="left">Refeds Entity Category</td>
-<td class="left">URI or array of URIs</td>
-<td class="left">URI identifier for a registered Refeds Entity Category (e.g., Research and Scholarship)</td>
+<td class="left">validUntil</td>
+<td class="left">dateTime</td>
+<td class="left">This collection of SAML entity descriptors is valid until the specified date and time</td>
 </tr>
 <tr>
-<td class="left">SAML Entity Descriptor</td>
-<td class="left">SAML Entity Descriptor</td>
-<td class="left">The full specification of a SAML Entity</td>
+<td class="left">publicationInfo</td>
+<td class="left">samlMdRpi</td>
+<td class="left">Publisher and creation date for this collection of SAML entity descriptors</td>
 </tr>
 <tr>
-<td class="left">UI Information</td>
-<td class="left">SAML UI Information</td>
-<td class="left">descriptive information about the SSO User Interface</td>
-</tr>
-<tr>
-<td class="left">SAML Service Provider Endpoint</td>
-<td class="left">SAML Service Provider Endpoint or array of Service Provider Endpoint</td>
-<td class="left">The Service Provider Endpoints provided by this entity</td>
-</tr>
-<tr>
-<td class="left">SAML Identity Provider Endpoint</td>
-<td class="left">SAML Identity Provider Endpoint or array of Identity Provider Endpoint</td>
-<td class="left">The Identity Provider Endpoints provided by this entity</td>
-</tr>
-<tr>
-<td class="left">SAML Attribute Authority Endpoint</td>
-<td class="left">SAML Attribute Authority Endpoint or array of Attribute Authority Endpoint</td>
-<td class="left">The Attribute Authority Endpoints provided by this entity</td>
+<td class="left">EntityDescriptor or array of EntityDescriptor</td>
+<td class="left">samlEntityDescriptor</td>
+<td class="left">an entity descriptor included in this collection</td>
 </tr>
 </tbody>
 </table>
 <h1 id="rfc.section.4.2">
-<a href="#rfc.section.4.2">4.2.</a> <a href="#saml-service-provider-endpoint" id="saml-service-provider-endpoint">SAML Service Provider Endpoint</a>
+<a href="#rfc.section.4.2">4.2.</a> <a href="#samlEntityDescriptor" id="samlEntityDescriptor">samlEntityDescriptor</a>
 </h1>
 <div id="rfc.table.2"></div>
-<div id="table_SAML_Service_Provider_Endpoint"></div>
+<div id="tableSamlEntityDescriptor"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
-<caption>SAML Service Provider Endpoint</caption>
+<caption>samlEntityDescriptor</caption>
 <thead><tr>
 <th class="left">Property</th>
 <th class="left">Expected Type</th>
@@ -563,29 +551,74 @@
 </tr></thead>
 <tbody>
 <tr>
-<td class="left">Protocols</td>
-<td class="left">URIs</td>
+<td class="left">samlEntityCategory</td>
+<td class="left">samlEntityCategory or array of samlEntityCategory</td>
+<td class="left">URI identifier for a registered Refeds Entity Category (e.g., Research and Scholarship)</td>
+</tr>
+<tr>
+<td class="left">entity</td>
+<td class="left">Otto:Entity</td>
+<td class="left">Elements that are common to both SAML Entities and Otto Entities</td>
+</tr>
+<tr>
+<td class="left">samlServiceProvider</td>
+<td class="left">samlServiceProviderEndpoint or array of samlServiceProviderEndpoint</td>
+<td class="left">The attributes of the Service Provider Endpoints provided by this entity</td>
+</tr>
+<tr>
+<td class="left">samlIdentityProvider</td>
+<td class="left">samlIdentityProviderEndpoint or array of samlIdentityProviderEndpoint</td>
+<td class="left">The attributes of the Identity Provider Endpoints provided by this entity</td>
+</tr>
+<tr>
+<td class="left">samlAttributeAuthority</td>
+<td class="left">samlAttributeAuthorityEndpoint or array of samlAttributeAuthorityEndpoint</td>
+<td class="left">The The attributes of the Attribute Authority Endpoints provided by this entity</td>
+</tr>
+</tbody>
+</table>
+<h1 id="rfc.section.4.3">
+<a href="#rfc.section.4.3">4.3.</a> <a href="#saml-service-provider-endpoint" id="saml-service-provider-endpoint">samlServiceProviderEndpoint</a>
+</h1>
+<div id="rfc.table.3"></div>
+<div id="table_SAML_Service_Provider_Endpoint"></div>
+<table cellpadding="3" cellspacing="0" class="tt full center">
+<caption>samlServiceProviderEndpoint</caption>
+<thead><tr>
+<th class="left">Property</th>
+<th class="left">Expected Type</th>
+<th class="left">Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td class="left">supportedSamlVersion</td>
+<td class="left">samlVersionId or array of samlVersionId</td>
 <td class="left"></td>
 </tr>
 <tr>
-<td class="left">Keys</td>
-<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
-<td class="left">Public keys for SAML signing and encryption</td>
+<td class="left">samlKey</td>
+<td class="left">xml representation of mdKeyDescriptor</td>
+<td class="left">Keys for signing (and encryption)</td>
 </tr>
 <tr>
-<td class="left">Discovery Responses</td>
-<td class="left">DiscoveryResponse or indexed array of DiscoveryResponses</td>
+<td class="left">discoveryResponse</td>
+<td class="left">mdExtDiscoveryResponse or indexed array of mdExtDiscoveryResponse</td>
 <td class="left">URL(s) of the SSO Endpoints associated with this SAML Service Provider Entity</td>
 </tr>
 <tr>
-<td class="left">Assertion Consumers</td>
-<td class="left">Assertion Consumer element or array of Assertion Consumer element as defined in |SAML:Metadata|</td>
+<td class="left">keyDescriptor</td>
+<td class="left">mdKeyDescriptor of arra of mdKeyDescriptor</td>
+<td class="left">Public keys for SAML signing and encryption</td>
+</tr>
+<tr>
+<td class="left">assertionConsumer</td>
+<td class="left">mdIndexedEndpointType or array of mdIndexedEndpointType</td>
 <td class="left">URLs and type of endpoint that will be consuming attributes</td>
 </tr>
 <tr>
-<td class="left">Attribute Consumer</td>
-<td class="left">Attribute Consumer element as defined in |SAML:Metadata|</td>
-<td class="left">Name and descriptive label for the service that will be consuming attributes</td>
+<td class="left">attributeConsumer</td>
+<td class="left">mdAttributeConsumerElement</td>
+<td class="left">Name and descriptive label and list of attributes for the service that will be consuming attributes</td>
 </tr>
 <tr>
 <td class="left">Requested Attributes</td>
@@ -594,13 +627,13 @@
 </tr>
 </tbody>
 </table>
-<h1 id="rfc.section.4.3">
-<a href="#rfc.section.4.3">4.3.</a> <a href="#saml-identity-provider-endpoint" id="saml-identity-provider-endpoint">SAML Identity Provider Endpoint</a>
+<h1 id="rfc.section.4.4">
+<a href="#rfc.section.4.4">4.4.</a> <a href="#saml-identity-provider-endpoint" id="saml-identity-provider-endpoint">samlIdentityProvider</a>
 </h1>
-<div id="rfc.table.3"></div>
-<div id="table_SAML_Identity_Provider_Endpoint"></div>
+<div id="rfc.table.4"></div>
+<div id="table_SAML_Identity_Provider"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
-<caption>SAML Identity Provider Endpoint</caption>
+<caption>samlIdentityProvider</caption>
 <thead><tr>
 <th class="left">Property</th>
 <th class="left">Expected Type</th>
@@ -608,49 +641,44 @@
 </tr></thead>
 <tbody>
 <tr>
-<td class="left">Protocols</td>
-<td class="left">URIs</td>
-<td class="left">List of supported protocols</td>
+<td class="left">supportedSamlVersion</td>
+<td class="left">samlVersionId or array of samlVersionId</td>
+<td class="left">List of supported SAML versions</td>
 </tr>
 <tr>
-<td class="left">UI metadata</td>
-<td class="left">SAML UI Metadata</td>
+<td class="left">samlUiMetadata</td>
+<td class="left">samlUIMetadataType</td>
 <td class="left">descriptive information about the IdP User Interface</td>
 </tr>
 <tr>
-<td class="left">Keys</td>
-<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
+<td class="left">samlKey</td>
+<td class="left">xml representation of mdKeyDescriptor</td>
 <td class="left">Keys for signing (and encryption)</td>
 </tr>
 <tr>
-<td class="left">Registrar</td>
-<td class="left">OTTO:Registration Authority</td>
-<td class="left">The registrar for this SAML Identity Provider</td>
-</tr>
-<tr>
-<td class="left">Domain</td>
+<td class="left">samlIdPDomain</td>
 <td class="left">samlMd:Scope</td>
 <td class="left">The domain for which this Identity Provider is authorized to make assertions</td>
 </tr>
 <tr>
-<td class="left">Identity Provider Binding</td>
-<td class="left">Identity Provider SSO Binding or array of Identity Provider SSO Bindings</td>
+<td class="left">samlIdentityProviderBinding</td>
+<td class="left">samlIdentityProviderSSOBinding or array of samlIdentityProviderSSOBinding</td>
 <td class="left">The binding supported by this IdP</td>
 </tr>
 <tr>
-<td class="left">SAML Attribute Authority Endpoint</td>
-<td class="left">SAML Attribute Authority Endpoint</td>
+<td class="left">samlAttributeAuthority</td>
+<td class="left">samlAttributeAuthorityEndpoint</td>
 <td class="left">The Attribute Authority endpoint associated with this IdP</td>
 </tr>
 </tbody>
 </table>
-<h1 id="rfc.section.4.4">
-<a href="#rfc.section.4.4">4.4.</a> <a href="#saml-attribute-authority-endpoint" id="saml-attribute-authority-endpoint">SAML Attribute Authority Endpoint</a>
+<h1 id="rfc.section.4.5">
+<a href="#rfc.section.4.5">4.5.</a> <a href="#saml-attribute-authority-endpoint" id="saml-attribute-authority-endpoint">samlAttributeAuthorityEndpoint</a>
 </h1>
-<div id="rfc.table.4"></div>
+<div id="rfc.table.5"></div>
 <div id="table_SAML_Attribute_Authority_Endpoint"></div>
 <table cellpadding="3" cellspacing="0" class="tt full center">
-<caption>SAML Attribute Authority Endpoint</caption>
+<caption>samlAttributeAuthorityEndpoint</caption>
 <thead><tr>
 <th class="left">Property</th>
 <th class="left">Expected Type</th>
@@ -658,23 +686,23 @@
 </tr></thead>
 <tbody>
 <tr>
-<td class="left">Protocols</td>
-<td class="left">URIs</td>
-<td class="left">List of supported protocols</td>
+<td class="left">supportedSamlVersion</td>
+<td class="left">samlVersionId or array of samlVersionId</td>
+<td class="left">List of supported SAML versions</td>
 </tr>
 <tr>
-<td class="left">Keys</td>
-<td class="left">http://www.w3.org/2000/09/xmldsig:X509Certificate or array of http://www.w3.org/2000/09/xmldsig:X509Certificate</td>
+<td class="left">samlKey</td>
+<td class="left">xml representation of mdKeyDescriptor</td>
 <td class="left">Keys for signing (and encryption)</td>
 </tr>
 <tr>
-<td class="left">Domain</td>
+<td class="left">samlAaDomain</td>
 <td class="left">samlMd:Scope</td>
 <td class="left">The domain for which this Attribute Authority is authorized to make assertions</td>
 </tr>
 <tr>
-<td class="left">Attribute Service Binding</td>
-<td class="left">URI</td>
+<td class="left">samlAttributeAuthorityBinding</td>
+<td class="left">samlAttributeAuthoritySSOBinding or array of samlIdentityProviderSSOBinding</td>
 <td class="left">The binding supported by this Attribute Authority</td>
 </tr>
 </tbody>
