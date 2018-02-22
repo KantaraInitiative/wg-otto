@@ -23,6 +23,14 @@ SAML Vocab Extension
 
 - SAML Entity (Otto:Entity)
   - Entity ID
+<<<<<<< HEAD
+  - *Category* (Otto:Category) (i.e. IDP, SP, IDP-SP)
+  - Registrar (Otto:Registration Authority)
+  - SAML Entity Category (i.e. Research & Scholarship)
+  - SSO endpoint
+    - List of Discovery Responses
+    - List of Keys
+=======
   - Category (Otto:Category; i.e. IDP, SP, AA)
   {Extensions}
     - Refeds Entity Category (i.e. Research & Scholarship)
@@ -39,6 +47,7 @@ SAML Vocab Extension
   + SPSSO endpoint (SAML SSO Endpoint)
     - Extensions
       - List of Discovery Responses
+>>>>>>> 8769404fa60d4553c4c4012ec90c68d51fe3e39e
     - List of AssertionConsumers
     - AttributeConsumingService (name & description)
     - List of Requested Attributes

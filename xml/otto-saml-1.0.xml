@@ -10,7 +10,7 @@
 <!ENTITY RFC6749 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6749.xml">
 <!ENTITY I-D.narten-iana-considerations-rfc2434bis SYSTEM "http://xml.resource.org/public/rfc/bibxml3/reference.I-D.narten-iana-considerations-rfc2434bis.xml">
      ]>
-<rfc category="info" docName="otto-saml-draft-01">
+<rfc category="info" docName="otto-saml-1.0">
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
 <!-- For a complete list and description of processing instructions (PIs),
@@ -45,7 +45,7 @@
     <!-- The abbreviated title is used in the page header - it is only necessary if the
          full title is longer than 39 characters -->
 
-    <title abbrev="scratchpad-saml-otto-extension">SAML vocabulary extension for OTTO Draft-01</title>
+    <title abbrev="scratchpad-saml-otto-extension">Scratchpad Version SAML vocabulary extension for OTTO</title>
 
     <!-- add 'role="editor"' below for the editors if appropriate -->
 
@@ -77,7 +77,7 @@
       </address>
     </author>
 
-    <date year="2018"/>
+    <date year="2017"/>
 
     <!-- If the month and year are both specified and are the current ones, xml2rfc will fill
          in the current day for you. If only the current year is specified, xml2rfc will fill
@@ -150,6 +150,7 @@
               <c>samlMD:ID</c>
               <c>unique identifier for this collection of SAML entity descriptors</c>
               <!-- -->
+<<<<<<< HEAD
               <c>name</c>
               <c>string</c>
               <c>name of this collection of SAML entity descriptors</c>
@@ -222,6 +223,67 @@
           <!-- -->
         <c>assertionConsumer</c>
         <c>mdIndexedEndpointType or array of mdIndexedEndpointType</c>
+=======
+              <c>Refeds Entity Category</c>
+              <c>URI</c>
+              <c>URI identifier for a formal Refeds Entity Category (e.g., Research and Scholarship)</c>
+              <!-- -->
+              <c>SSO Endpoint</c>
+              <c>SAML SSO Endpoint</c>
+              <c>The characteristics of this endpoint as a party to Single Sign-On</c>
+              <!-- -->
+          </texttable>
+        </section>
+      <section anchor="saml-sso-endpoint" title="SAML SSO Endpoint">
+        <texttable anchor="table_SAML_SSO_Endpoint" title="SAML SSO Endpoint">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>Keys</c>
+          <c>Key Descriptor element or array of Key Descriptor elements as defined in |SAML:Metadata|</c>
+          <c>Public Keys for use in signing and encryption</c>
+          <!-- -->
+          <c>Extensions</c>
+          <c>SAML Metadata Extensions or array of Extensions</c>
+          <c>Extensions to the basic SAML Metadata Schema</c>
+          <!-- -->
+
+        </texttable>
+      </section>
+      <section anchor="saml-sso-extension" title="SAML SSO Extensions">
+        <texttable anchor="table_SAML_SSO_Extension" title="SAML SSO Extension">
+          <ttcol align="left">Property</ttcol>
+          <ttcol align="left">Expected Type</ttcol>
+          <ttcol align="left">Description</ttcol>
+          <!-- -->
+          <c>UI metadata</c>
+          <c>SAML UI Metadata</c>
+          <c>descriptive information about the SSO User Interface</c>
+          <!-- -->
+        </texttable>
+      </section>
+      <section anchor="saml-service-provider-endpoint" title="SAML Service Provider Endpoint">
+        <texttable anchor="table_SAML_Service_Provider_Endpoint" title="SAML Service Provider Endpoint">
+        <ttcol align="left">Property</ttcol>
+        <ttcol align="left">Expected Type</ttcol>
+        <ttcol align="left">Description</ttcol>
+        <!-- -->
+        <c>SAML SSO Endpoint</c>
+        <c>SAML SSO Endpoint</c>
+        <c>SSO Endpoint elements shared by both IdPs and SPs</c>
+        <!-- -->
+        <c>SP SSO Descriptor</c>
+        <c>SP SSO Descriptor</c>
+        <c>elements unique to the SAML SP entity</c>
+        <!-- -->
+        <c>Discovery Responses</c>
+        <c>DiscoveryResponse or array of DiscoveryResponses</c>
+        <c>URL(s) of the SSO Endpoints associated with this SAML Entity</c>
+        <!-- -->
+        <c>Assertion Consumers</c>
+        <c>Assertion Consumer element or array of Assertion Consumer elements as defined in |SAML:Metadata|</c>
+>>>>>>> a49ae99d107cdacb22e00a043ad8625f420374ea
         <c>URLs and type of endpoint that will be consuming attributes</c>
         <!-- -->
         <c>attributeConsumer</c>
@@ -240,7 +302,11 @@
           <ttcol align="left">Expected Type</ttcol>
           <ttcol align="left">Description</ttcol>
           <!-- -->
+          <c>SAML SSO Endpoint</c>
+          <c>SAML SSO Endpoint</c>
+          <c>SSO Endpoint elements shared by both IdPs and SPs</c>
           <!-- -->
+<<<<<<< HEAD
           <c>supportedSamlVersion</c>
           <c>samlVersionId or array of samlVersionId</c>
           <c>List of supported SAML versions</c>
@@ -292,6 +358,21 @@
           <c>The binding supported by this Attribute Authority</c>
           <!-- -->
 
+=======
+          <c>Single Sign-on Service</c>
+          <c>SAML SSO Service Element</c>
+          <c>SSO Service elements specific to SAML Identity Providers</c>
+          <!-- -->
+          <c>Discovery Responses</c>
+          <c>DiscoveryResponse or array of DiscoveryResponses</c>
+          <c>URL(s) of the SSO Endpoints associated with this SAML Entity</c>
+          <!-- -->
+
+          <c>More TBD</c>
+          <c>...</c>
+          <c>...</c>
+          <!-- -->
+>>>>>>> a49ae99d107cdacb22e00a043ad8625f420374ea
         </texttable>
       </section>
 
@@ -332,7 +413,8 @@
     <references title="Normative References">
 
       &RFC2119;
-     </references>
+
+    </references>
 
     <references title="Informative References">
 
