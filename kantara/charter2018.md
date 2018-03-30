@@ -1,4 +1,4 @@
-# Kantara OTTO Charter
+# 2018 Kantara OTTO Charter
 
 ## WG NAME
 
@@ -20,13 +20,12 @@ federations and OAuth ecosystems, while supporting extensions to meet future
 requirements.
 
 Specifically, this Work Group will seek to:
-* Interview experts in who can provide feedback on requirements and solutions.
-* Specify the required and optional features of an OTTO API request and response.
-* Develop a Core JSON-LD vocabulary for OTTO, as well as SAML and OpenID Connect.
+* Get feedback from industry experts
+* Specify  required and optional features of the OTTO API
+* Develop a vocabulary in JSON-LD to specify core OTTO entries, as well as SAML and OpenID Connect.
 * Find a federation to adopt / implement OTTO
 
-The group will target completion of the draft specification by 12/31/18, and
-final specification by 6/30/19.
+The group will target completion of the draft specification by 12/31/18, and final specification by 6/30/19.
 
 ## DRAFT TECHNICAL SPECIFICATIONS
 
@@ -37,7 +36,7 @@ The following technical specifications should be produced:
 - OTTO OpenID Connect Vocabulary
 - OTTO SAML Vocabulary
 
-## LEADERSHIP
+## 2018 LEADERSHIP
 
 - Co-Chair, Michael Schwartz
 - Co-Chair, Keith Hazelton, Internet2
@@ -45,14 +44,11 @@ The following technical specifications should be produced:
 
 ## AUDIENCE
 
-Existing federation operators or any group of autonomous organizations that
-need to establish efficient policies and procedures for identity and
-security trust management.
+Any ecosystem that needs core technical standards and best practices for inter-domain identity trust management.
 
 ## DURATION
 
-Working Group would decide whether to dissolve, or consider future enhancements,
-after the release of the first final release the OTTO Core standard.
+After the release of version 1.0 of the OTTO standard, the working Group will decide whether to dissolve or consider future enhancements.
 
 ## IPR POLICY
 
