@@ -147,15 +147,23 @@
           <!-- -->
           <c>federation_endpoint</c>
           <c>URL</c>
-          <c>The base URL for the RA</c>
+          <c>The URL for the fedeation endpoint</c>
           <!-- -->
           <c>participant_endpoint</c>
           <c>URL</c>
-          <c>The base URL for the RA</c>
+          <c>The URL for the participant endpoint</c>
           <!-- -->
           <c>entity_endpoint</c>
           <c>URL</c>
-          <c>The base URL for the RA</c>
+          <c>The URL for the entity endpoint</c>
+          <!-- -->
+          <c>metadata_endpoint</c>
+          <c>URL</c>
+          <c>The URL for the metadata endpoint</c>
+          <!-- -->
+          <c>schema_endpoint</c>
+          <c>URL</c>
+          <c>The URL for the schema endpoint</c>
           <!-- -->
           <c>registers</c>
           <c>Instance or array of Federation, Entity, Participant,

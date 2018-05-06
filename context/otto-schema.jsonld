@@ -106,6 +106,24 @@
                       "@id": "schema:URL"
                     }
                 },
+                {"@id": "otto:metadata_endpoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:RegistrationAuthority"
+                    },
+                  "rangeIncludes":{
+                      "@id": "schema:URL"
+                    }
+                },
+                {"@id": "otto:schema_endpoint",
+                  "@type": "rdf:Property",
+                  "domainIncludes": {
+                      "@id": "otto:RegistrationAuthority"
+                    },
+                  "rangeIncludes":{
+                      "@id": "schema:URL"
+                    }
+                },
                 {"@id": "otto:expiration",
                   "@type": "rdf:Property",
                   "domainIncludes": {
