@@ -27,15 +27,11 @@ Andres Solberg's blog "The Future of Identity Federations"
 * I like the idea of using the `kid` as the stable identifier for the entity. Like SAML entityID, it's just a string.
 
 
-```
-All entities must have a unique globally unique persistent identifier.
-```
+* `All entities must have a unique globally unique persistent identifier.` *i.e.* an entityID--agreed! But it's not clear what URI to use as the entityID for a client. OTTO proposes that we register entities at a Registration Authority--and this issues the unique URI. Self-asserted SAML entityID's are working fine, and organizations use either URI's or URN's depending on their preference. However, self-asserted identifiers are not always resolvable.  
 
-* *i.e.* an entityID--AGREED! But it's not clear what URI to use as the entityID for a client. OTTO proposes that we register entities at a Registration Authority--and this issues the unique URI. Self-asserted SAML entityID's are working fine, and organiations use either URI's or URN's depending on their preference.
+*  Mike disagrees with the idea of federation "models"--i.e. the discussion of a meshed federation versus a hub and spoke federation. It's simply that  different services may be offered by the federation, depending on how much the federation is trusted and cost.
 
-*  Mike disagrees with the idea of federation "models". It's simply that  different services may be offered by the federation, depending on how much the federation is trusted and cost.
-
-* Short on details about inter-federation trust. Also missing is a discussion of an entity registered with multiple federations--what's the root of trust?
+* Short on details about inter-federation trust. Also what if an entity is registered with more then one federations--what's the root of trust? And what about operators that need automation? For example, an IT services company that operates IDP's for many institutions. 
 
 * Using entityID as client_id is not going to work because you
 can't request client_id in the [client metadata](http://openid.net/specs/openid-connect-registration-1_0.html#ClientMetadata) during OpenID Connect client registration. Even if you define an extension client metadata claim ("requested_client_id" ?) This is very likely too big of a change for existing implementations (i.e. changing the primary key of the client).
@@ -56,7 +52,6 @@ Then obtain trust information, typically a signed statement from a third party, 
 
 ### Mike's initial comments on refeds mailing List
 
-```
 Andreas,
 
 Just read your blog "The future of Identity Federations":
@@ -77,8 +72,6 @@ I have some questions about the design:
 I have a few more objections to your proposal, but I'm running out of steam!  We'd be willing to talk through your ideas in the OTTO WG if you want to present them.
 
 - Mike Schwartz
-
-```
 
 ## Next Meeting Friday 6/8 9am US Eastern Time
 
